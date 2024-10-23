@@ -40,10 +40,6 @@ const wxml = (srcdata) =>
         <image class="qrcode" src="${srcdata.qrcode}"></image>
         <text class="tips">长按识别二维码成为木菲美家专属经纪人</text>
     </view>
-    <view class="qrcview">
-        <image class="qrcode" src="${srcdata.officialAccountImgCodePath}"></image>
-        <text class="tips">识别二维码关注公众号动态获取收益进度</text>
-    </view>
 </view>
 
 </view>
@@ -121,11 +117,10 @@ const style = (pagesize) => {
       height: deviceUtil.rpx2px(365),
       justifyContent:'center',
       alignItems:'alignItems',
-      marginLeft: deviceUtil.rpx2px(38),
     },
     qrcode:{
-      width:deviceUtil.rpx2px(203),
-      height: deviceUtil.rpx2px(203),
+      width:deviceUtil.rpx2px(223),
+      height: deviceUtil.rpx2px(223),
     },
     tips:{
       width:deviceUtil.rpx2px(203),
@@ -178,6 +173,8 @@ const style = (pagesize) => {
         width: pagewidth,
         height: deviceUtil.rpx2px(360),
         backgroundColor:'#f8f8f8',
+        display: 'flex',
+        justifyContent: 'center',
         flexDirection: 'row',
         alignItems:'alignItems',
         zIndex:'9999'
