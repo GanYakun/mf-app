@@ -1,0 +1,72 @@
+<!--components/floor-item/index.wxml-->
+<view class="floor-item" wx:if="{{_item}}">
+  <view class="titles" wx:if="{{_item.name}}">
+    <view class="title">{{_item.name}}</view>
+
+    <view class="sub-title" wx:for="{{_item.subTitleList}}" catchtap="onAction" data-event-type="subtitle" data-position="{{index}}" wx:key="key">{{item.name}}</view>
+
+    <view class="more" catchtap="onAction" data-event-type="moreRight" data-position="{{index}}">
+      更多<text style="margin-left:5rpx">+</text></view>
+  </view>
+
+  <scroll-view scroll-x="true" class="build-list" wx:if="{{_item.buildList.length > 0}}">
+    <view wx:for="{{_item.buildList}}" data-id="{{item.id}}" wx:key='key' class="build-item" catchtap="onAction" data-event-type="build" data-position="{{index}}">{{item.searchName}}</view>
+  </scroll-view>
+
+  <scroll-view class="filter-list" scroll-x="true" wx:if="{{_item.filterList && _item.filterList.length > 0}}">
+    <view class="filter-item" wx:for="{{_item.filterList}}" catchtap="onAction" data-event-type="filter" data-position="{{index}}">
+      <image src="{{imgur}}{{item.imageVo && item.imageVo.imagePath ? item.imageVo.imagePath:(item.xcxIconPath ? item.xcxIconPath:'')}}" style="width:74rpx;height: 74rpx;" mode="widthFix" lazy-load="{{true}}"></image>
+      <view>{{item.searchName ? item.searchName:(item.cname ? item.cname:(item.name ? item.name:''))}}</view>
+    </view>
+  </scroll-view>
+
+  <scroll-view class="filter-list1" scroll-x="true" wx:if="{{_item.filterList1 && _item.filterList1.length > 0}}">
+    <view class="filter-item" wx:for="{{_item.filterList1}}" style="background:url({{imgur}}{{item.imageVo && item.imageVo.imagePath ? item.imageVo.imagePath:(item.xcxIconPath ? item.xcxIconPath:'')}}); background-size:100% 100%;" catchtap="onAction" data-event-type="filter" data-position="{{index}}">
+      <view class="cauMask">{{item.searchName ? item.searchName:(item.cname ? item.cname:(item.name ? item.name:''))}}</view>
+    </view>
+  </scroll-view>
+
+  <scroll-view class="filter-list2" scroll-x="true" wx:if="{{_item.filterList2 && _item.filterList2.length > 0}}">
+    <view class="filter-item" wx:for="{{_item.filterList2}}" catchtap="onAction" data-event-type="filter" data-position="{{index}}">
+      <image src="{{imgur}}{{item.imageVo && item.imageVo.imagePath ? item.imageVo.imagePath:(item.xcxIconPath ? item.xcxIconPath:'')}}" style="width:64rpx;height: 64rpx;" mode="widthFix" lazy-load="{{true}}"></image>
+      <view >{{item.searchName ? item.searchName:(item.cname ? item.cname:(item.name ? item.name:''))}}</view>
+    </view>
+  </scroll-view>
+
+  <view class="banner-list" wx:if="{{_item.bannerList.length>0 || _item.bannerList2.length>0}}">
+    <floor-swiper img-list="{{_item.bannerList}}" imgList2="{{_item.bannerList2}}" width="{{_itemWidth}}" binditemtap="onBannerTap" data-event-type="banner"></floor-swiper>
+  </view>
+
+  <view class="ad-image-list" wx:if="{{_item.adImageList && _item.adImageList.length > 0}}">
+    <view class="ad-image-full-item" wx:for="{{_item.adImageList}}" catchtap="onAction" data-event-type="detail" data-position="{{index}}">
+      <view class="price-image" wx:if="{{item.isNewOpen}}">
+        <image src="../../images/imageTop.png" mode="widthFix" style="width:40rpx;height:40rpx" lazy-load="{{true}}"></image>
+        <text>{{item.isNewOpen}}</text>
+      </view>
+      <view class="ad-image-wrapper">
+        <view  class="hottype" wx:if="{{_item.newsClass.id == 223}}">爆款</view>
+        <image class="ad-image" mode="widthFix" src="{{imgur}}{{item.imageVo.imagePath}}"></image>
+      </view>
+
+      <view class="ad-title" wx:if="{{item.name}}">
+        <view>{{item.name}}</view>
+      </view>
+      <view class="ad-desc" wx:if="{{item.describe}}" style="padding-top:25rpx;padding-bottom:18rpx">
+        <rich-text space="nbsp" nodes="<div style='overflow: hidden;white-space: pre-line;text-overflow: ellipsis;'>{{item.describe}}</div>"></rich-text>
+      </view>
+    </view>
+  </view>
+
+  <view class="ad-image-list" wx:if="{{_item.adImageList1 && _item.adImageList1.length > 0}}">
+    <view class="ad-image-half-item" wx:for="{{_item.adImageList1}}" catchtap="onAction" data-event-type="detail" data-position="{{index}}">
+      <view class="ad-image-wrapper">
+        <!-- <view class="hottype" wx:if="{{_item.newsClass.id == 223}}">爆款</view> -->
+        <image class="ad-image" src="{{imgur}}{{item.imageVo.imagePath}}" mode="aspectFill" lazy-load="{{true}}"></image>
+      </view>
+      <view class="ad-desc" style="text-align:center">
+        <rich-text space="nbsp" nodes="{{item.describe}}"></rich-text>
+      </view>
+    </view>
+  </view>
+</view>
+

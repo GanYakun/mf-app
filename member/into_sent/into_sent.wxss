@@ -1,0 +1,49 @@
+/* member/into_send/into_sent.wxss */
+.scroll{
+  background-color: #efefef;
+}
+.into-sent-item{
+  width: calc(100% - 56rpx);
+  height: auto;
+  margin: 30rpx 28rpx 0 28rpx;
+  background: #FFFFFF;
+  border-radius: 17rpx;
+  display: flex;
+  flex-direction: column;
+}
+.into-sent-item .top-img{
+  display: block;
+  width: 100%;
+  min-height: 443rpx;
+  background: #f8f8f8;
+  border-radius: 17rpx 17rpx 0 0;
+}
+.into-sent-item .title{
+  font-size: 33rpx;
+  font-weight: bold;
+  color: #333333;
+  margin: 38rpx 37rpx 0 37rpx;
+}
+.into-sent-item .content{
+  font-size: 25rpx;
+  font-weight: 500;
+  color: #777777;
+  margin: 28rpx 57rpx 0 40rpx;
+}
+.into-sent-item .time{
+  font-size: 25rpx;
+  font-weight: 500;
+  color: #666666;
+  margin: 53rpx 0 0 38rpx;
+}
+.into-sent-item .btn-claim{
+  width: calc(100% - 208rpx);
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: #F68535;
+  border-radius: 40rpx;
+  margin: 46rpx 104rpx 44rpx 104rpx;
+  font-size: 31rpx;
+  color: white;
+}

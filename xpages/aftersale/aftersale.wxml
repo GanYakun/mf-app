@@ -1,0 +1,87 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 加载弹窗结束 -->
+<scroll-view scroll-y="true" style="height:100%;" bindscrolltolower="slideusage">
+	<leftbutton toptitle="{{TopTitle}}"></leftbutton>
+	<swiperAuto imgarr="{{advList}}"></swiperAuto>
+	<!-- <swiper class="swiper_image">
+				<block wx:for="{{advList}}" wx:key="key">
+					<swiper-item catchtap="selectedbtn" data-newclassid="{{item.indexType}}"     data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" data-newclassid="{{item.indexType}}" data-hometitle="{{item.name}}"
+						data-id="{{item.contentId}}">
+						
+							<image id="topimage" src="{{imgur}}{{item.imageVo.imagePath}}"  mode="widthFix">
+							</image>
+						
+					</swiper-item>
+				</block>
+			</swiper> -->
+	<!-- <view class="topimage">
+		<image src="http://116.55.251.19/group1/M00/00/7B/dDf7E18xK2yARfV7AAOqpx5Ih6g587.jpg"></image>
+	</view> -->
+	<view class="tabbox">
+		<view wx:for="{{tabList}}" wx:key="key" catchtap="tabtap" data-index="{{index}}" class="{{tbindex==index?'select':'tabitem'}}" data-typecode="{{item.typecode}}">
+			<view>{{item.typename}}</view>
+			<view class="line {{tbindex==index?'select':'tabitem'}}"></view>
+		</view>
+	</view>
+
+	<!-- 切换的内容部分 -->
+	<view class="selectbox">
+		<view class="personnelbox">
+			<block wx:for="{{list}}" wx:key="key">
+				<view class="personnel" catchtap="after" data-id="{{item.id}}">
+					<view class="personnelview">
+						<view class="personnelviewimages">
+							<image src="{{imgur}}{{filters.jsonzhuanhuan(item.logoPath)[0].path}}"
+								style="height:450rpx;border-radius: 12rpx;" mode="widthFix"></image>
+						</view>
+						<view style="display: flex;justify-content: space-between;align-items: flex-end;">
+							<text style="font-size:28rpx;margin-top:15rpx;font-weight: bold;">{{item.name}}</text>
+							<block wx:for="{{5}}" wx:key="key">
+								<text class="iconfont icon-xingxing1 {{index>getModel.averageScore||index==getModel.averageScore?'nocolor':''}}"></text>
+							</block>
+							<text style="font-size:24rpx;margin-left:10rpx;color:666666">{{item.averageScore}}分</text>
+						</view>
+						<view>
+							<view class="bootmage">
+								<view>年限：{{item.decoratorWorkingTime}}年</view>
+								<view>服务人数：{{!item.numberOfWorks?'':item.numberOfWorks + '户'}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+	</view>
+	<!-- <view class="selectbox" hidden="{{tbindex==1?false:true}}">
+		<view class="personnelbox">
+			<block wx:for="{{projectLists}}" wx:key="key">
+				<view class="personnel" catchtap="after" data-id="{{item.id}}">
+					<view class="personnelview">
+						<view class="personnelviewimages">
+							<image src="{{imgur}}{{filters.jsonzhuanhuan(item.logoPath)[0].path}}" style="height:450rpx;width:100%;"
+								mode="aspectFill"></image>
+						</view>
+						<text style="font-size:28rpx;margin-top:15rpx;">{{item.name}}</text>
+						<view style="margin-top:15rpx;">
+							<block wx:for="{{5}}" wx:key="key">
+								<text class="iconfont icon-xingxing"></text>
+							</block>
+							<text style="font-size:24rpx;">{{item.totalReview/item.evaluationNumber}}分</text>
+							<view class="bootmage">
+								<view>年限：{{item.decoratorWorkingTime}}年</view>
+								<view>服务人数：{{!item.numberOfWorks?'':item.numberOfWorks + '户'}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</block>
+		</view>
+
+
+	</view> -->
+
+</scroll-view>
+
+<Allpagesneed />

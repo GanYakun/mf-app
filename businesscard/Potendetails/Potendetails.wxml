@@ -1,0 +1,99 @@
+<wxs src="../../utils/filter.wxs" module="filter"></wxs>
+<leftbutton toptitle="客户详情"></leftbutton>
+<!-- 我的客户 -->
+<scroll-view style="height:calc(100% - {{navHeight}}rpx)" scroll-y="true" bindscrolltolower="lower">
+  <view class="topbox">
+  </view>
+  <view class="newlyadded">
+    <view>
+      <view class="UserMessage">
+      <text>{{PotentialcustomersName ? PotentialcustomersName:''}}\n</text>
+      <text style="color:#666666">{{PotentialcustomersPhone}}</text>
+      </view>
+      <view class="UserTime" wx:if="{{PotentialcustomersTime}}">
+        {{filter.timetransformation(PotentialcustomersTime)}}
+      </view>
+     
+    </view>
+    <view class="Entered">
+<image src="../image/yiluru.png" hidden="true"></image>
+    </view>
+  </view>
+
+
+
+  <!-- 浏览记录 -->
+  <view class="cuslist" wx:for="{{list}}" wx:key="key">
+    <view class="cuslist_1">
+      <view class="cuslist_2">
+        <view>
+          <view class="row1 flex">
+            <view class="flex">
+              <text class="iconfont icon-zuji"></text>
+              <view wx:if="{{item.title}}">{{item.title}}</view>
+            </view>
+          </view>
+          <view class="lookTime">
+          <view class="row2 row flex">
+            <view class="flex">
+              <text class="iconfont icon-yingyeshijian"></text>
+              <view>{{filter.timetransformation(item.createDate)}}</view>
+            </view>
+          </view>
+          <view class="lookTimeView" bindtap="looklistdetail" data-newclassid="{{item.newsclassId}}" data-objectid="{{item.objId}}" data-title="{{item.title}}">
+            查看
+          </view>
+        </view>
+          <view class="row flex" wx:if="{{item.houseAddress}}">
+            <text class="iconfont icon-zhufang"></text>
+            <view>{{item.houseAddress}}</view>
+          </view>
+          <view class="row flex" wx:if="{{item.houseStructureName}}">
+            <text class="iconfont icon-fabu1"></text>
+            <view>{{item.houseStructureName}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{list.length==0}}" class="Nodata">
+    暂无数据
+  </view>
+
+  <view class="cuslist" wx:for="{{Collectcoupons}}" bindtap="clickOrder" data-clickMessage="{{item}}" wx:key="key" wx:if="{{xindex == 1}}">
+    <view class="cuslist_1">
+      <view class="cuslist_2">
+        <view>
+          <view class="newrow1 flex">
+            <view class="flex">
+              <text class="iconfont icon-webicon08"></text>
+              <view>{{item.nick}}</view>
+            </view>
+            <view class="iconfont icon-yihexiao" wx:if="{{item.writeOff==1}}"></view>
+          </view>
+          <view class="coupMessag">
+          <view class="row2 row flex">
+            <view class="flex">
+              <text class="iconfont icon-yingyeshijian"></text>
+              <view>
+                  {{filter.timetransformation(item.createDate)}}
+                </view>
+            </view>
+            <view class="row flex">
+              <text class="iconfont icon-fuwurexian"></text>
+              <view>
+                {{item.phone}}
+              </view>
+            </view>
+          </view>
+          <view class="row flex newlibao" wx:if="{{item.period}}">
+            <text class="iconfont icon-chanpin"></text>
+            <view>{{item.period}}</view>
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

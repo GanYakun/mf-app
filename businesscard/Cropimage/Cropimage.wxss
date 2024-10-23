@@ -1,0 +1,16 @@
+page{
+  background: #000000;
+}
+
+
+.cropper-buttons{
+  padding: 0  40rpx;
+  /* background-color: #ffffff; */
+  height: 50px;
+  display: flex;
+align-items: center;
+justify-content: space-between;
+font-size: 28rpx;
+color: #ffffff;
+
+}

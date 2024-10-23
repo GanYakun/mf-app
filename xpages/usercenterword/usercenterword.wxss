@@ -1,0 +1,61 @@
+
+@import "/utils/font.wxss";
+page{
+  background-color: #ddd;
+}
+.casebox{
+  width: 96%;
+  margin: 0 auto;
+  background-color: #fff;
+  align-items: center;
+  border-radius: 10rpx;
+  /* padding: 20rpx; */
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  }
+  
+  .casenameandtime{
+    width: 85%;
+  }
+  .shenpi{
+    width: 15%;
+  }
+
+  .casename{
+    font-size: 28rpx;
+font-weight: bold;
+text-indent: 20rpx;
+
+  }
+  .casetime{
+font-size: 28rpx;
+color: #bbbaba;
+margin-top: 20rpx;
+text-indent: 20rpx;
+
+  }
+  .icon-daishenpi{
+
+font-size: 80rpx;
+  }
+
+  .lookcomment{
+    margin:0 auto;
+    width: 96%;
+    border-top: 1px #ddd solid;
+    background-color: #fff;
+    display: flex;
+  }
+
+  .commentss{
+    margin-top: 20rpx;
+    margin-left:auto;
+  padding-left: 30rpx;
+  padding-right: 30rpx;
+  font-size: 28rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
+  line-height: 60rpx;
+  /* border-radius: 0.8em; */
+    border: 1px #ddd solid;
+  }

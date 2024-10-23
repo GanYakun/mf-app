@@ -1,0 +1,12 @@
+/* businesscard/excel/excel.wxss */
+.excel{
+  width: calc(100% - 40rpx);
+  margin: 0 auto;
+  padding: 20rpx 10rpx;
+  background: #87aaeb;
+  box-sizing: border-box;
+  font-size: 26rpx;
+  border-radius: 12rpx;
+  margin-top: 20rpx;
+  text-align: center;
+}

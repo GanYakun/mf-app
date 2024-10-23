@@ -1,0 +1,55 @@
+<!--pages/video-swiper/video-swiper.wxml-->
+<leftbutton video-style="{{videoStyle}}" isVideo="{{true}}"></leftbutton>
+<video-swiper video-list="{{videoList}}" play-index="{{currentIndex}}" bindchange="onPlayChange" bindplay="onPlay" source-key="videoUrl" bindloadmore="loadMoreVideo" circular="{{circular}}">
+  <view slot="bottom-{{current}}" class="bottom">
+    <view class="video-title">
+      <!-- <view class="{{isPull ? 'title-view1' : 'title-view'}}"><text class="title-text">{{videoList[current].title}}</text></view> -->
+      <view class="title-view"><text class="title-text">{{videoList[current].title}}</text></view>
+      <view class="pull-down" bindtap="pullTap" wx:if="{{!hidden}}">
+        <!-- <text>{{isPull ? '收起' : '展开'}}</text> -->
+        <!-- <image src="./images/icon_pull.png" mode="aspectFit" class="{{isPull ? 'pull-image1' : 'pull-image'}}" /> -->
+        <text>展开</text>
+        <image src="./images/icon_pull.png" mode="aspectFit" class="pull-image" />
+      </view>
+    </view>
+    <view class="video-extra">
+      <view class="search-option">
+        <view class="image-view">
+          <image src="{{videoList[current].searchOptionPath}}" mode="aspectFill" />
+        </view>
+        <text>{{videoList[current].searchOptionName}}</text>
+      </view>
+      <view class="function-list">
+        <view class="item-view" wx:for="{{funtionList}}" catchtap="functionTap" data-index="{{index}}">
+          <image src="{{(videoList[current].isCollect && index == 0) || (videoList[current].hasPraise && index == 2) ? item.selectUrl : item.url}}" mode="aspectFit" />
+          <text>{{item.title}}</text>
+          <button size="mini" class="btn-share" open-type="share" catchtap="share" data-share-type="video" data-video-data="{{videoList[current]}}" wx:if="{{index == 1}}"></button>
+        </view>
+      </view>
+    </view>
+  </view>
+</video-swiper>
+
+<view class="mask" wx:if="{{_show}}" bindtap="hide"></view>
+<view class="dialog {{_show ? 'dialog-show':''}}">
+  <view class="title">
+    <image class="drop" src="../../components/comment-list-dialog/images/arrow.png" bindtap="hide"></image>
+    <view>{{videoList[current].commentCount ? videoList[current].commentCount:'0'}}条评论</view>
+  </view>
+  <scroll-view scroll-y="true" enable-flex="true" class="comment-list" bindscrolltolower="scrollToLower" scroll-anchoring="false">
+    <view class="top-title" hidden="{{!isTitle}}">{{videoList[current].title}}</view>
+    <view class="comment-item" wx:for="{{commentList}}">
+      <image class="header" src="{{item.memberLogoPath}}"></image>
+
+      <view class="comment-info">
+        <view class="nick-name">{{item.memberName}}<view>{{item.timeago}}</view>
+        </view>
+        <view class="comment-content">{{item.content ? item.content:'此用户什么都没说'}}</view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="comment-bar">
+    <open-data class="comment-header" type="userAvatarUrl"></open-data>
+    <input class="comment-input" placeholder="说点什么吧..." confirm-type="send" bindconfirm="sendComment" value="{{content}}" />
+  </view>
+</view>

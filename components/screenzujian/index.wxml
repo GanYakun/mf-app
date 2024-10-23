@@ -1,0 +1,128 @@
+<!-- 右侧抽屉 -->
+
+<view class='mask' bindtap="powerDrawerclose" data-statu="close" wx:if="{{showModalStatus}}"> </view>
+<view class='Drawer' animation="{{animationData}}" wx:if="{{showModalStatus}}">
+	<block wx:if="{{!isone}}">
+		<view class="dirwerbox">
+			<text class="iconfont icon-fanhui" catchtap="isscreen">返回</text>
+		</view>
+	</block>
+
+
+	<view class="choice {{isone?'wanqu':''}}">
+		<!-- <scroll-view scroll-y='true'  style="height:{{scrollHeight-140-230+(isone?140:0)}}rpx;background-color: #eeeeee;border-top-left-radius: {{isone?40:0}}rpx;"> -->
+		<scroll-view scroll-y='true' class="scroll_h"
+			style="height:{{scrollHeight-100-(isone?0:100)}}rpx;background-color: #eeeeee;border-top-left-radius: {{isone?40:0}}rpx;">
+			<!-- 第一层 -->
+			<block wx:if="{{isone}}">
+				<view wx:if="{{!isone}}" class="shoptitle">
+					{{onetitle}}
+				</view>
+				<!-- 第一层下面的分类 -->
+				<view class="Gongge" wx:if="{{onelist}}">
+					<view class="son {{shopindex==index?'reallychioce':''}}" wx:for="{{onelist}}" catchtap="oneclick"
+						data-index="{{index}}" data-id="{{item.id}}" data-cname="{{item.cname}}" wx:key="key">
+						{{item.cname}}
+					</view>
+				</view>
+				
+			</block>
+
+			<!-- 第二层 -->
+			<!-- 父分类标题 -->
+			<block wx:if="{{istwo}}">
+				<view class="shoptitle" wx:if="{{toptext}}" style="margin-top:20rpx">
+					{{toptext}}
+				</view>
+				<!-- 子分类元素 -->
+				<view class="Gongge">
+					<view wx:for="{{canchoicemixin}}" class="son {{screenarr[0]==item.id?'reallychioce':''}}"
+						catchtap="shopcidclick" data-topname="{{item.cname}}" data-id="{{item.id}}" wx:key="key">
+						{{item.cname}}
+					</view>
+				</view>
+			</block>
+			<view wx:else>
+				<block wx:if="{{!isone}}">
+					<view class="notoptext">
+						{{xtoptexts}}
+					</view>
+					<view class="Gongge" wx:if="{{isbaokuan && !lastbaokuan }}">
+						<view wx:for="{{canchoicemixin}}" class="son {{screenarr[0]==item.id?'reallychioce':''}}"
+							catchtap="shopcidclick" data-topname="{{item.cname}}" data-id="{{item.id}}" wx:key="key">
+							{{item.cname}}
+						</view>
+					</view>
+
+					<view class="Gongge" wx:if="{{isbaokuan && lastbaokuan }}">
+						<view wx:for="{{canchoicemixin}}" class="son {{screenarr[0]==item.id?'reallychioce':''}}"
+							catchtap="shopcidclick" data-topname="{{item.cname}}" data-id="{{item.id}}" wx:key="key">
+							{{item.cname}}
+						</view>
+					</view>
+				</block>
+			</view>
+
+
+			<!-- 品牌 -->
+			<block wx:if="{{!isbaokuan}}">
+				<block wx:if="{{!isone}}">
+					<view class="shoptitle" style="margin-top:20rpx">
+						品牌
+					</view>
+					<!-- 品牌子元素 -->
+					<view class="Gongge">
+						<view class="son {{screenarr[1]==item.id?'reallychioce':''}}" wx:for="{{brand}}" catchtap="brandclick"
+							data-index="{{index}}" data-id="{{item.id}}" wx:key="key">
+							{{item.name}}
+						</view>
+					</view>
+				</block>
+			</block>
+
+
+			<!-- 产品系列 -->
+			<!-- <block wx:if="{{!isbaokuan}}">
+      	<view class="shoptitle "  style="margin-top:20rpx">
+				系列
+			</view> -->
+			<!-- 产品系列元素 -->
+			<!-- <view class="Gongge">
+				<view class="son {{screenarr[2]==item.typecode?'reallychioce':''}}"  catchtap="seriesclick" wx:for="{{productline}}" data-typecode="{{item.typecode}}" data-index="{{index}}" wx:key="key">
+					{{item.typename}}
+				</view>
+			</view>
+			</block> -->
+
+
+			<!-- 产品规格等其他 -->
+
+			<block wx:if="{{thesecondfloor && !isbaokuan}}">
+				<block wx:for="{{qitachoice}}" wx:for-index="itemindex" wx:if="{{item.propValueList!=''}}" wx:key="key">
+					<view class="shoptitle " style="margin-top:20rpx">
+						{{item.pname}}
+					</view>
+					<!-- 产品系列元素 -->
+					<view class="Gongge">
+						<view wx:for="{{item.propValueList}}" wx:for-item="sonitem"
+							class="son {{qitaarr[itemindex]==item.id+':'+sonitem.id?'reallychioce':''}}" catchtap="otherfilters"
+							data-index='{{itemindex}}' data-fatherid="{{item.id}}" data-sonid="{{sonitem.id}}" wx:key="key">
+							{{sonitem.vname}}
+						</view>
+					</view>
+				</block>
+			</block>
+
+
+
+
+		</scroll-view>
+	</view>
+	<view class="reset">
+		<view class="resettext">
+			<view catchtap="reset" data-isone="{{isone}}">重置</view>
+			<view catchtap="_success">确定</view>
+			<!-- <view catchtap="testa">测试</view> -->
+		</view>
+	</view>
+</view>

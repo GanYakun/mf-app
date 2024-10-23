@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "paging":"/components/paging/paging",
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed",
+    "tabindex":"/components/tab-navigation/index"
+  }
+}

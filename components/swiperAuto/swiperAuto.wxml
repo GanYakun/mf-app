@@ -1,0 +1,10 @@
+<view class="swiperimage">
+	<swiper indicator-dots="true" indicator-color="rgba(255, 255, 255)" indicator-active-color="#ff6c00" class="slide" 
+		style="height:{{imgheights[current]}}rpx" bindchange="bindchange">
+		<swiper-item skip-hidden-item-layout="{{true}}" class="slideitem" wx:for="{{imgarr}}" wx:key="key">
+			<image  lazy-load="{{true}}" class="slide-image" style="width:100%;height:100%;" catchtap="previewimg" data-id="{{index}}" bindload="imageLoad" src="{{imgur}}{{item.imagePath}}">
+			</image>
+		</swiper-item>
+	</swiper>
+	<view class="image_count">{{current + 1}}/{{imgarr.length}}</view>
+</view>

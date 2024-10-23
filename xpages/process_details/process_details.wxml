@@ -1,0 +1,31 @@
+<!--xpages/process_details/process_details.wxml-->
+<view class="box">
+  <scroll-view class="vertical-scroll" slot="body" scroll-y="true">
+    <view class="content" wx:for="{{lists}}" wx:key="index">
+      <view class="title">{{item.title}}</view>
+      <view class="tips flex">
+        <view class="item flex">
+         <label>作者：</label>
+         <view>{{item.author}}</view>
+        </view>
+        <view class="item flex">
+         <label>来源：</label>
+         <view>{{item.source}}</view>
+        </view>
+        <view class="item flex">
+         <label>浏览：</label>
+         <view>{{item.browse}}</view>
+        </view>
+        <view class="item flex">
+         <label>发布日期：</label>
+         <view>{{item.date}}</view>
+        </view>
+      </view>
+      <view class="images">
+        <view class="img">
+          <image src="{{item.imgurl}}"  style="width:100%"></image>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

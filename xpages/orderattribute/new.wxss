@@ -1,0 +1,682 @@
+@import '../../utils/font.wxss';
+@import '../../utils/weui.wxss';
+
+page {
+  background-color: #F7F7F7;
+}
+
+.nameandphone {
+  display: flex;
+  /* margin: 20rpx; */
+  align-items: center;
+  width: 100%;
+}
+
+.name {
+  color: #000000;
+  font-size: 28rpx;
+
+}
+
+.dangqianaddress {
+  margin-left: 10rpx;
+  background-color: #f97004;
+  color: #ffffff;
+  font-size: 20rpx;
+  padding: 5rpx;
+  border-radius: 3rpx;
+}
+
+.phone {
+  font-size: 22rpx;
+  color: #999999;
+  margin: 0 20rpx;
+}
+
+.addressbox {
+  display: flex;
+  align-items: center;
+  margin: 20rpx;
+  padding: 20rpx 0 0 30rpx;
+  border-radius: 20rpx;
+}
+
+.addressboxs {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  border-radius: 20rpx;
+  height: 128rpx;
+  line-height: 128rpx;
+  margin: 20rpx;
+  color: #999999;
+}
+
+.band {
+  padding: 20rpx 0;
+  font-size: 22rpx;
+}
+
+.addressbox {
+  background-color: #ffffff;
+}
+
+
+.shoppinganniu {
+  margin-top: 20rpx;
+  background-color: #ffffff;
+}
+
+.conterimageandimage {
+  margin-top: 20rpx;
+  width: 100%-40rpx;
+  /* padding: 20rpx; */
+  padding-bottom: 10rpx;
+  border-bottom: thin solid hsl(0, 0%, 44%,0.5);
+}
+
+
+.shopimage {
+  width: 149rpx;
+  margin-right: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  /* height: 155rpx; */
+}
+.shopimage>view:nth-child(1){
+  width: 100%;
+  height: 112rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+.shopimage image {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.textinstructionsForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(100% - 152rpx);
+}
+
+
+.shopname {
+  font-size: 26rpx;
+  color: #000000;
+  font-family: SourceHanSansCN-Regular;
+}
+
+.subtitle {
+  font-family: PingFang-SC-Regular;
+  font-size: 26rpx;
+  font-weight: normal;
+  color: #929292;
+}
+
+.rightdayu {
+  text-align: end;
+  width: 20%;
+  height: 100;
+  margin-right: 20rpx;
+}
+
+
+.carttitle {
+  margin-top: 20rpx;
+  /* margin-left: 20rpx; */
+  color: #666666;
+}
+
+.beizhu {
+  width: 100%-40rpx;
+  margin: 20rpx;
+  background: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin-bottom: 0rpx;
+  /* overflow-y: auto; */
+}
+
+.propertiesName {
+  font-size: 26rpx;
+  color: #000000;
+  font-family: PingFang-SC-Regular;
+  margin-top: 10rpx;
+}
+
+.homestores {
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: center;
+  height: 80rpx;
+  align-items: center;
+}
+
+.homestoressheji {
+  display: flex;
+  justify-content: center;
+  height: 80rpx;
+  align-items: center;
+}
+
+.suoshustore {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.stroenum {
+  color: #000000;
+  border: 1px #000000 solid;
+  height: 60%;
+  width: 150rpx;
+  text-align: center;
+}
+
+.stroenum1 {
+  height: 100%;
+  width: 150rpx;
+  font-size: 26rpx;
+}
+
+.stroenum2 {
+  background-color: #ffffff;
+  width: 150rpx;
+  text-align: center;
+  border: 1px #333 solid;
+  position: absolute;
+  margin-left: -2rpx;
+  margin-top: -3rpx;
+}
+
+.settlements {
+  background-color: #ffffff;
+  margin: 20rpx;
+  border-radius: 20rpx;
+}
+
+.settlementsbox {
+  padding: 20rpx;
+}
+
+.shopnumber {
+  font-size: 28rpx;
+  color: #666666;
+  line-height: 60rpx;
+}
+
+.teshutext {
+  font-weight: bold;
+}
+
+.youhui {
+  font-size: 28rpx;
+  color: #f97004;
+  font-weight: bold;
+}
+
+
+.xbootom {
+  height: 93rpx;
+  width: 100%;
+}
+
+
+.xbootombox {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 93rpx;
+  line-height: 93rpx;
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+}
+.xbootombox>view:nth-child(1){
+  margin-right: 50rpx;
+  margin-left: auto;
+  font-family: SourceHanSansCN-Normal;
+	font-size: 23rpx;
+  color: #343434;
+  padding-top: 4rpx;
+  box-sizing: border-box;
+}
+.tijiao {
+  background-color: #f9740b;
+  width: 220rpx;
+  text-align: center;
+  font-size: 30rpx;
+  color: #ffffff;
+  height: 69rpx;
+  line-height: 69rpx;
+  border-radius: 36rpx;
+  margin: 0 20rpx;
+  margin-left: 28rpx;
+}
+
+.shijizhifu {
+  background-color: #000000cc;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  color: #ffffff;
+  font-weight: bold;
+  text-indent: 20rpx;
+
+}
+
+
+.storedianji {
+  font-size: 24rpx;
+  color: #ffffff;
+  background-color: #ADE1F5;
+}
+
+.storedianjino {
+  color: #333;
+  font-size: 24rpx;
+}
+
+
+.xiashow {
+  transition: 0.5s;
+  height: 60%;
+  width: 100%;
+  position: fixed;
+  z-index: 21;
+  bottom: 0;
+  background-color: #ffffff;
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+  /* transition:1s; */
+  /* animation-name:fadeInBootom;
+	animation-duration: 0.5s;
+  animation-iteration-count: 1; */
+
+}
+
+@keyframes fadeInBootom {
+  0% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.xiahidden {
+  transition: 0.5s;
+  height: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 21;
+  bottom: 0;
+  background-color: #ffffff;
+}
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateY(-50%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.xiashows {
+  height: 50%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  transition: 1s;
+  background-color: #ffffff;
+  z-index: 9;
+}
+
+.xiahiddens {
+  height: 0rpx;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  transition: 1s;
+}
+
+.icon-cha {
+  margin-left: 30rpx;
+  margin-top: 50rpx;
+  font-size: 28rpx;
+  color: #333;
+}
+
+.add_address {
+  width: 96%;
+  margin: 0 auto;
+  color: #ffffff;
+  background-color: #f97004;
+  font-weight: bold;
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+}
+
+.container {
+  height: calc(100% - 80rpx - 120rpx);
+  margin-bottom: 0 !important;
+}
+
+.main {
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 120rpx;
+  margin-top: 30rpx;
+  margin-left: 2%;
+}
+
+
+.item-view {
+  width: 100%;
+  background: #fff;
+  padding: 20rpx;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mian-view {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 10rpx;
+}
+
+
+.phone-name {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 28rpx;
+  color: #000;
+  justify-content: space-between;
+}
+
+
+.address {
+  font-size: 24rpx;
+  color: #666;
+  margin: 10rpx 0px;
+}
+
+.addressN {
+  font-size: 24rpx;
+  color: #999;
+}
+
+
+.icon-fanhui {
+  margin-left: 30rpx;
+  margin-top: 50rpx;
+  font-size: 35rpx;
+  color: #333;
+}
+
+.btnss {
+  position: absolute;
+  bottom: 20rpx;
+  border-radius: 12rpx;
+  background: #f97704;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+}
+
+.formAsk {
+  height: 88rpx;
+  overflow: hidden;
+  font-size: 24rpx;
+  color: #666;
+  line-height: 88rpx;
+  padding: 0px 20rpx;
+  background: #fff;
+}
+
+
+.item2 {
+  width: 100%;
+  height: 88rpx;
+  border-top: 1px dotted #e5e5e5;
+  border-bottom: 1px dotted #e5e5e5;
+  color: #252525;
+  font-size: 27rpx;
+  padding-left: 10rpx;
+  box-sizing: border-box;
+  line-height: 88rpx;
+}
+
+.item2 input {
+  width: 100%;
+  height: 88rpx;
+}
+
+
+.usecoupon {
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+
+
+.couponone {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  padding-bottom: 20rpx;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.05);
+  justify-content: space-between;
+  align-items: center;
+}
+
+.denomination {
+  width: 240rpx;
+  height: 160rpx;
+  background: #74d3d5;
+  text-align: center;
+  margin-right: 10px;
+  color: #ffffff;
+}
+
+.denomination>text {
+  font-weight: bold;
+  font-size: 60rpx;
+}
+
+.denominationjieshao {
+  width: 360rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #333;
+}
+
+.yuanquan {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 30rpx;
+  border: thin solid #333 ;
+}
+
+.xuanzhongss {
+  background-color: #74d3d5;
+  border: thin solid #74d3d5 ;
+}
+
+
+scroll-view ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+
+.xxclose {
+  height: 50rpx;
+  line-height: 50rpx;
+  position: absolute;
+  top: -25rpx;
+  right: 30rpx;
+  background-color: #ffffff;
+  z-index: 9999;
+  border-radius: 25rpx;
+}
+
+.iconclose {
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+
+}
+
+
+.youhuititle {
+  text-align: center;
+  font-size: 36rpx;
+  color: #333;
+  margin-top: 20rpx;
+}
+
+
+.mask {
+  transition: 1s;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* filter: blur(2px);     */
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  height: 100%;
+  width: 100%;
+}
+
+.close {
+  position: absolute;
+  margin-top: 20rpx;
+  right: 30rpx;
+  z-index: 23;
+}
+
+.title {
+  text-align: center;
+  font-size: 28rpx;
+  color: #000000;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+
+.explain{
+  color: #000000;
+}
+.item-message{
+  display: flex;
+}
+.item-more-message{
+  display: flex;
+  width: 75%;
+  justify-content: space-between;
+  font-family: PingFang-SC-Regular;
+  font-size: 28rpx;
+  margin-top: 30rpx;
+  align-items: baseline;
+  margin-bottom: 30rpx;
+  box-sizing: border-box;
+  margin-left: auto;
+}
+.item-more-message>view:nth-child(2){
+	font-family: PingFang-SC-Regular;
+	font-size: 28rpx;
+	color: #515151;
+}
+
+.transaction-explain{
+  margin: 0 auto;
+  margin-top: 20rpx;
+  width:calc(100% - 44rpx);
+  background-color: #ffffff;
+  border-radius: 10rpx;
+  height: 176rpx;
+  display: flex;
+  align-items: center;
+  font-size: 23rpx;
+  white-space: pre-wrap;
+  padding: 0 25rpx;
+  box-sizing: border-box;
+
+}
+
+.online-and-offline{
+	font-family: SourceHanSansCN-Light;
+	font-size: 23rpx;
+  color: #f9740b;
+  display: none;
+}
+.tips{
+  position: fixed;
+    z-index: 99;
+    top: 50%;
+    left: 50%;
+    width: 80%;
+    background: #ffffff;
+    transform: translate(-50%, -50%);
+    border-radius: 26rpx;
+}
+.tips>view:nth-child(1) {
+  white-space: pre-line;
+  text-align: center;
+  font-size: 26rpx;
+  color: #202020;
+}
+.tips>view:nth-child(2) {
+  width: 100%;
+  height: 2rpx;
+  background: #a1a1a1;
+}
+.tips>view:nth-child(3) {
+  padding: 25rpx 0;
+  text-align: center;
+  font-size: 32rpx;
+  color: #202020;
+}
+.mark {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 97;
+  background: #000000;
+  opacity: 0.5;
+  width: 100%;
+  height: 100%;
+}

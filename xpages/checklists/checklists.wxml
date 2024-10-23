@@ -1,0 +1,278 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<scroll-view hidden="{{shoplist==[]?'true':''}}" class="scrollstyle" style="height:{{shoplist==''?pageWindowHeight:(pageWindowHeight-(istc?100:300))}}rpx" scroll-y="true">
+<leftbutton toptitle="{{TopTitle}}"></leftbutton>
+
+	<view wx:if="{{istop}}">
+		<view class="topbox">
+			
+			<view class="swiperimage">
+				<!-- 显示图片 -->
+				<view wx:if="{{chiocelist[chioceindex]=='图片'}}">
+					<swiperAuto  imgarr="{{pagedata.imageVoList}}"></swiperAuto>
+				</view>
+				<!-- 显示图片 -->
+
+
+				<!-- 显示VR -->
+				<view wx:if="{{chiocelist[chioceindex]=='VR'}}">
+					<view class="slide">
+						<image style="width:100%" src="{{imgur}}{{pagedata.topImage}}" mode="aspectFill"></image>
+						<view class="vricon" catchtap="vrh5page" data-vrurl="{{pagedata.vrUrlMain}}">
+							<text class="iconfont icon-VR1"></text>
+						</view>
+					</view>
+				</view>
+				<!-- 显示VR -->
+
+
+				<!-- 显示视频 -->
+				<view wx:if="{{chiocelist[chioceindex]=='视频'}}">
+					<view class="slide">
+						<video style="width:100%;hiight:100%;" show-center-play-btn='falsex' src="{{imgur}}{{pagedata.videoVo.imagePath}}"></video>
+					</view>
+				</view>
+				<!-- 显示视频 -->
+
+				<view class="picturecolorbox">
+					<view wx:for="{{chiocelist}}" wx:key="key" class="{{index==chioceindex?'picturecolors':'picturecolor'}}" catchtap="chioceshijian" data-index="{{index}}">{{item}}</view>
+				</view>
+			</view>
+
+
+			<!-- 内容部分 -->
+			<view class="content-grids">
+				<view class="imagesControllertest">
+					<image style="width:100%;height:100%" src="{{imgur}}{{pagedata.designerDecoratorEntity.imageVo.imagePath}}" mode="aspectFill"></image>
+					<view class="functionality">
+						<view class="functionalityone">
+							{{pagedata.designerName}}
+						</view>
+						<view class="functionalitytwo" bindtap="allhouse_detail" data-id="{{pagedata.designerId}}">
+							<view>预约</view>
+							<view>用户评价</view>
+						</view>
+					</view>
+				</view>
+				<!-- 右侧内容部分 -->
+				<view class="containsRights">
+					<view class="caseheritage">案例简介</view>
+					<!-- 左侧文字部分 -->
+					<view style="display:flex;line-height:40rpx">
+						<view class="alignment">
+							<view>◆</view>
+							<view>◆</view>
+							<view>◆</view>
+							<view>◆</view>
+							<view>◆</view>
+						</view>
+						<view class="alignment">
+							<view class="rigthname" wx:if="{{type == 0}}">户型</view>
+							<view class="rigthname" wx:if="{{type == 1}}">空间</view>
+							<view class="rigthname">风格</view>
+							<view class="rigthname">面积</view>
+							<view class="rigthname">价格</view>
+							<view class="rigthname">设计说明</view>
+						</view>
+						<view class="alignment">
+							<view class="rigthname">:</view>
+							<view class="rigthname">:</view>
+							<view class="rigthname">:</view>
+							<view class="rigthname">:</view>
+							<view class="rigthname">:</view>
+						</view>
+						<view class="Newchange" style="margin-left:10rpx;font-size: 24rpx;color: #888888; width:52%;">
+							<view wx:if="{{type == 0}}">
+								<text decode="true">{{pagedata.searchOptionMap.house_type[0]?pagedata.searchOptionMap.house_type[0]:'&nbsp;'}}</text>
+							</view>
+							<view wx:if="{{type == 1}}">
+								<text decode="true">{{pagedata.searchOptionMap.kongjian[0]?pagedata.searchOptionMap.kongjian[0]:'&nbsp;'}}</text>
+								{{}}
+							</view>
+							<view>{{pagedata.searchOptionMap.pop_style[0]}}</view>
+							<view>{{pagedata.homeArea}}㎡</view>
+							<view>￥{{pagedata.costMoneyTotal}}</view>
+							<view style="  visibility: hidden;">1</view>
+						</view>
+					</view>
+
+					<view class="rigthnsames" catchtap="rigthnsames" data-content="{{pagedata.subtitle}}">{{pagedata.subtitle}}</view>
+				</view>
+
+			</view>
+			<!-- 内容部分 -->
+		</view>
+	</view>
+
+
+
+
+	<view class="topboxs" wx:else>
+		<!-- 左侧选项 -->
+		<scroll-view style="height:404rpx;width:188rpx;" scroll-y='true'>
+			<view class="leftphoto">
+				<view class="looplist" wx:for="{{pagedata.perfectHomeSpaceList}}" wx:key="key" data-index="{{index}}" catchtap="leftbtn">
+					<image src="{{imgur}}{{item.showImageVoList[0].imagePath}}" mode="aspectFit"></image>
+					<view class="{{photoindex==index?'photoname':'photonames'}}">{{item.spaceName}}</view>
+				</view>
+			</view>
+		</scroll-view>
+		<!-- 右侧的轮播图 -->
+		<view class='rightbanner'>
+			<block wx:for="{{pagedata.perfectHomeSpaceList}}" wx:for-item="items" wx:key="key" wx:key='key'>
+				<swiper style="height:100%;width:100%" wx:if="{{photoindex==index}}">
+					<swiper-item wx:for="{{items.showImageVoList}}" wx:for-item="itemss" wx:key='key'>
+						<image src="{{imgur}}{{itemss.imagePath}}" style="width:100%;height:100%" mode="scaleToFill"></image>
+						<view>{{itemss.imagePath}}</view>
+					</swiper-item>
+				</swiper>
+			</block>
+		</view>
+	</view>
+
+
+	<!-- 商品的名字和其他 -->
+	<view class="shopmessage">
+		<view class="shopnameas"></view>
+	</view>
+
+	<!-- 中部根据接口反的perfectHomeSpaceList来判断是否显示下面的内容 -->
+	<view hidden="{{pagedata.perfectHomeSpaceList==''}}">
+		<!-- 儿童房哈哈房等 -->
+		<scroll-view scroll-x="true" class="scroll-view_H ">
+		<view class="theiralignments">
+			<view wx:for="{{pagedata.perfectHomeSpaceList}}" wx:key="key" class="{{chicknum==index?'iconimages':'iconimage'}}" data-index="{{index}}" catchtap="iconimage" data-kongjianid="{{item.id}}" wx:if="{{item.isRecommend==0}}">
+				<view hidden="{{index==0}}" class="textsegmentation">|</view>
+				<image src="http://www.100good.cn/plug-in/front/mlswap/images/2020/{{item.spaceIcon}}.png"></image>
+				<view style="margin-left:10rpx;">{{item.spaceName}}</view>
+			</view>
+		</view>
+	</scroll-view>
+
+
+		<!-- 中部内容 -->
+
+		<!-- 中部轮播图 -->
+				<view class="swiperimage" hidden="{{pagedata.perfectHomeSpaceList[chicknum].showImageVoList==''}}">
+			<swiperAuto imgarr="{{pagedata.perfectHomeSpaceList[chicknum].showImageVoList}}" current="{{clickPosition}}"></swiperAuto>
+		</view>
+
+		<!-- 商品部分 -->
+		<view class="goodsrpc" hidden="{{pagedata.perfectHomeSpaceList[chicknum].bandGoodsList==''}}">
+			<view class="makegoods">
+				<view class="dangeshop" wx:for="{{pagedata.perfectHomeSpaceList[chicknum].bandGoodsList}}" wx:key="key">
+					<!-- 商品部分-------顶部商品名字和价格 -->
+					<view class="tophui">
+						<view class="shopname">{{item.itemName}}</view>
+						<view class="shoppricetwo">￥{{filters.toFix2(item.onePrice)}}</view>
+						<view catchtap="updatebyclick" data-imagesrc="{{item.picVo.imagePath}}" data-spuid="{{item.spuId}}" data-goodsnum="{{item.goodsNum}}" data-price="{{item.onePrice}}" data-updateby="{{item.updateBy}}" data-topsku="{{item.skuId}}" data-chicknum="{{chicknum}}" data-index="{{index}}"><text class="iconfont {{item.updateBy==null?'icon-fangkuang':'icon-xuanzhong'}}"></text></view>
+					</view>
+					<view bindtap="shop" data-id="{{item.spuId}}">
+						<view class="shopimage">
+							<image src="{{imgur}}{{item.picVo.imagePath}}" mode="aspectFill"></image>
+						</view>
+						<view class="guige">
+							<view class="introducestyle">{{item.propertiesNameArray[0]}}</view>
+							<view class="introducestyle">{{item.propertiesNameArray[1]}}</view>
+							<view class="introducestyle">{{item.propertiesNameArray[2]}}</view>
+						</view>
+					</view>
+					<view class="numoperand" wx:if="{{item.updateBy!=null}}">
+						<view class="plusLowjian" catchtap="plusLowjian" data-index="{{index}}" data-price="{{item.onePrice}}" data-goodsNum="{{item.goodsNum}}">-</view>
+						<view class="plusLownum">{{item.goodsNum}}</view>
+						<view class="plusLowjia" catchtap="plusLowjia" data-index="{{index}}" data-price="{{item.onePrice}}" data-goodsNum="{{item.goodsNum}}">+</view>
+
+
+					</view>
+				</view>
+			</view>
+		</view>
+
+
+		<view class="yuankesigndesign">
+			<view wx:for="{{pagedata.perfectHomeSpaceList}}" wx:key="key" wx:if="{{item.isRecommend==1}}">
+				<view class="yuantitle">
+					<view class="yuantitleone">{{item.spaceName}}</view>
+				</view>
+				<view class="slidingsidebar">
+					<scroll-view scroll-x="true" style="" class="showmian">
+						<view style="display:flex">
+							<view wx:for="{{item.bandGoodsList}}" class="soliderbox" wx:key="key">
+
+
+
+								<view class="shopnametwo">
+									<image src="{{imgur}}{{item.picVo.imagePath}}" mode="aspectFill"></image>
+								</view>
+								<view class="bootomstyle">
+									<view class="priceandname">
+										<view class="priceandname">{{item.itemName}}</view>
+										<view class="shopprice">￥{{filters.toFix2(item.onePrice)}}</view>
+									</view>
+									<view class="introducestyle">{{item.propertiesNameArray[0]}}</view>
+									<view class="introducestyle">{{item.propertiesNameArray[1]}}</view>
+									<view class="introducestyle">{{item.propertiesNameArray[2]}}</view>
+								</view>
+							</view>
+						</view>
+					</scroll-view>
+				</view>
+			</view>
+		</view>
+
+	</view>
+
+	<!-- 富文本转换 -->
+	<view class="richtexteditor">
+		<import src="../../wxParse/wxParse.wxml" />
+		<template is="wxParse" data="{{wxParseData:article.nodes}}" />
+	</view>
+	<!-- 广告位图 -->
+	<view class="advimg" wx:if="{{getWxBannerByRootIdKey[0].imageVo.imagePath!=''&& getWxBannerByRootIdKey!=''}}">
+		<image src="{{imgur}}{{getWxBannerByRootIdKey[0].imageVo.imagePath}}" mode="aspectFill" style="margin: auto;width: 100%;"></image>
+	</view>
+<!-- <view style="height:80rpx">
+<button class="share" style="width: 690rpx;" catchtap="share">分享</button>
+</view> -->
+</scroll-view>
+
+
+<!-- 固定的预览购物车 -->
+<view class="{{istc?'previeweds':'previewed'}}">
+	<view hidden="{{istc}}">
+		<view class="shouqitc" catchtap="shouqitc">
+			收起预览
+		</view>
+		<view class="boxboxss">
+			<view class="slidingsidebar">
+				<scroll-view scroll-x="true" style="" class="showmian">
+					<view style="display:flex">
+						<view wx:for="{{shoplist}}" class="soliderbox" wx:key="key">
+							<view class="previewimage">
+								<image src="{{imgur}}{{item.image}}" mode="aspectFill"></image>
+								<view class="shopclose" catchtap="deleteshop" data-price="{{item.price}}" data-index="{{index}}" data-goodsshopnum="{{item.goodsnum}}" data-konjian="{{item.kongjianid}}" data-skuid="{{item.skuid}}"><text class="iconfont icon-yuanX"></text></view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 固定的加入购物车 -->
+<view class="tccart" wx:if="{{shoplist!=''}}">
+
+
+	<view class="joinselect" catchtap="joinselect">加入购物车</view>
+	<view class="numberpatternre">预览已选{{numberpatternre}}件</view>
+
+	<view class="combined">
+		合计：￥{{filters.toFix2(allprice)}}
+	</view>
+</view>
+
+
+<Allpagesneed/>
+
+<messagepopup isshow="{{iosDialog22}}" remark="{{remark}}" />

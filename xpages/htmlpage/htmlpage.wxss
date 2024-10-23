@@ -1,0 +1,23 @@
+@import "/wxParse/wxParse.wxss";
+page{
+  overflow: scroll;
+}
+
+.title{
+  font-size: 32rpx;
+  color: #333333;
+  line-height: 50rpx;
+  text-align: center;
+}
+
+.alsourcef{
+display: flex;
+justify-content: space-around;  
+margin: 20rpx 0;
+}
+
+.alsourcef_item{
+  /* margin-left: 20rpx; */
+  color: #999999;
+  font-size: 22rpx;
+}

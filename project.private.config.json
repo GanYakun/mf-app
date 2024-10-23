@@ -1,0 +1,380 @@
+{
+  "setting": {
+    "compileHotReLoad": true,
+    "useIsolateContext": true
+  },
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "成为经纪人",
+          "pathName": "businesscard/invitation/invitation",
+          "query": "q:'http://mf.100good.cn/mlsmall/card_share?memberId=184&name=改天是那天'",
+          "scene": 1011
+        },
+        {
+          "name": "会员中心",
+          "pathName": "businesscard/index/index",
+          "query": "orderstatus=undefined",
+          "scene": null
+        },
+        {
+          "name": "核销列表",
+          "pathName": "businesscard/writeoff/writeoff",
+          "query": "id=1609317957000",
+          "scene": null
+        },
+        {
+          "name": "预算报价",
+          "pathName": "xpages/budgetquotation/budgetquotation",
+          "query": "id=203&toptext=预算",
+          "scene": null
+        },
+        {
+          "name": "登陆注册",
+          "pathName": "pages/Loginregistration/Loginregistration",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "电子名片",
+          "pathName": "xpages/Electroniccard/Electroniccard",
+          "query": "http://mf.100good.cn/mlsmall/card_share?memberId=364&name=星星泡饭",
+          "scene": 1011
+        },
+        {
+          "name": "没有经纪人的页面",
+          "pathName": "businesscard/invitationfather/invitationfather",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的客户",
+          "pathName": "businesscard/mecustomer/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "意向客户详情页",
+          "pathName": "businesscard/Potendetails/Potendetails",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "意向客户列表",
+          "pathName": "businesscard/Potentialcustomers/Potentialcustomers",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品页面",
+          "pathName": "pages/tab-classification/tab-classification",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "本月爆款",
+          "pathName": "xpages/hotproduct_detail/hotproduct_detail",
+          "query": "id=0 &cname=123",
+          "scene": null
+        },
+        {
+          "name": "国际软装",
+          "pathName": "xpages/classification/classification",
+          "query": "id=2&cname=测试",
+          "scene": null
+        },
+        {
+          "name": "现金券",
+          "pathName": "xpages/currentactivity/currentactivity",
+          "query": "id=2&cname=测试",
+          "scene": null
+        },
+        {
+          "name": "裁剪图片",
+          "pathName": "businesscard/Cropimage/Cropimage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "视频上传",
+          "pathName": "pages/video_upload/video_upload",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "样板房征集",
+          "pathName": "xpages/modelhouses/modelhouses",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "开始核销的页面",
+          "pathName": "businesscard/Writeoffoperation/Writeoffoperation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "精选组合",
+          "pathName": "xpages/selectedchecklist/selectedchecklist",
+          "query": "newsClassId=129&objectId=168",
+          "scene": null
+        },
+        {
+          "name": "一元下定",
+          "pathName": "xpages/byoneyuan/byoneyuan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "新版编辑名片",
+          "pathName": "businesscard/newmake_card/newmake_card",
+          "query": "type=1",
+          "scene": null
+        },
+        {
+          "name": "优化的首页",
+          "pathName": "pages/AllPage/AllPage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "毛坯房列表",
+          "pathName": "xpages/roughhouse/roughhouse",
+          "query": "newsClassId=128",
+          "scene": null
+        },
+        {
+          "name": "装修效果图",
+          "pathName": "xpages/land/land",
+          "query": "newsClassId=147&objectId=33&casetitle=‘温’",
+          "scene": null
+        },
+        {
+          "name": "生成excel",
+          "pathName": "businesscard/excel/excel",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "测试产品规格",
+          "pathName": "xpages/shop/shop",
+          "query": "newsClassId=155&NeworderType=0&objectId=7196&categoryId=155",
+          "scene": null
+        },
+        {
+          "name": "xpages/selectedchecklist/selectedchecklist",
+          "pathName": "xpages/selectedchecklist/selectedchecklist",
+          "query": "pagetitle=%20%E6%91%A9%E6%81%A9%E5%8D%AB%E6%B5%B4%E7%BB%84%E5%90%88B%20%7C%20%E6%B5%B4%E5%AE%A4%E6%9F%9C%2B%E9%BE%99%E5%A4%B4%2B%E8%8A%B1%E6%B4%92%2B%E9%A9%AC%E6%A1%B6&newsClassId=129&objectId=1802",
+          "scene": null
+        },
+        {
+          "name": "xpages/designsketch/designsketch",
+          "pathName": "xpages/designsketch/designsketch",
+          "query": "id=147&relationid=15&toptext=%E6%8B%8E%E5%8C%85%E6%A1%88%E4%BE%8B",
+          "scene": null
+        },
+        {
+          "name": "精选组合",
+          "pathName": "xpages/selectedchecklist/selectedchecklist",
+          "query": "pagetitle=%20%E6%91%A9%E6%81%A9-%E5%8D%AB%E6%B5%B4%E7%BB%9D%E9%85%8D%E7%BB%84%E5%90%8802%20%20%20%20%20%20%EF%BF%A524945.00&newsClassId=129&objectId=1802",
+          "scene": null
+        },
+        {
+          "name": "拎包案例详情页面",
+          "pathName": "xpages/land/land",
+          "query": "newsClassId=147&objectId=33&casetitle=%E6%B8%A9%E9%A6%A8%E5%8C%97%E6%AC%A7%E9%A3%8E",
+          "scene": null
+        },
+        {
+          "name": "毛坯详情",
+          "pathName": "xpages/checklist/checklist",
+          "query": "pagetitle=%E5%90%BE%E6%82%A6%E9%A6%96%E5%BA%9C%20%20118%E3%8E%A1%20%E4%B8%89%E5%AE%A4%E4%B8%A4%E5%8E%85%20%E8%BD%BB%E5%A5%A2&newsClassId=127&objectId=1843&type=0",
+          "scene": null
+        },
+        {
+          "name": "拎包案例列表",
+          "pathName": "xpages/designsketch/designsketch",
+          "query": "id=147&relationid=15&toptext=%E6%8B%8E%E5%8C%85%E6%A1%88%E4%BE%8B",
+          "scene": null
+        },
+        {
+          "name": "精装房案例",
+          "pathName": "xpages/checklist/checklist",
+          "query": "pagetitle=%E8%9E%8D%E5%88%9B%C2%B7%E6%98%A5%E9%A3%8E%E5%8D%81%E9%87%8C%20%20%20120%E3%8E%A1%20%20%203%E5%AE%A42%E5%8E%85%20%20%20%E7%8E%B0%E4%BB%A3%E7%AE%80%E7%BA%A6&newsClassId=128&objectId=1096&type=0",
+          "scene": null
+        },
+        {
+          "name": "定制家具案例",
+          "pathName": "pages/customized_home/customized_home",
+          "query": "ids=226",
+          "scene": null
+        },
+        {
+          "name": "设计师评价",
+          "pathName": "xpages/publish/publish",
+          "query": "id=161",
+          "scene": null
+        },
+        {
+          "name": "设计师详情",
+          "pathName": "xpages/allhouse_detail/allhouse_detail",
+          "query": "id=161&newsClassId=121&Popupornot=undefined",
+          "scene": null
+        },
+        {
+          "name": "绝配组合详情",
+          "pathName": "xpages/selectedchecklist/selectedchecklist",
+          "query": "pagetitle=%20%20%E6%91%A9%E6%81%A9-%E5%8D%AB%E6%B5%B4%E7%BB%9D%E9%85%8D%E7%BB%84%E5%90%8803%20%20%20%20%20%20%EF%BF%A527765.00&newsClassId=129&objectId=1803",
+          "scene": null
+        },
+        {
+          "name": "商品详情",
+          "pathName": "xpages/shop/shop",
+          "query": "objectId=7692&typeId=652&productName=%E6%99%BA%E8%83%BD%E5%B7%A5%E5%8E%82%E5%A5%97%E9%A4%90%20MF-X7%2002&itemName=%E6%99%BA%E8%83%BD%E5%A5%97%E9%A4%90&cid=652&NeworderType=",
+          "scene": null
+        },
+        {
+          "name": "名片",
+          "pathName": "xpages/Electroniccard/Electroniccard",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品详情",
+          "pathName": "xpages/shop/shop",
+          "query": "objectId=7701&typeId=677&productName=%E5%87%80%E6%B0%B4%E5%B7%A5%E5%8E%82%E5%A5%97%E9%A4%90-%E7%BE%8E%E5%9B%BD%E8%93%9D%E9%A3%98%E5%B0%94%E7%B3%BB%E5%88%97-MF-X3&itemName=%E5%87%80%E6%B0%B4%E5%A5%97%E9%A4%901&cid=686&NeworderType=",
+          "scene": null
+        },
+        {
+          "name": "xpages/classification/classification",
+          "pathName": "xpages/classification/classification",
+          "query": "id=638&cname=%E6%8B%8E%E5%8C%85%E6%A1%88%E4%BE%8B&ScreeningFloors=1&type=lbal",
+          "scene": null
+        },
+        {
+          "name": "限时活动列表",
+          "pathName": "xpages/activitypage/activitypage",
+          "query": "NeworderType=1",
+          "scene": null
+        },
+        {
+          "name": "毛坯列表",
+          "pathName": "xpages/roughhouse/roughhouse",
+          "query": "newsClassId=128",
+          "scene": null
+        },
+        {
+          "name": "扫粉二维码",
+          "pathName": "businesscard/dusting/dusting",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "拎包的商品详情",
+          "pathName": "xpages/shop/shop",
+          "query": "objectId=7874&typeId=698&productName=%E4%BF%8A%E5%8F%91%E5%9F%8E%E9%83%81%E9%87%91%E8%8B%91%20141-144%E3%8E%A1%20C%E6%88%B7%E5%9E%8B%20%20%E8%BD%BB%E5%A5%A2&itemName=%E4%BF%8A%E5%8F%91%E5%9F%8E%E9%83%81%E9%87%91%E8%8B%91&cid=699&NeworderType=",
+          "scene": null
+        },
+        {
+          "name": "美家详情",
+          "pathName": "xpages/checklist/checklist",
+          "query": "pagetitle=%E8%9E%8D%E5%88%9B%C2%B7%E6%98%A5%E9%A3%8E%E5%8D%81%E9%87%8C%20%20%20120%E3%8E%A1%20%20%203%E5%AE%A42%E5%8E%85%20%20%20%E7%8E%B0%E4%BB%A3%E7%AE%80%E7%BA%A6&newsClassId=128&objectId=1096&type=0",
+          "scene": null
+        },
+        {
+          "name": "内部会员",
+          "pathName": "businesscard/internal-member-list/internal-member-list",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "测试页面",
+          "pathName": "pages/test-page/test-page",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "修改电子名片",
+          "pathName": "businesscard/newmake_card/newmake_card",
+          "query": "type=0&id=207",
+          "scene": null
+        },
+        {
+          "name": "限时抢购",
+          "pathName": "xpages/shop/shop",
+          "query": "newsClassId=1&NeworderType=1&objectId=8412&categoryId=1&extendData=%7B%7D",
+          "scene": null
+        },
+        {
+          "name": "暖心服务抵用券",
+          "pathName": "businesscard/server-in-help/server-in-help",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "购物车列表",
+          "pathName": "pages/tab-cart/tab-cart",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "暖心服务商品",
+          "pathName": "xpages/server-shop/server-shop",
+          "query": "newsClassId=897&NeworderType=undefined&objectId=null&categoryId=897&extendData=%7B%7D",
+          "scene": null
+        },
+        {
+          "name": "服务评价",
+          "pathName": "order/evaluate/evaluate",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "xpages/budgetquotation/budgetquotation",
+          "pathName": "xpages/budgetquotation/budgetquotation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "注册",
+          "pathName": "pages/Loginregistration/Loginregistration",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
+          "name": "豪送领取",
+          "pathName": "member/claim_coupons/claim_coupons",
+          "query": "scene=hid%3D5%26mId%3D134108",
+          "launchMode": "default",
+          "scene": 1047
+        },
+        {
+          "name": "signIn",
+          "pathName": "member/sign_in/sign_in",
+          "query": "scene=hid%3D121%26mId%3D241",
+          "launchMode": "default",
+          "scene": 1000
+        },
+        {
+          "name": "壕送核销",
+          "pathName": "member/write_off/write_off",
+          "query": "scene=hid%3D3%26rid%3D7",
+          "launchMode": "default",
+          "scene": 1047
+        },
+        {
+          "name": "邀请经纪人",
+          "pathName": "businesscard/invitation/invitation",
+          "query": "q=https%3A%2F%2Fwww.100good.cn%2Fcard_share%3FmemberId%3D5509%26name%3D%E8%80%81%E9%92%B1",
+          "launchMode": "default",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "description": "项目私有配置文件。此文件中的内容将覆盖 project.config.json 中的相同字段。项目的改动优先同步到此文件中。详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "projectname": "mufei_shop",
+  "libVersion": "2.31.0"
+}

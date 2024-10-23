@@ -1,0 +1,228 @@
+@import '../../utils/font.wxss';
+.goodsrpc {
+  width: calc(100% - 40rpx);
+  margin: 20rpx ;
+}
+
+.makegoods {
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: calc(50% - 10rpx) calc(50% - 10rpx);
+  grid-column-gap: 20rpx;
+  grid-row-gap: 20rpx;
+}
+.plusLowjia,
+.plusLowjian {
+  width: 35rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.plusLowjia {
+  color: #333333;
+  /* background-color: #333; */
+}
+
+.plusLowjian {
+  color: #333;
+}
+
+.shopimage {
+  width: 100%;
+}
+
+.shopimage image {
+  width: 100%;
+  height: 100%;
+}
+
+.shopname {
+  color: #333333;
+  font-size: 24rpx;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 10rpx;
+}
+
+
+.PriceQuantity{
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 50rpx;
+}
+
+.DividingLine{
+  background: #e5e5e5;
+  height: 1rpx;
+  margin: 10rpx 10rpx;
+}
+.guige{
+  padding-bottom: 10rpx;
+}
+
+.dangeshop {
+  background: #ffffff;
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+
+.icon-fangkuang,
+.icon-xuanzhong {
+  font-size: 24rpx;
+}
+
+.dangeshop .shopclick {
+  width: 35rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  color: #ffffff;
+  background: #fc6000;
+  border-radius: 40rpx;
+  text-align: center;
+  font-size: 26rpx;
+  position: absolute;
+  margin-left: 39%;
+  margin-top: 15rpx;
+}
+
+
+.shoppricetwo {
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  color: #ff6c00;
+}
+
+.introducestyle {
+  font-size: 20rpx;
+  color: #999999;
+  margin-left: 10rpx;
+}
+
+.numoperand {
+  display: flex;
+  border: 1rpx #999999 solid;
+  border-radius: 8rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+}
+.numoperand>view{
+  line-height: 40rpx;
+}
+
+
+.plusLownum {
+  width: 75rpx;
+  font-size: 28rpx;
+  text-align: center;
+  border-left:1rpx #999999 solid;
+  border-right:1rpx #999999 solid;
+
+}
+
+
+.tccart {
+  position: fixed;
+  height: 100rpx;
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  bottom: 0;
+}
+
+.joinselect {
+
+  height: 70rpx;
+  line-height: 70rpx;
+  border-radius: 70rpx;
+  padding: 0 30rpx;
+  font-size: 28rpx;
+  color: #ffffff;
+  background-image: linear-gradient(142deg, 	#f09436 0%, 	#ee7a30 43%, 	#eb5f2a 100%), linear-gradient(	#ff6c00, 	#ff6c00);
+  margin-right: 30rpx;
+}
+
+
+.numberpatternre {
+  margin-right: 10rpx;
+  font-size: 26rpx;
+  color: #666666;
+  line-height: 100rpx;
+}
+
+
+.combined {
+  margin-right: auto;
+  margin-left: 20rpx;
+  color: #333333;
+  font-size: 26rpx;
+  text-align: end;
+}
+
+.previeweds {
+  position: fixed;
+  bottom: 100rpx;
+  width: 100%;
+  transition: 0.5s;
+}
+
+.previewed {
+  position: fixed;
+  bottom: 100rpx;
+  width: 100%;
+  /* transition: 0.5s; */
+  background-color: #eaeaea;
+}
+
+.previewimage {
+  width: 200rpx;
+
+  padding-top: 10rpx;
+}
+
+.previewimage image {
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+
+.slidingsidebar {
+  width: 100%;
+}
+.boxboxss {
+  width: 95%;
+  margin: 0 auto;
+  padding: 20rpx 0;
+}
+
+.icon-yuanX {
+  font-size: 32rpx;
+  color: #c8c8c8;
+}
+
+
+.shopclose {
+  position: absolute;
+  margin-top: -17rpx;
+  margin-left: 25%;
+}
+
+.soliderbox {
+  margin-left: 20rpx;
+}
+
+.soliderbox:first-child {
+  margin-left: 0;
+}
+.goodsNum{
+  margin-right: auto;
+  margin-left: 10rpx;
+  font-size: 20rpx;
+  line-height: 30rpx;
+  color: #999999;
+}

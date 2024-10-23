@@ -1,0 +1,7 @@
+
+<wxml-to-canvas class="widget" width="{{pageWidth}}" height="{{pageHeight}}"></wxml-to-canvas>
+<button bindtap="renderToCanvas">渲染到canvas</button>
+<button bindtap="extraImage">导出图片</button>
+<!-- <view class="container" >
+<image class="img" src="/images/backimage.png"></image>
+</view> -->

@@ -1,0 +1,14 @@
+<leftbutton toptitle="{{TopTitle}}"></leftbutton>
+<scroll-view scroll-y="true" style="height: calc(100% - 128rpx);">
+  <view class="stroebox">
+    <block wx:for="{{imgarr}}" wx:key="unique">
+      <view class="stroelist">
+        <image src="{{imgur}}{{item.path}}" data-index="{{index}}" bindtap='previewimg' mode="widthFix"></image>
+      </view>
+    </block>
+  </view>
+
+
+</scroll-view>
+
+<Allpagesneed></Allpagesneed>

@@ -1,0 +1,53 @@
+<!--pages/video_upload/video_upload.wxml-->
+<leftbutton toptitle="视频上传"></leftbutton>
+<wxs src="../../utils/filter.wxs" module="filter"></wxs>
+<scroll-view scroll-y="true" style="height:calc(100% - {{LeftButtonnavHeight}}rpx)" bindscrolltolower="slidetop">
+  <view class="content">
+     <view class="btn" bindtap="UploadVideo">视频上传</view>
+     <view class="tips">
+       <!-- <view class="circle"></view> -->
+       <view>暂时只支持MP4格式视频上传</view>
+     </view>
+     <view class="tips">视频大小不超过10M，时长在15秒以内</view>
+  </view>
+  <view class="count">共{{videoListLength}}个视频</view>
+  <view class="list">
+    <view class="item" wx:for="{{videoList}}" wx:key='key'>
+      <view class="context">
+        <view class="left">
+          <view class="image">
+            <image src="{{imgur}}{{filter.jsonzhuanhuan(item.wapThumbnailPath)[0].path}}"></image>
+          </view>
+          <view class="videonameBox" style="margin-left:20rpx">
+            <view class="videoname">{{item.title?item.title:'  '}}</view>
+            <view class="date">{{item.createDate}}</view>
+          </view>
+        </view>
+        <view class="right">
+          <view class="status color1" wx:if="{{item.audited==1}}">已收录</view>
+          <view class="status color2" wx:if="{{item.audited==0}}">待审核</view>
+          <view class="size color2">{{item.typeName}}</view>
+        </view>
+      </view>
+      <view class="line"></view>
+    </view>
+    
+  </view>
+
+</scroll-view>
+
+
+<!-- 选择地址的下拉弹窗 -->
+<view class="{{isxshow?'xiashow':'xiahidden'}}">
+	<view class="close"><text wx:if="{{isxshow}}" class="iconfont icon-cha" catchtap="close"></text></view>
+	<view class="VideoPlay">
+  <video src="{{videoPath}}" style="height:80%;width:100%;"></video>
+  <picker class="chiocebrand" bindchange="bindPickerChange" value="{{TypeArr[index].typename}}" range="{{TypeArr}}" range-key='typename'>分类:{{videoTypeName?videoTypeName:''}}</picker>
+  </view>
+	<view class="addvideo" catchtap="{{isaddvideo==0?'':'addvideo'}}" wx:if="{{isxshow}}">确定</view>
+</view>
+<view catchtap="close" class="{{isxshow?'mask':''}}"></view>
+
+<Allpagesneed></Allpagesneed>
+
+

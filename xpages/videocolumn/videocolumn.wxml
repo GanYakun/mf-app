@@ -1,0 +1,24 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<view wx:for="{{topcolun}}" wx:for-item="itemprint" style="margin-top:{{index==0?0:20}}rpx;background-color: #ffffff;" wx:key="key">
+<!-- <view class="topmore" wx:if="{{isfurniture !=1 }}"> -->
+<view class="topmore">
+<view>{{itemprint.name}}</view>
+<view catchtap="morevideo" data-id="{{itemprint.id}}" data-name="{{itemprint.name}}" >更多></view>
+
+</view>
+<view class="listshuju" data-id="{{itemprint.id}}" wx:for="{{itemprint.list}}" wx:key="key" data-index="{{index}}" data-title="{{item.title}}" catchtap="listshuju" data-videopath="{{item.videoPath}}">
+	<view class="listitem">
+		<view class="item" style="background:url({{imgur}}{{filters.jsonzhuanhuan(item.thumbnailPath)[0].path}}); background-size:100% 100%;" mode="aspectFill">
+			<view class="play"><text class="iconfont icon-shipin"></text></view>
+		</view>
+
+		<view class="tuwen">
+			<text class="title">{{item.title}}</text>
+			<view>
+				<text class="iconfont icon-guanliyuan"></text>{{item.author}}
+				<text class="iconfont icon-bofang"></text>{{item.hits}}次
+			</view>
+		</view>
+	</view>
+</view>
+</view>

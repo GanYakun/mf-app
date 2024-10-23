@@ -1,0 +1,30 @@
+
+<!-- 时钟加载 -->
+<!-- <block wx:if="{{closeLoding}}">
+<view class="loader loader-clock is-active"></view>
+<view class="lodding"></view>
+<view class="mask"></view>
+<view class="close" wx:if="{{isClose}}" catchtap="closeLoding">
+  <text class="iconfont icon-guanbi1"></text>
+</view>
+</block> -->
+<!-- wx:if="{{closeLoding}}" -->
+
+<block wx:if="{{closeLoding}}">
+  <view class="mask"></view>
+
+            <view class="loading-center-absolute">
+                <view class="object object_one" id="object_one"></view>
+                <view class="object object_two" id="object_two"></view>
+                <view class="object object_three" id="object_three"></view>
+                <view class="object object_four" id="object_four"></view>
+                <view class="object object_five" id="object_five"></view>
+                <view class="object object_six" id="object_six"></view>
+                <view class="object object_seven" id="object_seven"></view>
+                <view class="object object_eight" id="object_eight"></view>
+                <view class="object object_big" id="object_big"></view>
+            </view>
+            <view class="close" wx:if="{{isClose}}" catchtap="closeLoding">
+  <text class="iconfont icon-guanbi1"></text>
+</view>
+</block>

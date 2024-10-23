@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+ "drawer":"/components/drawer/drawer",
+ "shoplist":"/components/shoplist/shoplist",
+ "search":"/components/search/search",
+ "paging":"/components/paging/paging",
+ "tabindex":"/components/tab-navigation/index",
+ "screenzujian":"/components/screenzujian/index",
+ "Hotscreen":"/components/Hotscreen/Hotscreen",
+ "leftbutton":"/components/leftbutton/index"
+  }
+}

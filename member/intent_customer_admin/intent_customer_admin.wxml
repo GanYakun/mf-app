@@ -1,0 +1,75 @@
+<!--member/mine_infoshop_admin/mine_infoshop_admin.wxml-->
+<leftbutton toptitle="我的客户"></leftbutton>
+<view class="member-box" style="height:calc(100% - {{LeftButtonnavHeight}}rpx)">
+  <view style="width:100%;position: relative;">
+    <view class="top-box"></view>
+    <view class="statistics-box">
+      <view class="statistics-item">月成功领取: <text>{{monthSign}}</text></view>
+      <view class="statistics-item">累计领取: <text>{{totalSign}}</text></view>
+    </view>
+  </view>
+  <view class="scrren-box">
+    <view class="scrren-box-one">
+      <view bindtap="clickdepar" class="depar-box">部门
+        <view style="display:flex;margin-left:10rpx;">
+          <view class="dept-name">
+            {{deptName}}
+          </view><text class="iconfont icon-select-arrow" style="font-size:29rpx;"></text>
+        </view>
+      </view>
+      <view>
+        <view style="display:flex; ">员工 <input style="margin-left:10rpx" bindblur="searchStarff" confirm-type="done" value="{{searchValue}}" />
+        </view>
+      </view>
+    </view>
+    <view class="chioce-date">
+      <view class="time-box">
+        <text style="margin-right:10rpx;">日期</text>
+        <view style="font-size:24rpx;color:#898989;display:flex;align-items: center;">
+          <picker mode="date" value="" bindchange="startTime">{{startTime||'开始时间'}}</picker>
+          <view class="time-connect"></view>
+          <picker mode="date" value="" bindchange="endTime">{{endTime||'结束时间'}}</picker>
+        </view>
+        <image src="{{newFtpUrl}}/ic_chioce_time.png" style="height:29rpx;width:29rpx;margin-left:auto;"></image>
+      </view>
+      <view class="num-box">
+        <view class="total">
+          合计：{{list.length}}人
+        </view>
+        <view class="reset-ic" bindtap="reset">
+          <image src="{{newFtpUrl}}/ic_reset.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="search-layout">
+    <input class="search-input" placeholder="请输入活动标题" bindblur="searchTitle" value="{{searchTitle}}"></input>
+    <image style="width: 26rpx;height: 26rpx;" src="{{ftpUrl}}/ic_customer_search.png"></image>
+  </view>
+
+  <view class="member-list-head">
+    <view class="head-item">员工/部门  
+    </view>
+    <view class="head-item" catchtap="tableSort" data-type="receiveTotal">领取人数 
+      <view class="sort-img">
+        <text class="iconfont icon-een1" style="color:{{signNumAsc&&sort=='receiveTotal'?'#ff6c00':''}}"></text>
+        <text class="iconfont icon-een1 spin" style="color:{{signNumDesc&&sort=='receiveTotal'?'#ff6c00':''}}"></text>
+      </view>
+    </view>
+    <view class="head-item" catchtap="tableSort" data-type="writeOffTotal">兑换人数 
+      <view class="sort-img">
+        <text class="iconfont icon-een1" style="color:{{exchangeNumAsc&&sort=='writeOffTotal'?'#ff6c00':''}}"></text>
+        <text class="iconfont icon-een1 spin" style="color:{{exchangeNumDesc&&sort=='writeOffTotal'?'#ff6c00':''}}"></text>
+      </view>
+    </view>
+  </view>
+  <scroll-view scroll-y="true" class="member-scroll">
+    <view class="member-item" wx:for="{{teamCustomerTotalList}}" wx:key="key" bindtap="toIntentCustomer" data-item="{{item}}">
+      <view class="text1">{{item.issuerUserName}}/{{item.issuerUserDept}}</view>
+      <view class="text2">{{item.receiveTotal}}</view>
+      <view class="text2">{{item.writeOffTotal}}</view>
+    </view>
+  </scroll-view>
+</view>
+<!-- <select-depart departData="{{mineDepart}}" pickerShow="{{pickerShow}}" bind:depart="clickItem"></select-depart> -->
+<organization-view organization="{{mineDepart}}" show="{{pickerShow}}" bind:confirm="clickItem"></organization-view>

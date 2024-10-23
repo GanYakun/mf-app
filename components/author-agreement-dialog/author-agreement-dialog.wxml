@@ -1,0 +1,17 @@
+<!--components/author-agreement-dialog/author-agreement-dialog.wxml-->
+<view wx:if="{{show}}" class="author-agreement-dialog__mask" catchtap="closeAuthorAgreementDialog"></view>
+
+<view wx:if="{{show}}" class="author-agreement-dialog__container {{_showAnimation ? 'author-agreement-dialog__container__show':''}}" bind:transitionend="onAnimationEnd">
+  <view class="author-agreement-dialog__content">
+    <view class="author-agreement-dialog__title">用户服务协议和隐私政策</view>
+    <view class="author-agreement-dialog__desc">在您注册成为本产品会员的过程中，您需要通过点击同意的形式在线签署<text class="author-agreement-dialog__bold">《用户服务协议》、</text><text class="author-agreement-dialog__bold">《隐私政策》</text>，请您务必仔细阅读、充分理解条款内容后再点击同意。</view>
+    <view class="author-agreement-dialog__desc">请您注意: 如果您不同意上述服务条款、隐私政策或其中任何约定，请您停止注册。如您阅读并点击同意即表示您已充分阅读、理解并接受其全部内容，并表明您也同意本产品可以依据以上隐私政策来处理您的个人信息，如您对以上服务条款、隐私政策有任何疑问，您可以和我们的客服人员联系。</view>
+    
+    <view class="author-agreement-dialog__bottom-tips">点击同意即表示您已阅读并同意 <text class="agreement-entrance" bind:tap="toServiceAgreement">用户服务协议</text>与<text class="agreement-entrance" bind:tap="toPrivacyPolicies">隐私政策</text></view>
+    <view class="author-agreement-dialog__button-group">
+      <button class="author-agreement-dialog__button disagree" bind:tap="closeAuthorAgreementDialog">不同意</button>
+      <button class="author-agreement-dialog__button agree" bind:tap="toAgree">同意</button>
+    </view>
+  </view>
+  <view class="author-agreement-dialog__safe-area"></view>
+</view>

@@ -1,0 +1,5 @@
+<leftbutton toptitle="生成excel"></leftbutton>
+<button catchtap="exportExcelTap">导出</button>
+<view class="excel" wx:if="{{excel.src}}" catchtap="open" data-src="{{excel.src}}">{{excel.name}}
+  <text style="margin-left:auto;">点击打开</text>
+</view>

@@ -1,0 +1,104 @@
+/* components/floor-list/index.js.wxss */
+.wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.floor-list {
+  width: 100%;
+  height: 100%;
+}
+
+.item-wrapper {
+  width: 100%;
+  margin-top: 20rpx;
+}
+
+.item-wrapper:last-child {
+  margin-bottom: 50rpx;
+}
+
+.loader-inner{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ball-pulse> text{
+  margin-left: 20rpx;
+  color: #f97004;
+}
+
+.ball-pulse > view {
+  background-color: #f97004;
+  width: 16rpx;
+  height: 16rpx;
+  border-radius: 100%;
+  margin: 2px;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  display: inline-block;
+  
+}
+.ball-pulse > view:nth-child(1) {
+  -webkit-animation: scale 0.75s 0.12s infinite cubic-bezier(.2, .68, .18, 1.08);
+  animation: scale 0.75s 0.12s infinite cubic-bezier(.2, .68, .18, 1.08);
+}
+.ball-pulse > view:nth-child(2) {
+  -webkit-animation: scale 0.75s 0.24s infinite cubic-bezier(.2, .68, .18, 1.08);
+  animation: scale 0.75s 0.24s infinite cubic-bezier(.2, .68, .18, 1.08);
+  }
+.ball-pulse > view:nth-child(3) {
+  -webkit-animation: scale 0.75s 0.36s infinite cubic-bezier(.2, .68, .18, 1.08);
+          animation: scale 0.75s 0.36s infinite cubic-bezier(.2, .68, .18, 1.08); }
+.loader {
+  margin-top: 20rpx;
+}
+@keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg) scale(1);
+            transform: rotate(0deg) scale(1); }
+
+  50% {
+    -webkit-transform: rotate(180deg) scale(0.6);
+            transform: rotate(180deg) scale(0.6); }
+
+  100% {
+    -webkit-transform: rotate(360deg) scale(1);
+            transform: rotate(360deg) scale(1); } }
+
+@keyframes scale {
+  30% {
+    -webkit-transform: scale(0.3);
+            transform: scale(0.3); }
+
+  100% {
+    -webkit-transform: scale(1);
+            transform: scale(1); }
+}
+
+.top-banner, .top-menu {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.top-menu{
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  background: #fff;
+}
+
+.top-form {
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.top-layout{
+  background-color: #fff;
+  margin-top: 0;
+  margin-bottom: 0;
+  width: 100%;
+}

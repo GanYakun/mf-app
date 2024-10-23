@@ -1,0 +1,62 @@
+/* pages/furniture_activity/furniture_activity.wxss */
+page{
+  background-color: #e6e6e6;
+}
+.banner{
+  width: 100%;
+  height: 450rpx;
+}
+.banner image{
+  width: 100%;
+  height: 100%;
+}
+.lists{
+  background-color: #fff;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+.lists .item{
+  margin-bottom: 20rpx;
+}
+.lists .item .img{
+  width: 260rpx;
+  height: 196rpx;
+}
+.lists .item .img image{
+  width: 100%;
+  height: 100%;
+}
+.lists .context{
+  width: calc(100% - 280rpx);
+  /* margin-left: 20rpx; */
+}
+.lists .title{
+  font-size: 14px;
+  color: #333333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.lists .describe{
+  margin-top: 20rpx;
+  font-size: 12px;
+  color: #666666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+.lists .btn1{
+  margin-top: 20rpx;
+  background: #cb0d1c;
+  color: #FFF;
+  font-size: 12px;
+  text-align: center;
+  height: 44rpx;
+  line-height: 44rpx;
+  padding: 0 40rpx;
+  border-radius: 6rpx;
+  width: 170rpx;
+}

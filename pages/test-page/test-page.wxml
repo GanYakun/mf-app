@@ -1,0 +1,13 @@
+
+<!-- <scroll-view scroll-y="{{true}}" style="height:100%; ">
+<image style="width:100%" src="{{imageData}}" mode="widthFix"></image>
+<view class="container">
+  <view class="list">
+    <grid-image-view class="image-item" style="{{index == 1 || index == 0 ? 'width: calc(50% - 20rpx);':''}}" wx:for="{{100}}"></grid-image-view>
+  </view>
+</view>
+</scroll-view> -->
+<view class="page-content">
+  <view class="btn-show-sku-dialog" bind:tap="openSkuDialog">show sku dialog</view>
+</view>
+<produck-sku-dialog style="display: block;" show="{{showSkuDialog}}"></produck-sku-dialog>

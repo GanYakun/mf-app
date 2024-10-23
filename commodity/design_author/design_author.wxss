@@ -1,0 +1,126 @@
+/* pages/design_author/design_author.wxss */
+page{
+  background-color: #f2f2f2;
+}
+.container{
+  padding-bottom: 100rpx;
+}
+.author-info{
+  margin-top: 8rpx;
+  background-color: #fff;
+  padding: 20rpx 10rpx;
+}
+.author-info .author-left .img{
+  width: 256rpx;
+  height: 256rpx;
+}
+.author-info .author-left .img image{
+  width: 100%;
+  height: 100%;
+}
+.author-info .author-left .name,.popularity{
+  text-align: center;
+}
+.author-info .author-left .name{
+  margin-top:20rpx;
+  color: #333;
+  font-size: 16px;
+}
+.author-info .author-left .popularity{
+  color: #333;
+  font-size: 14px;
+  color: #ff9d29;
+}
+.author-info .author-right{
+  margin-left: 20rpx;
+  font-size: 12px;
+  color: #666666;
+}
+.author-info .author-right .item{
+  line-height: 40rpx;
+}
+.author-info .author-right .motto{
+  padding-bottom: 10rpx;
+  border-bottom: 1px dashed #cccccc;
+  margin-bottom: 10rpx;
+}
+.evaluates{
+  align-items: center;
+  margin-top: 20rpx;
+  background-color: #fff;
+}
+.evaluates view{
+  width: 30%;
+  text-align: center;
+  font-size: 14px;
+}
+.design-btn{
+  background: #cb0d1c;
+  color: #FFF;
+  height: 94rpx;
+  line-height: 94rpx;
+  text-align: center;
+}
+
+.case-list{
+  background-color: #fff;
+  padding: 20rpx;
+  margin-top: 20rpx;
+}
+.case-list .tabbar{
+  border-bottom: 1px solid #e6e6e6;
+  padding-bottom: 20rpx;
+}
+.case-list .tabbar .item{
+  margin-left: 20rpx;
+  color: #666666;
+}
+.case-list .lists{
+  margin-top: 20rpx;
+  flex-wrap: wrap;
+}
+.case-list .lists .item{
+  margin-bottom: 20rpx;
+  box-shadow: 0px 0px 5px rgba(0,0,0,0.1);
+  width: 48%;
+}
+.case-list .lists .item .img{
+  height: 258rpx;
+}
+.case-list .lists .item .img image{
+  width: 100%;
+  height: 100%;
+}
+.case-list .lists .content{
+  padding: 10rpx;
+}
+.case-list .lists .title{
+  font-size: 14px;
+}
+.case-list .lists .desc{
+  font-size: 12px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  white-space: normal;
+  -webkit-box-orient: vertical;
+}
+.case-list .lists .list-other{
+  margin-top: 20rpx;
+  color: #999999;
+  font-size: 12px;
+  
+}
+.case-list .lists .list-left,.list-right{
+  align-items: center;
+}
+.case-list .lists .list-left text{
+  margin-left: 10rpx;
+}
+.case-list .lists .list-right text{
+  margin-left: 10rpx;
+}
+.case-list .tabbar .selected{
+  border-bottom: 1px solid #de4c57;
+}

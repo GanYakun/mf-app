@@ -1,0 +1,75 @@
+<!--xpages/classification/classification.wxml-->
+<leftbutton toptitle="{{cname ? cname:'展厅实物'}}"></leftbutton>
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 加载弹窗结束 -->
+<!-- 滑动的分类数据开始 -->
+<!-- scroll-left="{{scrollLeft}}" -->
+<scroll-view id="scroll-view" class="child-list-scroll" scroll-x="{{true}}" scroll-into-view="item{{scrollChildIndex - 2}}" scroll-with-animation="{{true}}">
+	<view class="scroll-child {{tapId==item.id?'selectchild':''}}" id="item{{index}}"  bindtap="shutDown" wx:for="{{getChildLists}}" wx:if="{{index==0?true:(item.isCommendDisplay == '1')}}" wx:key="key" data-index="{{index}}">
+		<view>
+		<image src="{{index==0?'':imgurl}}{{item.imagePath}}" mode="heightFix" ></image>
+		{{item.name?item.name:item.cname}} 
+	</view>
+	</view>
+</scroll-view>
+<!-- 滑动的分类数据结束 -->
+
+<view class="headebox">
+	<view class="heade">
+		<view class="headetitle sortIndex" bindtap="ComprehensiveSorting">
+			<view style="color:{{(!jg&&!xl)?'#F97704':'#000'}}">综合</view>
+		</view>
+		<view class="headetitle" bindtap="xl" data-parity="{{parity}}">
+			<view style="color:{{xl?'#F97704':'#888'}}">销量</view>
+			<view class="judgesub">
+				<view class="upjudgesub"><text class="iconfont icon-een"
+						style="color:{{xl?(xldesc?'#F97704':'#888'):'#888'}}"></text></view>
+				<view class="downjudgesub"><text class="iconfont icon-een"
+						style="color:{{xl?(xlasc?'#F97704':'#888'):'#888'}}"></text></view>
+			</view>
+		</view>
+		<view class="headetitle" bindtap="jg" data-parity="{{parityjg}}">
+			<view style="color:{{jg?'#F97704':'#888'}}">价格</view>
+			<view class="judgesub">
+				<view class="upjudgesub"><text class="iconfont icon-een"
+						style="color:{{jg?(jgdesc?'#F97704':'#888'):'#888'}}"></text></view>
+				<view class="downjudgesub"><text class="iconfont icon-een"
+						style="color:{{jg?(jgasc?'#F97704':'#888'):'#888'}}"></text></view>
+			</view>
+		</view>
+		<view class="headetitle" bindtap="powerDrawer" style="color:#888;">
+			筛选
+			<text class="iconfont icon-shaixuan" style="color:#888;"></text>
+		</view>
+
+	</view>
+</view>
+<!-- <view catchtap="test">测试</view> -->
+<!-- 调用内容组件 -->
+<scroll-view scroll-y="true" style="height:calc(100% - {{tabIndexHeight+LeftButtonnavHeight+80+52}}rpx)"
+	bindscrolltolower="nextpage" scroll-top="{{scrollTop}}" class="vertical-scroll">
+	<!-- <shoplist id="shoplist" shoplists="{{productlists}}" isbaokuan='1' imgurl="{{imgurl}}" typeId="{{typeId}}" ishot="1">
+	</shoplist> -->
+	<shoplist id="shoplist" shoplists="{{productlists}}"  imgurl="{{imgurl}}" typeId="{{typeId}}" >
+	</shoplist>
+  <nodata wx:if="{{productlists.length==0}}"></nodata>
+</scroll-view>
+
+
+
+<!-- 调用抽屉筛选组件 -->
+<!-- <drawer id='drawer'  choice="{{choice}}" isshop="2" newsClassId="155" shopid="{{searchid}}"   bind:success="_success" isallshopfenlei="{{isallshopfenlei}}" toptext="{{toptext}}"></drawer> -->
+
+<screenzujian id='drawer' bind:success="_success">
+</screenzujian>
+
+<!-- bind:success="_success" isindex='0' choice="{{choice}}" isshop="1" newsClassId="155"
+	shopid="{{searchid}}" bind:success="_success" toptext="{{toptext}}" isone="{{true}}" istwo="{{false}}" isbaokuan="1" -->
+<Hotscreen id="hot" category="{{catItem}}" isConfirm="{{isConfirm}}" _initialParentId="{{searchId}}" bind:success="_success">
+
+</Hotscreen>
+
+<!-- 调用底部tab组件 -->
+<!-- <tabindex clicktab='1'></tabindex> -->
+<Allpagesneed></Allpagesneed>

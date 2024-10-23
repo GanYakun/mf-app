@@ -1,0 +1,103 @@
+<leftbutton toptitle="{{TopTitle}}"></leftbutton>
+<view class="topbox flex-r-s">
+		<view>
+			<view class="designimg">
+				<image src="{{imgurl}}{{getModel.imageVo.imagePath}}" style="border-radius: 12rpx;" mode="widthFix"></image>
+			</view>
+			<view style="margin:20rpx 0 5rpx;color:#666666;">{{getModel.name}}</view>
+			<view style="color:#f97704;">人气（{{!getModel.popularity?'':getModel.popularity}}）</view>
+		</view>
+		<view>
+			<view class="designconcept">{{!getModel.designConcept?'':getModel.designConcept}}</view>
+			<!-- <view style="color:#058a5f">--------------------------------------</view> -->
+			<view class="centerbox">
+				<!-- <view>部门：{{!getModel.designerDepartmentName?'':getModel.designerDepartmentName}}</view> -->
+				<view>职位：{{!getModel.positionName?'':getModel.positionName}}</view>
+				<!-- <view>类别：{{!getModel.designerTypeName?'':getModel.designerTypeName}}</view>
+				<view>作品：{{!getModel.numberOfWorks?'':getModel.numberOfWorks}}</view>
+				<view class="begood">擅长风格：{{!getModel.atStyle?'':getModel.atStyle}}</view> -->
+				<view>从业时间：{{!getModel.workingTime?'':getModel.workingTime+'年'}}</view>
+				<!-- <view>毕业院校：{{!getModel.schoolOfGraduation?'':getModel.schoolOfGraduation}}</view> -->
+			</view>
+			<view class="comprehensive" style="    display: flex;align-items: center;"><text>综合评分：</text>
+				<block wx:for="{{5}}" wx:key="key">
+					<text class="iconfont icon-xingxing {{index>getModel.averageScore||index==getModel.averageScore?'nocolor':''}}"></text>
+				</block>
+				<text style="font-size:24rpx;">{{!getModel.averageScore?'':getModel.averageScore+'分'}}</text>
+			</view>
+		</view>
+	</view>
+
+
+<view class="middlePeer">
+	<view catchtap="publish">评价（{{getModel.commentCount}}条）</view>
+	<view catchtap="meyaopingjia">我要评价</view>
+</view>
+
+
+<view class="test_case designcotent">
+	<view class="casebase">
+		<view>TA的案例</view>
+		<view class="line"></view>
+	</view>
+	<view class="item" wx:for="{{getModel.contributeList}}">
+		<view class="title" bindtap="onTap" data-id="126">{{item.title}}</view>
+		<view class="context">{{item.briefContent}}</view>
+		<view class="images flex_left">
+			<view class="img" wx:for="{{item.topImageList}}" wx:for-item="img" bindtap="previewImage"
+				data-topimagelist="{{item.topImageList}}" wx:key="key" data-index="{{index}}">
+				<image src="{{imgurl}}{{img.imagePath}}" style="margin-bottom:10rpx;margin-right:10rpx;"></image>
+			</view>
+		</view>
+		<view class="tipsinfo flex-r-s" style="margin:20rpx 0 0">
+			<view class="date">{{item.createDate}}</view>
+			<view class="flex" style="align-items: center;">
+				<view class="iconfont icon-zan {{item.isclick == true?'dianzan':''}}" data-isclick="{{item.isclick}}"
+					style="font-size:14px;color:#ddd;margin-right:20rpx" bindtap="onPraiseTap" data-index="{{index}}"
+					data-id="{{item.id}}">
+					<text style="font-size:12px;color:#666;margin-left:4rpx">{{item.praise}}</text>
+				</view>
+				<view class="iconfont icon-xingzhuang" style="font-size:12px;color:#666">
+					<text style="font-size:12px;color:#666;margin-left:4rpx">{{item.browseNum}}</text>
+				</view>
+			</view>
+		</view>
+		<!-- <view class="replay">
+			<view class="item" wx:for="{{item.reviewList}}">
+				<text style="color:#566c92">{{item.memberName}}:</text> <text style="color:#666666">{{item.content}}</text>
+			</view>
+		</view> -->
+	</view>
+</view>
+
+
+<view class="fadeIn" wx:if="{{iosDialog22}}">
+	<view class="weui-mask" bindtap="close"></view>
+	<view class="weui-dialog">
+		<view class="pinglunname">对“{{getModel.name}}”评价</view>
+		<view class="serviceattitude">
+			<view class="attitude">服务态度:
+				<text style="margin-left: 10rpx;" class="iconfont icon-xingxing {{xinxinnum<index+1?'biancolor':''}}"
+					wx:for="{{5}}" wx:key='key' data-index="{{index}}" catchtap='xinxincbtn'></text>
+				<text style="margin-left: 10rpx;">{{xinxinnum}}分</text>
+			</view>
+			<view class="ability">专业能力:
+				<text style="margin-left: 10rpx;" class="iconfont icon-xingxing {{xinxinnums<index+1?'biancolor':''}}"
+					wx:for="{{5}}" wx:key='key' data-index="{{index}}" catchtap='xinxincbtns'></text>
+				<text style="margin-left: 10rpx;">{{xinxinnums}}分</text>
+			</view>
+			<view class="pingjiacon">评价：<textarea class="pingjiatext" bindinput="shurucontent"></textarea></view>
+		</view>
+		<view class="queding" catchtap="queding">确定</view>
+	</view>
+</view>
+
+
+
+<!-- <popup id='popup' iosDialog1="{{iosDialog1}}" bind:guanbi="close">
+</popup>
+
+<phonepopup id='phonepopup' iosDialog2="{{iosDialog2}}" bind:guanbi="phoneclose">
+</phonepopup> -->
+
+<Allpagesneed />

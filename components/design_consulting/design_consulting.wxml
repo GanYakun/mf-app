@@ -1,0 +1,8 @@
+<!--components/design_consulting/design_consulting.wxml-->
+<view class="btn1">
+			<view class="chat-btn">
+				<view class="szeyFont question" style="color:#fff;font-size:18px;line-height: 1;text-align:center"></view>
+				<view class="name">立即咨询</view>
+				<view class="num">2</view>
+			</view>
+		</view>

@@ -1,0 +1,525 @@
+<!-- 顶部头像和背景图部分 -->
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<leftbutton toptitle="我的"></leftbutton>
+<!-- 加载弹窗结束 -->
+<scroll-view scroll-y="true" style="height:calc(100% - {{tabIndexHeight+LeftButtonnavHeight-20}}rpx)">
+  <!-- {{isLogin ? '':'toAuthor'}} -->
+  <view class="topback" catch:tap="{{isLogin ? '':'toAuthor'}}">
+    <!-- <view bindtap="hexiao" class="hexiao" wx:if="{{isVerificate==1}}">
+      <image src="../image/hexiao.png" mode="widthFix" style="width:40rpx;"></image>
+      <view>核销</view>
+    </view> -->
+    <view class="memPhotoImg" style="background-size:cover;">
+      <image wx:if="{{userimg}}" src="{{imgur}}{{userimg}}" style="width:100%;height:100%;"></image>
+      <view class="avatar" wx:else>
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+    </view>
+    <view class="nickname">
+      <text>{{isLogin ? (username || "微信用户"):"请前往登录"}}</text>
+    </view>
+  </view>
+
+  <!-- 收藏 -->
+  <view class="collection {{isemployee==1?'member-collection':''}}">
+    <view bindtap="{{isLogin ? 'onCollectionTap':'toAuthor'}}" data-collectiontype="cart" data-id="136">
+      <image class="topiconImage" src="../image/ic_car.png"></image>
+      <!-- <text class="iconfont icon-gouwuche"></text> -->
+      <text style="margin-top:0rpx">购物车</text>
+    </view>
+
+    <view  bindtap="{{isLogin ? 'DepositAllorder':'toAuthor'}}" data-index="0" data-xindex="0">
+      <image class="topiconImage" src="../image/zuop.png"></image>
+      <text style="margin-top:0rpx">我的下定</text>
+    </view>
+    <view bindtap="{{isLogin ? 'onCollectionTap':'toAuthor'}}" data-collectiontype="goods" data-id="136">
+      <!-- <view class="iconfont icon-icon-03"></view> -->
+      <image class="topiconImage" src="../image/icon-02.png"></image>
+      <text style="margin-top:0rpx">产品收藏</text>
+    </view>
+    <view bindtap="{{isLogin ? 'onCollectionTap':'toAuthor'}}" data-collectiontype="perfectHome" data-id="128">
+      <image class="topiconImage" src="../image/anli.png"></image>
+      <text style="margin-top:0rpx">案例收藏</text>
+    </view>
+
+    <view bindtap="{{isLogin ? 'onCollectionTap':'toAuthor'}}" data-collectiontype="customFurn" data-id="128">
+      <image class="topiconImage" mode="heightFix" src="../image/ic_dzjj1.png"></image>
+      <text style="margin-top:0rpx">定制家具</text>
+    </view>
+
+    <view bindtap="{{isLogin ? 'onCollectionTap':'toAuthor'}}" data-collectiontype="vedio">
+      <!-- <view class="iconfont icon-icon-03"></view> -->
+      <image class="topiconImage" src="../image/shipin.png"></image>
+      <text style="margin-top:0rpx">视频收藏</text>
+    </view>
+    <!-- <view class="division"></view> -->
+    <view wx:if="{{false}}" bindtap="{{isLogin ? 'onCollectionTap':'toAuthor'}}"  data-collectiontype="successfulCase" data-id="137">
+      <!-- <view class="iconfont icon-icon-02"></view> -->
+      <image class="topiconImage" src="../image/zuop.png"></image>
+      <text style="margin-top:0rpx">拎包下定</text>
+    </view>
+   
+    <!-- <view class="division"></view> -->
+    <view  bindtap="{{isLogin ? 'onCollectionTap':'toAuthor'}}" wx:if="{{isemployee==1}}"  data-collectiontype="successfulCase" data-id="137">
+      <image class="topiconImage" src="../image/ic_linbao.png"></image>
+      <!-- <text class="iconfont icon-zhuangxiusheji" style="font-size:60rpx;margn-top:-10rpx;margin-right:0"></text> -->
+      <text style="margin-top:0rpx">拎包收藏</text>
+    </view>
+
+  </view>
+  <view class="myorder" wx:if="{{false}}">
+    <view class="myorder-top">
+      <view style="font-size:30rpx;color:#222222;">我的下定</view>
+      <view class="allorder" bindtap="{{isLogin ? 'DepositAllorder':'toAuthor'}}" style="font-size:24rpx;color:#999999;" data-index="0"
+        data-xindex="0">查看下定订单</view>
+    </view>
+    <view class="status">
+      <view class="logistics" data-status="" bindtap="{{isLogin ? 'Mydecision':'toAuthor'}}" data-xindex="0">
+        <image class="iconimg" style="width:45rpx" src="../image/all.png" mode="widthFix"></image>
+        <text style="margin-top:-5rpx">全部</text>
+      </view>
+      <view class="logistics" data-status="0" bindtap="{{isLogin ? 'Mydecision':'toAuthor'}}" data-xindex="1">
+        <image class="iconimg" src="../image/fukuan.png" mode="widthFix"></image>
+        待付款
+      </view>
+      <view class="logistics" data-status="2" bindtap="{{isLogin ? 'Mydecision':'toAuthor'}}" data-xindex="2">
+        <image class="iconimg" src="../image/kuaidi.png" mode="widthFix"></image>
+        已使用
+      </view>
+      <view class="logistics" data-status="4" bindtap="{{isLogin ? 'Mydecision':'toAuthor'}}" data-xindex="3">
+        <image class="iconimg" src="../image/pinjia.png" mode="widthFix"></image>
+        已取消
+      </view>
+    </view>
+  </view>
+
+  <view class="myorder">
+    <view class="myorder-top">
+      <view style="font-size:30rpx;color:#222222;">我的订单</view>
+      <view class="allorder" bindtap="{{isLogin ? 'allorder':'toAuthor'}}" style="font-size:24rpx;color:#999999;" data-index="0" data-xindex="0">
+        查看全部订单</view>
+    </view>
+    <view class="status">
+      <!-- <view class="logistics" bindtap="allorder" data-xindex="1">
+        <view class="iconfont icon-quanbu1"  mode="widthFix"></view>
+        全部
+      </view> -->
+      <view class="logistics" bindtap="{{isLogin ? 'allorder':'toAuthor'}}" data-xindex="0">
+        <image class="iconimg" style="width:45rpx" src="../image/all.png" mode="widthFix"></image>
+        <text style="margin-top:-5rpx">全部</text>
+      </view>
+      <view class="logistics" bindtap="{{isLogin ? 'allorder':'toAuthor'}}" data-xindex="1">
+        <view class="red-dot" wx:if="{{orderCounts.online}}">{{orderCounts.online>99?'99+':orderCounts.online}}</view>
+        <image class="iconimg" src="../image/fukuan.png" mode="widthFix"></image>
+        产品线上支付
+      </view>
+      <view class="logistics" bindtap="{{isLogin ? 'allorder':'toAuthor'}}" data-xindex="2">
+        <view class="red-dot" wx:if="{{orderCounts.offline}}">{{orderCounts.offline>99?'99+':orderCounts.offline}}</view>
+        <image class="iconimg" src="../image/kuaidi.png" mode="widthFix"></image>
+        产品线下支付
+      </view>
+      <view class="logistics" bindtap="{{isLogin ? 'allorder':'toAuthor'}}" data-xindex="3">
+        <view class="red-dot" wx:if="{{orderCounts.service}}">{{orderCounts.service>99?'99+':orderCounts.service}}</view>
+        <image class="iconimg" src="../image/pinjia.png" mode="widthFix"></image>
+        服务线上支付
+      </view>
+    </view>
+  </view>
+
+  <!-- 我的客户新增数 -->
+  <view class="newlyadded" bindtap="{{isLogin ? 'mecustomer':'toAuthor'}}" wx:if="{{isemployee==1 || (isBroker==1&&brokerPower==1)}}">
+    <view class="newlyadded_one Myclients">
+      <image src="../image/mykehu.png" mode="widthFix" style="width:50rpx;height:0;"></image>
+    </view>
+    <view class="newlyadded_two ">
+      <view class="newlyadded_two_title">我的客户
+        <view class="newlyadded_three">
+          <text class="iconfont icon-youjiantou"></text>
+        </view>
+      </view>
+      <view class="signupBoxView">
+        <view class="signupBox">
+          <view class="alignment">月新增报名：</view>
+          <view class="alignment">月新增领券：</view>
+        </view>
+        <view class="NumBerbox">
+          <text>{{StatisticsData.MOUTHYUYUCOUNT}}</text>
+          <text>{{StatisticsData.MOUTHLINQUANCOUNT}}</text>
+        </view>
+        <view class="rightbox">
+
+          <view class="signupBox2">
+            <view class="alignment">累计报名：</view>
+            <view class="alignment">累计领券：</view>
+          </view>
+          <view class="NumBerbox">
+            <text>{{StatisticsData.TOTALYUYUECOUNT}}</text>
+            <text>{{StatisticsData.TOTALLINQUANCOUNT}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <!-- 新增数结束 -->
+  <!-- 意向客户新增数 -->
+  <view class="newlyadded" bindtap="{{isLogin ? 'yixiangmecustomer':'toAuthor'}}" wx:if="{{isemployee==1}}">
+    <view class="newlyadded_one Potentialcustomers">
+      <image src="../image/khgl.png" mode="widthFix" style="width:40rpx;height:0;"></image>
+    </view>
+    <view class="newlyadded_two">
+      <view class="newlyadded_two_title">浏览客户
+        <view class="newlyadded_three">
+          <text class="iconfont icon-youjiantou"></text>
+        </view>
+      </view>
+      <view class="signupBoxView">
+        <view class="signupBox">
+          <view class="alignment">当月新增：</view>
+        </view>
+        <view class="NumBerbox">
+          <text>{{StatisticsData.MOUTHYIXIANGCOUNT}}</text>
+        </view>
+        <view class="rightbox">
+
+          <view class="signupBox2">
+            <view class="alignment">累计：</view>
+          </view>
+          <view class="NumBerbox">
+            <text>{{StatisticsData.TOTALYIXIANGCOUNT}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 新增数结束 -->
+
+  <!-- 我的经纪人新增数 -->
+  <!-- wx:if="{{isemployee==1 }}" -->
+  <view class="newlyadded" bindtap="{{isLogin ? 'meagent':'toAuthor'}}" wx:if="{{isemployee==1}}">
+    <view class="newlyadded_one  Myagent">
+      <image src="../image/khgl.png" mode="widthFix" style="width:40rpx;height:0;"></image>
+    </view>
+    <view class="newlyadded_two">
+      <view class="newlyadded_two_title">我的经纪人
+        <view class="newlyadded_three">
+          <text class="iconfont icon-youjiantou"></text>
+        </view>
+      </view>
+      <view class="signupBoxView">
+        <view class="signupBox">
+          <!-- <view class="alignment">姓名</view>
+  <view class="alignment">联系方式</view> -->
+
+          <view class="alignment">月新增经纪人：</view>
+          <view class="alignment">月新增报名：</view>
+          <view class="alignment">月新增领券：</view>
+
+        </view>
+        <view class="NumBerbox">
+          <text>{{StatisticsData.brokerMap.MOUTHBROKERCOUNT}}</text>
+          <text>{{StatisticsData.brokerMap.MOUTHYUYUCOUNT}}</text>
+          <text>{{StatisticsData.brokerMap.MOUTHLINQUANCOUNT}}</text>
+        </view>
+        <view class="rightbox">
+          <view class="signupBox2">
+            <view class="alignment">累计经纪人：</view>
+            <view class="alignment">累计报名：</view>
+            <view class="alignment">累计领券：</view>
+          </view>
+          <view class="NumBerbox">
+            <text>{{StatisticsData.brokerMap.BROKERCOUNT}}</text>
+            <text>{{StatisticsData.brokerMap.TOTALYUYUECOUNT}}</text>
+            <text>{{StatisticsData.brokerMap.TOTALLINQUANCOUNT}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+  <!-- 新增数结束 -->
+
+  <!-- 意向客户 -->
+  <view class="mine-radio-layout" bindtap="{{isLogin ? 'intentCustomer':'toAuthor'}}" wx:if="{{isemployee==1}}">
+    <image src="{{ftpUrl}}/ic_mine_coupons.png" mode="widthFix" style="width:113rpx;height:113rpx;"></image>
+    <view class="right">
+      <view>意向客户</view>
+      <view class="mine-intent-number">
+        <view class="row">
+          <view>月成功领取：</view>
+          <view class="text">{{intentCustomerMonth}}</view>
+        </view>
+        <view class="row">
+          <view>累积领取：</view>
+          <view class="text">{{intentCustomerAll}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 我的进店 -->
+  <view class="mine-radio-layout" bindtap="{{isLogin ? 'intoShop':'toAuthor'}}" wx:if="{{isemployee==1}}">
+    <image src="{{ftpUrl}}/ic_mine_sign.png" mode="widthFix" style="width:113rpx;height:113rpx;"></image>
+    <view class="right">
+      <view>我的签到</view>
+      <view class="mine-intent-number">
+        <view class="row">
+          <view>月签到：</view>
+          <view class="text">{{signInMonth}}</view>
+        </view>
+        <view class="row">
+          <view>累计签到：</view>
+          <view class="text">{{signInAll}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 列表 -->
+  <view class="clicklist">
+    <!-- <view class="listitem" bindtap="mecustomer" wx:if="{{isemployee==1 || isBroker==1}}">
+      <view class="listimg" >
+        <text class="iconfont icon-icon-05"></text>
+        我的客户
+      </view>
+    </view> -->
+    <!-- <view class="listitem" bindtap="yixiangmecustomer" wx:if="{{isemployee==1}}">
+      <view class="listimg" >
+        <text class="iconfont icon-caigouyuandachengyixiangjinepaihangbiao"></text>
+        意向客户
+      </view>
+    </view> -->
+    <!-- <view class="listitem"  bindtap="meagent" wx:if="{{isemployee==1 }}" >
+      <view class="listimg">
+        <text class="iconfont icon-icon-06"></text>
+        我的经纪人
+      </view>
+    </view> -->
+    <view class="listitem" bindtap="{{isLogin ? 'internalMember':'toAuthor'}}" wx:if="{{memberId==223||memberId==246||memberId==3868||memberId==3443||memberId==241||memberId==463 || (StatisticsData && StatisticsData.brokerMap && StatisticsData.brokerMap.INNERMEMBERRESENDBROWSE)}}" >
+      <view class="listimg">
+        <text class="iconfont icon-huiyuan"></text>
+        内部会员[转发]
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+    <view class="listitem" bindtap="{{isLogin ? 'internalMemberBrowse':'toAuthor'}}" wx:if="{{memberId==223||memberId==246||memberId==3868||memberId==3443||memberId==241||memberId==463 || (StatisticsData && StatisticsData.brokerMap && StatisticsData.brokerMap.INNERMEMBERRESENDBROWSE)}}">
+      <view class="listimg">
+        <text class="iconfont icon-huiyuan"></text>
+        内部会员[浏览]
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+    <!-- 爱帮你家居服务开始 -->
+    
+    <view class="listitem" bindtap="{{isLogin ? 'serverInHelp':'toAuthor'}}" wx:if="{{postCouponPower==1}}">
+      <view class="listimg">
+        <text class="iconfont icon-huiyuan"></text>
+        爱帮你家居服务[发券]
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+    <!-- 爱帮你家居服务结束 -->
+    <!-- wx:if="{{isemployee==1}}" -->
+    <view class="listitem" bindtap="{{isLogin ? 'intoSent':'toAuthor'}}" wx:if="{{false}}">
+      <view class="listimg">
+        <image src="{{ftpUrl}}/ic_mine_gift.png" mode="widthFix" style="width:42rpx;height:40rpx;"></image>
+        首进壕送
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+
+    <view class="listitem" bindtap="{{isLogin ? 'activitySign':'toAuthor'}}" wx:if="{{isemployee==1}}">
+      <view class="listimg">
+        <image src="{{ftpUrl}}/ic_activity_sign.png" mode="widthFix" style="width:40rpx;height:40rpx;"></image>
+        签到特权
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+
+     <!-- 我的优惠券 -->
+    <view class="listitem" bindtap="{{isLogin ? 'serverInHelp':'toAuthor'}}" data-type="meCoup">
+      <view class="listimg">
+        <text class="iconfont icon-huiyuan"></text>
+        我的优惠券
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+    <!-- 爱帮你家居服务结束 -->
+
+    <view class="listitem" bindtap="{{isLogin ? 'mecard':'toAuthor'}}" wx:if="{{isemployee==1}}">
+      <view class="listimg">
+        <text class="iconfont icon-icon-07"></text>
+        美家名片
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+    <!-- wx:if="{{isemployee==1}}" -->
+    <view class="listitem" bindtap="{{isLogin ? 'dusting':'toAuthor'}}"  wx:if="{{isemployee==1}}">
+      <view class="listimg">
+        <view class="iconfont icon-erweima"></view>
+        加微海报
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+    <view class="listitem" bindtap="{{isLogin ? 'lbal':'toAuthor'}}" wx:if="{{isemployee==1}}">
+      <view class="listimg">
+        <text class="iconfont icon-zhuangxiusheji"></text>
+        定制拎包
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+
+    <view class="listitem" bindtap="{{isLogin ? 'allHouse':'toAuthor'}}" wx:if="{{isemployee==1 && false}}">
+      <view class="listimg">
+        <text class="iconfont icon-jiaju-"></text>
+        全屋套餐
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+    
+    <view class="listitem" bindtap="{{isLogin ? 'smallCode':'toAuthor'}}" wx:if="{{isemployee==1}}">
+      <view class="listimg">
+        <text class="iconfont icon-xiaochengxuma"></text>
+        小程序码
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+    <view class="listitem" bindtap="{{isLogin ? 'hexiao':'toAuthor'}}" wx:if="{{isVerificate==1}}">
+      <view class="listimg">
+        <view class="iconfont icon-daifukuan" style="margin-right:18rpx"></view>
+        我的核销
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+
+    <view class="listitem" bindtap="{{isLogin ? 'upvideo':'toAuthor'}}" wx:if="{{isemployee==1 && display}}">
+      <view class="listimg">
+        <view class="iconfont icon-icon-09"></view>
+        视频上传
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+    <view class="listitem" bindtap="{{isLogin ? 'clicked':'toAuthor'}}" style="display:none">
+      <view class="listimg">
+        <view class="iconfont icon-icon-09"></view>
+        我的收藏
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+    <view wx:if="{{isclick}}" class="listitems">
+      <view bindtap="{{isLogin ? 'onCollectionTap':'toAuthor'}}" data-collectiontype="goods" data-id="136">
+        商品收藏
+      </view>
+      <view bindtap="{{isLogin ? 'onCollectionTap':'toAuthor'}}" data-collectiontype="successfulCase" data-id="137">装修效果图收藏</view>
+    </view>
+    <view class="listitem" bindtap="{{isLogin ? 'forum':'toAuthor'}}" wx:if="{{display&&false}}">
+      <view class="listimg">
+        <view class="iconfont icon-icon-081"></view>
+        论坛管理
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+
+    </view>
+    <!-- 论坛管理二级 -->
+    <view class="listitems" wx:if="{{isforum}}">
+      <view bindtap="{{isLogin ? 'user_praise':'toAuthor'}}">
+        用户中心口碑
+      </view>
+      <view bindtap="{{isLogin ? 'onCollectionTap':'toAuthor'}}" data-collectiontype="contribute" data-id="141">
+        口碑收藏
+      </view>
+      <view bindtap="{{isLogin ? 'onPublicPraiseTap':'toAuthor'}}" data-type="1">
+        用户口碑发布
+      </view>
+    </view>
+    <!-- 论坛管理二级结束 -->
+
+    <view class="listitem" bindtap="{{isLogin ? 'address':'toAuthor'}}">
+      <view class="listimg">
+        <view class="iconfont icon-icon-071"></view>
+        收货地址
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+
+
+    <view class="listitem" bindtap="buyerReading">
+      <view class="listimg">
+        <view class="iconfont"><image style="width: 30rpx;height: 30rpx;margin-left:8rpx;" src="../image/icon-buyer-reading.png"></image></view>
+        客户须知
+      </view>
+      <view class="newlyadded_three">
+        <text class="iconfont icon-youjiantou"></text>
+      </view>
+    </view>
+   
+    <!-- <view class="listitem" bindtap="pingjia">
+      <view class="listimg">
+        <view class="iconfont icon-xianhua" style="color:#999"></view>
+        评价管理
+      </view>
+    </view> -->
+    
+    <!-- <view class="listitem" bindtap="test">
+      <view class="listimg">
+        <view class="iconfont icon-xianhua" style="color:#999"></view>
+        测试
+      </view>
+    </view> -->
+    <view class="listitem" data-phone="0871-68123333" catchtap="tophone" wx:if="{{false}}">
+
+      <view class="listimg" >
+        <view class="iconfont icon-icon-091"></view>
+        <text decode="true"> 服务热线 &nbsp;&nbsp;[&nbsp;&nbsp;昆明&nbsp;&nbsp;]</text>
+      </view>
+
+      <view>0871-68123333</view>
+    </view>
+  </view>
+  <!-- 小程序码的弹窗开始 -->
+  <block wx:if="{{isMyEwm}}">
+  <view class="mask" bindtap="closeCodePoup"></view>
+  <view class="code-poup {{isMyEwm?'show-code':'hide-code'}}" wx:if="{{myEwmCode}}">
+    <image src="{{imgur}}{{myEwmCode}}" show-menu-by-longpress="{{true}}" mode="widthFix"></image>
+    <view class="border-line"></view>
+      <view class="save-code" catchtap="saveCode" >保存</view>
+      <view class="close" catchtap="closeCodePoup"><text class="iconfont icon-guanbi1"></text></view>
+  </view>
+</block>
+  <!-- 小程序码的弹窗结束 -->
+</scroll-view>
+<tabindex clicktab-type="my"></tabindex>
+<Allpagesneed></Allpagesneed>

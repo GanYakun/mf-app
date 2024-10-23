@@ -1,0 +1,24 @@
+<!--components/claim-coupons-dialog/index.wxml-->
+<view class="claim-coupons-dialog__container" hidden="{{!show}}">
+  <image class="close" src="{{ftpurl}}/ic_close_dialog.png" bindtap="close"></image>
+  <view class="claim-coupons-dialog__bg">
+    <view class="claim-coupons-dialog__title">兑换券核销二维码</view>
+    <view class="claim-coupons-dialog__content">
+      <view class="claim-coupons-dialog__top">
+        <view class="claim-coupons-dialog__goods-name">{{title}}</view>
+        <view class="claim-coupons-dialog__tips">仅限首次进店客户专享</view>
+      </view>
+      <view style="height: 46rpx;">
+        <image class="claim-coupons-dialog__border-image" src="{{icClaimCouponsBorderTop}}" mode="widthFix"></image>
+      </view>
+      <view class="claim-coupons-dialog__qrcode-title">二维码核销</view>
+      <view class="claim-coupons-dialog__bottom">
+        <image class="claim-coupons-dialog__qrcode-image" src="{{qrCodeUrl}}" mode="aspectFill"></image>
+      </view>
+      <image class="claim-coupons-dialog__bottom-coin" src="{{ftpurl}}/ic_claim_coupons_coins.png"></image>
+    </view>
+    <view class="circle1"></view>
+    <view class="circle2"></view>
+    <view class="circle3"></view>
+  </view>
+</view>

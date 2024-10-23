@@ -1,0 +1,3 @@
+<view class="kefu">
+<image src="../../images/kefu.gif" bindtap="kefu"></image>
+</view>

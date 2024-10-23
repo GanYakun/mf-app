@@ -1,0 +1,44 @@
+<leftbutton toptitle="{{TopTitle}}"></leftbutton>
+
+<view class="casesearch flex">
+	<view class="input">
+		<input placeholder="请输入口碑标题" placeholder-style="font-size:12px" bindinput="keyWord"></input>
+	</view>
+	<view class="iconfont icon-sousuo" bindtap="onSearchTap"></view>
+</view>
+<view class="distributed" wx:if="{{lists==''}}">暂无数据</view>
+<scroll-view scroll-y="true" style="height:calc(100% - {{LeftButtonnavHeight}}rpx - 80rpx)" >
+	<view class="lists">
+		<view class="item" wx:for="{{lists}}">
+			<view class="itemc flex-r-s">
+				<view class="itemc_left">
+					<view class="title">{{item.title}}</view>
+					<view class="date">{{item.createDate}}</view>
+					<view>{{item.briefContent}}</view>
+				</view>
+				<!-- <view class="icon"> -->
+				<view class="iconfont icon-daishenpi1" wx:if="{{item.audited == 0 || item.audited == 2}}"></view>
+				<!-- </view> -->
+				<!-- <view class="icon"> -->
+				<view class="iconfont icon-yishenpi" wx:if="{{item.audited ==1}}"></view>
+				<!-- </view> -->
+
+			</view>
+			<view class="itembtn flex_right">
+				<view catchtap="lookWordOfMouth" data-index="{{index}}">查看评论</view>
+				<view style="margin-left:10rpx" bindtap="onEditTap" data-id="{{item.id}}" data-id="{{item.id}}" data-briefcontent="{{item.briefContent}}" data-topimagelist="{{item.topImageList}}" data-title="{{item.title}}" data-type="{{0}}" wx:if="{{item.audited ==0}}">编辑</view>
+			</view>
+
+		</view>
+	</view>
+</scroll-view>
+
+<!-- <view class="fixedfooter flex">
+	<view wx:for="{{list}}" class="item">
+		<view class="img">
+			<image style="{{item.iconPath}}"></image>
+		</view>
+		<view class="title">{{item.text}}</view>
+	</view>
+</view> -->
+<Allpagesneed></Allpagesneed>

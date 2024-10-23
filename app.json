@@ -1,0 +1,202 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/shangpin_home/shangpin_home",
+    "pages/latest_events/latest_events",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/tab-classification/tab-classification",
+    "pages/tab-cart/tab-cart",
+    "components/customerService/index",
+    "pages/Loginregistration/Loginregistration",
+    "pages/test-page/test-page",
+    "pages/customized_home/customized_home",
+    "pages/video_upload/video_upload",
+    "pages/video-list/video-list",
+    "pages/delegate-page/delegate-page",
+    "pages/proxy-page/proxy-page",
+    "pages/video-swiper/video-swiper",
+    "pages/video-share/video-share",
+    "pages/service-agreement/service-agreement",
+    "pages/privacy-policies/privacy-policies"
+  ],
+  "subPackages": [
+    {
+      "root": "member/",
+      "pages": [
+        "forget_password_1/forget_password_1",
+        "forget_password_2/forget_password_2",
+        "forget_password_3/forget_password_3",
+        "set/set",
+        "basic_information/basic_information",
+        "update_pwd/update_pwd",
+        "update_photo/update_photo",
+        "address_list/address_list",
+        "add_address/add_address",
+        "collection/collection",
+        "public_praise/public_praise",
+        "user_praise/user_praise",
+        "case_management/case_management",
+        "look_word_of_mouth/look_word_of_mouth",
+        "sign_in/sign_in",
+        "write_off/write_off",
+        "write_off_seccess/write_off_seccess",
+        "into_sent/into_sent",
+        "activity_sign/activity_sign",
+        "mine_infoshop/mine_infoshop",
+        "claim_coupons/claim_coupons",
+        "intent_customer_admin/intent_customer_admin",
+        "intent_customer/intent_customer",
+        "mine_customer_admin/mine_customer_admin",
+        "privilege-package-list/privilege-package-list"
+      ]
+    },
+    {
+      "root": "order/",
+      "pages": [
+        "my_order_list/my_order_list",
+        "order_detail/order_detail",
+        "evaluate/evaluate"
+      ]
+    },
+    {
+      "root": "commodity/",
+      "pages": [
+        "product_list/product_list",
+        "product_view/product_view",
+        "furniture_list/furniture_list",
+        "furniture_view/furniture_view",
+        "design_author/design_author"
+      ]
+    },
+    {
+      "root": "xpages/",
+      "pages": [
+        "hotproduct_detail/hotproduct_detail",
+        "shangpin_home/shangpin_home",
+        "furniture_activity/furniture_activity",
+        "phystroes/phystroes",
+        "designsketch/designsketch",
+        "roughhouse/roughhouse",
+        "hardcover/hardcover",
+        "selected/selected",
+        "allhouse/allhouse",
+        "allhouses/allhouses",
+        "shop/shop",
+        "classification/classification",
+        "wordofmouth/wordofmouth",
+        "chosen/chosen",
+        "chosen1/chosen1",
+        "chosen2/chosen2",
+        "usercenterword/usercenterword",
+        "storedetails/storedetails",
+        "baomore/baomore",
+        "newactivity/newactivity",
+        "decoration_process/decoration_process",
+        "process_details/process_details",
+        "aftersale/aftersale",
+        "aftersaleuser/aftersaleuser",
+        "publish/publish",
+        "checklist/checklist",
+        "checklists/checklists",
+        "fitforlife/fitforlife",
+        "land/land",
+        "childactivity/childactivity",
+        "allhomelist/allhomelist",
+        "orderattribute/orderattribute",
+        "paypage/paypage",
+        "cartaddress/cartaddress",
+        "allchecklist/allchecklist",
+        "free_design/free_design",
+        "htmlpage/htmlpage",
+        "selectedchecklist/selectedchecklist",
+        "allhouse_detail/allhouse_detail",
+        "allhouse_details/allhouse_details",
+        "videocolumn/videocolumn",
+        "currentactivity/currentactivity",
+        "videodetails/videodetails",
+        "fitforlifechild/fitforlifechild",
+        "morevideo/morevideo",
+        "h5page/h5page",
+        "works_detail/works_detail",
+        "todaysheadlines/todaysheadlines",
+        "activitypage/activitypage",
+        "poster/poster",
+        "budgetquotation/budgetquotation",
+        "contact/contact",
+        "Electroniccard/Electroniccard",
+        "storevr/storevr",
+        "modelhouses/modelhouses",
+        "byoneyuan/byoneyuan",
+        "pageTest/pageTest",
+        "adv_list/adv_list",
+        "poster-display/poster-display",
+        "server-shop/server-shop"
+      ]
+    },
+    {
+      "root": "businesscard/",
+      "pages": [
+        "index/index",
+        "my_agent/my_agent",
+        "order_detail/order_detail",
+        "mecards/mecards",
+        "mecustomer/index",
+        "invitation/invitation",
+        "become_agent/become_agent",
+        "agent_detail/agent_detail",
+        "invitationfather/invitationfather",
+        "poster/poster",
+        "posterimage/posterimage",
+        "writeoff/writeoff",
+        "Potentialcustomers/Potentialcustomers",
+        "Potendetails/Potendetails",
+        "WchatQrc/WchatQrc",
+        "Cropimage/Cropimage",
+        "Writeoffoperation/Writeoffoperation",
+        "Writeoffoperation/Screen/Screen",
+        "index/orderList/orderList",
+        "newmake_card/newmake_card",
+        "excel/excel",
+        "dusting/dusting",
+        "internal-member-list/internal-member-list",
+        "internal-member-bro-list/internal-member-bro-list",
+        "server-in-help/server-in-help",
+        "server-in-help-detail/server-in-help-detail",
+        "current-period/current-period"
+      ]
+    }
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "木菲.美家",
+    "navigationBarTextStyle": "black",
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "leftbutton": "/components/leftbutton/index",
+    "Allpagesneed": "/components/Allpagesneed/Allpagesneed",
+    "popup": "/components/popup/popup",
+    "phonepopup": "/components/phonepopup/phonepopup",
+    "Loding": "/components/Loding/Loding",
+    "tabindex": "/components/tab-navigation/index",
+    "nodata": "/components/nodata/nodata",
+    "mp-html": "/components/mp-html/index",
+    "claim-coupons-dialog": "/components/claim-coupons-dialog/index"
+  },
+  "requiredPrivateInfos": [
+    "getLocation",
+    "chooseLocation"
+  ],
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "useExtendedLib": {
+    "weui": true
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "你的位置信息将用于签到"
+    }
+  }
+}

@@ -1,0 +1,3 @@
+<view  class="transaction-explain">
+<rich-text nodes="{{contentWap}}" space="nbsp" ></rich-text>
+</view>

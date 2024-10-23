@@ -1,0 +1,1498 @@
+<!-- <navBar 
+    title-text="自定义导航栏" 
+    back-icon="/images/back@3x.png"
+    home-icon="/images/home_icon@3x.png"
+    background="#f2f2f2"
+    bindback="back"/> -->
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<view class="container">
+	<search id="search" title="查找商品关键字" pageWindowHeight="{{pageWindowHeight}}" saveoptions="{{saveoptions}}"
+		chiocetext="{{chiocetext}}" startnewsClassId="{{155}}" isindexpage="1" pagemenuButtontop="{{pagemenuButtontop}}"
+		oldnewclassid="-2" bind:dianji="searchword"></search>
+	<!-- 搜索框 -->
+	<!-- <view class="searchbox">
+	<view style="margin-top:{{pagemenuButtontop}}rpx;margin-bottom:{{pagemenuButtontop-statusheight+8}}rpx">
+		<view class="indexsearch" style="height:{{pagebuttonheight}}rpx;width:100%-;" >
+			<image src="../../images/logo.png" style="height:80%;width:30%;margin-left:20rpx;"></image>
+			<view class="searchiconandtext" style="margin-left:20rpx;">
+			<text class="iconfont icon-sousuo"></text>
+			<input placeholder='查找商品关键字' disabled="true" placeholder-style="font-size: 24rpx;" style="height:100%;margin-left: 14rpx;" catchtap="searchdongxi"></input>
+			</view>
+	</view>
+	</view>
+</view> -->
+
+
+	<!-- 新版搜索（已淘汰） -->
+	<!-- <view class="searchbox">
+		<view class="newsearch"
+			style="margin-top:{{pagemenuButtontop+4}}rpx;margin-bottom:{{pagemenuButtontop-statusheight+8}}rpx;margin-left:{{buttonleft}}rpx;border-radius:{{pagebuttonheight}}rpx ;">
+			<view class="indexsearch" style="height:{{pagebuttonheight}}rpx;width:100%;">
+				<view class="drop-down" bindtap="downview">{{chiocetext}}<text class="iconfont icon-icon-down"
+						style="font-size:24rpx;margin-left:5rpx;"></text>
+					<view class="down-view" wx:if="{{isdownview}}">
+						<view wx:for="{{saveoptions}}" data-newsClassId="{{item.newsClassId}}" bindtap="selectedform"
+							data-text="{{item.name}}" wx:key="key">
+							{{item.name}}
+						</view>
+					</view>
+				</view>
+				<view class="contentxian"></view>
+				<view class="searchinput" catchtap="searchbtn">
+					<view class="iconfont icon-sousuo"></view>
+					<input confirm-type='search' bindinput='bindinputtext' bindconfirm='searchword' bindfocus='Focusstarts'
+						style="width:40%" placeholder="{{searchplatext}}"
+						placeholder-style="color:#ffffff;text-align:left;text-indent:10rpx;" bindblur='testfoucs'></input>
+				</view>
+			</view>
+		</view>
+	</view> -->
+
+
+	<!-- 最新版搜索 -->
+	<view class="searchbox" wx:if="{{!isPageShow}}" style="height:{{pagebuttonheight+pagemenuButtontop+8}}rpx">
+		<view class="TopsearchView"
+			style="margin-top:{{pagemenuButtontop+4}}rpx;margin-bottom:{{pagemenuButtontop-statusheight+8}}rpx;padding-left:2vw;width:calc(100% - {{buttonWidth+20}}rpx)">
+			<image style="width:30%;height:40rpx;" wx:if="{{pagebuttonheight!=0}}" mode="widthFix"
+				src="../../images/searchicon3.png"></image>
+			<view class="newest" style="border-radius:{{pagebuttonheight}}rpx ;">
+				<view class="indexsearch" style="height:{{pagebuttonheight-10}}rpx;width:100%;">
+					<view class="searchinput" catchtap="searchbtn">
+						<view class="iconfont icon-sousuo"></view>
+						<input confirm-type='search' bindinput='bindinputtext' bindconfirm='searchword' bindfocus='Focusstarts'
+							style="width:100%;text-align:left" placeholder="{{searchplatext}}"
+							placeholder-style="color:#333;text-align:left;text-indent:10rpx;" bindblur='testfoucs'></input>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+
+
+	<scroll-view class="vertical-scroll" slot="body" scroll-top="{{scrollTop}}" scroll-y="true"
+		style="height:calc(100% - {{tabIndexHeight}}rpx)" bindscroll="onScroll" scroll-anchoring="true">
+
+		<!-- 顶部空白 -->
+		<view class="top-layout" wx:if="{{!isPageShow}}" style="height:{{pagebuttonheight+pagemenuButtontop+10}}rpx">
+		</view>
+
+		<!-- 轮播 -->
+		<view class="topswiper">
+			<swiper class="swiper_image" indicator-dots="true" autoplay="true" style="height:{{swheight}}px">
+				<block wx:for="{{topBanner}}" wx:key="key">
+					<swiper-item catchtap="selectedbtn" data-newclassid="{{item.indexType}}" data-modelname="{{item.modelName}}"
+						data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}" data-newclassid="{{item.indexType}}"
+						data-hometitle="{{item.name}}" data-id="{{item.contentId}}">
+						<view class="banner">
+							<image class="auto-img" src="{{imgur}}{{item.imageVo.imagePath}}" bindload="goheight" mode="widthFix">
+							</image>
+						</view>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+
+
+		<!-- 功能菜单 -->
+		<view class="menuId">
+			<swiper style="height:100%;width:100%;" indicator-dots="true">
+				<swiper-item>
+					<view class="popupmenubox">
+						<block wx:for="{{columnState}}" wx:for-index="i" wx:key="key">
+							<view class="popupmenu" wx:if="{{i>=0&i<10}}" data-index="{{i}}" data-relationid="{{item.relationId}}"
+								data-ids="{{item.id}}" data-toptext="{{item.name}}" catchtap="aftersale"
+								data-xcxmodelname="{{item.xcxModelName}}" data-imgarr="{{item.imageVoList}}" data-url="{{item.url}}">
+								<view class="case" wx:if="{{item.id==128 || item.id==127}}">
+								</view>
+								<view class="imgmenu">
+									<image src="{{imgur}}{{item.iconVo.imagePath}}"></image>
+									<text>{{item.name}}</text>
+								</view>
+
+							</view>
+						</block>
+					</view>
+				</swiper-item>
+
+				<swiper-item>
+					<view class="popupmenubox">
+						<block wx:for="{{columnState}}" wx:for-index="i" wx:key="key">
+							<view class="popupmenu" wx:if="{{i>=10&i<20}}" data-index="{{i}}" data-relationid="{{item.relationId}}"
+								data-ids="{{item.id}}" data-toptext="{{item.name}}" catchtap="aftersale"
+								data-xcxmodelname="{{item.xcxModelName}}">
+								<view class="case" wx:if="{{item.id==128 || item.id==127}}">
+
+								</view>
+								<view class="imgmenu">
+									<image src="{{imgur}}{{item.iconVo.imagePath}}"></image>
+									<text>{{item.name}}</text>
+								</view>
+
+							</view>
+						</block>
+					</view>
+				</swiper-item>
+			</swiper>
+		</view>
+
+
+
+		<view class="form1">
+			<view class="tip">已为昆明 <e>1197</e>户业主提供服务，今日还剩<e>18</e>个名额</view>
+			<view wx:if="{{!isclicktab}}" class="main flex-r-s">
+				<view class="item flex">
+					<!-- <view class="iconfont my_light"></view> -->
+					<text class="iconfont icon-yonghu1" style="color:#666666;"></text><input placeholder="请输入您的称呼"
+						placeholder-class="nameandphonepla" bindinput="yuyuename" value="{{yuyuevrdata}}"></input>
+				</view>
+				<view class="item flex">
+					<!-- <view class="iconfont mobile"></view> -->
+					<text class="iconfont icon-shouji3" style="color:#666666;"></text><input placeholder="请输入手机号码" type="number"
+						placeholder-class="nameandphonepla" bindinput="yuyuephone" value="{{yuyuevrdata}}"></input>
+				</view>
+			</view>
+			<view class="btn" catchtap="tijioayuyue">0元抢免费设计资格（VR效果）</view>
+
+			<!-- 广告 -->
+			<view class="adv flex" style="background-color:transparent;">
+				<view class="advleft">
+					<view class="text1">昆明200+</view>
+					<view class="text2">设计师为您服务</view>
+				</view>
+				<swiper class="advright" vertical="true" autoplay="true" circular="true" interval="1000"
+					display-multiple-items="2">
+					<block wx:for="{{msgList}}" wx:key="key">
+						<swiper-item>
+							<view class="advmain"><text decode="true">{{item.name}}&nbsp;&nbsp;&nbsp;已申请{{item.time}}上门量尺</text>
+							</view>
+						</swiper-item>
+					</block>
+				</swiper>
+			</view>
+		</view>
+
+
+		<!-- 悬浮按钮 -->
+		<!-- <view class="xuanfuactivities" catchtap="huadongzhiding">
+			<text class="iconfont icon-purse"></text>
+			<text class="qualificqationszaitsev">装修需要多少钱</text>
+		</view> -->
+
+		<!-- 抵用券开始  (大礼包)-->
+		<block wx:if="{{libao.length>0}}">
+			<view class="unittestingactivities">
+			</view>
+		
+
+			<!-- 滑动的产品 -->
+			<view class="huadonchanping">
+				<scroll-view style="width:calc(100% - 20rpx);height:100%" scroll-x='true'>
+					<view class="activityidview">
+						<view class="activityidviewimage">
+							<view wx:for="{{libao}}" wx:key="key" catchtap="currentactivity" data-id="{{item.id}}"
+								data-promotionscontent="{{item.promotionsContent}}" data-promotionsperiod="{{item.promotionsPeriod}}"
+								data-buyitalone="{{item.buyItAlone}}" style="margin-left:{{index==0?'':20}}rpx">
+								<image mode="aspectFill" src="{{imgur}}{{item.imagePath}}"></image>
+								<!-- <view class="activityidviewimagedumpInstructions">{{item.productName}}</view> -->
+								<view class="shopprice">
+									<view style="color:#000000">{{item.promotionsPeriod}}</view>
+									<!-- <view>￥{{filters.toFix2(item.minOnePrice)}}</view> -->
+									<!-- <view>￥<text style="color: #ff0000; font-size: 32rpx;">{{filters.toFix2(item.skuPrice)}}</text></view> -->
+								</view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+		</block>
+		<!-- 抵用券结束 （大礼包）-->
+
+		<!-- 当期活动 -->
+		<block wx:if="{{dangqilist.length>0}}">
+			<view class="unittestingactivities Bottomtobottom">
+				<text class="unittestingactivitiestext" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+					data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+					data-specialtypes='2' data-hometitle="当期活动" style="line-height: 38rpx;">当期活动</text>
+				<view class="activitytime">
+					<text class="YearMonthDay">{{filters.Timeprocessing(dangqilist[0].promotionsStartTime)[0]}}</text>
+					<text class="YearMonthDay">{{filters.Timeprocessing(dangqilist[0].promotionsStartTime)[1]}}</text>
+					<text class="YearMonthDay">{{filters.Timeprocessing(dangqilist[0].promotionsStartTime)[2]}}</text>
+					<text style="color:#333">至</text>
+					<!-- {{dangqilist[0].promotionsEndTime}} -->
+					<text class="YearMonthDay"
+						style="margin-left:10rpx">{{filters.Timeprocessing(dangqilist[0].promotionsEndTime)[0]}}</text>
+					<text class="YearMonthDay">{{filters.Timeprocessing(dangqilist[0].promotionsEndTime)[1]}}</text>
+					<text class="YearMonthDay">{{filters.Timeprocessing(dangqilist[0].promotionsEndTime)[2]}}</text>
+				</view>
+				<!-- <view class="copmore" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"     data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" data-specialtypes='2'
+					data-hometitle="当期活动">更多<text style="margin-left:5rpx">+</text></view> -->
+				<!-- 当期活动的广告图 -->
+			<view class="unittestingactivitiesimagenoscroll" wx:if="{{dahdTop.length>0}}">
+				<DefaultSwiper DataArr="{{dahdTop}}"></DefaultSwiper>
+			</view>
+			<!-- 当期活动广告图结束 -->
+			</view>
+			<!-- 滑动的产品 -->
+			<view class="huadonchanping">
+				<scroll-view style="width:calc(100% - 20rpx);height:100%" scroll-x='true'>
+					<view class="activityidview">
+						<view class="activityidviewimage">
+							<view wx:for="{{dangqiactivitydata}}" wx:key="key" catchtap="dangqishop" data-pid="{{item.pid}}"
+								data-itemname="{{item.itemName}}" data-productname="{{item.productName}}" data-cid="{{item.cid}}"
+								data-promotionsid="{{item.promotionsId}}" style="margin-left:{{index==0?'':20}}rpx">
+								<image mode="aspectFill" src="{{imgur}}{{item.picUrl}}"></image>
+								<view class="activityidviewimagedumpInstructions">{{item.productName}}</view>
+								<view class="shopprice">
+									<view>{{item.itemName}}</view>
+									<view>￥<text style="color: #ff0000; font-size: 32rpx;">{{filters.toFix2(item.minOnePrice)}}</text>
+									</view>
+								</view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+		</block>
+
+
+		<!-- 精装房开始 -->
+		<view class="layers">
+			<view class="blankbox">
+				<view class="blank-bracket" catchtap="Fixedjump" data-xcxpage="/xpages/roughhouse/roughhouse"
+					data-newclassid="{{pagesonTitle[3].id}}">{{pagesonTitle[3].name}}</view>
+				<!-- <view class="customize" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+					data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+					data-modelname='mallItemSkuVO' data-hometitle="软装设计" data-xcxpage="/xpages/classification/classification?2">
+					软装设计</view>
+				<view class="customize" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+					data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+					data-newclassid="129" data-xcxpage="/xpages/selected/selected">
+					全屋配齐</view> -->
+				<view class="customize" wx:for="{{syjzfxbt}}" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+					data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+					data-hometitle="{{item.name}}">
+					{{item.name}}</view>
+				<view class="more" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+					data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+					catchtap="selectedbtn" data-newclassid="{{item.indexType}}" data-modelname="{{item.modelName}}"
+					data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}" data-xcxpage="/xpages/roughhouse/roughhouse"
+					data-newclassid="128">
+					更多<text style="margin-left:5rpx">+</text></view>
+			</view>
+			<view class="sliding-loss">
+				<scroll-view scroll-x="true" class="scroll-view_H">
+					<view wx:for="{{circularmaopidata}}" style="display:inline-block" data-id="{{item.id}}" wx:key='key'
+						class="tokyofashion" catchtap="natohard">{{item.searchName}}
+						<text decode="true">&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;</text>
+					</view>
+				</scroll-view>
+
+			</view>
+			<!-- 春之雨  夏之恋  秋之思  冬之畔 -->
+			<view class="springandsummerbox">
+				<scroll-view class="scroll-view_H" style="padding:0;" scroll-x="true">
+					<view class="springandsummer " wx:for="{{styledata}}" catchtap="maopibtnyuan" data-type="2"
+						data-title="{{item.searchName}}" data-id="{{item.id}}" data-index="{{index}}" data-classid="128"
+						style="background:url({{imgur}}{{item.imageVo.imagePath}}); background-size:100% 100%;" wx:key="key">
+						<view class="cauMask">{{item.searchName}}</view>
+					</view>
+				</scroll-view>
+			</view>
+			<view class="unshuffling">
+				<block wx:for="{{syjzfjxggt}}" wx:key="key">
+					<view class="unshufflingViewBox" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+						data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+						data-newclassid="{{item.indexType}}" data-id="{{item.contentId}}" data-xcxpage="{{item.xcxpage}}">
+						<view class="imageprice" wx:if="{{item.isNewOpen}}">
+							<image src="../../images/imageTop.png" mode="widthFix" style="width:40rpx;height:40rpx"></image>
+							<text>{{item.isNewOpen}}</text>
+						</view>
+						<image class="swiperimages" mode="widthFix" style="width:100%;" src="{{imgur}}{{item.imageVo.imagePath}}">
+						</image>
+						<view class="imagedescribe" wx:if="{{item.name}}">
+							<view>
+								{{item.name}}
+							</view>
+						</view>
+						<view class="describeHide" wx:if="{{item.describe}}">
+							<rich-text nodes="{{item.describe}}"></rich-text>
+						</view>
+					</view>
+				</block>
+			</view>
+		</view>
+		<view class="path" catchtap="selectedbtn" data-xcxpage="/xpages/roughhouse/roughhouse" data-newclassid="128">
+			<!-- <image catchtap="selectedbtn" data-xcxpage="/xpages/roughhouse/roughhouse" data-newclassid="128" src="../../images/more.png"  mode="widthFix" style="width:40rpx;height:40rpx;"></image> -->
+			<view class="loader">
+				<view class="loader-inner ball-pulse">
+					<!-- <view></view>
+					<view></view>
+					<view></view> -->
+
+				</view>
+			</view>
+
+			<view class="loader">
+				<view class="loader-inner ball-pulse">
+					<view></view>
+					<view></view>
+					<view></view>
+					<text style="font-size:24rpx;">查看更多</text>
+				</view>
+			</view>
+
+			<!-- <view class="btnmore">
+					<text class="iconfont icon-chakangengduo"></text>
+					<text style="font-size:24rpx;">查看更多</text>
+					</view> -->
+
+		</view>
+		<!-- 精装房结束 -->
+
+
+
+
+		<!-- 定制家具楼层 -->
+		<view class="mhot" wx:if="{{dzjjTopGoods.length>0}}">
+			<view class="blankbox">
+				<view class="blank-bracket" style="margin-left: 0rpx;" catchtap="selectedbtn"
+					data-newclassid="{{item.indexType}}" data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}"
+					data-id="{{item.contentId}}" data-newclassid="151" data-id="{{item.contentId}}" data-hometitle="定制家具">定制家具
+				</view>
+				<view class="customize" wx:for="{{sydzjjxbt}}" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+					data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+					data-hometitle="{{item.name}}">
+					{{item.name}}</view>
+				<view class="more" catchtap="selectedbtn" catchtap="Fixedjump" data-newsClassid="226"
+					data-xcxpage="{{'/pages/customized_home/customized_home?indexs=0' +'&newsClassId=226'}}">
+					更多<text style="margin-left:5rpx">+</text></view>
+			</view>
+			<!-- 定制家具左右滑动 -->
+			<scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+				<view style="display: inline-block;" class="allcircular allhouse" wx:for="{{kongjiandata}}"
+					catchtap="maopibtnyuan" data-name="{{item.searchName}}" data-type="4" data-id="{{item.id}}"
+					data-classid="{{saveoptions[4].newsClassId}}" wx:if="{{index<12}}" wx:key="key">
+					<image src="{{imgur}}{{item.imageVo.imagePath}}" style="height:{{item.imageVo.imagePath?'':84}}rpx"
+						mode="widthFix"></image>
+					<view>{{item.searchName}}</view>
+				</view>
+			</scroll-view>
+			<!-- 定制家具的广告图 -->
+			<view class="unittestingactivitiesimagenoscroll" wx:if="{{dzjjTop.length>0}}">
+				<!-- <image catchtap="selectedbtn" data-newclassid="{{item.indexType}}"     data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" data-url="{{dzjjTop[0].url}}"
+					src="{{imgur}}{{dzjjTop[0].imageVo.imagePath}}" mode="widthFix"></image> -->
+				<DefaultSwiper DataArr="{{dzjjTop}}"></DefaultSwiper>
+			</view>
+
+
+
+			<view class="unshuffling">
+				<block wx:for="{{dzjjTopGoods}}" wx:key="key">
+					<view class="unshufflingViewBox">
+						<view class="imageprice" wx:if="{{item.isNewOpen}}">
+							<image src="../../images/imageTop.png" mode="widthFix" style="width:40rpx;height:40rpx"></image>
+							<text>{{item.isNewOpen}}</text>
+						</view>
+						<image class="swiperimages" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+							data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+							data-id="{{item.contentId}}" mode="widthFix" style="width:100%;"
+							src="{{imgur}}{{item.imageVo.imagePath}}"></image>
+						<view class="imagedescribe">
+							<view>
+								{{item.name}}
+							</view>
+						</view>
+						<view class="describeHide" wx:if="{{item.describe}}">
+							<rich-text nodes="{{item.describe}}"></rich-text>
+						</view>
+					</view>
+				</block>
+			</view>
+
+			<view class="path" catchtap="Fixedjump" data-newsClassid="226"
+				data-xcxpage="{{'/pages/customized_home/customized_home?indexs=0' +'&newsClassId=226'}}">
+				<!-- <image catchtap="selectedbtn" data-newclassid="{{item.indexType}}"     data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}"  src="../../images/more.png"  mode="widthFix" style="width:40rpx;height:40rpx;"></image> -->
+				<view class="loader">
+					<view class="loader-inner ball-pulse">
+						<view></view>
+						<view></view>
+						<view></view>
+						<text style="font-size:24rpx;">查看更多</text>
+					</view>
+				</view>
+			</view>
+		</view>
+
+
+
+
+		<!-- 毛坯房 定制家装  全案设计 -->
+		<view class="layers">
+			<view class="blankbox" style="padding-top:40rpx;">
+				<view class="blank-bracket" catchtap="roughhousbtn" data-id="{{roughhousetitle.id}}"
+					data-name="{{roughhousetitle.name}}">{{roughhousetitle.name}}</view>
+				<!-- <view class="customize" catchtap="morequanan" data-newclassid="121">全案设计</view>
+				<view class="customize" catchtap="roughhousbtn" data-id="{{roughhousetitle.id}}"
+					data-name="{{roughhousetitle.name}}">定制家装</view> -->
+				<view class="customize" wx:for="{{sympfxbt}}" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+					data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+					data-hometitle="{{item.name}}">
+					{{item.name}}</view>
+				<view class="more" catchtap="morequanan" data-newclassid="127">更多<text style="margin-left:5rpx;">+</text></view>
+			</view>
+			<!-- style="margin:0 20rpx;" -->
+			<view class="sliding-loss">
+				<scroll-view class="scroll-view_H" scroll-x="true">
+					<view wx:for="{{circularmaopidata}}" style="display: inline-block;" wx:key='key' class="tokyofashion"
+						catchtap="tokyofashion" data-id="{{item.id}}" data-name="{{item.searchName}}">{{item.searchName}}
+						<text decode="true" style=" font-weight: lighter;">&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</text>
+					</view>
+				</scroll-view>
+			</view>
+			<!-- 毛坯房的  四个圆圈 春之雨  夏之恋  秋之思  冬之畔 -->
+			<view class="springandsummerbox">
+				<scroll-view class="scroll-view_H" style="padding:0;" scroll-x="true">
+					<view wx:for="{{styledata}}" class="springandsummer" catchtap="maopibtnyuan" data-id="{{item.id}}"
+						data-classid="{{roughhousetitle.id}}" data-index="{{index}}" data-title="{{item.searchName}}"
+						style="background:url({{imgur}}{{item.imageVo.imagePath}}); background-size:100% 100%;" wx:key="key">
+						<view class="cauMask">{{item.searchName}}</view>
+					</view>
+				</scroll-view>
+
+			</view>
+			<view class="unshuffling" wx:if="{{buildingcan!=''}}">
+				<block wx:for="{{sympfjxggt}}" wx:key="key">
+					<view class="unshufflingViewBox" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+						data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+						data-newclassid="{{item.indexType}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+						data-modelname="{{item.modelName}}">
+						<view class="imageprice" wx:if="{{item.isNewOpen}}">
+							<image src="../../images/imageTop.png" mode="widthFix" style="width:40rpx;height:40rpx"></image>
+							<text>{{item.isNewOpen}}</text>
+						</view>
+						<image class="swiperimages" mode="widthFix" style="width:100%;" src="{{imgur}}{{item.imageVo.imagePath}}">
+						</image>
+						<view class="imagedescribe">
+							<view>
+								{{item.name}}
+							</view>
+						</view>
+						<view class="describeHide" wx:if="{{item.describe}}">
+							<rich-text nodes="{{item.describe}}"></rich-text>
+						</view>
+					</view>
+				</block>
+			</view>
+		</view>
+		<view class="path" catchtap="morequanan" data-newclassid="127">
+			<!-- <image catchtap="selectedbtn" data-newclassid="{{item.indexType}}"     data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" data-xcxpage="/xpages/roughhouse/roughhouse" data-newclassid="127"  src="../../images/more.png"  mode="widthFix" style="width:40rpx;height:40rpx;"></image> -->
+			<view class="loader">
+				<view class="loader-inner ball-pulse">
+					<view></view>
+					<view></view>
+					<view></view>
+					<text style="font-size:24rpx;">查看更多</text>
+				</view>
+			</view>
+		</view>
+		<!-- 毛坯房结束 -->
+
+		<!-- 十大装修流程图开始 -->
+		<view class="tenphoto" catchtap="selectedbtn" data-newclassid="{{stepOfTop[0].indexType}}"
+			data-modelname="{{stepOfTop[0].modelName}}" data-xcxpage="{{stepOfTop[0].xcxpage}}" data-id="{{stepOfTop[0].contentId}}"
+			data-id="{{stepOfTop[0].contentId}}">
+			<image src="{{imgur}}{{stepOfTop[0].imageVo.imagePath}}" mode="widthFix"></image>
+		</view>
+		<!-- 十大装修流程图结束 -->
+
+
+
+
+
+		<!-- 本月爆款开始 -->
+		<block wx:if="{{bybkList.length>0}}">
+		<view class="mhot" style="margin-top:50rpx">
+			<view class="title flex-r-s">
+				<text class="name" catchtap="hotmore">本月爆款</text>
+				<text class="hotmore" catchtap="hotmore">更多<text style="margin-left:5rpx">+</text></text>
+			</view>
+			<!-- 本月爆款的广告图 -->
+			<view class="unittestingactivitiesimagenoscroll" wx:if="{{bybkLoop.length>0}}">
+				<DefaultSwiper DataArr="{{bybkLoop}}"></DefaultSwiper>
+			</view>
+			<!-- 本月爆款广告图结束 -->
+			<view class="main flex-r-s">
+				<view class="item" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+					data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+					data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}" data-newclassid="{{item.indexType}}"
+					wx:for='{{bybkList}}' wx:key='key' data-ordertype="6">
+					<view class="img">
+						<view class="hottype">爆款</view>
+						<!-- <view class="type">爆款</view> -->
+						<image src="{{imgur}}{{item.imageVo.imagePath}}" mode="aspectFill"></image>
+					</view>
+					<view class="context">
+						<rich-text nodes='{{item.describe}}'></rich-text>
+						<!-- <view class="name">芭尚装饰画-静谧</view>
+						<view class="describe">型之美 匠心而制</view>
+						<view class="price">￥540.00</view> -->
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="path" catchtap="selectedbtn" data-newclassid="127">
+			<!-- <image catchtap="selectedbtn" data-newclassid="{{item.indexType}}"     data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" data-xcxpage="/xpages/roughhouse/roughhouse" data-newclassid="127"  src="../../images/more.png"  mode="widthFix" style="width:40rpx;height:40rpx;"></image> -->
+			<view class="loader" catchtap="hotmore">
+				<view class="loader-inner ball-pulse">
+					<view></view>
+					<view></view>
+					<view></view>
+					<text style="font-size:24rpx;">查看更多</text>
+				</view>
+			</view>
+		</view>
+	</block>
+		<!-- 本月爆款结束 -->
+
+		<!-- 限时抢购 -->
+		<block wx:if="{{flashmobilebloglist.length>0}}">
+			<view class="Countdown">
+				<view class="flashhandle">
+					<text class="name" style="font-size: 34rpx;color: #353d44;font-weight: bold;">限时抢购</text>
+					<view class="activitytime">
+						<text class="YearMonthDay">{{filters.Timeprocessing(flashmobilebloglist[0].promotionsStartTime)[0]}}</text>
+						<text class="YearMonthDay">{{filters.Timeprocessing(flashmobilebloglist[0].promotionsStartTime)[1]}}</text>
+						<text class="YearMonthDay">{{filters.Timeprocessing(flashmobilebloglist[0].promotionsStartTime)[2]}}</text>
+						<text style="color:#333">至</text>
+						<!-- {{dangqilist[0].promotionsEndTime}} -->
+						<text class="YearMonthDay"
+							style="margin-left:10rpx">{{filters.Timeprocessing(flashmobilebloglist[0].promotionsEndTime)[0]}}</text>
+						<text class="YearMonthDay">{{filters.Timeprocessing(flashmobilebloglist[0].promotionsEndTime)[1]}}</text>
+						<text class="YearMonthDay">{{filters.Timeprocessing(flashmobilebloglist[0].promotionsEndTime)[2]}}</text>
+					</view>
+					<!-- <view class="thead flex-r-s">
+						<view class="timeleft">
+							<text>距结束</text>
+						</view>
+						<van-count-down time="{{time}}" class="times" />
+					</view> -->
+				</view>
+			</view>
+			<view class="unittestingactivitiesimagenoscroll" wx:if="{{xsqgList!=''}}" style="margin-left:20rpx">
+				<swiper style="height:100%;width:100%;">
+					<swiper-item>
+						<image src="{{imgur}}{{xsqgList[0].imageVo.imagePath}}" mode="apspectFit"></image>
+					</swiper-item>
+				</swiper>
+
+			</view>
+			<!-- 滑动的产品 -->
+			<view class="huadonchanping">
+				<scroll-view style="width:calc(100% - 20rpx);height:100%" scroll-x='true'>
+					<view class="activityidview">
+						<view class="activityidviewimage">
+							<view wx:for="{{xiangoulist}}" catchtap="catxianshiqianggou" data-pid="{{item.pid}}"
+								data-itemname="{{item.itemName}}" data-productname="{{item.productName}}" data-cid="{{item.cid}}"
+								data-promotionsid="{{xianshiId}}" wx:key='key' style="margin-left:{{index==0?'':20}}rpx">
+								<image mode="aspectFill" src="{{imgur}}{{item.picUrl}}"></image>
+								<view class="activityidviewimagedumpInstructions">{{item.productName}}</view>
+								<view class="shopprice">
+									<view>{{item.itemName}}</view>
+									<!-- <view>￥{{filters.toFix2(item.minOnePrice)}}</view> -->
+									<view>￥<text style="color: #ff0000; font-size: 32rpx;">{{filters.toFix2(item.salePrice)}}</text>
+									</view>
+									<!-- minOnePrice -->
+								</view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+		</block>
+
+
+
+		<!-- 全屋精选开始  楼层-->
+		<view class="layers" style="background-color:transparent;margin-top:-20rpx;">
+			<view class="blankbox" catchtap="Fixedjump" data-xcxpage="xpages/selected/selected" data-newclassid="129">
+				<view class="blank-bracket" style="margin-left:0;">{{pagesonTitle[1].name}}</view>
+				<view class="more" catchtap="Fixedjump" data-xcxpage="/xpages/selected/selected" data-newclassid="129">更多<text
+						style="margin-left:5rpx;">+</text></view>
+			</view>
+			<scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+				<view style="display: inline-block;" class="allcircular allhouse" wx:for="{{allwustyledata}}"
+					catchtap="maopibtnyuan" data-name="{{item.searchName}}" data-type="3" data-id="{{item.id}}"
+					data-classid="{{saveoptions[4].newsClassId}}" wx:if="{{index<12}}" wx:key="key">
+					<image src="{{imgur}}{{item.imageVo.imagePath}}" style="height:{{item.imageVo.imagePath?'':84}}rpx"
+						mode="widthFix"></image>
+					<view>{{item.searchName}}</view>
+				</view>
+			</scroll-view>
+			<!-- 全屋精选的产品 -->
+			<view class="unshuffling" wx:if="{{qwjxList.length>0}}">
+				<block wx:for="{{qwjxList}}" wx:key="key">
+					<view class="unshufflingViewBox">
+						<view wx:if="{{item.isNewOpen}}" class="imageprice">
+							<image src="../../images/imageTop.png" mode="widthFix" style="width:40rpx;height:40rpx"></image>
+							<text>{{item.isNewOpen}}</text>
+						</view>
+						<image class="swiperimages" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+							data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+							data-newclassid="128" data-id="{{item.contentId}}" mode="widthFix" style="width:100%;"
+							src="{{imgur}}{{item.imageVo.imagePath}}"></image>
+						<view class="imagedescribe" wx:if="{{item.name}}">
+							<view>
+								{{item.name}}
+							</view>
+						</view>
+						<view class="describeHide" wx:if="{{item.describe}}">
+							<rich-text nodes="{{item.describe}}"></rich-text>
+						</view>
+					</view>
+				</block>
+			</view>
+			<view class="path" catchtap="Fixedjump" data-xcxpage="/xpages/selected/selected" data-newclassid="129">
+				<!-- <image catchtap="selectedbtn" data-newclassid="{{item.indexType}}"    data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" data-xcxpage="/xpages/selected/selected" data-newclassid="129"  src="../../images/more.png"  mode="widthFix" style="width:40rpx;height:40rpx;"></image> -->
+				<view class="loader">
+					<view class="loader-inner ball-pulse">
+						<view></view>
+						<view></view>
+						<view></view>
+						<text style="font-size:24rpx;">查看更多</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- 全屋精选结束  楼层-->
+
+
+		<!-- 一线主材楼层开始 -->
+		<block wx:if="{{iscategoryarr[0] !=null }}">
+			<view class="mhot" style="margin-top：-20rpx;">
+				<view class="title flex-r-s" style="margin-top:50rpx;">
+					<text class="name" catchtap="Fixedjump" data-modelname="mallItemSkuVO"
+						data-xcxpage="/xpages/classification/classification?1">一线主材</text>
+					<view catchtap="Fixedjump" data-modelname="mallItemSkuVO"
+						data-xcxpage="/xpages/classification/classification?1">更多<text style="margin-left:5rpx">+</text></view>
+				</view>
+				<scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+					<view style="display: inline-block;" class="allcircular allhouse" wx:for="{{iscategoryarr[0].mallItemCatEntityList}}"
+						catchtap="tiaozhuanruanzhuangshop" data-id="{{item.id}}" wx:if="{{index<12}}" wx:key="key">
+						<image src="{{imgur}}{{item.xcxIconPath}}" style="height:{{item.xcxIconPath?'':84}}rpx" mode="widthFix">
+						</image>
+						<view>{{item.name}}</view>
+					</view>
+				</scroll-view>
+				<!-- 一线主材的广告图 -->
+				<view class="unittestingactivitiesimagenoscroll" wx:if="{{yxzcTopList.length>0}}">
+					<DefaultSwiper DataArr="{{yxzcTopList}}"></DefaultSwiper>
+				</view>
+				<!-- 一线主材的广告图结束 -->
+
+
+				<view class="yixianshoplist">
+					<view class="item" wx:for='{{qwjxList}}' catchtap="selectedbtn"
+						data-newclassid="{{item.indexType}}" data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}"
+						data-id="{{item.contentId}}" data-hometitle="{{item.name}}" data-id="{{item.contentId}}"
+						data-newclassid="{{item.indexType}}" wx:key='key'>
+						<view class="img">
+							<image src="{{imgur}}{{item.imageVo.imagePath}}"></image>
+						</view>
+						<view class="context">
+							<!-- <view class="name">芭尚装饰画-静谧</view>
+						<view class="describe">型之美 匠心而制</view>
+						<view class="price">￥540.00</view> -->
+							<rich-text nodes='{{item.describe}}'></rich-text>
+						</view>
+					</view>
+				</view>
+			</view>
+
+
+			<view class="path" style="margin-top:20rpx;" catchtap="Fixedjump" data-modelname="mallItemSkuVO"
+			data-xcxpage="/xpages/classification/classification?1">
+			<!-- <image catchtap="selectedbtn" data-newclassid="{{item.indexType}}"     data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" data-xcxpage="/xpages/roughhouse/roughhouse" data-newclassid="127"  src="../../images/more.png"  mode="widthFix" style="width:40rpx;height:40rpx;"></image> -->
+			<view class="loader">
+				<view class="loader-inner ball-pulse">
+					<view></view>
+					<view></view>
+					<view></view>
+					<text style="font-size:24rpx;">查看更多</text>
+				</view>
+			</view>
+		</view>
+		</block>
+	
+		<!-- 一线主材楼层结束 -->
+
+		<!-- 国际软装楼层-->
+		<block wx:if="{{iscategoryarr[1]!= null }}">
+			<view class="mhot" style="margin-top:50rpx;">
+				<view class="title flex-r-s">
+					<text class="name" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+						data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+						data-newclassid="{{155}}" data-shoptyope="2" data-hometitle="国际软装">国际软装</text>
+					<view catchtap="selectedbtn" catchtap="Fixedjump" data-modelname="mallItemSkuVO"
+						data-xcxpage="/xpages/classification/classification?2">更多<text style="margin-left:5rpx">+</text></view>
+				</view>
+				<scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+					<view style="display: inline-block;" class="allcircular allhouse" wx:for="{{iscategoryarr[1].mallItemCatEntityList}}"
+						catchtap="tiaozhuanruanzhuangshop" data-id="{{item.id}}" wx:if="{{index<12}}" wx:key="key">
+						<image src="{{imgur}}{{item.xcxIconPath}}" style="height:{{item.xcxIconPath?'':84}}rpx" mode="widthFix">
+						</image>
+						<view>{{item.name}}</view>
+					</view>
+				</scroll-view>
+			<!-- 国际软装的广告图 -->
+	<view class="unittestingactivitiesimagenoscroll" wx:if="{{rzzgTop.length>0}}">
+					<DefaultSwiper DataArr="{{rzzgTop}}"></DefaultSwiper>
+				</view>
+				<!-- 国际软装的广告图结束 -->
+			
+
+	
+
+				<view class="yixianshoplist">
+					<view class="item" wx:for='{{qwjxList}}' catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+						data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+						data-newclassid="155" data-id="{{item.contentId}}" data-hometitle="国际软装" wx:key='key'>
+						<view class="img">
+							<image src="{{imgur}}{{item.imageVo.imagePath}}"></image>
+						</view>
+						<view class="context">
+							<rich-text nodes='{{item.describe}}'></rich-text>
+						</view>
+					</view>
+				</view>
+			</view>
+
+			<view class="path" catchtap="Fixedjump" data-modelname="mallItemSkuVO"
+			data-xcxpage="/xpages/classification/classification?2" style="margin-top:20rpx">
+			<!-- <image catchtap="selectedbtn" data-newclassid="{{item.indexType}}"     data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" data-xcxpage="/xpages/roughhouse/roughhouse" data-newclassid="127"  src="../../images/more.png"  mode="widthFix" style="width:40rpx;height:40rpx;"></image> -->
+			<view class="loader">
+				<view class="loader-inner ball-pulse">
+					<view></view>
+					<view></view>
+					<view></view>
+					<text style="font-size:24rpx;">查看更多</text>
+				</view>
+			</view>
+		</view>
+		</block>
+	
+		<!-- 国际软装结束 -->
+
+
+		<!-- 成品家具 -->
+		<block wx:if="{{iscategoryarr[2] != null}}">
+			<view class="mhot" style="margin-top:50rpx;">
+				<view class="title flex-r-s">
+					<text class="name">{{ShopClassification[2].name}}</text>
+					<view catchtap="Fixedjump" data-modelname="mallItemSkuVO"
+						data-xcxpage="/xpages/classification/classification?3" class="more">更多<text
+							style="margin-left:5rpx">+</text></view>
+				</view>
+				<scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+					<view style="display: inline-block;" class="allcircular allhouse" wx:for="{{iscategoryarr[2].mallItemCatEntityList}}"
+						catchtap="tiaozhuanruanzhuangshop" data-id="{{item.id}}" wx:if="{{index<12}}" wx:key="key">
+						<image src="{{imgur}}{{item.xcxIconPath}}" style="height:{{item.xcxIconPath?'':84}}rpx" mode="widthFix">
+						</image>
+						<view>{{item.name}}</view>
+					</view>
+				</scroll-view>
+
+	<!-- 成品家具的广告图 -->
+				<view class="unittestingactivitiesimagenoscroll" wx:if="{{cpjjAdrv.length>0}}">
+					<DefaultSwiper DataArr="{{cpjjAdrv}}"></DefaultSwiper>
+				</view>
+				<!-- 成品家具的广告图结束 -->
+
+				<view class="orientalfurniture">
+					<view class="chegnpingitem" wx:for='{{cpjjGoods}}' catchtap="selectedbtn"
+						data-newclassid="{{item.indexType}}" data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}"
+						data-id="{{item.contentId}}" data-newclassid="{{item.indexType}}" data-id="{{item.contentId}}"
+						data-hometitle="{{item.name}}" wx:key='key'>
+						<view class="img">
+							<image src="{{imgur}}{{item.imageVo.imagePath}}" mode="aspectFill"></image>
+						</view>
+						<view class="chengpingcontext">
+							<rich-text nodes='{{item.describe}}'></rich-text>
+						</view>
+					</view>
+				</view>
+			</view>
+
+			<view class="path" catchtap="Fixedjump" data-modelname="mallItemSkuVO"
+			data-xcxpage="/xpages/classification/classification?3" style="margin-top:20rpx">
+			<view class="loader">
+				<view class="loader-inner ball-pulse">
+					<view></view>
+					<view></view>
+					<view></view>
+					<text style="font-size:24rpx;">查看更多</text>
+				</view>
+			</view>
+		</view>
+		</block>
+		
+		<!-- 成品家具结束 -->
+
+		<!-- 家用电器 -->
+		<block wx:if="{{jydqGoods.length}}">
+			<view class="mhot" style="margin-top:50rpx;">
+				<view class="title flex-r-s">
+					<text class="name">{{ShopClassification[3].name}}</text>
+					<view catchtap="Fixedjump" data-modelname="mallItemSkuVO"
+						data-xcxpage="/xpages/classification/classification?4" class="more">更多<text
+							style="margin-left:5rpx">+</text></view>
+				</view>
+				<scroll-view class="scroll-view_H" scroll-x style="width: 100%">
+					<view style="display: inline-block;" class="allcircular allhouse" wx:for="{{iscategoryarr[3].mallItemCatEntityList}}"
+						catchtap="tiaozhuanruanzhuangshop" data-id="{{item.id}}" wx:if="{{index<12}}" wx:key="key">
+						<image src="{{imgur}}{{item.xcxIconPath}}" style="height:{{item.xcxIconPath?'':84}}rpx" mode="widthFix">
+						</image>
+						<view>{{item.name}}</view>
+					</view>
+				</scroll-view>
+				<!-- 家用电器的广告图 -->
+				<view class="unittestingactivitiesimagenoscroll" wx:if="{{jydqAdrv.length>0}}">
+					<DefaultSwiper DataArr="{{jydqAdrv}}"></DefaultSwiper>
+				</view>
+				<!-- 家用电器的广告图结束 -->
+
+				<view class="yixianshoplist">
+					<view class="item" wx:for='{{jydqGoods}}' data-modelname="{{item.modelName}}"
+						data-xcxpage="{{item.xcxpage}}" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+						data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+						data-newclassid="{{item.indexType}}" data-id="{{item.contentId}}" data-hometitle="{{item.name}}"
+						wx:key='key'>
+						<view class="img">
+							<image src="{{imgur}}{{item.imageVo.imagePath}}"></image>
+						</view>
+						<view class="context">
+							<!-- <view class="name">芭尚装饰画-静谧</view>
+						<view class="describe">型之美 匠心而制</view>
+						<view class="price">￥540.00</view> -->
+							<rich-text nodes='{{item.describe}}'></rich-text>
+						</view>
+					</view>
+				</view>
+			</view>
+
+			<view class="path" catchtap="Fixedjump" data-modelname="mallItemSkuVO"
+			data-xcxpage="/xpages/classification/classification?4" style="margin-top:20rpx">
+			<!-- <image catchtap="selectedbtn" data-newclassid="{{item.indexType}}"     data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" data-xcxpage="/xpages/roughhouse/roughhouse" data-newclassid="127"  src="../../images/more.png"  mode="widthFix" style="width:40rpx;height:40rpx;"></image> -->
+			<view class="loader">
+				<view class="loader-inner ball-pulse">
+					<view></view>
+					<view></view>
+					<view></view>
+					<text style="font-size:24rpx;">查看更多</text>
+				</view>
+			</view>
+		</view>
+		</block>
+		
+		<!-- 家用电器结束 -->
+
+
+		<!-- 样品特卖开始 -->
+		<block wx:if="{{sampleList.length>0}}">
+			<view class="unittestingactivities" style="margin-top:30rpx;padding-bottom: 0;">
+				<view class="title flex-r-s">
+					<text class="name" catchtap="Fixedjump" data-newclassid="3" data-modelname="mallItemSkuVO"
+						data-xcxpage="/xpages/activitypage/activitypage?3" data-id="{{item.contentId}}">样品特卖</text>
+					<text class="pagemore" catchtap="Fixedjump" data-newclassid="3" data-modelname="mallItemSkuVO"
+						data-xcxpage="/xpages/activitypage/activitypage?3">更多<text style="margin-left:5rpx">+</text></text>
+				</view>
+				<!-- 样品特卖的广告图 -->
+				<view class="unittestingactivitiesimagenoscroll" wx:if="{{ypthAdrv.length>0}}">
+					<DefaultSwiper DataArr="{{ypthAdrv}}"></DefaultSwiper>
+				</view>
+				<!-- 样品特卖的广告图结束 -->
+
+			</view>
+			<!-- <view class="yixianshoplist">
+					<view class="item" wx:for='{{ypthGoods}}'  catchtap="selectedbtn" data-newclassid="{{item.indexType}}"     data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" wx:key='key'>
+						<view class="img">
+			<view class="yphottype">限量</view>
+			<image src="{{imgur}}{{item.imageVo.imagePath}}"></image>
+						</view>
+						<view class="context"> -->
+			<!-- <view class="name">芭尚装饰画-静谧</view>
+						<view class="describe">型之美 匠心而制</view>
+						<view class="price">￥540.00</view> -->
+			<!-- <rich-text nodes='{{item.describe}}'></rich-text>
+						</view>
+					</view>
+				</view> -->
+			<view class="sample-item" wx:for="{{sampleList}}" wx:key="key">
+				<sample-item catchtap="shopclick" data-pid="{{item.pid}}" data-itemname="{{item.itemName}}"
+					data-productname="{{item.productName}}" data-cid="{{item.cid}}" data-promotionsid="{{item.promotionsId}}"
+					data-index="{{index}}" data-minoneprice="{{item.minOnePrice}}" sample-data="{{item}}" />
+			</view>
+
+			<view class="path" catchtap="Fixedjump" data-newclassid="3" data-modelname="mallItemSkuVO"
+				data-xcxpage="/xpages/activitypage/activitypage?3" style="margin-top:20rpx">
+				<!-- <image catchtap="selectedbtn" data-newclassid="{{item.indexType}}"     data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" data-xcxpage="/xpages/roughhouse/roughhouse" data-newclassid="127"  src="../../images/more.png"  mode="widthFix" style="width:40rpx;height:40rpx;"></image> -->
+				<view class="loader">
+					<view class="loader-inner ball-pulse">
+						<view></view>
+						<view></view>
+						<view></view>
+						<text style="font-size:24rpx;">查看更多</text>
+					</view>
+				</view>
+			</view>
+		</block>
+		<!-- 样品特卖结束 -->
+
+
+
+		<!-- 实体门店 -->
+		<view class="mhot" style="margin-top:50rpx">
+			<view class="title flex-r-s">
+
+				<text class="name">实体门店</text>
+				<text class="hotmore" bindtap="vrmore" style="margin-right:30rpx;margin-left: auto;display:flex">
+					<text>VR实景</text>
+				</text>
+				<text class="hotmore" catchtap="Fixedjump" data-xcxpage="/xpages/phystroes/phystroes"
+					data-newclassid="145">更多<text style="margin-left:5rpx">+</text></text>
+
+			</view>
+
+			<view class="Physicalstores">
+				<view wx:for="{{storeslist}}" catchtap="StoresDetails" data-title="{{item.name}}" data-id="{{item.id}}"
+					data-imgarr="{{item.thumbnailsPath}}" wx:if="{{index<4}}" wx:key="key">
+					<view class="vrimage" catchtap="vr" data-roam="{{item.roam}}">
+						<text class="iconfont icon-VRSolidDFil" style="color:#f97004" style="margin-right:30rpx"></text>
+					</view>
+					<image mode="" style="width:100%;height:240rpx"
+						src="{{imgur}}{{filters.jsonzhuanhuan(item.thumbnailPath)[0].path}}"></image>
+					<view class="Pictureintroduction">{{item.abbName}}</view>
+
+				</view>
+			</view>
+		</view>
+		<!-- 实体门店 -->
+
+
+
+		<!-- 全案设计 -->
+		<view class="design whiteBg" style="margin:0">
+			<view class="title flex-r-s" style="align-items:center">
+				<view class="titleleft" catchtap="morequanan" data-newclassid="121">全案设计</view>
+				<view class="titleright" catchtap="morequanan" data-newclassid="121">
+					昆明200+设计师团队为您服务<text class="iconfont icon-youjiantou"></text>
+				</view>
+			</view>
+			<view class="tips flex_left" style="flex-wrap: nowrap;align-items: flex-end;">
+				<view class="tipsname" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+					data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+					data-url="{{qasjLink[0].url}}" data-hometitle="{{qasjLink[0].name}}"
+					data-id="{{qasjLink[0].contentId}}" data-newclassid="{{qasjLink[0].indexType}}">
+					<text class="iconfont icon-icon-03"
+						style="margin-right:10rpx;color: #ff6c00;"></text>{{qasjLink[0].name}}
+				</view>
+
+				<view class="tipsname" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+					data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+					data-hometitle="{{qasjLink[1].name}}" data-id="{{qasjLink[1].contentId}}"
+					data-url="{{qasjLink[1].url}}" data-newclassid="{{qasjLink[1].indexType}}"><text
+						class="iconfont icon-icon-04" style="margin-right:10rpx;color: #ff6c00;"></text>
+					<text>{{qasjLink[1].name}}</text>
+				</view>
+
+				<view class="tipsname" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+					data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+					data-url="{{qasjLink[2].url}}" data-hometitle="{{qasjLink[2].name}}"
+					data-id="{{qasjLink[2].contentId}}" data-newclassid="{{qasjLink[2].indexType}}"><text
+						class="iconfont icon-ruanzhuang-dianji"
+						style="margin-right:10rpx;color: #ff6c00;"></text>{{qasjLink[2].name}}</view>
+
+				<view class="tipsname" catchtap="selectedbtn" data-newclassid="{{item.indexType}}"
+					data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}"
+					data-url="{{qasjLink[3].url}}" data-hometitle="{{qasjLink[3].name}}"
+					data-id="{{qasjLink[3].contentId}}" data-newclassid="{{qasjLink[3].indexType}}"><text
+						class="iconfont icon-shenghuo1" style="margin-right:10rpx;color: #ff6c00;"></text>{{qasjLink[3].name}}
+				</view>
+			</view>
+
+					<!-- 全案设计的广告图 -->
+					<view class="unittestingactivitiesimagenoscroll" wx:if="{{qasjTop.length>0}}">
+					<DefaultSwiper DataArr="{{qasjTop}}"></DefaultSwiper>
+				</view>
+				<!-- 全案设计的广告图结束 -->
+
+
+			<!-- 全案设计swiper滑动的设计师 -->
+			<view class="sildewarp">
+				<swiper style="height:{{swiperHeight+70}}rpx" indicator-dots="true">
+					<swiper-item class="sildewarpitem">
+						<view class="Outsidelidebox">
+							<view class="slidebox" wx:for="{{fourquanlist}}" wx:if="{{index<4}}" wx:key='key'>
+								<view class="item" data-id="{{item.id}}" bindtap="uevaluate">
+									<view class="left">
+										<view class="img">
+											<image bindload="sildewarpImageLoad" src="{{imgur}}{{filters.jsonzhuanhuan(item.logoPath)[0].path}}" mode="widthFix" style="width:100%;height:0;"></image>
+										</view>
+									</view>
+									<view class="right">
+										<view class="rightView1">
+											<view style="display:flex;justify-content: space-between;align-items: baseline">
+												<view style="font-size:30rpx">{{item.name}}</view>
+												<view class="frequency"><text class="iconfont icon-renqiiconx"></text>人气：{{item.popularity}}
+												</view>
+											</view>
+											<view style="color:#888888;">{{item.designerDepartmentName}}</view>
+										</view>
+										<view style="color:#666666">类型：{{item.designerTypeName}}</view>
+										<view style="display:flex;justify-content: space-between;margin-top:20rpx">
+											<view class="btn1" catchtap="free_design" data-appointdesign="{{item.name}}">
+												<image src="/images/free_design.png" style="width:30rpx;height:30rpx;margin-right: 4rpx;"></image>
+												预约免费设计</view>
+											<view class="btn2" data-id="{{item.id}}" catchtap="Userevaluation" >用户评价</view>
+										</view>
+									</view>
+								</view>
+							</view>
+						</view>
+					</swiper-item>
+
+					<swiper-item class="sildewarpitem">
+						<view class="Outsidelidebox">
+							<view class="slidebox" wx:for="{{fourquanlist}}" wx:if="{{index>3&&index<8}}" wx:key='key'>
+								<view class="item" data-id="{{item.id}}" bindtap="uevaluate">
+									<view class="left">
+										<view class="img">
+											<image src="{{imgur}}{{filters.jsonzhuanhuan(item.logoPath)[0].path}}" mode="widthFix" style="width:100%;height:0;"></image>
+										</view>
+									</view>
+									<view class="right">
+											<view style="display:flex;justify-content: space-between;align-items: baseline">
+												<view style="font-size:30rpx">{{item.name}}</view>
+												<view class="frequency"><text class="iconfont icon-renqiiconx"></text>人气：{{item.popularity}}
+												</view>
+											</view>
+											<view style="color:#888888;margin-top:6rpx;">{{item.designerDepartmentName}}</view>
+										<view style="margin-top:10rpx;color:#666666">类型：{{item.designerTypeName}}</view>
+										<view style="display:flex;justify-content: center;margin-top:20rpx">
+											<view class="btn1" catchtap="free_design" data-appointdesign="{{item.name}}">
+												<image src="/images/free_design.png" style="width:30rpx;height:30rpx;margin-right: 4rpx;"></image>
+												预约免费设计</view>
+											<view class="btn2" data-id="{{item.id}}" catchtap="Userevaluation" >用户评价</view>
+										</view>
+									</view>
+								</view>
+							</view>
+						</view>
+					</swiper-item>
+
+				</swiper>
+			</view>
+			<!-- <view class="sildewarp">
+				<swiper style="height:590rpx" indicator-dots="true">
+					<swiper-item>
+						<view class="Outsidelidebox">
+							<view class="slidebox" wx:for="{{fourquanlist}}" wx:if="{{index<4}}" wx:key='key' style="height:100%;">
+								<view class="flashes">
+									<view wx:if="{{false}}" catchtap="flashes" data-toptext="{{item.caseTitle}}" data-id="{{item.id}}">
+										<image mode="aspectFill" src="{{imgur}}{{item.topImage}}"></image>
+										<view class="flashestext">
+											{{item.caseTitle}}
+										</view>
+										<view class="flashestexttwo">
+											<text wx:for="{{item.searchOptionList}}" wx:key="key"
+												wx:for-item="itema">{{itema}}|{{item.caseArea==null?'':item.caseArea}}m²|</text>
+										</view>
+									</view>
+									<view class="dottedline" wx:if="{{false}}">
+										-------------------------------------------------------------------------------
+									</view>
+									<view data-id="{{item.id}}" catchtap="uevaluate">
+										<view class="shejishimessage">
+											<view class="userimg">
+												<image src="{{imgur}}{{item.logoLittlePath}}"></image>
+											</view>
+											<view style="margin-left: 14rpx;width:210rpx">
+												<view class="messageshejishi">
+													<view class="shejishiname">{{item.name}}</view>
+												</view>
+												<view class="shopstroename">{{item.designerDepartmentName}}</view>
+											</view>
+										</view>
+										<view class="nums flex-r-s">
+											<view style="margin-top:10rpx">
+												<label>作品：</label>
+												<text>{{item.numberOfWorks}}</text>
+											</view>
+											<view>
+												<label>人气：</label>
+												<text>{{item.popularity}}</text>
+											</view>
+										</view>
+										<view class="nums flex-r-s">
+											<label>综合评分：</label>
+											<view><text wx:for='{{5}}' wx:for-item="items" wx:for-index="indexs" wx:key='key'
+													class="iconfont icon-xingxing"
+													style="color:{{item.averageScore>indexs?'#ffea4b':'#E8E8E8'}};"></text>
+											</view>
+										</view>
+									</view>
+									<view class="botton flex-r-s" style="margin-top:8rpx">
+										<view class="udesign" catchtap="free_design" data-appointdesign="{{item.name}}">预约设计</view>
+										<view class="uevaluate" data-id="{{item.id}}" catchtap="uevaluate">客户评价
+										</view>
+									</view>
+
+								</view>
+							</view>
+						</view>
+					</swiper-item>
+					<swiper-item>
+						<view class="Outsidelidebox">
+							<view class="slidebox" wx:for="{{fourquanlist}}" wx:if="{{index > 3 && index < 8}}" wx:key='key'
+								style="height:100%;">
+								<view class="flashes">
+									<view wx:if="{{false}}" catchtap="flashes" data-toptext="{{item.caseTitle}}" data-id="{{item.id}}">
+										<image mode="aspectFill" src="{{imgur}}{{item.topImage}}"></image>
+										<view class="flashestext">
+											{{item.caseTitle}}
+										</view>
+										<view class="flashestexttwo">
+											<text wx:for="{{item.searchOptionList}}" wx:key="key"
+												wx:for-item="itema">{{itema}}|{{item.caseArea==null?'':item.caseArea}}m²|</text>
+										</view>
+									</view>
+									<view class="dottedline" wx:if="{{false}}">
+										-------------------------------------------------------------------------------
+									</view>
+									<view data-id="{{item.id}}" catchtap="uevaluate">
+										<view class="shejishimessage">
+											<view class="userimg">
+												<image src="{{imgur}}{{item.logoLittlePath}}"></image>
+											</view>
+											<view style="margin-left: 14rpx;width:210rpx">
+												<view class="messageshejishi">
+													<view class="shejishiname">{{item.name}}</view>
+												</view>
+												<view class="shopstroename">{{item.designerDepartmentName}}</view>
+											</view>
+										</view>
+										<view class="nums flex-r-s">
+											<view style="margin-top:10rpx">
+												<label>作品：</label>
+												<text>{{item.numberOfWorks}}</text>
+											</view>
+											<view>
+												<label>人气：</label>
+												<text>{{item.popularity}}</text>
+											</view>
+										</view>
+										<view class="nums flex-r-s">
+											<label>综合评分：</label>
+											<view><text wx:for='{{5}}' wx:for-item="items" wx:for-index="indexs" wx:key='key'
+													class="iconfont icon-xingxing"
+													style="color:{{item.averageScore>indexs?'#ffea4b':'#E8E8E8'}};"></text>
+											</view>
+										</view>
+									</view>
+									<view class="botton flex-r-s" style="margin-top:8rpx">
+										<view class="udesign" catchtap="free_design" data-appointdesign="{{item.name}}">预约设计</view>
+										<view class="uevaluate" data-id="{{item.id}}" catchtap="uevaluate">客户评价
+										</view>
+									</view>
+
+								</view>
+							</view>
+						</view>
+					</swiper-item>
+				</swiper>
+			</view> -->
+			<!-- 全案设计swiper滑动的设计师结束 -->
+		</view>
+		<!-- 全案设计结束 -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- 居家用品 -->
+		<block wx:if="{{iscategoryarr[4] != null}}">
+			<view class="unittestingactivities">
+				<text class="unittestingactivitiestext">居家用品</text>
+				<view class="unittestingactivitiesimage">
+					<image src="{{imgur}}{{jjypAdrv[0].imageVo.imagePath}}" catchtap="selectedbtn"
+						data-newclassid="{{item.indexType}}" data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}"
+						data-id="{{item.contentId}}" data-hometitle="居家用品" data-newclassid="{{155}}" data-shoptyope="99"
+						mode="apspectFit"></image>
+				</view>
+			</view>
+			<!-- 滑动的产品 -->
+			<view class="huadonchanping">
+				<scroll-view style="width:100%;height:100%" scroll-x='true'>
+					<view class="activityidview">
+						<view class="activityidviewimage">
+							<view wx:for="{{jjypGoods}}" catchtap="yixianzishop" data-hometitle="{{item.name}}"
+								data-id="{{item.contentId}}" data-newclassid="{{item.indexType}}" wx:key="key"
+								style="margin-left:{{index==0?'':20}}rpx">
+								<image mode="aspectFill" src="{{imgur}}{{item.imageVo.imagePath}}"></image>
+								<!-- <view style="">咖啡杯套装</view> -->
+								<view class="shopprice">
+									<!-- <view style="color:#666666;">咖啡杯套装</view>
+								<view>￥540<text style="font-size:22rpx">.00</text></view> -->
+									<rich-text nodes='{{item.describe}}'></rich-text>
+								</view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+		</block>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		<!-- 用户口碑 -->
+		<view class="UseHukoutablet" style="padding-top:50rpx" wx:if="{{countallusers}}">
+			<text class="unittestingactivitiestext">{{pagesonTitle[2].name}}</text>
+			<view class="Wordofmouthmore" catchtap="Fixedjump" data-newclassid="126"
+				data-xcxpage="/xpages/wordofmouth/wordofmouth" data-id="">更多+</view>
+		</view>
+		<view class="usermoviesList">
+			<view class="listbox" wx:for="{{countallusers.list}}" wx:if='{{index<2}}' style="margin-top:{{index==0?0:5}}rpx;"
+				wx:key="key">
+				<view class="hideimg">
+					<image wx:if="{{item.memberLogoImage.imagePath !=null }}" src="{{imgur}}{{item.memberLogoImage.imagePath}}"
+						mode="aspectFill"></image>
+					<image wx:else src="../../images/Nopictures.png" mode="aspectFill"></image>
+				</view>
+
+				<view class="content">
+					<view class="username">{{item.title}}</view>
+					<view class="koubeicontent {{item.collapse?'text-collapse':''}}"><text
+							style="white-space:pre-wrap;">{{item.briefContent}}</text></view>
+					<view class="calltext" hidden="{{item.collapse==undefined}}" data-index="{{index}}" catchtap="textqueries">
+						{{item.collapse?"全文":"收起"}}</view>
+					<view class="userimage">
+						<view wx:for="{{item.topImageList}}" wx:for-item="img" wx:key="key" data-index="{{index}}"
+							bindtap="previewImage" data-topimagelist="{{item.topImageList}}">
+							<image style="width:100%;height:127.5rpx;border-radius:3px;" mode="aspectFill"
+								src="{{imgur}}{{img.imagePath}}"></image>
+						</view>
+					</view>
+
+					<view class="messagetime">
+						<view class="messagetime-time">{{item.createDate}}</view>
+						<view style="display:flex;align-items: center;">
+							<text class="iconfont icon-xihuan {{item.isclick == true?'dianzan':''}}" decode="true"
+								bindtap="onPraiseTap" data-isclick="{{item.isclick}}" data-index="{{index}}"
+								data-id="{{item.id}}">&nbsp;<text>{{item.praise}}</text>&nbsp;&nbsp;&nbsp;&nbsp;</text>
+							<view class="iconfont icon-duihua1" catchtap="meyaopingjia" data-id="{{item.id}}"
+								data-comment-index="{{index}}"></view>
+						</view>
+					</view>
+					<!-- 评论内容 -->
+					<view class="page-comments" hidden="{{item.reviewList==''}}">
+						<view class="allow_comments_on" wx:for="{{item.reviewList}}" wx:if="{{index<1}}" wx:key="key">
+							<view class="pinglunname">{{item.memberName==null?'':item.memberName}}:</view>
+							<view>{{item.content}}</view>
+						</view>
+						<view>
+						</view>
+						<view class="calltext" bindtap="lookall" wx:if="{{item.reviewList[1]}}">查看全部</view>
+					</view>
+				</view>
+			</view>
+		</view>
+
+
+
+		<!-- 生活细节，今日头条，视频专栏 ，生活场景-->
+		<view class="fourtitle">
+			<view wx:for="{{morexijietoutiao}}" class="morexijietoutiao {{index==0?'':'morexijietoutiaoindex'}}" wx:key='key'
+				catchtap="selectedbtn" data-newclassid="{{item.indexType}}" data-modelname="{{item.modelName}}"
+				data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}" data-hometitle="{{item.name}}"
+				data-id="{{item.contentId}}" data-newclassid="{{item.indexType}}">
+				<view>
+					<text style="color:#000000;font-weight: 600;">{{item.name==null?'':item.name}}</text>
+					<view class="border"></view>
+					<view class="isNewOpen" wx:if="{{item.isNewOpen}}">{{item.isNewOpen}}</view>
+				</view>
+				<image mode="widthFix" src="{{imgur}}{{item.imageVo.imagePath}}"
+					style="width:30%;height200rpx; border-radius:12rpx;"></image>
+			</view>
+		</view>
+
+
+		<view class="fadeIn" wx:if="{{iosDialog22}}">
+			<view class="weui-mask" bindtap="close"></view>
+			<view class="weui-dialog" style="border-radius:24rpx;">
+				<view style="margin-top:20rpx">发表评价</view>
+				<view class="pingjiacon">
+					<textarea class="pingjiatext" bindinput="shurucontent" placeholder="请输入文字"></textarea></view>
+				<view class="queding" catchtap="queding">确定</view>
+			</view>
+		</view>
+
+		<!-- 视频专栏 -->
+		<view>
+			<view class="video-title">
+				<text class="name">视频专栏</text>
+				<text class="more-video" bindtap="toVideoList">更多<text style="margin-left:5rpx">+</text></text>
+			</view>
+
+			<scroll-view class="scroll-view_H" scroll-x
+				style="width: 710rpx;margin-left:20rpx;margin-bottom:20rpx;margin-right:20rpx;">
+				<view style="display: inline-block;" class="allcircular allhouse" wx:for="{{videoSearchItem}}"
+					wx:if="{{index<12}}" wx:key="key" catchtap="toVideoList" data-id="{{item.id}}">
+					<image src="{{item.imageVo.imagePath}}" style="height:{{item.xcxIconPath?'':84}}rpx" mode="widthFix"></image>
+					<view>{{item.searchName}}</view>
+				</view>
+			</scroll-view>
+
+			<view class="video-list">
+				<video-list video-list="{{videoList}}" bindoninit="onVideoListInit" current="{{playIndex}}"></video-list>
+			</view>
+		</view>
+
+		<view class="bottomview"></view>
+	</scroll-view>
+	<tabindex clicktab='1' bind:isclick="setad"></tabindex>
+</view>
+
+<Allpagesneed></Allpagesneed>
+<!-- <kefu /> -->
+
+
+
+
+<!-- 视频专栏 -->
+<view wx:if="{{videoFloor}}">
+	<view class="video-title">
+		<text class="name">视频专栏</text>
+		<text class="more-video" bindtap="toVideoList">更多<text style="margin-left:5rpx">+</text></text>
+	</view>
+
+	<scroll-view class="scroll-view_H" scroll-x style="width: 710rpx;margin-left:20rpx;margin-bottom:20rpx;margin-right:20rpx;" wx:if="{{videoFilterList && videoFilterList.length > 0}}">
+		<view style="display: inline-block;" class="allcircular allhouse" wx:for="{{videoFilterList}}" wx:if="{{index<12}}" wx:key="key" catchtap="toVideoList" data-id="{{item.id}}">
+			<view style="z-index: 1">
+				<image src="{{imgur}}{{item.imageVo.imagePath}}" style="height:{{item.xcxIconPath?'':84}}rpx" mode="widthFix"></image>
+			</view>
+			<view>{{item.searchName}}</view>
+		</view>
+	</scroll-view>
+
+	<view class="video-list" wx:if="{{videoList && videoList.length > 0}}">
+		<video-list video-list="{{videoList}}" bindoninit="onVideoListInit" current="{{playIndex}}"></video-list>
+	</view>
+
+	<view style="width: 100%; height: 50rpx;"></view>
+</view>
+<!-- 视频专栏 -->
+
+
+<scroll-view class="vertical-scroll" slot="body" scroll-top="{{scrollTop}}" scroll-y="true"
+		style="height:calc(100% - {{tabIndexHeight}}rpx)" bindscroll="onScroll" scroll-anchoring="true">
+
+		<!-- 顶部空白占位 -->
+		<view class="top-layout" wx:if="{{!isPageShow}}" style="height:{{pagebuttonheight+pagemenuButtontop+10}}rpx">
+		</view>
+
+		
+	</scroll-view>
+
+		

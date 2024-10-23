@@ -1,0 +1,98 @@
+.swiper-block {
+  height: 910rpx;
+  width: 100%;
+}
+ 
+.swiper-item {
+  /* display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: unset;
+  text-align: center; */
+  padding: 0 10rpx;
+  box-sizing: border-box;
+  padding-top: 20rpx;
+}
+ 
+.slide-image {
+  height: 720rpx;
+  width: 100%;
+  z-index: 1;
+  box-shadow: 0px -2px 5px  #3333334d;
+  display: block;
+}
+ 
+.active {
+  /* transform: scale(1.21); */
+  /* transition: all 0.2s ease-in 0s; */
+  z-index: 20;
+}
+
+.swiper-name{
+  width: 100%;
+	font-family: SourceHanSansCN-Regular;
+	font-size: 33rpx;
+  color: #000000;
+  text-align: center;
+  margin-top: 40rpx;
+}
+
+.scroll-box{
+  height: 231rpx;
+  width: 100%;
+  white-space: nowrap;
+}
+
+.scroll-view{
+  display: inline-block;
+  width: 220rpx;
+  height: 100%;
+  box-sizing: border-box;
+  padding: 0 20rpx;
+ 
+}
+.scroll-view>view{
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  border: solid 4rpx #898989;
+}
+.active-mall-image{
+  border: solid 4rpx #000000 !important;
+
+}
+.scroll-view image{
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.generate{
+  margin: 0 auto;
+  margin-top: 90rpx;
+  width: 300rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  color: #910000;
+  font-size: 30rpx;
+  border: thin solid #910000;
+  border-radius: 70rpx;
+  margin-bottom: 70rpx;
+}
+
+.scroll-fans{
+  height: 100%;
+  width: 100%;
+  
+}
+
+.no-image{
+  width: 100%;
+  height: 100%;
+}
+
+.dwg{
+  margin-top: 10000rpx;
+}

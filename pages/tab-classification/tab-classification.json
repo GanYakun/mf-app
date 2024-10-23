@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+  "tabindex":"/components/tab-navigation/index",
+  "Allpagesneed":"/components/Allpagesneed/Allpagesneed",
+  "leftbutton":"/components/leftbutton/index"
+  },
+  "component": true,
+  "navigationBarTitleText": "家居商城"
+}

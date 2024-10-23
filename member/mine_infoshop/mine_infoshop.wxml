@@ -1,0 +1,58 @@
+<!--member/mine_infoshop/mine_infoshop.wxml-->
+<leftbutton toptitle='{{issuerUserName}}'></leftbutton>
+<view class="member-box" style="height:calc(100% - {{LeftButtonnavHeight}}rpx)">
+  <view style="width:100%;position: relative;">
+    <view class="top-box"></view>
+    <view class="statistics-box">
+      <view class="statistics-item">月签到: <text>{{monthCount}}</text></view>
+      <view class="statistics-item">成功签到: <text>{{allCount}}</text></view>
+    </view>
+  </view>
+
+  <view class="scrren-box">
+    <view class="chioce-date">
+      <view class="time-box">
+        <text style="margin-right:10rpx;">日期</text>
+        <view style="font-size:24rpx;color:#898989;display:flex;align-items: center;">
+          <picker mode="date" value="" class="picker" bindchange="startTime" >{{startTime||'开始时间'}}</picker>
+          <view class="time-connect"></view>
+          <picker class="picker" mode="date" value="picker" bindchange="endTime">{{endTime||'结束时间'}}</picker>
+        </view>
+        <image src="{{newFtpUrl}}/ic_chioce_time.png" style="height:29rpx;width:29rpx;margin-left:auto;"></image>
+      </view>
+      <view class="num-box">
+        <view class="total">
+          合计：{{dataList.length}}人
+        </view>
+        <view class="reset-ic" bindtap="reset">
+          <image src="{{newFtpUrl}}/ic_reset.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="search-layout">
+    <view class="left">
+      <input placeholder="请输入关键字"   bindinput="bindInput" value="{{inputName}}"></input>
+      <image style="width: 26rpx;height: 26rpx;" src="{{ftpUrl}}/ic_customer_search.png" bindtap="serch"></image>
+    </view>
+    <view class="right" wx:if="{{isLeader && !issuerMemberId}}" bindtap="toAdmin">我的团队</view>
+  </view>
+
+  <view class="member-list-head">
+    <view>客户</view>
+    <view>品牌</view>
+    <view>签到时间</view>
+    <view>签到状态</view>
+  </view>
+  <scroll-view scroll-y="true" class="member-scroll" bindscrolltolower="loadMoreData">
+    <view class="member-item" wx:for="{{dataList}}">
+      <view class="text1">{{item.receiveMemberName?item.receiveMemberName:''}}</view>
+      <view class="text2">{{item.brand?item.brand:''}}</view>
+      <view class="text2">{{item.receiveTime}}</view>
+      <view class="text2">{{item.statusName}}</view>
+
+    </view>
+    <!-- <view class="divider"></view> -->
+  </scroll-view>
+</view>

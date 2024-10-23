@@ -1,0 +1,126 @@
+<!-- 本月爆款的产品筛选 -->
+<view class='mask' bindtap="close" data-statu="close" wx:if="{{showModalStatus}}"> </view>
+<view class='Drawer' animation="{{animationData}}" wx:if="{{showModalStatus}}">
+  <view class="Topview">
+    <view style="height:{{LeftButtonnavHeight}}rpx;width:100%;background:#ffffff;">
+
+    </view>
+    <!-- 返回上一层 -->
+    <!-- <view class="black" catchtap="black" data-index="{{theNumber}}" wx:if="{{theNumber!=0}}"><text class="iconfont icon-fanhui"></text>返回</view> -->
+
+    <!-- 第零层的筛选按钮 最顶层 -->
+    <block wx:if="{{theNumber>-1}}">
+      <view class="scrTitle">{{Title[0]}}</view>
+      <view class="FilterElements">
+        <view wx:for="{{screenarr[0].arr}}" class="son {{chioneId[0]==item.id?'reallychioce':''}}" catchtap="shopcidclick" data-index="{{theNumber}}" data-indexs="{{index}}" data-topname="{{item.name?item.name:item.cname}}" data-id="{{item.id}}" wx:key="key">
+          {{item.name?item.name:item.cname}}
+        </view>
+      </view>
+
+      <block wx:if="{{seriesList.length>1&&!isSeries}}">
+        <view class="scrTitle">系列</view>
+        <view class="FilterElements">
+          <view wx:for="{{seriesList}}" wx:if="{{item.typename}}" class="son {{seriesCode==item.typecode?'reallychioce':''}}" catchtap="seriesTap" data-index="{{index}}" wx:key="key">
+            {{item.typename}}
+          </view>
+        </view>
+      </block>
+
+      <!-- 第零层的附属分类 -->
+      <block wx:if="{{chioneId[0]}}" wx:if="{{theNumber!=0&&(screenarr[1].arr.length)>1}}">
+        <view class="scrTitle">{{Title[1]}}</view>
+        <view class="FilterElements">
+          <view wx:for="{{screenarr[1].arr}}" class="son {{chioneId[1]==item.id?'reallychioce':''}}" catchtap="subsidiary" data-topname="{{item.name?item.name:item.cname}}" data-id="{{item.id}}" wx:key="key">
+            {{item.cname}}
+          </view>
+        </view>
+      </block>
+    </block>
+
+    <!-- 第二层的筛选按钮 -->
+    <!-- <block wx:if="{{theNumber>0}}">
+<view class="scrTitle">{{Title[1]}}</view>
+<view class="FilterElements" >
+    <view wx:for="{{screenarr[1].arr}}" class="son {{chioneId[1]==item.id?'reallychioce':''}}" catchtap="otherClick"  data-index="{{theNumber}}"
+      data-topname="{{item.cname}}" data-id="{{item.id}}" wx:key="key">
+      {{item.cname}}
+    </view>
+  </view>
+</block> -->
+
+    <!-- 第二层的标题 -->
+    <!-- <view class="scrTitle" wx:if="{{theNumber>1}}">{{Title[2]}}</view> -->
+    <!-- 品牌 -->
+    <block wx:if="{{theNumber > 0&&BrandList.length>1}}">
+      <view class="scrTitle" wx:if="{{BrandList.length>0}}">品牌</view>
+      <view class="FilterElements">
+        <view wx:for="{{BrandList}}" class="son {{chioneId[2].SubID[0]==item.id && chioneId[2].SubID[0]?'reallychioce':(!chioneId[2].SubID[0]&&!item.id?'reallychioce':'')}}" catchtap="BrAndQitClick" data-type="0" data-index="2" data-topname="{{item.name}}" data-id="{{item.id}}" wx:key="key">
+          {{item.name}}
+
+        </view>
+      </view>
+    </block>
+    <!-- 品牌结束 -->
+
+    <!-- 非销售属性 -->
+    <block wx:if="{{noSalesList.length > 0}}">
+      <block wx:for="{{noSalesList}}" wx:if="{{parentItem.propValueList.length>1}}" wx:key="key" wx:for-item="parentItem" wx:for-index="parentIndex">
+        <view class="scrTitle">{{parentItem.pname}}</view>
+        <view class="FilterElements">
+          <view wx:for="{{parentItem.propValueList}}" class="son {{parentItem.slelectId==item.id?'reallychioce':''}}" catchtap="noSalesClick" data-parent-index="{{parentIndex}}" data-index="{{index}}" wx:key="key">
+            {{item.vname}}
+          </view>
+        </view>
+      </block>
+    </block>
+
+    <!-- 非销售属性结束 -->
+
+    <!-- 第三层 -->
+    <block wx:if="{{theNumber==2}}">
+      <!-- <view class="FilterElements" >
+    <view wx:for="{{screenarr[2].arr}}" class="son {{chioneId[2]==item.id?'reallychioce':''}}" catchtap="shopcidclick" 
+      data-topname="{{item.cname}}" data-id="{{item.id}}" wx:key="key">
+      {{item.cname}}
+    </view>
+  </view> -->
+
+      <!-- 规格 -->
+      <block wx:if="{{theNumber>1}}">
+        <block wx:for="{{qitachoice}}" wx:for-index="partIndex" wx:key="key">
+          <view class="scrTitle">{{item.pname}}</view>
+          <view class="FilterElements">
+            <view wx:for="{{item.propValueList}}" wx:for-item="items" class="son {{(chioneId[2].SubID[1].norms[partIndex]||'')==items.id?'reallychioce':''}}" catchtap="BrAndQitClick" data-item-index="{{partIndex}}" data-type="1" data-index="2" data-topname="{{items.vname}}" data-id="{{items.id}}" wx:key="key">
+              {{items.vname}}
+            </view>
+          </view>
+        </block>
+      </block>
+      <!-- 规格结束 -->
+    </block>
+
+    <!-- 第四层 产品标签 -->
+
+    <block wx:if="{{shopLabel.length>0}}">
+
+      <view class="scrTitle">标签</view>
+      <view class="FilterElements">
+        <view wx:for="{{shopLabel}}" wx:for-item="item" class="son {{item.isClick?'reallychioce':''}}" catchtap="labelClick" data-index="{{index}}" wx:key="key">
+          {{item.DESCRIPTION}}
+        </view>
+      </view>
+
+    </block>
+    <!-- 规格结束 -->
+
+    <!-- <button bindtap="test">测试</button> -->
+  </view>
+  <view class="reset">
+    <view class="resettext">
+      <view catchtap="reset" data-thenumber="{{theNumber}}">重置</view>
+      <!-- <view catchtap="test" >重置</view> -->
+
+      <view catchtap="_success">确定</view>
+    </view>
+  </view>
+</view>

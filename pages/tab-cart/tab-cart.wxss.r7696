@@ -1,0 +1,230 @@
+@import "/utils/font.wxss";
+
+page {
+  background-color: #f7f7f7;
+
+}
+
+.button_bootm {
+  /* position: absolute; */
+  bottom: 120rpx;
+  height: 100rpx;
+  width: 100%;
+  background-color: #ffffff;
+  margin: 0 auto;
+  /* border-radius: 100rpx; */
+  overflow: hidden;
+  /* margin-top: 10rpx; */
+}
+
+.bootmbox {
+  display: flex;
+  /* width: 100%; */
+  height: 100%;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20rpx;
+}
+
+.circlebox {
+  width: 35rpx;
+  height: 35rpx;
+  border: 3rpx #999999 solid;
+  border-radius: 50%;
+  /* margin-left: 5%; */
+}
+
+.allcirclebox {
+  width: 35rpx;
+  height: 35rpx;
+  border-radius: 50%;
+  /* margin-left: 5%; */
+  background-color: #f97705;
+  text-align: center;
+  line-height: 35rpx;
+  border: 3rpx transparent solid;
+
+  /* border: 3rpx #333 solid; */
+}
+
+.fonttext {
+  font-size: 45rpx;
+}
+
+.selectall {
+  margin-left: 20rpx;
+  color: #666666;
+  font-size: 28rpx;
+}
+
+.settlement {
+  background: linear-gradient(to right, #FE5605, #FF7700);
+  margin-left: auto;
+  width: 180rpx;
+  height: 70rpx;
+  border-radius: 80rpx;
+  font-size: 28rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+}
+
+.cartlist {
+  width: 100%;
+
+
+}
+
+
+.cartlistone {
+  display: flex;
+  align-items: center;
+  /* margin-top: 20rpx; */
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  background-color: #ffffff;
+  margin: 20rpx;
+  border-radius: 20rpx;
+  padding-right: 20rpx;
+}
+
+
+
+
+
+
+
+.cartcircle {
+  margin-left: 30rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  border: 3rpx #999999 solid;
+  line-height: 30rpx;
+  text-align: center;
+}
+
+.ischange {
+  margin-left: 30rpx;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  border: 3rpx transparent solid;
+  background-color: #f97705;
+  text-align: center;
+  line-height: 30rpx;
+}
+
+.cartimage {
+  margin-left: 10rpx;
+  width: 200rpx;
+  height: 150rpx;
+  /* margin-bottom: auto; */
+}
+
+.cartimage image {
+  width: 100%;
+  height: 100%;
+}
+
+.shopname {
+  margin-left: 30rpx;
+  margin-bottom: auto;
+  font-size: 24rpx;
+  color: #666666;
+  width: 55%;
+  line-height: 43rpx;
+}
+
+.shopprice {
+  font-size: 28rpx;
+  color: #ff3400;
+margin-bottom: 20rpx;
+}
+
+.shopnum {
+  display: flex;
+}
+
+.changenum {
+height: 38rpx;
+line-height: 30rpx;
+  border: 1rpx #cccccc solid;
+  font-size: 36rpx;
+padding: 0rpx 10rpx;
+
+}
+
+.shopnumber {
+padding: 0rpx 20rpx;
+  height: 38rpx;
+  border-top: 1rpx #cccccc solid;
+  border-bottom: 1rpx #cccccc solid;
+  font-size: 26rpx;
+  text-align: center;
+  line-height: 38rpx;
+}
+
+.deleteicon {
+  font-size: 28rpx;
+  margin-left: auto;
+  margin-right: 20rpx;
+  margin-top: auto;
+}
+
+.icon-xuanzhong1 {
+  color: #ffffff;
+  font-size: 30rpx;
+}
+
+
+.guige {
+  color: #999999;
+  font-size: 22rpx;
+  background: #f9f9f9;
+  border-radius: 8rpx;
+  margin: 10rpx 0;
+  padding: 0 10rpx;
+  /* height: 60rpx; */
+  /* line-height: 60rpx; */
+}
+
+.zanwushuju {
+  width: 100%;
+  margin-top: 30rpx;
+  color: #999999;
+  font-weight: bold;
+  font-size: 28rpx;
+  text-align: center;
+}
+
+.icon-lajitong {
+  font-size: 30rpx;
+  color: #999999;
+}
+
+.shopnumberNoClick{
+  height: 40rpx;
+  line-height: 40rpx;
+  border-radius: 12rpx;
+  border: 1rpx solid #cccccc;
+  padding: 0rpx 10rpx;
+  font-size: 24rpx;
+  text-align: center;
+  font-weight: bold;
+}
+
+.deleteshop{
+  display: flex;
+  margin-left: auto;
+}
+
+.deleteshop>view:nth-child(1){
+  width: 92%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size:28rpx;
+  color: #242424;
+}

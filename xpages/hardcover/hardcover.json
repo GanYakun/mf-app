@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "tabindex":"/components/tab-navigation/index",
+    "search":"/components/search/search"
+  }
+
+}

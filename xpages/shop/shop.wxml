@@ -1,0 +1,465 @@
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 加载弹窗结束 -->
+
+<view wx:if="{{hideCustomBar!=1}}">
+  <leftbutton wx:if="{{list.bname}}" toptitle="[{{list.bname }}] {{shareTitle}}"></leftbutton>
+  <leftbutton wx:else toptitle="{{shareTitle}}"></leftbutton>
+</view>
+
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<import src="../../wxParse/wxParse.wxml" />
+<!-- scroll-top="{{scrollTop}}"  -->
+<scroll-view bindscroll="pageScroll" scroll-with-animation="{{true}}" class="page-scroll" scroll-into-view="{{scrollToId}}" style="height:calc(100% - 110rpx - {{hideCustomBar!=1?LeftButtonnavHeight:0}}rpx)" scroll-y="true">
+  <view class='carousel' wx:if="{{imagePathList && imagePathList.length > 0}}">
+    <swiper wx:if="{{chioceIndex==1}}" class='carousel_swiper' style="height:562.5rpx" current='0' bindchange="change" circular='true'>
+      <!-- <swiper class='carousel_swiper' style="height:{{swiperHeight}}rpx" current='0' bindchange="change" circular='true'> -->
+      <block wx:for="{{imagePathList}}" wx:key="key">
+        <swiper-item bindtap='chomeCarouselClick' data-index="{{index}}" data-imgarr="{{imagePathList}}">
+          <image bindload="imgload" id="img" class="carouselImg" show-menu-by-longpress="true" src='{{imgurl}}{{item}}' mode='aspectFit'></image>
+        </swiper-item>
+      </block>
+    </swiper>
+    <view class="math" wx:if="{{chioceIndex==1}}"><text style="font-size:30rpx;">{{shopindex+1}}</text>/{{imagePathList.length}}</view>
+  </view>
+  <video class="video-box" hidden="{{!(chioceIndex==0 && list.productVedio)}}" src="{{imgurl}}{{list.productVedio}}"></video>
+  <view class="active-chioce">
+    <view class="{{chioceIndex==index?'chioce-item':'chioce-noitem'}}" catchtap="chioceTap" wx:for="{{chioceArr}}" wx:key="key" wx:if="{{list[item.type].length>0}}" data-index="{{index}}">{{item.name}}</view>
+  </view>
+
+  <!-- 限时抢购的样式 -->
+  <view wx:if="{{ordertype == 1 && !skuSelectTips}}" class="times">
+    <view class="left-price">
+      <!-- <view>抢购价</view> -->
+      <view>
+        <view wx:if="{{skustr!=null || one_price!= null}}"><text style="font-size:48rpx"><text style="font-size:30rpx;">￥</text>{{filters.toFix2(one_price)}}</text></view>
+        <view wx:else><text style="font-size:48rpx"><text style="font-size:30rpx;">¥</text>{{filters.toFix2(itemPrice)}}</text></view>
+        <!-- 划线价 -->
+        <view style="height:1rpx;width:10rpx;"></view>
+
+        <!-- <view style="text-decoration:line-through;">¥{{filters.toFix2(originalPrice)}}</view> -->
+      </view>
+
+    </view>
+    <view class="end-time" style="font-size:22rpx">距离结束还有:
+      <view style="font-size:20rpx">
+        <van-count-down bindgetTime="getTime" time="{{time}}" isshoptime='true' format="DD 天 HH 小时 mm 分 ss 秒" />
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{xshopmessage.priceType&&ordertype == 1}}" class="priceType1">{{xshopmessage.priceType}}</view>
+
+  <!-- 样品特卖的抢购样式 -->
+  <view wx:if="{{ordertype == 3 && !skuSelectTips}}" class="ypth-times">
+    <view class="left-price">
+      <view></view>
+      <view>
+        <view wx:if="{{skustr!=null && specialPrice!= null}}"><text style="font-size:48rpx"><text style="font-size:30rpx;">￥</text>{{filters.toFix2(specialPrice)}}</text></view>
+        <view wx:else><text style="font-size:48rpx"><text style="font-size:30rpx;">¥</text>{{filters.toFix2(itemPrice)}}</text></view>
+        <!-- 划线价 -->
+        <view style="height:1rpx;width:10rpx;"></view>
+        <view style="text-decoration:line-through;" wx:if="{{skustr!=null || one_price!= null}}">
+          ¥{{filters.toFix2(one_price)}}</view>
+      </view>
+
+    </view>
+
+  </view>
+
+  <!-- 商品的名字和价格 -->
+  <view class="shopmessage">
+    <view style="display: flex;flex-direction: row;justify-content: space-between;align-items: flex-start;">
+      <view>
+        <view class="shopname" wx:if="{{productName}}" bindlongtap='copy' data-message='{{productName}}'> <text wx:if="{{list.bname}}" decode="true">[{{list.bname}}]&nbsp;&nbsp;</text>{{productName}}</view>
+        <view class="shopname" wx:else bindlongtap='copy' data-message='{{productName}}'> <text wx:if="{{list.bname}}" decode="true">[{{list.bname}}]&nbsp;&nbsp;</text>{{itemName}}</view>
+      </view>
+      <!-- 标签 -->
+      
+      <view wx:if="{{appletLabelsList[0]}}" class="ttthotcake" >{{appletLabelsList[0]}}</view>
+
+    </view>
+    
+    <block wx:if="{{ordertype!=1 && ordertype!=3}}">
+      <view class="price" wx:if="{{!skuSelectTips && (skustr!=null || one_price!= null)}}"><text style="font-size:40rpx">￥{{filters.toFix2(one_price)}}</text>
+        <!-- <text class="shop-stock" style="margin-left:70rpx" wx:if="{{stock}}">库存:{{stock}}</text> -->
+        <text class="shop-stock" style="margin-left:70rpx">货期：30 - 40个工作日发货</text>
+        <text class="shop-stock" wx:if="{{ordinaryLimitCounts}}">限购:{{ordinaryLimitCounts}}</text>
+        <text class="shop-stock" wx:if="{{limitQuantity}}">限量:{{limitQuantity}}</text>
+
+      </view>
+      <view class="price" wx:else>
+        <!-- <text style="font-size:40rpx">￥{{filters.toFix2(itemPrice)}}</text> -->
+        <!-- <text class="shop-stock" style="margin-left:70rpx" wx:if="{{stock}}">库存:{{stock}}</text> -->
+        <text class="shop-stock" style="margin-left:0rpx">货期：30 - 40个工作日发货</text>
+        <text class="shop-stock" wx:if="{{limitQuantity}}">限量:{{limitQuantity}}</text>
+      </view>
+      <view wx:if="{{xshopmessage.priceType}}" class="priceType">{{xshopmessage.priceType}}</view>
+
+    </block>
+
+    <view wx:if="{{xshopmessage.subtitle}}" class="subtitle-border"></view>
+    <view class="subtitle" wx:if="{{xshopmessage.subtitle}}">{{xshopmessage.subtitle}}</view>
+    <!-- 限时抢购剩余的时间 -->
+  </view>
+
+  <view class="content-grids" bindtap="DesignerDetails" data-id="{{xshopmessage.designerId}}" wx:if="{{xshopmessage.designerId&&designerId!='null'}}">
+    <view class="imagesControllertest">
+      <image style="width:100%;height:100%" src="{{imgurl}}{{xshopmessage.designerDecoratorEntity.imageVo.imagePath}}" mode="widthFix"></image>
+    </view>
+    <!-- 设计师开始 -->
+    <view class="containsRights">
+      <view class="alignment">
+        <view style="font-size: 30rpx;color:#000" class="designerName">{{xshopmessage.designerDecoratorEntity.name}}
+        </view>
+        <view style="font-size:23rpx;color:#666666;">{{xshopmessage.designerDecoratorEntity.designerDepartmentName}}
+        </view>
+      </view>
+      <view class="TypeLevelPopularity">
+        <view>类型：{{xshopmessage.designerDecoratorEntity.designerTypeName}}</view>
+        <view wx:if="{{xshopmessage.designerDecoratorEntity.designerLevelName}}">
+          级别：{{xshopmessage.designerDecoratorEntity.designerLevelName}}</view>
+        <view>人气：{{xshopmessage.designerDecoratorEntity.popularity}}</view>
+      </view>
+    </view>
+  </view>
+  <!-- 设计师结束 -->
+  <!-- 商品服务 -->
+  <view class="shopservice">
+    <view class="item" catchtap="onPopupTap" data-remark="{{item.remark}}" wx:for="{{serviceList}}">
+      <text class="iconfont icon-xuanzhong"></text>
+      <text>{{item.name}}</text>
+    </view>
+  </view>
+
+  <block wx:if="{{buytype!='dangqi' && couponList!=''}}" wx:if="{{false}}">
+    <view class="activity flex-r-s" bindtap="clickmes" wx:if="{{buytype != 'flashsale'}}">
+      <view class="clickmes_left">
+        <view style="font-size:14px">优惠活动</view>
+        <view wx:for="{{couponList}}" wx:key="key" class="parameters">
+          <view>{{item.couponTitle}}</view>
+        </view>
+      </view>
+      <view class="iconfont icon-youjiantou"></view>
+    </view>
+  </block>
+  <!-- <view class="clickmes flex-r-s" bindtap="clickme" data-btn="{{2}}" wx:if="{{getmallItemSkuPropertiesList.length>0}}">
+    <view>
+      <view class="item" wx:for="{{getmallItemSkuPropertiesList}}" wx:key="key">
+        {{getmallItemSkuPropertiesList[index].pname}}
+        <text wx:if="{{index+1!=getmallItemSkuPropertiesList.length}}" decode="true" style="font-size:20rpx">&nbsp;/&nbsp;</text>
+      </view>
+    </view>
+    <view class="iconfont icon-youjiantou"></view>
+  </view> -->
+
+  <view class="clickmes flex-r-s" bindtap="toShowSkuDialog" data-source-action="skuSelect" wx:if="{{getmallItemSkuPropertiesList.length>0}}">
+    <view>
+      <view class="item" wx:for="{{getmallItemSkuPropertiesList}}" wx:key="key">
+        {{getmallItemSkuPropertiesList[index].pname}}
+        <text wx:if="{{index+1!=getmallItemSkuPropertiesList.length}}" decode="true" style="font-size:20rpx">&nbsp;/&nbsp;</text>
+      </view>
+    </view>
+    <view class="iconfont icon-youjiantou"></view>
+  </view>
+
+  <block wx:if="{{ordertype != 1}}">
+    <view class="clickme">同类推荐</view>
+    <view class="huadong">
+      <view class="item">
+        <view class="img">
+          <image src="{{imgurl}}{{imagePathList[0]}}"></image>
+          <!-- <view class="bootmtou" wx:if="{{skustr!=''||one_price!=null}}">￥{{one_price}}</view>
+			<view class="bootmtou" wx:else>￥{{itemPrice}}</view> -->
+          <view class="bootmtou" wx:if="{{skustr!='' || one_price!= null}}">￥{{filters.toFix2(one_price)}}</view>
+          <view class="bootmtou" wx:else>{{itemPrice}}</view>
+        </view>
+        <view class="title" wx:if="{{productName!=null}}">
+          <block wx:if="{{list.bname}}">[{{list.bname}}]</block> {{productName}}
+        </view>
+        <view class="title" wx:else>
+          <block wx:if="{{list.bname}}">[{{list.bname}}]</block> {{itemName}}
+        </view>
+      </view>
+      <view class="jiaone">
+        +
+      </view>
+      <scroll-view class="scroll_header" scroll-x='true' bindscrolltolower="onScrollToLower">
+        <view wx:for="{{getMallItemsList}}" wx:key='key' class="scroll_item" bindtap="shop" data-id="{{item.itemId}}">
+          <view class="img">
+            <image src="{{imgurl}}{{item.picUrl}}"></image>
+            <view class="bootmtou">￥{{filters.toFix2(item.minOnePrice)}}</view>
+
+          </view>
+          <view class="title" wx:if="{{item.productName!=null}}">
+            <block wx:if="{{item.bname}}">[{{item.bname}}]</block> {{item.productName}}
+          </view>
+          <view class="title" wx:else>
+            <block wx:if="{{item.bname}}">[{{item.bname}}]</block> {{item.itemName}}
+          </view>
+        </view>
+      </scroll-view>
+
+
+    </view>
+  </block>
+  <view>
+    <!-- <view class="shopshow {{isFixed?'fixed-tabar':''}}" style="top:{{LeftButtonnavHeight-menuHeight}}rpx"> -->
+    <view class="shopshow">
+      <view wx:for='{{shopshow}}' data-index="{{index}}" style="color:{{shopindexs==index?'#f97704;':''}}" catchtap="shopchioce" wx:key='key'>{{item}}</view>
+    </view>
+    <!-- </view> -->
+    <!-- <view wx:if="{{isFixed}}" style="width:100%;height:100rpx;margin-top: 40rpx;"></view> -->
+
+    <!-- 要切换的view -->
+    <view class="chioceview">
+      <!-- <scroll-view scroll-x="true">
+		<rich-text style="white-space: normal;" nodes="<div style='width:100%;height:auto; overflow: hidden; display: flex; flex-direction: column;align-items: center;padding:0 20px;'>{{detail}}</div>" ></rich-text>
+	</scroll-view> -->
+      <image wx:if="{{filters.jsonzhuanhuan(xshopmessage.brandImagesPath)[0].path}}" src="{{imgurl}}{{filters.jsonzhuanhuan(xshopmessage.brandImagesPath)[0].path}}" style="width:100%;display:block;" mode="widthFix"></image>
+      <!-- <view id="proisplay" class="pro-isplay"> -->
+        <template is='wxParse' data="{{wxParseData:detail.nodes}}" />
+      <!-- </view> -->
+      <view id="speparam" class="spe-param">
+        <template is='wxParse' data="{{wxParseData:article.nodes}}" />
+      </view>
+      <!-- 品牌产品专题 -->
+      <view class="spe-param" wx:if="{{brandZtContent}}">
+        <template is='wxParse' data="{{wxParseData:brandZtContent.nodes}}" />
+      </view>
+      <!-- 品牌专题结束 -->
+
+      <!-- 广告位图 -->
+      <view class="advimg" wx:if="{{wxBannerList.length>0}}" wx:for="{{wxBannerList}}" wx:key="key">
+        <image src="{{imgurl}}{{item.imageVo.imagePath}}" mode="aspectFill" style="margin: auto;width: 100%;" bindtap="adImgTap" data-index="{{index}}"></image>
+      </view>
+
+    </view>
+  </view>
+
+</scroll-view>
+<view class="foter_fixd" wx:if="{{shows=='hidden' || true}}">
+  <view class="foter-left">
+    <!-- 客服	收藏	分享 开始 -->
+    <view>
+      <button catchtap="kefu" class="item-button" style="font-size:24rpx;width:100%;font-weight: normal;background-color: #ffffff;padding: 0;">
+        <view class="invite" wx:if="{{showBubble}}">
+          <view catchtap="callPhne">拨打电话</view>
+          <view class="tab-line"></view>
+          <view catchtap="customer">在线咨询</view>
+        </view>
+        <image src="/images/tab-nav-image/black_kefu.png" style="height: 30rpx;width:0" mode="heightFix"></image>
+        <view>客服</view>
+      </button>
+      <button class="item-button" bindtap="onCollectionTap" style="font-size:24rpx;width:100%;font-weight: normal;background-color: #ffffff;padding: 0;">
+        <image src="{{xshopmessage.isCollect?'/images/tab-nav-image/ic_collection.png':'/images/tab-nav-image/ic_nocollection.png'}}" style="width: 0rpx;height: 30rpx;" mode="heightFix"></image>
+        <view class="{{xshopmessage.isCollect?'yes-collect':''}}">收藏</view>
+      </button>
+      <button wx:if="{{ordertype==1&&isemployee==1}}" bindtap="sharePoup" class="item-button" style="font-size:24rpx;width:100%;font-weight: normal;background-color: #ffffff;padding: 0;">
+        <image src="/images/tab-nav-image/share.png" style="width:0rpx;height: 30rpx;" mode="heightFix"></image>
+        <view>分享</view>
+        <view class="invite-share" wx:if="{{showShare}}">
+          <view catchtap="generatePoster">生成海报</view>
+          <view class="tab-line"></view>
+          <button open-type="share">分享链接</button>
+        </view>
+      </button>
+      <button wx:else class="item-button" open-type="share" style="font-size:24rpx;width:100%;font-weight: normal;background-color: #ffffff;padding: 0;">
+        <image src="/images/tab-nav-image/share.png" style="width:0rpx;height: 30rpx;" mode="heightFix"></image>
+        <view>分享</view>
+
+      </button>
+
+    </view>
+    <!-- 客服	收藏	分享 结束 -->
+
+  </view>
+
+  <view class="foter_right flex">
+    <!-- <view class="carbtn" bindtap="clickme" data-btn="{{0}}">加入购物车</view>
+    <view class="buybtn" bindtap="clickme" data-btn="{{1}}">
+      {{xshopmessage.onlineAndOffline==0||xshopmessage.onlineAndOffline==2?'线上支付':'线下支付'}}</view> -->
+      <view class="carbtn" bindtap="toShowSkuDialog" data-source-action="addCart">加入购物车</view>
+      <view class="buybtn" bindtap="toShowSkuDialog" data-source-action="buyNow">{{xshopmessage.onlineAndOffline==0||xshopmessage.onlineAndOffline==2?'线上支付':'线下支付'}}</view>
+  </view>
+</view>
+
+<!-- 优惠活动弹出框 -->
+<view class="bg {{shows1}}" catchtap="close">
+  <!-- catchtouchmove="catchtouchmove" -->
+  <view class="tcguige {{bottom1}}">
+    <view class="active_title">优惠</view>
+    <view class="main">
+      <view class="active_content">
+        <view class="name">优惠活动</view>
+        <!-- <view class="items flex-r-s">
+						<view class="texts">yuhjikflgv423567890876543467890876543245678987654</view>
+						<view class="iconfont icon-youjiantou"></view>
+					</view> -->
+      </view>
+      <view class="coupon">
+        <view class="name">优惠券</view>
+        <view class="coupon_content">
+          <view class="items flex-r-s" wx:for="{{couponList}}" wx:key="key">
+            <view class="coupon_left">
+              <view class="prices"><span>￥</span>{{item.couponAmount}}</view>
+              <view class="tips">满{{item.fullReductionAmount}}元可用</view>
+            </view>
+            <view class="coupon_right">
+              <view class="coupon_name">{{item.couponTitle}}</view>
+              <view class="flex-r-s" style="align-items:center;margin-top:40rpx">
+                <view class="coupon_date">{{item.getStartTime}}至{{item.getEndTime}}</view>
+                <view class="btn" bindtap="onReceiveTap" data-id="{{item.id}}">立即领取</view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 规格弹出框 -->
+<view wx:if="{{false}}" class="bg {{shows}}" catchtap="close">
+  <!-- catchtouchmove="catchtouchmove" -->
+  <view class="tcguige {{bottom}}" catchtap="zzsj">
+    <view class="iconfont icon-guanbi" catchtap="close"></view>
+
+    <!-- 颜色 -->
+    <view class="shop-message-scroll" style="max-height:{{shopScroll}}rpx">
+      <view class="tcguige-wrapper">
+        <view class="tcguige-w">
+          <image src="{{imgurl}}{{defaultSku.skuimg || imagePathList[0]}}" catchtap="viewPicture" data-src="{{imgurl}}{{defaultSku.skuimg || imagePathList[0]}}" mode="aspectFit"></image>
+          <view class="tc-t-p">
+            <view class="tc-t" wx:if="{{productName!=null}}">{{productName}}</view>
+            <view class="tc-t" wx:else>{{itemName}}</view>
+            
+            <block wx:if="{{ordertype == 3}}">
+              <view class="tc-x">
+                <text class="tc-p" wx:if="{{skustr && specialPrice}}">￥{{filters.toFix2(specialPrice)}}</text>
+                <text class="tc-p" wx:else>￥{{filters.toFix2(itemPrice)}}</text>
+              </view>
+            </block>
+
+            <block wx:else>
+              <view class="tc-x">
+                <text class="tc-p" wx:if="{{skustr!='' || one_price!= null}}">￥{{filters.toFix2(one_price)}}</text>
+                <text class="tc-p" wx:else>￥{{filters.toFix2(itemPrice)}}</text>
+              </view>
+            </block>
+
+            <view class="shop-stock-view"> 
+                  <text class="tc-xl" wx:if="{{surplus_stock||surplus_stock==0}}">库存:{{surplus_stock<0?0:surplus_stock}}</text>
+                  <text class="shop-stock" wx:else>
+                    <block wx:if="{{stock}}" style="margin-left:55rpx">库存:{{stock}} </block>
+                  </text>
+                  <text class="tc-xl" wx:if="{{limitCounts}}">限购:{{limitCounts}}</text>
+                  <text class="shop-stock" wx:elif="{{ordinaryLimitCounts}}">限购:{{ordinaryLimitCounts}}</text>
+                  <text class="tc-xl" wx:if="{{saleCounts}}">限量：{{saleCounts}}</text>
+                  <text class="shop-stock" wx:elif="{{limitQuantity}}">限量：{{limitQuantity}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="sku-tips">图片仅供参考，以实际的规格型号为准</view>
+      </view>
+
+      <view class="number">
+
+        <!-- 产品卖点 -->
+        <view class="subtitle" wx:if="{{xshopmessage.subtitle}}">{{xshopmessage.subtitle}}</view>
+        
+        <!-- 循环getmallItemSkuPropertiesList 也就是规格单位等 -->
+        <view class="item" wx:for="{{getmallItemSkuPropertiesList}}" wx:for-index="fatindex" wx:key="key">
+          <view class="number-g">
+            <text>{{item.pname}}</text>
+          </view>
+          <view class="chioce">
+            <!-- catchtap="chioce"  -->
+            <!-- {{filters.findPropId(item.properties,skustr)}} -->
+            <view catchtap="chiocetest" data-fatindex="{{fatindex}}" wx:key='key' data-index="{{index}}" class="pricolor {{item.isChioce?'chiocepricolor':''}} {{item.noProperties?'sku-option':''}}" wx:for='{{item.propValueIdList}}'>
+              {{item.name}}
+            </view>
+          </view>
+        </view>
+
+
+
+        <!-- 定金抵扣 -->
+        <view class="DepositBox" wx:for="{{Deposit}}" wx:if="{{item.productSku == xskuid}}" wx:key="key">
+          <view class="Deposit">定金¥{{item.salePrice}}可抵¥{{item.offsetAmount}}</view>
+          <view class="DepositTime"><text class="DepositTime_text">剩余时间：</text>
+            <van-count-down time="{{item.promotionsEndTime}}" isshoptime='true' format="DD 天 HH 小时 mm 分 ss 秒" />
+          </view>
+        </view>
+
+        <!-- <view class="DepositBox" wx:key="key">
+          <view class="Deposit">定金¥100可抵¥50</view>
+          <view class="DepositTime"><text class="DepositTime_text">剩余时间：</text>
+            <van-count-down time="{{2008377056}}" isshoptime='true' format="DD 天 HH 小时 mm 分 ss 秒" />
+          </view>
+        </view> -->
+        <!-- 定金抵扣 -->
+
+        <!-- 数量加减 -->
+        <view class="number-g">
+          <text>购买数量</text>
+
+          <view class="buynum">
+            <view catchtap="buyjian">-</view>
+            <view class="input-num">
+              <input type="number" model:value="{{buynum}}" />
+            </view>
+            <view catchtap="buyjia">+</view>
+          </view>
+          <view>
+          </view>
+        </view>
+
+      </view>
+    </view>
+    <view class="btn0_box">
+      <!-- 加入购物车后的加入购物车 -->
+      <view catchtap="likebuy" class="cargouwuche" wx:if="{{btn==0}}">
+        <view>加入购物车</view>
+      </view>
+      <!-- 立即购买后的立即购买 -->
+      <view class="likecar">
+        <view class="car" wx:if="{{btn==1}}">
+
+          <block wx:if="{{isYuPay}}">
+            <view style="width:50%;text-align: center;" bindtap="bestbuymobile">
+              {{xshopmessage.onlineAndOffline==0||xshopmessage.onlineAndOffline==2?'线上支付':'线下支付'}} </view>
+            <view class="Advancedepositcss" wx:key="key" bindtap="Yupaygou">支付定金 </view>
+          </block>
+          <view wx:else style="width:100%;text-align: center;" bindtap="bestbuymobile">
+            {{xshopmessage.onlineAndOffline==0||xshopmessage.onlineAndOffline==2?'线上支付':'线下支付'}} </view>
+        </view>
+
+      </view>
+    </view>
+
+    <view class="bay" wx:if="{{btn==2}}">
+      <view bindtap='likebuy'>加入购物车</view>
+      <view bindtap="bestbuymobile">{{xshopmessage.onlineAndOffline==0||xshopmessage.onlineAndOffline==2?'线上支付':'线下支付'}}
+      </view>
+    </view>
+
+  </view>
+</view>
+
+
+
+<!-- <popup id='popup' iosDialog1="{{iosDialog1}}" bind:guanbi="close">
+</popup>
+
+<phonepopup id='phonepopup' iosDialog2="{{iosDialog2}}" bind:guanbi="phoneclose">
+</phonepopup> -->
+
+<!-- 信息弹窗 -->
+<messagepopup isshow="{{iosDialog22}}" remark="{{remark}}" />
+
+<produck-sku-dialog style="display: block;" show="{{showSkuDialog}}" sku-info="{{skuShowInfo}}" bind:confirm="onSkuSelectedConfirm" bind:change="onSkuChange"></produck-sku-dialog>
+
+<Allpagesneed></Allpagesneed>
+<view class="dwg">
+  <wxml-to-canvas class="widget" width="750" height="1340"></wxml-to-canvas>
+</view>

@@ -1,0 +1,202 @@
+<scroll-view  scroll-y="{{sysScroll}}"   style="height:100%;margin-bottom:120rpx;">
+  <!-- scroll-y="{{sysScroll}}"  scroll-top="{{scrollTop}}" -->
+<leftbutton toptitle="{{UnPageParameter.CaseName}}"></leftbutton>
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<block wx:if="{{false}}">
+  <DefaultSwiper></DefaultSwiper>
+</block>
+<image wx:if="{{UnPageParameter.depositImagePath}}" class="topimage" src="{{imgur}}{{UnPageParameter.depositImagePath}}" mode="widthFix" ></image>
+<view class="content" style="margin-top:{{UnPageParameter.depositImagePath?0:20}}rpx">
+  <view class="title">{{UnPageParameter.appointTitle?UnPageParameter.appointTitle:UnPageParameter.CaseName}}</view>
+  <view style="margin-top:40rpx" wx:if="{{UnPageParameter.tWebtype == 'meijia'}}">
+  <view class="array">
+					<!-- <view class="item">风格：<text>{{pagedata.searchOptionMap.pop_style[0]}}</text></view> -->
+					<view class="item">
+            <span style="font-size:28rpx">楼盘：</span>
+            <text style="color:#ff6c00;font-weight:bold;">{{UnPageParameter.propertiesForSale}}</text></view>
+
+					<view class="item">
+            <span style="font-size:28rpx">系列：</span>
+            <text>{{UnPageParameter.series}}</text></view>
+				</view>
+				<view class="array">
+					<view class="item">
+            <span style="font-size:28rpx">面积：</span>
+            <text>{{UnPageParameter.theMeasureOfArea}}㎡</text></view>
+					<view wx:if="{{UnPageParameter.isHouseAndSpace == 0}}" class="item">
+            <span style="font-size:28rpx">户型：</span>
+            <text decode="true">{{UnPageParameter.HouseTypePerhaps?UnPageParameter.HouseTypePerhaps:'&nbsp;'}}</text>
+					</view>
+					<view wx:if="{{UnPageParameter.isHouseAndSpace == 1}}" class="item">
+            <span style="font-size:28rpx">空间：</span>
+            <text decode="true">{{UnPageParameter.Space?UnPageParameter.Space:'&nbsp;'}}</text>
+					</view>
+        </view>
+      </view>
+  <view class="subtitle" wx:if="{{UnPageParameter.subtitle}}">{{UnPageParameter.subtitle}}</view>
+ 
+  <view style="display:flex;justify-content: space-between;align-items: baseline;margin-top:27rpx;">
+    <view class="itemprice">
+      <text class="allMuch" wx:if="{{UnPageParameter.type == 'tWebPerfectHome' && UnPageParameter.tWebtype != 'meijia'}}">组合价:</text>
+      <text class="allMuch" wx:if="{{UnPageParameter.type == 'tWebCustomFurn'}}">定制组合价:</text>
+      <text class="allMuch" wx:if="{{UnPageParameter.tWebtype == 'meijia'}}">全屋拎包价:</text>
+      <text class="Symbol">￥</text>
+      <text style="font-size:21.5px;font-weight: 900;">{{filters.substringExceptLast(UnPageParameter.packagePrice).num}}</text>
+      <text wx:if="{{filters.substringExceptLast(UnPageParameter.packagePrice).unit}}" style="font-size:24rpx;margin-top:12rpx;">{{filters.substringExceptLast(UnPageParameter.packagePrice).unit}}</text>
+    </view>
+    <!-- <view class="FixedAmount">下定金额：¥{{filters.toFix2(UnPageParameter.depositPrice)}}</view> -->
+
+    <view class="btn1" wx:if="{{UnPageParameter.depositPrice}}"> <text
+        style="font-size:34rpx; font-weight: bold;  margin-right: 10rpx;margin-bottom: 4rpx;">{{UnPageParameter.depositPrice}}</text>元抢名额
+    </view>
+  </view>
+  <view style="display:flex;justify-content: space-between;align-items: baseline;margin-top:20rpx;">
+    <view class="itemprice" style="width:100%;">
+      <view style="display:flex;align-items: flex-end;color:#000;width:100%;">
+        <label class="allMuch">限时：</label>
+          <count-down time="{{time}}" isShowSecond="{{true}}" ischecklist="true"> </count-down>
+        <view style="margin-left: 20rpx;line-height:36rpx;">限量：<text
+            style="color:#ff6c00;font-size:32rpx;">{{UnPageParameter.limitedNumber?UnPageParameter.limitedNumber:0}}</text><text
+            style="font-size:20rpx; font-weight:400;">套</text></view>
+            <view class="btn2" wx:if="{{UnPageParameter.tWebtype == 'meijia'}}" catchtap="allhouse_detail" data-id="{{pagedata.designerId}}" data-popupornot="1">用户评价
+						</view>
+      </view>
+    </view>
+
+  </view>
+</view>
+
+
+
+<!-- 表单提交 -->
+
+  <view class="formMessage">
+  <form bindsubmit="subMessage">
+  <view class="item">
+    <text class="iconfont icon-xingming"></text>
+    <text class="inputtitle">姓名</text>
+    <text>*</text>
+    <input name="name"  value="{{form_info}}" bindblur="onblur" bindfocus="onfocus" style="margin-left:43rpx;" placeholder="请输入姓名" placeholder-style="font-size:11px;color:#cbcbcb" />
+  </view>
+  <view class="item">
+    <text class="iconfont icon-fuwurexian"></text>
+    <text class="inputtitle">电话</text>
+    <text>*</text>
+    <input name="phone"  value="{{form_info}}" bindblur="onblur" bindfocus="onfocus" style="margin-left:43rpx;" type="number" placeholder="请输入电话号码" placeholder-style="font-size:11px;color:#cbcbcb" />
+  </view>
+  <view class="item">
+    <text class="iconfont icon-dizhi3"></text>
+    <text class="inputtitle">地址</text>
+    <text hidden="true">*</text>
+    <input name="address" adjust-position="true" cursor-spacing="50"  value="{{form_info}}" bindblur="onblur" bindfocus="onfocus" style="margin-left:43rpx;" placeholder="请输入房屋地址" placeholder-style="font-size:11px;color:#cbcbcb" />
+  </view>
+  <view class="item">
+    <text class="iconfont icon-beizhu"  ></text>
+    <text class="inputtitle" style="color:#717171">备注</text>
+    <text hidden="true">*</text>
+    <textarea value="{{form_info}}" adjust-position="true"  cursor-spacing="130"  bindblur="onblur" bindfocus="onfocus" name="remark" style="margin-left:43rpx;" placeholder="您的信息我们将严格保密,24小时内我们将致电为您提供定制服务咨询" placeholder-style="font-size:11px;color:#cbcbcb" />
+  </view>
+
+  <button class="submitbtn" formType="submit">支付定金：¥{{filters.toFix2(UnPageParameter.depositPrice)}}</button>
+
+</form>
+
+
+
+  <view wx:if="{{msgList.length>0}}" class="adv flex" style="width:675rpx;margin:0 auto;margin-top:20rpx;">
+			<swiper class="advright" style="height:{{msgList.length>5?200:msgList.length*40}}rpx" vertical="true" autoplay="{{true}}" easing-function="easeInOutCubic" circular="true"
+				interval="1000" display-multiple-items="{{msgList.length>5?5:msgList.length-1}}">
+				<block wx:for="{{msgList}}" wx:key="key">
+					<swiper-item>
+						<view class="advmain">
+              <view style="display:flex;justify-content: flex-start;">
+              <view class="yuyuename">{{filters.NameEncryption(item.orderName)}}</view>
+              <view class="yystatus">{{filters.Telephoneencryptionfour(item.orderTel)}}已于{{filters.MonthDay(item.createDate)}}成功下定</view>
+            </view>
+						</view>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+
+</view>
+
+<!-- <view class="formMessage">
+  <form bindsubmit="subMessage">
+  <view class="item">
+    <text class="iconfont icon-xingming"></text>
+    <text class="inputtitle">姓名</text>
+    <text>*</text>
+    <input name="name" value="{{form_info}}" style="margin-left:43rpx;" placeholder="请输入姓名" placeholder-style="font-size:11px;color:#cbcbcb" />
+  </view>
+  <view class="item">
+    <text class="iconfont icon-fuwurexian"></text>
+    <text class="inputtitle">电话</text>
+    <text>*</text>
+    <input name="phone" value="{{form_info}}" style="margin-left:43rpx;" type="number" placeholder="请输入电话号码" placeholder-style="font-size:11px;color:#cbcbcb" />
+  </view>
+  <view class="item">
+    <text class="iconfont icon-dizhi3"></text>
+    <text class="inputtitle">地址</text>
+    <text hidden="true">*</text>
+    <input name="address" value="{{form_info}}" style="margin-left:43rpx;" placeholder="请输入房屋地址" placeholder-style="font-size:11px;color:#cbcbcb" />
+  </view>
+  <view class="item">
+    <text class="iconfont icon-beizhu"  ></text>
+    <text class="inputtitle" style="color:#717171">备注</text>
+    <text hidden="true">*</text>
+    <textarea value="{{form_info}}" name="remark" style="margin-left:43rpx;" placeholder="您的信息我们将严格保密,24小时内我们将致电为您提供定制服务咨询" placeholder-style="font-size:11px;color:#cbcbcb" />
+  </view>
+
+  <button class="submitbtn" formType="submit">{{UnPageParameter.depositPrice}}元下定</button>
+
+</form>
+
+
+
+  <view wx:if="{{msgList.length>0}}" class="adv flex" style="width:675rpx;margin:0 auto;margin-top:20rpx;margin-bottom: 90rpx;">
+			<swiper class="advright" style="height:{{msgList.length>5?200:msgList.length*40}}rpx" vertical="true" autoplay="true" easing-function="easeInOutCubic" circular="true"
+				interval="1000" display-multiple-items="{{msgList.length>5?5:msgList.length-1}}">
+				<block wx:for="{{msgList}}" wx:key="key">
+					<swiper-item>
+						<view class="advmain">
+							<view class="yuyuename">{{filters.NameEncryption(item.orderName)}}</view><text><text style="margin:0 20rpx;">{{filters.Telephoneencryptionfour(item.orderTel)}}</text>已于{{filters.MonthDay(item.createDate)}}成功下定</text>
+						</view>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+
+</view> -->
+
+
+<!-- 用户评价功能 -->
+<view class="{{isUserEvaluationShow?'UserEvaluation':'UserEvaluationClose'}}">
+	<view style="height:10%;display:flex;align-items:center;">
+		<text catchtap="closeComplete" class="iconfont icon-een" style="margin-left:20rpx;"></text>
+		<view style="text-algin:center;margin:0 auto;font-size:28rpx;">{{CommentData.total}}条评论</view>
+	</view>
+	<scroll-view class="commentlist" scroll-y scroll-top="{{ListPosition}}" bindscrolltolower="scrollLow">
+		<block wx:for="{{CommentData.results}}" wx:key="key">
+			<view class="commentlistView">
+				<image class="commentlistImage" src="{{imgur}}{{item.memberLogoPath}}" mode="aspectFill"></image>
+				<view>
+					<view>{{item.memberName}}
+					<text style="font-size:24rpx;color:#999999;margin-left:10rpx;">{{filters.getDateDiff(item.createDate)}}</text>	
+				</view>
+					<view>{{item.commentContent}}</view>
+				</view>
+			</view>
+		</block>
+	</scroll-view>
+<view class="comment">
+	<image src="{{imgur}}{{userimg}}" mode="aspectFill"></image>
+	<view>
+		<input  confirm-type="done" value="{{cleardata}}" bindconfirm="complete" style="height:100%;margin: 0 10rpx;" placeholder="说点什么吧......"/>
+	</view>
+</view>
+</view>
+
+<view class="commentMask" catchtap="closeComplete" wx:if="{{isUserEvaluationShow}}"></view>
+
+</scroll-view>

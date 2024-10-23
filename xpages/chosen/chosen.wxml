@@ -1,0 +1,8 @@
+<search id="search" title="{{searchtitle}}"></search>
+
+<import src="../../template/caselist/caselist.wxml"/>
+<block wx:for="{{caselists}}" wx:key="unique" >
+<view style="margin-top:{{index==0?0:20}}rpx;"> 
+<template is="caselist" data="{{item}}"/>
+</view>
+</block>

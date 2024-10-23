@@ -1,0 +1,76 @@
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<leftbutton toptitle="{{TopTitle}}"></leftbutton>
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+
+<scroll-view scroll-y="true" style="height:calc(100% - {{LeftButtonnavHeight}}rpx)" scroll-y="true" bindscrolltolower="scroll">
+	<view class="promotionsContent" wx:if="{{promotionsContent}}">
+	<rich-text nodes="{{promotionsContent}}"></rich-text>
+</view>
+
+
+	<!-- 当期活动(原来的限时抢购)列表页 -->
+<view class="snap-up-list"  wx:if="{{pageStyle == 1}}">
+	<view class="item" wx:for="{{list}}" wx:key="key" catchtap="shopclick"   data-pid="{{item.pid}}" data-itemname="{{item.itemName}}" data-productname="{{item.productName}}" data-cid="{{item.cid}}" data-promotionsid="{{item.promotionsId}}"  data-index="{{index}}"  data-minoneprice="{{item.minOnePrice}}">
+		<image src="{{imgur}}{{item.picUrl}}" mode="widthFix"></image>
+		<view class="snap-up-message">
+			<view class="shopname">
+      {{item.productName?item.productName:item.itemName}}
+				</view>
+				<view class="subtitle" wx:if="{{item.subtitle}}">{{item.subtitle}}</view>
+				<view class="snap-up-buybox">
+					<view class="snap-up-price">
+						<view><text style="font-size:26rpx">￥</text>{{filters.toFix2(item.salePrice)}}</view>
+						<!-- <view>¥{{filters.toFix2(item.onePrice)}}</view> -->
+					</view>
+					<view class="snap-up-btn">
+							<text>去抢购</text>
+							<view class="gou-snap-up">
+								<view class="gou-snap-up-view">
+									<view style="width:{{((item.surplusStock/item.saleCounts)>1?1:(item.surplusStock/item.saleCounts))*100}}%"></view>
+								</view>
+								<text>剩{{item.surplusStock}}件</text>
+							</view>
+							
+					</view>
+				</view>
+		</view>
+	</view>
+</view>
+	<!-- 当期活动列表页结束 -->
+
+	<view class="shoplist" wx:elif="{{pageStyle!=3}}">
+	<view class="item" wx:for="{{list}}" wx:key="key" catchtap="shopclick"   data-pid="{{item.pid}}" data-itemname="{{item.itemName}}" data-productname="{{item.productName}}" data-cid="{{item.cid}}" data-promotionsid="{{item.promotionsId}}"  data-index="{{index}}"  data-minoneprice="{{item.minOnePrice}}" data-pid="{{item.pid}}">
+
+			<image src="{{imgur}}{{item.picUrl}}" mode="aspectFill"></image>
+			<view class="bootomview">
+				<view class="shopname">
+      {{item.productName?item.productName:item.itemName}}
+        </view>
+        <view class="price">￥{{item.minOnePrice}}</view>
+			</view>
+		
+	</view>
+	
+</view>
+
+<!-- 样品特卖列表页 -->
+<view class="shop-list-linear" wx:else>
+  <scroll-view scroll-with-animation="true" scroll-into-view="{{intoindex}}" class="sampletabsview" scroll-x="true">
+    <view id="Vt" class="sampletabs-item" style="margin-left: 0rpx;"  data-index='-1' bindtap="clicksampletabsitem">
+      <image src="https://www.100good.cn/plug-in/aykjmobile/images/all_hot.png"></image>
+      <view class="{{sampletabsindex == -1 ? 'Tsampletabstext' : 'sampletabstext'}}">全部</view>
+    </view>
+    <view class="sampletabs-item" wx:for="{{sampletabslist}}" id="V{{index}}" data-index="{{index}}" bindtap="clicksampletabsitem">
+      <image src="{{imgur}}{{item.imageVo.imagePath}}"></image>
+      <view class="{{sampletabsindex == index ? 'Tsampletabstext' : 'sampletabstext'}}">{{item.searchName}}</view>
+    </view>
+  </scroll-view>
+	<sample-item class="sample-item" wx:for="{{list}}" wx:key="key" catchtap="shopclick" data-pid="{{item.pid}}"
+		data-itemname="{{item.itemName}}" data-productname="{{item.productName}}" data-cid="{{item.cid}}"
+		data-promotionsid="{{item.promotionsId}}" data-index="{{index}}" data-minoneprice="{{item.minOnePrice}}" sample-data="{{item}}" />
+		
+</view>
+</scroll-view>
+
+
+<Allpagesneed></Allpagesneed>

@@ -1,0 +1,83 @@
+<!--pages/furniture_view/furniture_view.wxml-->
+<view class="container">
+	<scroll-view class="vertical-scroll" slot="body" scroll-y="true" bindscroll="indexScroll">
+		<scroll-view scroll-x="true" class="scroll-view_H" bindscroll="scroll" style="width: 100%">
+			<view class="srollimg" wx:for="{{imgurl}}">
+				<image src="{{item.img}}"></image>
+			</view>
+		</scroll-view>
+		<view class="content">
+			<!-- 作者 -->
+			<view class="author-info white-bg">
+				<view class="author flex">
+					<view class="author-left">
+						<view class="author-img">
+							<image src="/images/img/1.jpg"></image>
+						</view>
+					</view>
+					<view class="author-right">
+						<view class="row1">
+							<text style="color:#333333;font-size:15px">王君玉</text>
+							<text  style="color:#999999;font-size:12px;margin-left:10rpx">世纪金源店</text>
+						</view>
+						<view class="row2" style="color:#999999;font-size:12px;margin-top:20rpx">3年经验 擅长现代简约、实用主义、欧式风格</view>
+					</view>
+				</view>
+				<view class="design flex">
+					<label>设计理念：</label>
+					<text class="nowarp">创意是设计的灵魂，再做到忧客户所忧，让客户住得舒心，反映了真正的审美情趣和审美理想</text>
+				</view>
+				<view class="button flex-r-s">
+					<view class="btn1" bindtap="appointment_design">免费预约设计</view>
+					<view class="btn2">查看更多案例</view>
+				</view>
+			</view>
+			<!-- 同屋作品 -->
+			<view class="roommates-works white-bg">
+				<view class="title">同屋作品</view>
+				<view class="banner-swiper">
+					<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" current='{{swiperCurrent}}' indicator-color="{{beforeColor}}" indicator-active-color="{{afterColor}}" circular='{{circular}}' previous-margin="{{previousmargin}}" next-margin="{{nextmargin}}" bindchange="swiperChange">
+						<block wx:for="{{imgurl}}" wx:key="key">
+							<swiper-item>
+								<view class="img">
+									<image src="{{item.img}}" class="slide-image{{index == swiperCurrent ? ' active' : ''}}" bindchange="chuangEvent" id="{{index}}"></image>
+									<view class="title">{{item.title}}</view>
+								</view>
+							</swiper-item>
+						</block>
+					</swiper>
+				</view>
+				<view class="Dots">
+					<view wx:for="{{imgurl}}" wx:key="key" class="indicatorDots{{index == swiperCurrent ? ' dots-active' : ''}}" bindchange="chuangEvent" id="{{index}}"></view>
+				</view>
+			</view>
+			<!-- 同类作品 -->
+			<view class="similar-works white-bg">
+				<view class="title">同类作品</view>
+				<view class="works-list flex-r-s">
+					<view class="item">
+						<view class="img">
+							<image src="/images/img/1.jpg"></image>
+						</view>
+						<view class="context">
+							<view class="title nowrap">碧桂园璟台3室2厅2卫轻奢简欧风</view>
+							<view class="desc">整体色调温馨可爱，融入更多卡通等童真元素，以简约、可爱的造型，打造儿童的成长天地</view>
+						</view>
+					</view>
+					<view class="item">
+						<view class="img">
+							<image src="/images/img/1.jpg"></image>
+						</view>
+						<view class="context">
+							<view class="title nowrap">碧桂园璟台3室2厅2卫轻奢简欧风</view>
+							<view class="desc">整体色调温馨可爱，融入更多卡通等童真元素，以简约、可爱的造型，打造儿童的成长天地</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<footer></footer>
+		</view>
+	</scroll-view>
+	<design_consulting></design_consulting>
+	<furniture_tabbar></furniture_tabbar>
+</view>

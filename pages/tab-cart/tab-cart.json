@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "popup": "/components/popup/popup",
+    "phonepopup":"/components/phonepopup/phonepopup",
+    "tabindex":"/components/tab-navigation/index",
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed",
+    "leftbutton":"/components/leftbutton/index",
+    "transaction-description":"/components/transaction-description/transaction-description"
+  },
+  "navigationBarTitleText": "购物车"
+}

@@ -1,0 +1,50 @@
+<leftbutton toptitle="{{TopTitle}}"></leftbutton>
+<search id="search" title="{{toptext}}搜索" pageWindowHeight="{{pageWindowHeight}}" saveoptions="{{saveoptions}}" chiocetext="{{chiocetext}}" startnewsClassId="{{newsClassId}}" oldnewclassid="{{newsClassId}}" bind:dianji="searchword"></search>
+
+<view class="subFixedTop">
+	<view class="item flex" wx:for="{{sublists}}" wx:key="key" bindtap="screenEd" data-tabname="{{item.searchOptionRootName}}" data-searchOptionRootCode="{{item.searchOptionRootCode}}" data-mask="1" data-index="{{index}}" data-type="0" >
+		<view>{{item.searchOptionRootName}}</view>
+		<view class="iconfont icon-jiantou9" style="font-size:12px;margin-left:10rpx"></view>
+	</view>
+	<view class="item flex" bindtap="screenEd" data-tabname="设计师" data-index="99" data-mask="1" data-type="1">
+		<view>设计师</view>
+		<view class="iconfont icon-jiantou9" style="font-size:12px;margin-left:10rpx"></view>
+	</view>
+</view>
+<view class="mask" wx:if="{{maskindex != -1}}" bindtap="screenEdclose" data-mask="0"></view>
+<view class="{{maskindex != -1?'selected':'screenBox-show'}}" style="height:{{maskindex!=-1?(topheight>800?800:topheight):0}}rpx">
+	<view class="neibu">
+	<scroll-view scroll-y='true'  style="height:{{maskindex!=-1?(topheight>800?800:topheight):0}}rpx">
+<view class="neibuhuadon">
+		<!-- 楼盘位置 -->
+		<view wx:for="{{selectedval1}}" wx:key="key" class="selectedval {{customization[0] == item.id?'selectedvals':''}}" wx:if="{{maskindex==0}}"  data-index="{{index}}" bindtap="selected" data-too="1" data-id="{{item.id}}" data-name="{{item.searchName}}" data-mask="0">{{item.searchName}}</view>
+
+		<!-- 风格 -->
+		<view class="selectedval {{customization[1] == item.id?'selectedvals':''}}" wx:for="{{selectedval2}}" wx:key="key" wx:if="{{maskindex==1}}"  data-index="{{index}}" bindtap="selected" data-too="2" data-id="{{item.id}}" data-mask="0">{{item.searchName}}</view>
+
+		<!-- 空间 -->
+		<view class="selectedval {{customization[2] == item.id?'selectedvals':''}}"wx:if="{{maskindex==2}}" wx:for="{{selectedval3}}" wx:key="key" data-index="{{index}}" bindtap="selected" data-too="3" data-id="{{item.id}}" data-mask="0">{{item.searchName}}</view>
+
+		<!-- 设计师 -->
+		<view class="selectedval {{customization[3] == item.id?'selectedvals':''}}" wx:if="{{maskindex==99}}" wx:for="{{selectedval4}}" wx:key="key" data-index="{{index}}" bindtap="selected" data-too="4" data-id="{{item.id}}" data-mask="0">{{item.name}}</view>
+		
+	</view>
+</scroll-view>
+	</view>
+</view>
+
+  
+<!-- 调用模板 -->
+<scroll-view scroll-y="true" style="height:{{pageWindowHeight-tabIndexHeight-190-LeftButtonnavHeight}}rpx" bindscrolltolower="slideusage">
+<view class="distributed" wx:if="{{exlist.list==''}}">暂无数据</view>
+	<import src="../../template/exhibition/exhibition.wxml" />
+	<block wx:for="{{exlist.list}}" wx:key="unique">
+		<template is="exhibition" data="{{item,imgur}}" />
+
+	</block>
+</scroll-view>
+
+
+<!-- 调用组件 -->
+<drawer id='drawer' choice="{{choice}}" bind:success="_success"></drawer>
+<tabindex/>

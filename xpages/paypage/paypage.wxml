@@ -1,0 +1,16 @@
+<leftbutton toptitle="付款{{status}}"></leftbutton>
+<view class="fukuanjieguo">
+付款{{status}}
+</view>
+
+<view class="ordernum">
+<view>订单编号：{{timestamp}}</view>
+<view>微信支付：<text class="prices">￥{{price}}</text></view>
+</view>
+
+
+<view class="daojishu">
+将在<text class="numjishi">{{time}}</text>秒后返回首页
+</view>
+
+<view class="blacka" catchtap="blacka">返回继续购物</view>

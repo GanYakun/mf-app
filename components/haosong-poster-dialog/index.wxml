@@ -1,0 +1,13 @@
+<!--components/haosong-poster-dialog/index.wxml-->
+<!-- 375,451 -->
+<view class="haosong-poster-dialog__container" hidden="{{!show}}">
+  <image class="close" src="{{ftpurl}}/ic_close_dialog.png" bindtap="onClose"></image>
+  <view class="haosong-poster-dialog__content">
+    <view class="haosong-poster-dialog__top">
+      <image class="haosong-poster-dialog__header" src="{{imageUrl}}{{userimg}}"></image>
+      <view class="haosong-poster-dialog__nickname">{{username}} 壕送</view>
+      <view class="haosong-poster-dialog__save-album" bindtap="authorSaveToAlbum">保存相册</view>
+    </view>
+    <image class="haosong-poster-dialog__poster-image" src="{{posterImage}}" mode="widthFix" show-menu-by-longpress="{{true}}"></image>
+  </view>
+</view>

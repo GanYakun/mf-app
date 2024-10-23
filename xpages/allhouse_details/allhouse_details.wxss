@@ -1,0 +1,307 @@
+@import "/utils/font.wxss";
+@import "/utils/weui.wxss";
+
+page {
+  background-color: #f1f1f1;
+
+}
+
+.topbox {
+  width: 100%;
+  background-color: #ffffff;
+  padding: 30rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.designimg {
+  width: 240rpx;
+  height: 320rpx;
+}
+
+.designimg img {
+  width: 100%;
+  height: 100%;
+
+}
+
+.designconcept {
+  color: #058a5f;
+  font-size: 12px;
+  border-bottom: 1px dotted #058a5f;
+  white-space: normal;
+  padding-bottom: 10rpx;
+}
+
+.topbox>view:first-child {
+  /* width: 40%; */
+  font-size: 24rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  line-height: 30rpx;
+}
+
+.centerbox {
+  width: 100%;
+  border-bottom: 1px dotted #dddddd;
+  color: #666666;
+  line-height: 40rpx;
+  padding: 10rpx 0;
+  font-size: 24rpx;
+}
+
+.topbox>view:last-child {
+  width: 60%;
+
+}
+
+.icon-xingxing {
+  color: #FFE648;
+  font-size: 35rpx;
+}
+
+.middlePeer {
+  height: 90rpx;
+  line-height: 90rpx;
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+
+.middlePeer>view {
+  width: 50%;
+  text-align: center;
+  font-size: 28rpx;
+}
+
+.freedesign {
+  color: #fff;
+  background: #f97704;
+  text-align: center;
+}
+
+.test_case {
+  background-color: #ffffff;
+  padding: 20rpx 0 0 0;
+  margin-top: 20rpx;
+  display: flex;
+}
+
+.casebase {
+  text-indent: 10rpx;
+  color: #f97704;
+  border-bottom: 3px solid #f97704;
+  font-weight: bold;
+  padding: 20rpx 5rpx 20rpx 0;
+
+}
+
+.weui-dialog {
+  border-radius: 6rpx;
+  width: 700rpx;
+  left: 24rpx;
+}
+
+
+.pinglunname {
+  color: #666666;
+  font-size: 36rpx;
+  margin-top: 30rpx;
+}
+
+.serviceattitude {
+  margin-top: 30rpx;
+}
+
+.pingjiatext {
+  width: 436rpx;
+  height: 204rpx;
+  border: 1px solid #ccc;
+  text-align: left;
+}
+
+.attitude,
+.ability {
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.ability,
+.pingjiacon {
+  margin-top: 20rpx;
+
+}
+
+.pingjiacon {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30rpx;
+}
+
+
+
+.biancolor {
+  color: #cccccc;
+}
+
+.queding {
+  background-color: #f97704;
+  font-size: 32rpx;
+  color: #ffffff;
+  width: 240rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin: 0 auto;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}
+
+.tabbox {
+  height: 90rpx;
+  width: 100%;
+  display: flex;
+  font-size: 28rpx;
+  border-bottom: 1px solid #f2f2f2;
+  background-color: #ffffff;
+  margin-top: 20rpx;
+}
+
+.tabbox view:first-child {
+  height: 100%;
+  line-height: 90rpx;
+  text-indent: 10rpx;
+}
+
+.tabbox view:last-child {
+  margin-left: 30rpx;
+  line-height: 90rpx;
+  text-indent: 10rpx;
+}
+
+.select {
+  border-bottom: 3px solid #f97704;
+  font-weight: bold;
+  color: #f97704;
+  line-height: 90rpx;
+  text-align: center;
+  text-indent: 10rpx;
+}
+
+.content,
+.designcotent {
+  flex-wrap: wrap;
+  padding: 12rpx;
+  background-color: #fff;
+}
+
+.designcotent .context {
+  margin: 20rpx 0;
+}
+
+.content .item {
+  width: 50%;
+  margin-bottom: 12rpx;
+  /* border-right: 1px solid #f2f2f2; */
+  border-bottom: 1px solid #f2f2f2;
+  background: #fff;
+
+}
+
+.content .item .img {
+  height: 252rpx;
+  padding: 0 14rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+}
+
+.content .item .img img {
+  height: 100%;
+  width: 100%;
+}
+
+.content .item .title {
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+
+.content .context {
+  margin-top: 10rpx;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box;
+  font-size: 28rpx;
+  -webkit-line-clamp: 2;
+  /*这个数字是设置要显示省略号的行数*/
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  font-size: 22rpx;
+  color: #666666;
+  line-height: 35rpx;
+}
+
+.designcotent .title {
+  color: #666666;
+}
+
+.designcotent .context {
+  color: #888888;
+  font-size: 12px;
+  white-space: normal;
+}
+
+.designcotent .img {
+  width: 31.3%;
+  /* width:210rpx; */
+  height: 140rpx;
+  margin: 3px 1%;
+}
+
+.designcotent .img image {
+  width: 100%;
+  height: 100%;
+  border-radius: 12rpx;
+}
+
+.designcotent .date {
+  color: #d3d3d3;
+  font-size: 12px;
+}
+
+.designcotent .replay {
+  font-size: 12px;
+  background: #ececec;
+  padding: 10rpx;
+  border-radius: 4rpx;
+}
+
+.designcotent .tipsinfo {
+  align-items: center;
+  flex-direction: row;
+}
+
+.dianzan {
+  color: #F97704;
+}
+
+.nocolor {
+  color: #E8E8E8;
+}
+
+.img image {
+  border-radius: 12rpx;
+}
+
+.begood {
+  font-size: 24rpx;
+  white-space: normal;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.comprehensive {
+  margin-top: 10rpx;
+}

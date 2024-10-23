@@ -1,0 +1,12 @@
+{
+  "usingComponents": {
+ "screenzujian":"/components/screenzujian/index",
+ "shoplist":"/components/shoplist/shoplist",
+ "search":"/components/search/search",
+ "paging":"/components/paging/paging",
+ "tabindex":"/components/tab-navigation/index",
+ "OrdinaryScreen":"/components/OrdinaryScreen/OrdinaryScreen",
+ "leftbutton":"/components/leftbutton/index",
+ "shoplist-lbal":"/components/shoplist-lbal/shoplist-lbal"
+  }
+}

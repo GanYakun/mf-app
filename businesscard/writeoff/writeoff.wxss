@@ -1,0 +1,203 @@
+@import '../../utils/weui.wxss';
+page{
+  background: #f2f2f2;
+}
+.ordertop {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #eee;
+  padding: 20rpx 20rpx;
+  /* background-color: #f9f9f9; */
+  align-items: center;
+}
+
+
+.ordertop>image {
+  width: 230rpx;
+  height: 150rpx;
+}
+.title-t{
+font-size: 24rpx;
+width: 230rpx;
+}
+.btnhexiao{
+  font-size: 26rpx;
+  color: #fff;
+  background-color: #ff7630;
+  padding: 20rpx 30rpx;
+  border-radius: 12rpx;
+  text-align: center;
+  word-break:keep-all;      /* 不换行 */
+  white-space:nowrap;   
+}
+
+.nobtnhexiao{
+  font-size: 26rpx;
+  color: #fff;
+  background-color: #999999;
+  padding: 20rpx 30rpx;
+  border-radius: 12rpx;
+  text-align: center;
+  word-break:keep-all;      /* 不换行 */
+  white-space:nowrap;   
+}
+
+.ordertops{
+margin-top: 20rpx;
+}
+
+.tatol {
+  color: #a9a9a9;
+  font-size: 25rpx;
+}
+
+.tatolprice {
+  font-size: 30rpx;
+  color: #f97704;
+}
+
+.batch{
+  background-color: #ff7630;
+ width: 185rpx;
+  font-size: 30rpx;
+  border-radius: 16rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  border-radius: 10rpx;
+  text-align: center;
+  color: #ffffff;
+
+  
+}
+
+.clickcircular{
+  width: 35rpx;
+  height: 35rpx;
+  border-radius: 30rpx;
+  margin-right: 10rpx;
+  border: #666666 2rpx solid;
+}
+
+
+.isclick{
+  background-color: #ff7630;
+}
+.isclickno{
+background-color: #999999;
+}
+.bottomview{
+  background-color: #fff;
+  height: 130rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40rpx;
+  font-size: 30rpx;
+}
+
+.allclick{
+  font-size: 26rpx;
+  color: #333;
+  margin-left: 20rpx;
+}
+.list{
+  margin: 20rpx;
+  border-radius: 20rpx;
+  background: #fff;
+
+}
+.title-t{
+  margin-left: 20rpx;
+}
+image{
+ width: 177rpx;
+ height: 132rpx;
+ border-radius: 12rpx;
+}
+.totalnum{
+  font-size: 24rpx;
+  color: #666666;
+}
+.counter{
+ border-radius: 3rpx;
+  width: 172rpx;
+  height: 51rpx;
+  line-height: 51rpx;
+  display: flex;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.counter .reduce,.add{
+  flex: 1;
+  text-align: center;
+}
+.counter .num{
+background-color: #dddddd;
+border-radius: 6rpx;
+flex: 2;
+text-align: center;
+}
+.left{
+  display: flex;
+  align-items: center;
+}
+.right{
+  text-align: right;
+
+}
+.orderdetail{
+  font-size: 24rpx;
+  padding: 20rpx;
+}
+.orderdetail label{
+  color: #666666;
+}
+
+
+.hexiaobox{
+  width: 710rpx;
+  margin: 20rpx auto;
+  background-color: #fff;
+}
+
+.heixaotopbox{
+  display: flex;
+  align-items: center;
+}
+
+.hxborder{
+height: 30rpx;
+width: 5rpx;
+background-color: #ff6c00;
+margin:20rpx 0 20rpx 20rpx;
+}
+
+.detailed{
+  margin-left: 20rpx;
+}
+
+.hxpeople{
+  font-size: 22rpx;
+color: #999999;
+margin-left: 20rpx;
+margin-right: 30rpx;
+padding-bottom: 10rpx;
+border-bottom: #999999 1rpx solid;
+margin-bottom: 20rpx;
+}
+.hxpeopletime{
+  font-size: 22rpx;
+  color: #999999;
+  margin-left: 20rpx;
+  margin-right: 30rpx;
+  padding-bottom: 10rpx;
+  margin-bottom: 20rpx;
+}
+
+.hxshop{
+  margin: 0 30rpx 20rpx 20rpx;
+  font-size: 26rpx;
+  padding-bottom: 20rpx;
+}
+
+

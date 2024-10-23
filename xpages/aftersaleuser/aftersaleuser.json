@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "popup": "/components/popup/popup",
+    "phonepopup":"/components/phonepopup/phonepopup"
+  }
+}

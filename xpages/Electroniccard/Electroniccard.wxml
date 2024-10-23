@@ -1,0 +1,332 @@
+<wxs src="../../utils/filter.wxs" module="filter"></wxs>
+<import src="../../wxParse/wxParse.wxml" />
+
+
+<!-- 我的名片 -->
+
+<!-- 头部导航模块 -->
+<!-- <view class="topbox" style="height:{{navHeight}}rpx">
+  <view class="returnButton"
+    style="margin-top:{{leftboxTop}}rpx;margin-left:{{leftboxleft}}rpx;height:{{leftboxHeight-2}}rpx;width:{{leftBoxWidth}}rpx;border-radius:{{leftboxHeight}}rpx ;">
+    <view class="iconfont icon-fanhui" catchtap="backpage" style="margin-right:20rpx"></view>
+    <view class="fenge"></view>
+    <view class="iconfont icon-yemian-copy-copy" catchtap="gohome" style="margin-left:20rpx"></view>
+  </view>
+  <view class="mecard" style="line-height: {{leftboxHeight}}rpx;top:{{leftboxTop+4}}rpx">{{TopTitle}}</view>
+</view> -->
+<view wx:if="{{hideCustomBar!=1}}">
+  <leftbutton toptitle="{{TopTitle}}"></leftbutton>
+</view>
+<!-- 头部导航模块结束 -->
+
+<!-- 导航下面的图片 -->
+<view class="baimage" wx:if="{{false}}">
+  <!-- style="margin-top:{{navHeight}}rpx" -->
+  <image mode="widthFix" src="{{imgur}}{{cardDetail.backgroundImagePath}}" wx:if="{{cardDetail.backgroundImagePath}}">
+  </image>
+  <image mode="aspectFill" src="{{imgur}}{{cardDetail.backgroundPicture}}" wx:else>
+  </image>
+</view>
+<!-- 导航下面的图片结束 -->
+
+<!-- 用户信息 -->
+<view class="userMessage">
+  <view class="user_box">
+    <view class="user_image">
+      <!-- 头像 -->
+      <image src="{{imgur}}{{cardDetail.headPortraitPath}}">
+      </image>
+
+    </view>
+    <!-- 名字电话和微信号 -->
+    <view class="user_name">
+      <view class="usercardname">
+        {{filter.wordProcessing({content:cardDetail.name,len:9})}}
+        <text class="user_remarks" wx:if="{{cardDetail.position}}">{{!cardDetail.position?'':cardDetail.position}}</text>
+      </view>
+      <view class="Newxiugai">
+        <view>
+          <view class="user_phone" wx:if="{{cardDetail.phone}}">
+            <text class="iconfont icon-ad79"></text>{{cardDetail.phone}}
+          </view>
+          <view class="user_wechatNum" wx:if="{{cardDetail.weixinNumber}}">
+            <text class="iconfont icon-weixin" style="font-size:30rpx;"></text>
+            <view class="user_wechatNum_num">{{!cardDetail.weixinNumber?'':cardDetail.weixinNumber}}</view>
+            <!-- <view class="user_wechatNum_num">{{filter.wordProcessing({content:cardDetail.weixinNumber,len:6})}}</view> -->
+            <text class="user_wechatNum_coply" bindtap="copyBtn" data-wechatnum="{{cardDetail.weixinNumber}}">复制</text>
+            <text></text>
+          </view>
+        </view>
+        <block wx:if="{{!isPageShow}}">
+          <view class="gohomepage" wx:if="{{cardoperation !=''}}">
+            <view class="gohomepagebutton" data-designerid="{{designerId}}" bindtap="mark_cards" data-gohome="{{gohome}}" data-id="{{cardDetail.id}}">{{cardoperation}}</view>
+          </view>
+        </block>
+      </view>
+
+
+
+    </view>
+    <!-- 去主页 -->
+
+
+  </view>
+  <view class="brandBrief" wx:if="{{cardDetail.brandBrief}}">{{cardDetail.brandBrief}}</view>
+  <!-- 分割线 -->
+  <view class="Dividingline"></view>
+  <!-- 门店信息 -->
+  <view class="storemessage">
+    <!-- wx:if="{{cardDetail.storeName}}" -->
+    <view class="left-shop-info">
+      <view class="fangzi">
+        <image src="{{ftpUrl}}/plug-in/aykjmobile/images/ic_store.png" mode="widthFix"></image>
+      </view>
+      <view class="left-shop-info-txt">{{!cardDetail.storeName?'暂无门店':cardDetail.storeName}}</view>
+    </view>
+
+    <view class="right-active" wx:if="{{activitedata.length>0 && isactivite}}" catchtap="selectedbtn" data-newclassid="{{activitedata[0].indexType}}" data-modelname="{{activitedata[0].modelName}}" data-xcxpage="{{activitedata[0].xcxpage}}" data-id="{{activitedata[0].contentId}}">
+      <text style="white-space: nowrap;">【最新活动】</text>
+      <!-- <text class="iconfont icon-youjiantou" style="font-size: 24rpx;"></text> -->
+    </view>
+  </view>
+</view>
+<!-- 用户信息结束 -->
+
+<view class="contactinformation">
+  <view class="iconview">
+    <button class="iconviewbtn" open-type="share" bindtap="onShareAppMessage" data-memberid="{{cardDetail.memberId}}">
+      <view class="iconimg">
+        <image src="./images/cardnew.png" mode="widthFix" style="width:53rpx;height:40rpx;"></image>
+      </view>
+    </button>
+    <view class="icontext">转发名片</view>
+  </view>
+
+  <!-- 存电话 -->
+  <view class="iconview" bindtap="savePhone" data-phone="{{cardDetail.phone}}" data-firstName="{{cardDetail.name}}">
+    <view class="iconimg">
+      <!-- <text class="iconfont icon-zuojiguhua"></text> -->
+      <image src="./images/cun.png" mode="widthFix" style="width:44rpx;height:47rpx;"></image>
+    </view>
+    <view class="icontext">存电话</view>
+  </view>
+
+  <!-- 存电话结束 -->
+
+
+  <!-- 店面VR -->
+  <view class="iconview" catchtap="storeVr" data-phone="{{cardDetail.phone}}" data-firstName="{{cardDetail.name}}">
+    <view class="iconimg">
+      <!-- <text class="iconfont icon-zuojiguhua"></text> -->
+      <image src="{{ftpUrl}}/plug-in/aykjmobile/images/ic_vr.png" mode="widthFix" style="width:56rpx;height:60rpx;"></image>
+    </view>
+    <view class="icontext">店面VR</view>
+  </view>
+  <!-- 店面VR结束 -->
+
+  <view class="iconview" bindtap="position" data-wapMapUrl="{{cardDetail.wapMapUrl}}">
+    <view class="iconimg">
+      <!-- <text class="iconfont icon-dingwei"></text> -->
+      <image src="./images/daohang.png" mode="widthFix" style="width:47rpx;height:44rpx;"></image>
+    </view>
+    <view class="icontext">导航</view>
+  </view>
+
+  <view class="iconview" bindtap="imgYu" wx:if="{{cardDetail.weixinImagePath}}" data-imgurl="{{imgur}}{{cardDetail.weixinImagePath}}">
+    <view class="iconimg">
+      <!-- <text class="iconfont icon-weixin" style="margin-right:0;"></text> -->
+      <image mode="widthFix" src="./images/wechat.png" style="width:58rpx;height:46rpx;"></image>
+    </view>
+    <view class="icontext">加微信</view>
+  </view>
+
+  <view class="iconview" bindtap="weixinImages" wx:else>
+    <view class="iconimg">
+      <!-- <text class="iconfont icon-weixin" style="margin-right:0;"></text> -->
+      <image mode="widthFix" src="./images/wechat.png" style="width:58rpx;46rpx;"></image>
+    </view>
+    <view class="icontext">加微信</view>
+  </view>
+
+
+  <view class="iconview" bindtap="callPhone" data-phone="{{cardDetail.phone}}">
+    <view class="iconimg">
+      <!-- <text class="iconfont icon-shouji1"></text> -->
+      <image src="./images/callphone.png" mode="widthFix" style="width:35rpx;height:50rpx"></image>
+    </view>
+    <view class="icontext">打电话</view>
+  </view>
+
+</view>
+
+<view animation="{{animationData}}" class="mask {{isShowModal ? '':'mask-hide'}}" bindtap="hideModal" wx:if="{{isShowModal}}"></view>
+<view class="dialog {{isShowModal ? 'dialog-show':'dialog-hidden'}}">
+  <image src="{{imgur}}{{cardDetail.weixinImagePath}}" data-imgurl="{{imgur}}{{cardDetail.weixinImagePath}}" bindlongpress="saveimage" bindtap="imgYu" mode="widthFix"></image>
+</view>
+
+
+<!-- 介绍部分 -->
+<view class="introduce">
+  <view class="{{index==3?'selecdintroduce':'nointroduce'}}" bindtap="tabBar" data-index="3">家居商城</view>
+  <view class="{{index==2?'selecdintroduce':'nointroduce'}}" bindtap="tabBar" data-index="2" data-title="拎包案例">拎包案例</view>
+  <view class="{{index==1?'selecdintroduce':'nointroduce'}}" bindtap="tabBar" data-index="1" data-title="品牌介绍">品牌介绍</view>
+  <view class="{{index==0?'selecdintroduce':'nointroduce'}}" bindtap="tabBar" data-index="0" data-title="个人空间">个人空间</view>
+</view>
+
+
+<!-- 个人介绍内容 -->
+<view class="introducecontent" wx:if="{{index == 0}}">
+  <!-- 视频 -->
+  <!-- <view  wx:if="{{cardDetail.vedioIntroducePath}}">
+  <view class="slidetips" style="right:20rpx ">
+    <view class="slidetips_arrow">></view>
+  </view>
+  <scroll-view class="scroll-view_H" scroll-x="true"  style="width: 100%;">
+      <block  wx:for="{{filter.jsonzhuanhuan(cardDetail.vedioIntroducePath)}}" wx:key="key">
+            <view class="videoBox" style="width:{{grvideoLength}}%" data-index="{{index}}" bindtap="PlayVideo" data-videopath="{{filter.jsonzhuanhuan(cardDetail.vedioIntroducePath)}}"  >
+                <view class="videoPlayStyle" style="width:{{grvideoLength}}%">
+                <text class="iconfont icon-music-play"></text>
+              </view>
+              <video style="width:100%;height:206rpx;" id="video{{index}}" show-center-play-btn="false"  controls="{{false}}" src="{{imgur}}{{item.vedioPath}}" data-index="{{index}}" show-center-play-btn="{{false}}" show-fullscreen-btn="{{false}}" ></video>
+              <view class="video_father">
+           {{item.homeTitle}}
+          </view>
+        </view>
+      </block>
+  </scroll-view>
+</view> -->
+  <!-- 视频结束 -->
+
+  <!-- 个人介绍广告图开始 -->
+  <image wx:if="{{cardDetail.adImagePath1}}" catchtap="lbaladv" data-type="grkj" style="height:0;width:100%;display:block;" src="{{imgur}}{{cardDetail.adImagePath1}}" mode="widthFix"></image>
+  <!-- 个人广告图结束 -->
+  <!-- <view style="padding:0 20rpx;white-space: pre-line;">{{!cardDetail.personalIntroduction?'':cardDetail.personalIntroduction}}
+  </view> -->
+
+  <!-- <view wx:if="!cardDetail.personalIntroduction }}">暂无数据</view> -->
+  <!-- <import src="../../wxParse/wxParse.wxml" />
+  <template is='wxParse' data="{{wxParseData:personalIntroduction.nodes}}" /> -->
+</view>
+<view class="personal-introduction" wx:if="{{index==0}}">
+  <view class="video-and-image-box">
+    <video wx:if="{{cardDetail.vedioPathVirtual}}" bindloadedmetadata="videometa" style="height:{{height}}rpx; width:{{width}}rpx;display:block;" src="{{imgur+cardDetail.vedioPathVirtual}}"></video>
+    <view class="video-introu" wx:if="{{cardDetail.vedioIntroduce}}">{{cardDetail.vedioIntroduce||''}}</view>
+    <view class="many-image-box">
+      <image wx:for="{{cardDetail.adImagePath}}" src="{{imgur+item}}" wx:if="{{item}}" mode="widthFix"></image>
+      <view class="image-introu">{{cardDetail.adImageIntroduce||''}}</view>
+    </view>
+  </view>
+</view>
+
+<!-- 品牌介绍 -->
+<view class="introducecontent" wx:if="{{index == 1}}">
+  <!-- 品牌介绍的视频开始 -->
+  <!-- <view class="slidetips" style="right:20rpx ">
+    <view class="slidetips_arrow">></view>
+  </view>
+  <scroll-view class="scroll-view_H" scroll-x="true"  style="width: 100%;">
+      <block  wx:for="{{ppjsVedioList}}" wx:key="key">
+        <view class="videoBox" style="width:{{lbalVedioList.length==1?'100%':(videoLength==2?'49%':'32%')}}" >
+            <view class="videoBox" style="width:{{ppcideolength}}%" data-index="{{index}}" bindtap="PlayVideo" data-videopath="{{ppjsVedioList}}"  >
+                <view class="videoPlayStyle" style="width:{{ppcideolength}}%">
+                <text class="iconfont icon-music-play"></text>
+              </view>
+              <video style="width:100%;height:206rpx;" id="video{{index}}" show-center-play-btn="false"  controls="{{false}}" src="{{imgur}}{{item.vedioPath}}" data-index="{{index}}" show-center-play-btn="{{false}}" show-fullscreen-btn="{{false}}" ></video>
+              <view class="video_father">
+           {{item.homeTitle}}
+          </view>
+        </view>
+      </block>
+  </scroll-view> -->
+  <!-- 品牌介绍的视频结束 -->
+  <!-- 品牌介绍广告图开始 -->
+  <image class="advimagepp" mode="widthFix" catchtap="lbaladv" data-type="ppjs" style="height:0rpx;" src="{{imgur}}{{cardDetail.brandAdImagePath}}"></image>
+  <!-- 品牌广告图结束 -->
+
+  <view style="width:100%;height:30rpx;"></view>
+
+  
+   <mp-html tag-style="{{tagStyle}}" content="{{Mhtml}}"></mp-html>
+  <!-- <text wx:if="{{!cardDetail.brandIntroduction }}">暂无数据</text> -->
+  <!-- <template is='wxParse' data="{{wxParseData:article.nodes}}" /> -->
+  <!-- <view id="proisplay" class="pro-isplay"> -->
+        <!-- <template is='wxParse' data="{{wxParseData:article.nodes}}" /> -->
+      <!-- </view> -->
+</view>
+
+
+<!-- 拎包案例 -->
+<block wx:if="{{index == 2}}">
+  <!-- 拎包案例视频 -->
+  <!-- <view class="videoView" wx:if="{{lbalVedioList.length > 0 }}">
+  <view class="slidetips">
+    <view class="slidetips_arrow">></view>
+  </view>
+  <scroll-view class="scroll-view_H" scroll-x="true"  style="width: 100%;">
+      <block  wx:for="{{lbalVedioList}}" wx:key="key">
+            <view class="videoBox" style="width:{{lbvideolength}}%" data-index="{{index}}" bindtap="PlayVideo" data-videopath="{{lbalVedioList}}"  >
+                <view class="videoPlayStyle" style="width:{{lbvideolength}}%">
+                <text class="iconfont icon-music-play"></text>
+              </view>
+              <video style="width:100%;height:206rpx;" id="video{{index}}" show-center-play-btn="false"  controls="{{false}}" src="{{imgur}}{{item.vedioPath}}" data-index="{{index}}" show-center-play-btn="{{false}}" show-fullscreen-btn="{{false}}" ></video>
+              <view class="video_father">
+           {{item.homeTitle}}
+          </view>
+        </view>
+      </block>
+  </scroll-view>
+  </view> -->
+  <!-- 视频结束 -->
+
+  <!-- 广告图开始 -->
+  <image class="advimage" catchtap="lbaladv" data-type="lbal" mode="widthFix" style="height:0rpx;" src="{{imgur}}{{cardDetail.lbalAdImagePath}}"></image>
+  <!-- 广告图结束 -->
+
+  <view style="margin: 0 20rpx;" wx:for="{{list}}" wx:for-item="items">
+    <view class="roomtext">
+      <view>{{items.name}}</view>
+      <view bindtap="More" data-classid="{{items.newclassId}}" data-title="{{items.name}}">更多+</view>
+    </view>
+    <scroll-view class="slideproduct" scroll-x="true" bindscroll="scroll" style="width: 100%">
+      <view style="margin-top: -30rpx;" wx:if="{{!items.perfectHomeList.length>0}}">
+        <nodata></nodata>
+      </view>
+      <view class="slide_son" wx:if="{{items.perfectHomeList.length>0}}">
+        <view class="probox" wx:for="{{items.perfectHomeList}}" wx:key="key" bindtap="onDetailTap" data-newclassId="{{items.newclassId}}" data-id="{{item.id}}" data-pagetitle="{{item.homeTitle}}">
+          <view class="probox_view">
+            <view>
+              <image src="{{imgur}}{{item.topImage}}" mode="aspectFill"></image>
+            </view>
+            <view class="protext_father">
+              <view class="protext">{{item.homeTitle}}</view>
+            </view>
+
+          </view>
+
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+</block>
+
+<!-- 最新活动 -->
+<block wx:for="{{activitedata}}" wx:if="{{false}}">
+  <view wx:if="{{activitedata.length>0 && index==0 && isactivite}}" class="newactivite" catchtap="selectedbtn" data-newclassid="{{item.indexType}}" data-modelname="{{item.modelName}}" data-xcxpage="{{item.xcxpage}}" data-id="{{item.contentId}}">
+    <image src="./images/activity.png" mode="widthFix"></image>
+    <view catchtap="hideactivite">x</view>
+  </view>
+</block>
+
+<!-- <view class="fadeIn" wx:if="{{androidDialog2}}">
+        <view class="weui-mask"></view>
+        <view class="weui-dialog weui-skin_android">
+            <view class="weui-dialog__bd">
+                是否分享{{shareTitle}}的名片
+            </view>
+            <view class="weui-dialog__ft">
+                <button class="weui-dialog__btn weui-dialog__btn_default" bindtap="close">取消</button>
+                <button class="weui-dialog__btn weui-dialog__btn_primary" open-type="share" bindtap="onShareAppMessage" catchtap="close" data-memberid="{{cardDetail.memberId}}">确定</button>
+            </view>
+        </view>
+    </view> -->

@@ -1,0 +1,287 @@
+/* components/product-sku-dialog/produck-sku-dialog.wxss */
+
+.produck-sku-dialog__mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: rgba(0, 0, 0, .4);
+  z-index: 1000;
+}
+
+.produck-sku-dialog__container {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  overflow: hidden;
+  background: white;
+  transform: translateY(100%);
+  transition: .4s;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.produck-sku-dialog__container.show {
+  transform: translateY(0);
+}
+
+.produck-sku-dialog__top-info {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.produck-sku-dialog__content {
+  max-height: 50vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.produck-sku-dialog__product-info {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+}
+
+.produck-sku-dialog__product-info-thumb {
+  width: 210rpx;
+  height: 157.89rpx;
+  flex-shrink: 0;
+  display: block;
+}
+
+.produck-sku-dialog__product-info-properties {
+  flex: 1;
+  overflow: hidden;
+  margin-left: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+}
+
+.produck-sku-dialog__product-info-name-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.produck-sku-dialog__product-info-name {
+  flex: 1;
+  overflow: hidden;
+  font-size: 30rpx;
+}
+
+.produck-sku-dialog__close {
+  position: relative;
+  flex-shrink: 0;
+  margin-left: 6rpx;
+  margin-right: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+  right: 0;
+}
+
+.produck-sku-dialog__product-info-price {
+  color: #f97704;
+  font-size: 30rpx;
+}
+
+.produck-sku-dialog__shop-stock {
+  font-size: 14px;
+  color: #5b5b5b;
+  margin-left: 25rpx;
+}
+
+.produck-sku-dialog__shop-stock:first-child {
+  margin-left: 0;
+}
+
+.produck-sku-dialog__sku-select-tips {
+  font-size: 24rpx;
+  color: #f97704;
+  flex: 1;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.produck-sku-dialog__sku-tips {
+  font-size: 24rpx;
+  color: #f97704;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  border-bottom: thin solid #f2f2f2;
+}
+
+.produck-sku-dialog__subtitle {
+  font-size: 14px;
+  color: #5b5b5b;
+  text-indent: initial;
+  padding: 20rpx 0 0 0;
+}
+
+.produck-sku-dialog__sku-list {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.produck-sku-dialog__sku-item {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+  margin-top: 30rpx;
+  border-bottom: thin solid #f2f2f2;
+}
+
+.produck-sku-dialog__sku-item-key {
+  font-weight: 700;
+  color: #666;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.produck-sku-dialog__sku-item-val-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 25rpx -5rpx 25rpx -5rpx;
+}
+
+.produck-sku-dialog__sku-item-val-item {
+  border: 1px solid #f5f5f5;
+  border-radius: 12rpx;
+  padding: 10rpx 20rpx;
+  font-size: 24rpx;
+  background: #f5f5f5;
+  color: #333333;
+  box-sizing: border-box;
+  margin: 5rpx;
+}
+
+.produck-sku-dialog__sku-item-val-item.selected {
+  color: #eb5d2a;
+  background-color: #fdf9f9;
+  border: 1px solid #eb5d2a;
+}
+
+.produck-sku-dialog__sku-item-val-item.disabled {
+  background: #f5f5f5;
+  color: #999999;
+  border: 1px solid #f5f5f5;
+}
+
+.produck-sku-dialog__deposit-group {
+  border-bottom: 1px solid #f2f2f2;
+  padding: 15rpx 0;
+  box-sizing: border-box;
+}
+
+.produck-sku-dialog__deposit-detail {
+  font-size: 28rpx;
+  color: #333;
+}
+
+.produck-sku-dialog__deposit-count-down {
+  color: #f97004;
+  font-size: 26rpx;
+}
+
+.produck-sku-dialog__deposit-count-down-key {
+  color: #999;
+}
+
+.produck-sku-dialog__buy-num-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  line-height: 60rpx;
+  font-weight: 700;
+  color: #666;
+  font-size: 28rpx;
+  padding: 20rpx 0;
+}
+
+.produck-sku-dialog__buy-num-group-set-val {
+  display: flex;
+  border-radius: 12rpx;
+  border: thin solid #d9d9d9
+}
+
+.produck-sku-dialog__buy-num-action-button {
+  width: 60rpx;
+  text-align: center
+}
+
+.produck-sku-dialog__buy-num-input {
+  width: 60rpx;
+  text-align: center;
+  border-left: thin solid #d9d9d9;
+  border-right: thin solid #d9d9d9;
+}
+
+.produck-sku-dialog__buy-num-input>input {
+  width: 100%;
+  height: 100%;
+}
+
+.produck-sku-dialog__bottom-button-group {
+  padding: 20rpx 30rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.produck-sku-dialog__bottom-button {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 75rpx;
+  color: #fff;
+  height: 75rpx;
+  line-height: 75rpx;
+  text-align: center;
+}
+
+.produck-sku-dialog__bottom-button.add-cart {
+  background: linear-gradient(to right, #fec303, #fd9404);
+}
+
+.produck-sku-dialog__bottom-button.buy-now {
+  background: linear-gradient(to right, #fe5605, #f70);
+}
+
+.produck-sku-dialog__bottom-button.deposit {
+  background: #9d6c43;
+}
+
+.produck-sku-dialog__bottom-button.single {
+  border-radius: 75rpx;
+}
+
+.produck-sku-dialog__bottom-button.left {
+  border-radius: 75rpx 0 0 75rpx;
+}
+
+.produck-sku-dialog__bottom-button.right {
+  border-radius: 0 75rpx 75rpx 0;
+}

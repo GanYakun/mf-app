@@ -1,0 +1,5 @@
+<leftbutton toptitle="{{type=='haibao'?'加微海报':'邀请经纪人'}}"></leftbutton>
+<view class="shareimage">
+<image src="{{imgsrc}}" class="poster" mode="widthFix" data-imgurl="{{imgsrc}}" bindtap="imgYu" bindlongtap="saveimage"></image>
+</view>
+<view bindtap="saveimage" class="saveimg" data-imgurl="{{imgsrc}}">保存到本地</view>

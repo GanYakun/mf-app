@@ -1,0 +1,38 @@
+<leftbutton toptitle="口碑发布"></leftbutton>
+<view class="container">
+	<scroll-view scroll-y="true" class="vertical-scroll">
+		<view class="content">
+			<form>
+				<view class="item flex">
+					<label>标题：</label>
+					<input style="height:60rpx" bindinput="titleinput" value="{{title!='undefined'?title:''}}"></input>
+				</view>
+				<view class="item flex">
+					<label>内容概要：</label>
+					<textarea bindinput="contextinput" value="{{briefContent!='undefined'?briefContent:''}}"></textarea>
+				</view>
+				<view class="item flex">
+					<label>上传图片</label>
+					<view class="add" bindtap="chooseImage">+</view>
+				</view>
+				<view class="item">
+					<view class="selectimg flex_left">
+						<view class="img" wx:for="{{topImageList!='undefined'?topImageList:''}}" wx:key="key" wx:if="{{type==0}}">
+							<image src="{{item.imagePath}}"></image>
+							<view class="delete" bindtap="onDeleteTap" data-index="{{index}}">x</view>
+						</view>
+						<view class="img" wx:for="{{imgarr}}">
+							<image src="{{item}}"></image>
+							<view class="delete" bindtap="onDeleteTap" data-index="{{index}}">x</view>
+						</view>
+					</view>
+				</view>
+				<view class="item flex">
+					<label></label>
+					<view class="btn1" bindtap="onSaveTap">保存</view>
+				</view>
+
+			</form>
+		</view>
+	</scroll-view>
+</view>

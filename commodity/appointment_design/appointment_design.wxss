@@ -1,0 +1,174 @@
+/* pages/appointment_design/appointment_design.wxss */
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+page{
+  background-color: #e6e6e6;
+}
+.container{
+  padding-bottom: 200rpx;
+
+}
+.swiper{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+.top-banner {
+  position: relative;
+  width: 100%;
+  padding-top: 45%;
+  overflow: hidden;
+  /* background: #f00; */
+}
+
+.top-banner image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.lists {
+  width: 100%;
+  white-space: nowrap;
+}
+
+.lists .item {
+  display: inline-flex;
+  padding: 20rpx;
+  width:33.33%;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.lists .item .icon {
+  width: 68rpx;
+  height: 68rpx;
+}
+
+.lists .item .icon image {
+  width: 100%;
+  height: 100%;
+}
+
+.lists .item .title {
+  font-size: 14px;
+  width: 100%;
+  height: 46rpx;
+  line-height: 46rpx;
+  margin-top: 20rpx;
+  background: #d8212f;
+  color: #fff;
+  border-radius: 20rpx;
+  text-align: center;
+}
+
+.form1 {
+  background-color: #fff;
+  padding: 20rpx;
+}
+
+.form1 .title {
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  color: #666666;
+}
+.form1 .title1 {
+  font-size: 16px;
+  text-align: center;
+  color: #666666;
+
+}
+.form1 .title1{
+  margin-top: 20rpx;
+}
+.form1 .title1 span{
+  color: #cb0d1c;
+}
+
+.form1 .input{
+  box-sizing: border-box;
+  margin-top: 20rpx;
+  padding: 0 10rpx;
+  align-items: center;
+  height: 72rpx;
+  line-height: 72rpx;
+  border: 1px solid #e6e6e6;
+}
+.form1 input{
+  margin-left: 10rpx;
+}
+.form1 .btn{
+  margin: 0 auto;
+  width: 100%;
+  margin-top: 20rpx;
+  border-radius: 6rpx;
+  background: #cb0d1c;
+  color: #FFF;
+  font-size: 14px;
+  height: 72rpx;
+  line-height: 72rpx;
+  text-align: center;
+}
+.form1 .tel{
+  margin-top: 20rpx;
+  justify-content: center;
+  align-items: center;
+  color: #CB0D1C;
+}
+.form1 .telphone{
+  margin-left: 10rpx;
+}
+/* 广告 */
+
+.adv {
+  margin: 20rpx 0;
+  background-color: #fff;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.adv .advleft {
+  padding-right: 40rpx;
+  width: 30%;
+  text-align: center;
+  border-right: 1px solid #e6e6e6;
+}
+
+.adv .advleft .text1 {
+  height: 20px;
+  line-height: 20px;
+  color:#cb0d1c;
+  font-size: 18px;
+}
+
+.adv .advleft .text2 {
+  height: 40px;
+  line-height: 40px;
+  font-size: 16px;
+  color: #797979;
+}
+
+.adv .advright {
+  width: calc(100% - 120px);
+  font-size: 13px;
+  color: #666666;
+  height: 80px;
+  margin-left: 40rpx;
+ 
+}
+.adv .advright .advmain{
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

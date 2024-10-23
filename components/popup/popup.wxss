@@ -1,0 +1,29 @@
+@import "../../utils/weui.wxss";
+@import "../../utils//font.wxss";
+
+.btnss{
+  background-color: #ffffff;
+}
+.weui-half-screen-dialog__ft{
+  display: flex;
+justify-content: center;
+}
+.weui-half-screen-dialog__tips{
+  color: #333333;
+  text-align: center;
+}
+.btnquxiao{
+background-color: #ffffff;
+color: #333333;
+}
+.weui-half-screen-dialog__bd{
+padding-top: 20rpx;
+}
+
+.fadeIn{
+  position: absolute;
+  z-index: 100;
+}
+
+@import 'popup-wxa-auto-dark.wxss'
+

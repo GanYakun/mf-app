@@ -1,0 +1,27 @@
+<!--components/sample-item/index.wxml-->
+<!-- 样品特卖item -->
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<view class="sample-item">
+  <view class="sample-image-wrapper">
+    <image class="sample-image" src="{{_sampleData.picUrl}}" lazy-load="{{true}}" mode="aspectFit"></image>
+    <view class="left-top-icon-wrapper" wx:if="{{false}}">
+      <image class="left-top-icon" src="./images/sample_icon.png" lazy-load="{{true}}"></image>
+      <view class="num-wrapper" >
+        <view class="num-title">限量</view>
+        <view class="num">{{_sampleData.saleCounts?_sampleData.saleCounts:0}}件</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="sample-info">
+    <view class="title" wx:if="{{_sampleData.promotionActivityTypeName}}">{{_sampleData.promotionActivityTypeName}}</view>
+    <view class="sample-title">{{_sampleData.productName}}</view>
+    <view class="sample-desc">{{_sampleData.subtitle ? _sampleData.subtitle:''}}</view>
+    <view class="favourable" wx:if="{{false}}">直降{{_sampleData.offsetAmount ? _sampleData.offsetAmount:'0'}}元</view>
+    <view class="special-price">
+      <!-- <view class="special-price-title">特卖价</view> -->
+      <!-- <view class="sample-price"><text>¥</text>{{_sampleData.onePrice ? filters.toFix2(_sampleData.onePrice):filters.toFix2(0)}}<text class="scribing-price">{{filters.toFix2((_sampleData.onePrice ? filters.toFix2(_sampleData.onePrice):filters.toFix2(0))-1+(_sampleData.offsetAmount ? _sampleData.offsetAmount:'0')+1)}}</text></view> -->
+      <view class="sample-price"><text>¥</text>{{_sampleData.specialPrice ? filters.toFix2(_sampleData.specialPrice):filters.toFix2(0)}}<text class="scribing-price">{{_sampleData.onePrice ? filters.toFix2(_sampleData.onePrice):filters.toFix2(0)}}</text></view>
+    </view>
+  </view>
+</view>

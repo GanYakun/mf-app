@@ -1,0 +1,11 @@
+<!--pages/service-agreement/service-agreement.wxml-->
+<view class="service-agreement__page" style="--left-button-nav-height: {{LeftButtonnavHeight}}rpx;">
+  <leftbutton toptitle="用户服务协议"></leftbutton>
+  <view class="service-agreement__container">
+    <scroll-view class="service-agreement__scroll" scroll-y>
+      <view class="service-agreement__scroll-content">
+        <rich-text style="font-size: 28rpx;" space="nbsp" nodes="{{serviceAgreementData}}"></rich-text>
+      </view>
+    </scroll-view>
+  </view>
+</view>

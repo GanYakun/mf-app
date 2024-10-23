@@ -1,0 +1,71 @@
+<form bindsubmit="formSubmit">
+<view class="container">
+	<leftbutton toptitle="新增收货地址"></leftbutton>
+	<view class="lins"></view>
+	<view class="main">
+		<view class="item2">
+			<label for="">收货人(必填)</label>
+			<input name='getconsignee' placeholder="收货人姓名"  value="{{consignee == 'undefined'||consignee == 'null'?'':consignee}}" style="width:62%"/>
+			<view class="iconfont icon-guanbi1" style="margin-left:20rpx;opacity:0.6" bindtap="close"></view>
+		</view>
+		<view class="item2">
+			<label for="">联系方式(必填)</label>
+			<input name="getphone" placeholder="手机号码" value="{{consigneeTelephone=='undefined'||consigneeTelephone=='null'?'':consigneeTelephone}}" />
+		</view>
+		<view class="item2">
+			<label for="">所在地区(必填)</label>
+			<picker mode="region" bindchange="bindRegionChange" name='bindregionchange' value="{{dwRegion}}"  custom-item="{{customItem}}" style="width:70%">
+				<view class="picker" wx:if="{{!ishuadon}}" >
+					<input disabled="true" name='bindregionchange' placeholder="省市区县、乡镇等"  value="{{provinceCityCounty== 'undefined'||provinceCityCounty=='null'?'':provinceCityCounty}}" style="width:100%"/>
+				</view>
+					<view class="picker" wx:else>
+					{{provinceCityCounty[0]}}-{{provinceCityCounty[1]}}-{{provinceCityCounty[2]}}
+				</view>
+			</picker>
+		</view>
+		<view class="textarea">
+			<label for="">详细地址(必填)</label>
+			<textarea name="" id="" cols="30" rows="10" name="getaddress" placeholder="街道、楼牌号" value="{{detailAddress=='undefined'||detailAddress=='null'?'':detailAddress}}"></textarea>
+		</view>
+		<view class="item2">
+			<label for="">邮政编码</label>
+			<input name="getcode" value="{{zipCode=='undefined'||zipCode=='null'?'':zipCode}}" placeholder="地区邮政编码"/>
+		</view>
+		<view class="item2">
+			<label for="">地址别名</label>
+			<input name="getaddressa" value="{{addressAlias=='undefined'||addressAlias=='null'?'':addressAlias}}" />
+		</view>
+	</view>
+
+	<!-- <view class="h10"></view> -->
+	<view class="formAsk flex">
+		<!-- <label class="formLabel">
+			<checkbox-group bindchange="checkedTap">
+				<checkbox checked="{{checked}}" value="1" />
+			</checkbox-group>
+		</label> -->
+		<view class="formAskTxt flexC">设为默认地址</view>
+		<switch checked="{{isdefault}}" name='switch' bindchange="switchChange" color="#f97704"/>
+	</view>
+
+	<view>
+		<!-- <label class="formLabel">
+			<checkbox-group bindchange="checkedTap">
+				<checkbox checked="{{checked}}" value="1" />
+			</checkbox-group>
+		</label> -->
+		<!-- <view class="delete" wx:if="{{xpanduan=='yes'}}" catchtap="deleteaddress" style="width:100%;">删除</view> -->
+	</view>
+
+<view class="btnss_view">
+	<button class="btnss" style="width:calc(100% - 20rpx)"  formType="submit">保存并返回</button>
+</view>
+
+
+</view>
+</form>
+
+<!-- <view class="btn-main">
+	<view class="btn" bindtap="save">保存并返回</view>
+</view> -->
+

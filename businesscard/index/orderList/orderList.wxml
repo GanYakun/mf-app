@@ -1,0 +1,70 @@
+<wxs module="filters" src="../../../utils/filter.wxs"></wxs>
+<leftbutton toptitle="我的下定"></leftbutton>
+<view class="container" style="height:calc(100% - {{LeftButtonnavHeight}}rpx);">
+	<view class="tabList">
+		<view wx:for='{{tabList}}' wx:key="tabKey" wx:for-item="tabItem" class="tab">
+			<label wx:if='{{current==index}}' class="selected" data-name="{{tabItem.name}}">{{tabItem.name}}</label>
+			<label wx:else catchtap="onChangeTab" data-name="{{tabItem.name}}" data-index="{{index}}" data-orderstatus="{{tabItem.orderStatus}}">{{tabItem.name}}</label>
+		</view>
+	</view>
+	<swiper easing-function="easeOutCubic" current="{{current}}" class="swiper-box" style="height:calc(100% - 80rpx);" duration="300" bindchange="tabChange">
+
+
+		<!-- 订单 -->
+		<swiper-item wx:for="{{tabList}}" wx:key="key" data-index="{{index}}">
+			<scroll-view scroll-y='true' bindscrolltolower="solidLower" scroll-top="{{scrollTop}}" style="height:100%" class="orderList">
+				<!-- {{!orderStatus}}{{orderStatus!==0}} -->
+				<block wx:for="{{orderlist}}"  wx:key="key">
+					<view class="commot" bindtap="commot" data-index="{{index}}" style="margin-top:20rpx" wx:if="{{item.orderStatus == orderStatus?true:(!orderStatus && orderStatus!==0)}}">
+						<view class="topstore">
+							<view class="storetext">{{item.orderStatusName}}</view>
+						</view>
+						<view class="ordertop">
+							<image src="{{imgurl}}{{filters.jsonzhuanhuan(item.imagePaths)[0].path}}" mode="widthFix" rel="img"></image>
+							<view class="title-t" style="margin-left:30rpx">
+								<text>{{item.orderDepositName}}</text>
+								<view class="tongj" wx:if="{{item.orderDepositCasePrice}}">
+									<view class="tatol" wx:if="{{item.newsclassId==129}}">精选组合价：￥{{item.orderDepositCasePrice?item.orderDepositCasePrice:''}}</view>
+									<view class="tatol" wx:if="{{item.newsclassId==127 || item.newsclassId==128}}">全屋拎包价：￥{{item.orderDepositCasePrice?item.orderDepositCasePrice:''}}</view>
+									<view class="tatol" wx:if="{{item.newsclassId==226}}">定制组合价：￥{{item.orderDepositCasePrice?item.orderDepositCasePrice:''}}</view>
+								</view>
+							</view>
+						</view>
+						<!-- 下定价 -->
+						<view class="info-title guige" catchtap="tcguige">
+							<text decode="true">下定金额：￥{{filters.toFix2(item.orderPrice)}}</text>
+						</view>
+						<view class="postage" style="padding-bottom:{{item.item.orderStatus==0?20:0}}rpx">
+							<view catchtap="longcopy"  data-text="{{item.orderNum}}">
+								<block wx:if="{{item.createDate}}">下单日期：{{item.createDate}}</block> 订单号：{{item.orderNum}}</view>
+						</view>
+						<!-- 各个按钮 -->
+						<view class="shangp" >
+							<view class="shangp-b" wx:if="{{item.orderStatus==0}}" bindtap="gouby" data-click="1" data-ordernum="{{item.orderNum}}" data-prices="{{item.orderPrice}}">去付款</view>
+							<view class="shangp-bs" wx:if="{{item.orderStatus==0}}" bindtap="onCancelOrderTap" data-id="{{item.id}}" data-orderstatus="5">取消下定</view>
+							<view class="shangp-bs" catchtap="exporOrder" wx:if="{{item.orderStatus==1&&item.isHaveProduct==1}}" data-id="{{item.id}}">导出清单</view>
+						</view>
+					</view>
+				</block>
+			</scroll-view>
+		</swiper-item>
+
+	</swiper>
+</view>
+
+
+
+
+
+<view class="fadeIn" wx:if="{{iosDialog2}}">
+        <view class="weui-mask"></view>
+        <view class="weui-dialog">
+            <view class="weui-dialog__bd">
+							<image class="toastimg" src="{{imgurl}}{{qrcurl}}"></image>
+						</view>
+            <view class="weui-dialog__ft" >
+						<view class="weui-dialog__ft_son" bindtap="close">	关闭</view>
+            </view>
+        </view>
+		</view>
+		<Allpagesneed></Allpagesneed>

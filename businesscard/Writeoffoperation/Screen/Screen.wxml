@@ -1,0 +1,35 @@
+<!-- 开始核销页面的筛选页面 -->
+<leftbutton toptitle="筛选"></leftbutton>
+<view class="boxView">
+<!-- <view>
+  <input placeholder="请选择关键词" placeholder-style="font-size:28rpx"/>
+</view> -->
+
+<picker  mode="date" bindchange="chioceStartTime">
+<view class="pickerView">
+  开始时间
+  <view style="display: flex;align-items: center;color:#999999;">
+    {{startTime?startTime:'请选择'}}
+  <text class="iconfont icon-youjiantou"></text>
+  </view>
+</view>
+</picker>
+
+<picker  mode="date" bindchange="chioceEndTime" >
+<view class="pickerView">
+  结束时间
+  <view style="display: flex;align-items: center;color:#999999;">
+   
+   {{EndTime?EndTime:'请选择'}} 
+  <text class="iconfont icon-youjiantou"></text>
+  </view>
+</view>
+</picker>
+
+</view>
+
+<view class="bootomView">
+  <view>取消</view>
+  <view catchtap="determine">确定</view>
+
+</view>

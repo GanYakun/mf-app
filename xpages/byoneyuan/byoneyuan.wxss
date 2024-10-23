@@ -1,0 +1,277 @@
+@import "../../utils/font.wxss";
+page{
+  background: #f6f6f6;
+}
+.content {
+  font-size: 26rpx;
+  background-color: #fdf3ec;
+  margin: 20rpx;
+  padding: 20rpx;
+  border: solid 1rpx #ed762f;
+  border-radius: 10rpx;
+  margin-top: 0;
+}
+
+
+.content .item text {
+  color: #666666;
+}
+.Symbol {
+  position: relative;
+  top: -20rpx;
+  font-weight: bold;
+}
+.itemprice {
+  color: #ff6c00;
+  display: flex;
+  align-items: center;
+}
+
+.allMuch {
+  font-size: 28rpx;
+  color: #000000;
+
+}
+.FixedAmount{
+  /* color: #ff6c00; */
+  font-size: 12.5px;
+  color: #ffffff;
+  border-radius: 8rpx;
+  background-image: linear-gradient(142deg, 
+		#ff984c 0%, 
+		#f6873d 43%, 
+		#ed752e 100%), 
+	linear-gradient(
+		#f7f7f7, 
+		#f7f7f7);
+	background-blend-mode: normal, 
+		normal;
+  padding: 0 10rpx;
+}
+
+.somefont{
+  font-size:21.5px;
+  font-weight: 500;
+}
+
+.title{
+  font-size: 15.5px;
+text-align: center;
+}
+
+.formMessage{
+  background-color: #ffffff;
+  border-radius: 8px;
+  margin-top: 30rpx;
+  margin: 0 auto;
+  width: calc(100% - 40rpx);
+  padding: 20rpx 0;
+  margin-bottom: 130rpx;
+}
+.formMessage .item{
+  width: calc(100% - 88rpx);
+  margin:0 auto;
+  padding: 30rpx 0;
+  color: #f97604;
+  display: flex;
+  border-bottom: solid 1px #d9d9d9 ;
+}
+.formMessage .item textarea{
+  width: 70%;
+  height: 60rpx;
+  color: #000000;
+}
+.formMessage .item input{
+  color: #000000;
+  width: 70%;
+}
+
+.inputtitle{
+color: #000000;
+margin-left: 22rpx;
+font-size: 14px;
+}
+
+.adv .advright {
+  width: 100%;
+  margin: 0 auto;
+  font-size: 24rpx;
+  color: #666666;
+  /* height: 200rpx; */
+  /* line-height: 20px; */
+  padding: 10px;
+  background: #f7f7f7;
+  border-radius: 12rpx;
+}
+.advmain{
+  display:flex;
+  justify-content: center;
+  color: #a9a9a9;
+}
+
+.submitbtn{
+  background: linear-gradient(to right,#fe5804,#fe7501);
+position: fixed;
+bottom: 20rpx;
+right: 30rpx;
+width:unset !important;
+height: 80rpx !important;
+border-radius: 70rpx;
+padding: 0 25rpx !important;
+line-height: 80rpx;
+color: #ffffff;
+font-size: 24rpx;
+z-index: 9;
+font-weight: normal !important;
+}
+
+.subtitle{
+  color: #666666;
+  font-size: 12px;
+  margin-top: 23rpx;
+  white-space: pre-wrap;
+}
+.array {
+  display: flex;
+  font-size: 25rpx;
+  letter-spacing: 2rpx;
+  color: #222222;
+
+}
+
+.array .item {
+  width: 50%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.btn2 {
+  text-align: center;
+  border-radius: 14rpx;
+  padding: 5rpx 22rpx;
+  line-height: normal;
+  border: 1rpx solid #ed752e;
+  color: #ed752e;
+  font-size: 12px;
+  margin-left: auto;
+}
+
+
+.UserEvaluation{
+  transition: 0.8s;
+  width: 100%;
+  background: #ffffff;
+  height: 60%;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+  position: fixed;
+  z-index: 99;
+  bottom: 0;
+}
+
+
+.UserEvaluationClose{
+  transition: 0.8s;
+  width: 100%;
+  background: #ffffff;
+  height: 0%;
+  position: fixed;
+z-index: 99;
+bottom: 0;
+overflow: hidden;
+}
+
+.commentlist{
+  height: 75%;
+}
+.comment{
+  width: 100%;
+  height: 15%;
+  display: flex;
+  align-items: center;
+  background: #f7f7f7;
+}
+.comment image{
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 12rpx;
+}
+
+.comment>view{
+  width: calc(100% - 140rpx);
+  background: #ffffff;
+  height: 80rpx;
+}
+.commentlistView{
+border-bottom: #d9d9d9 1rpx solid;
+padding: 20rpx 0;
+display: flex;
+}
+.commentlistImage{
+  width: 80rpx;
+  height: 80rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  border-radius: 12rpx;
+}
+.commentlistView>view{
+  width: calc(100% - 140rpx);
+}
+.commentlistView>view>view:nth-child(1){
+  font-size: 28rpx;
+  color: #333333;
+}
+.commentlistView>view>view:nth-child(2){
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.commentMask{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background: hsl(0, 0%, 0%,0.4);
+  z-index: 20;
+}
+
+.topimage{
+  width: calc(100% - 40rpx);
+  
+  height: 0;
+  border-radius: 16rpx;
+margin:30rpx 20rpx 20rpx 20rpx;
+}
+
+.yuyuename{
+  width: 100rpx;
+}
+
+.yytime{
+  width: 180rpx;
+}
+
+.yystatus{
+  width: 390rpx;
+}
+
+.btn1 {
+  padding: 0 17rpx;
+  height: 46rpx;
+  line-height: 50rpx;
+  color: #fff;
+  background: linear-gradient(to right, #ff984c, #ed752e);
+  border-radius: 10rpx;
+  border: 1px solid transparent;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26rpx;
+  margin-top: 15rpx;
+  margin-left: auto;
+
+}

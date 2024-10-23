@@ -1,0 +1,53 @@
+/* member/claim_coupons/claim_coupons.wxss */
+.scroll{
+  width: 100%;
+}
+.top-img{
+  display: block;
+  width: 100%;
+  height: 554rpx;
+  background-color: #f2f2f2;
+}
+.claim-layout{
+  width: 750rpx;
+  height: 232rpx;
+  background: linear-gradient(0deg, #EBDDBF 0%, #F3EFE7 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.claim-layout text{
+  font-size: 24rpx;
+  color: #8A5315;
+}
+.claim-layout view{
+  width: 460rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: linear-gradient(0deg, #C27E31 0%, #CE9750 100%);
+  border-radius: 40rpx;
+  font-size: 36rpx;
+  color: white;
+}
+.rule-layout{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.rule-title{
+  font-size: 42rpx;
+  text-align: center;
+  font-weight: bold;
+  color: #333333;
+  margin-top: 58rpx;
+}
+.rule-des{
+  width: cala(100% - 156rpx);
+  margin: 0rpx 78rpx 0 78rpx;
+  color: #555555;
+  font-size: 26rpx;
+  line-height: 40rpx;
+}

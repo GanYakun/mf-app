@@ -1,0 +1,61 @@
+.invite-share {
+  width: 155rpx;
+  height: 170rpx;
+	background-color: #ffffff;
+  position: absolute;
+  border-radius: 12rpx;
+  bottom: calc(110rpx + constant(safe-area-inset-bottom));
+  bottom: calc(110rpx + env(safe-area-inset-bottom));
+  box-shadow: 0px 5px 10px 0px 
+    rgba(0, 0, 0, 0.1);
+    font-size: 22rpx;
+  color: #666666;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  left: -20rpx;
+  z-index: 9;
+  vertical-align: middle;
+}
+.invite-share:after {
+  content: '';
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  top: 160rpx;
+  left: 70rpx;
+  transform: rotate(225deg);
+  background-color: #ffffff;
+  /* border: 1px #FFB5C5; */
+  /* border-style: solid none none solid ; */
+}
+
+.invite-share>button{
+  width: unset !important;
+  font-size: unset !important;
+  font-weight: unset !important;
+  background-color: unset !important;
+  padding: unset !important;
+  color: #666666;
+  height: calc(50% - 2rpx);
+  line-height: 83rpx !important;
+ 
+  
+}
+.invite-share>view:first-child{
+  width: 100%;
+  height: calc(50% - 1rpx);
+  line-height: 83rpx !important;
+
+  
+}
+.invite-share>view:first-child{
+  width: 100%;
+  height: calc(50% - 1rpx);
+}
+
+.dwg{
+  /* position: fixed;
+  top: 0; */
+  margin-top: 10000rpx;
+}

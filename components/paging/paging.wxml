@@ -1,0 +1,28 @@
+
+<view class="topboxs">
+	<view class="pagingbox">
+		<view class="uppage" catchtap="upafter" data-index="{{currentPageNo}}">上一页</view>
+		<view class="numpage">
+			<view class="numpagebox" catchtap="xuanze"> 
+				<view class="numpage1">
+					{{currentPageNo}}/{{maxStart}}
+				</view>
+				<view class="numpage2">
+					<text class="iconfont icon-arr_under"></text>
+				</view>
+			</view>
+		</view>
+		<view class="nextpage" catchtap="nextafter" data-index="{{currentPageNo}}">下一页</view>
+	</view>
+
+
+	<view class="pagingboxs" hidden="{{isshow}}">
+		<view class="uppage"></view>
+		<view class="numpage">
+			<view class="numpageboxs"> 
+					<view class="pagexuanze" catchtap="onParentEvent" data-index="{{index+1}}" wx:for="{{listzujian.maxStart}}" wx:key="key">{{item+1}}</view>
+			</view>
+		</view>
+		<view class="nextpage"></view>
+	</view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "DefaultSwiper":"/components/DefaultSwiper/DefaultSwiper",
+    "count-down":"/miniprogram_npm/vant/count-down"
+  }
+}

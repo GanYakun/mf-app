@@ -1,0 +1,205 @@
+// pages/tab-classification/tab-classification.js
+var api = require("../../utils/api.js")
+var app = getApp()
+Page({
+
+  /**
+   * 页面的初始数据
+   */
+  data: {
+    curIndex: 0,
+    TopTitle:'商城',
+    LeftButtonnavHeight:app.globalData.LeftButtonnavHeight,
+    imgurl: app.globalData.imgur,
+    ftpurl:app.globalData.ftpurl
+  },
+
+  /**
+   * 生命周期函数--监听页面加载
+   */
+  onLoad: function (options) {
+    let ratio = 750 / wx.getSystemInfoSync().windowWidth;
+    let scrollHeight = Math.ceil(wx.getSystemInfoSync().windowHeight * ratio);
+    this.setData({
+      scrollHeight:scrollHeight,
+      tabIndexHeight:app.globalData.tabIndexHeight
+    })
+    wx.showLoading({
+      title: '加载中',
+    })
+    console.log(options)
+    let data = {
+      parentId: 0
+    }
+    api.request('/rest/tWebMallItemCatControllerApi/getAllList', data, 'GET', this.getAllList)
+    // this.switchRightTab()
+  },
+  switchRightTab: function (e) {
+    // console.log("tab", e)
+    // 获取item项的id，和数组的下标值 
+    var index = e.target.dataset.index;
+    console.log(index)
+    if(index == 99){
+      var id = 0 //类目id   首页为0
+    wx.navigateTo({
+      url: '../../xpages/hotproduct_detail/hotproduct_detail?id=' + id
+    })
+    return false
+    }
+    try{
+      if(this.data.lists[index].mallItemCatEntityList[0].id != this.data.lists[index].id){
+         this.data.lists[index].mallItemCatEntityList.unshift({
+        cname:'全部',
+         id: this.data.lists[index].id,
+         imagePath:  this.data.lists[index].imagePath,
+         parentCid: this.data.lists[index].id,
+         pid: 0
+      })
+      this.setData({
+        lists: this.data.lists,
+      })
+    }
+    }catch{
+      console.log('抛出异常')
+      this.data.lists[index].mallItemCatEntityList.unshift({
+        cname:'全部',
+         id: this.data.lists[index].id,
+         imagePath:  this.data.lists[index].imagePath,
+         parentCid: this.data.lists[index].id,
+         pid: 0
+      })
+      this.setData({
+        lists: this.data.lists,
+      })
+    }
+   
+    this.setData({
+      curIndex: index,
+    })
+   
+    // let data = {
+    //   parentId: 0
+    // }
+    // api.request('/rest/tWebMallItemCatControllerApi/getChildLists', data, 'GET', this.getChildLists)
+  },
+  //查询列表导航的回调
+  getAllList: function (e) {
+    console.log(e)
+    if(e){
+      wx.hideLoading({
+        success: (res) => {},
+      })
+      e.data[0].mallItemCatEntityList.unshift({
+        cname:'全部',
+         id:e.data[0].id,
+         imagePath: e.data[0].imagePath,
+         parentCid: e.data[0].id,
+         pid: 0
+      })
+      this.setData({
+        lists: e.data,
+      })
+    }
+    this.getHotProCategryList(e)
+  },
+
+  /**
+   * 
+   * 监听页面隐藏
+   * 
+   */
+  onHide(){
+wx.hideLoading({
+  success: (res) => {},
+})
+// app.UserLogin()
+  },
+  getChildLists: function (e) {
+    console.log(e)
+    this.setData({
+      list: e.data,
+      imgurl: app.globalData.imgur,
+    })
+  },
+
+  //点击商品
+  onGoodItemTap: function (e) {
+
+    var lists = this.data.lists
+    var curIndex = this.data.curIndex
+    var index = e.currentTarget.dataset.position1
+
+    var cname = e.currentTarget.dataset.cname
+    var id = e.currentTarget.dataset.id
+
+    var pid = e.currentTarget.dataset.pid
+    var catItem = lists[curIndex].mallItemCatEntityList[index]
+    var catItemStr = "{}"
+    if(catItem) {
+      catItemStr = encodeURIComponent(JSON.stringify(catItem))
+    }
+    if(pid == 0) {
+      wx.navigateTo({
+        url: '../../xpages/hotproduct_detail/hotproduct_detail?id=' + id + '&catItem=' + catItemStr,
+      })
+    } else {
+      wx.navigateTo({
+        url: '../../xpages/classification/classification?id=' + id + "&cname=" + cname+'&ScreeningFloors='+1,
+      })
+    }
+  },
+
+  /**
+   * 
+   * 本月爆款的商品点击事件
+   * 
+   * 
+   */
+  hotproduct_detail:function (e) {
+    var id = e.currentTarget.dataset.id
+    var cname = e.currentTarget.dataset.cname
+    
+    wx.navigateTo({
+      url: '../../xpages/hotproduct_detail/hotproduct_detail?id=' + id+ "&cname=" + cname
+    })
+  },
+  
+  /**
+   * @Author gale
+   * @Desc 获取本月爆款二级分类数据,并塞到一级类目中去
+   */
+  getHotProCategryList: function(e) {
+    // if(this.data.lists[index].mallItemCatEntityList[0].id != this.data.lists[index].id){
+    //   this.data.lists[index].mallItemCatEntityList.unshift({
+
+    
+
+    // console.log(this.data.lists[index])
+
+    api.request("/rest/tWebMallItemCatControllerApi/getChildLists", {parentId: 0}, "GET", (res) => {
+      var mallItemCatEntityList = []
+      if(res && res.data) {
+        mallItemCatEntityList = res.data
+      }
+      for(var i=0; i<mallItemCatEntityList.length; i++) {
+        mallItemCatEntityList[i].pid = mallItemCatEntityList[i].parentCid
+        mallItemCatEntityList[i].parentCid = 0
+      }
+      
+      var lists = this.data.lists
+      if(!lists && lists.length <= 0) {
+        lists = []
+      }
+      lists.push({
+        name:'本月爆款',
+        id:0,
+        imagePath: this.data.ftpurl+'/plug-in/aykjmobile/images/all_hot.png',
+        mallItemCatEntityList: mallItemCatEntityList
+      })
+      console.log("lists", lists)
+      this.setData({
+        lists: lists
+      })
+    })
+  }
+})

@@ -1,0 +1,119 @@
+page{
+  background-color: #f7f7f7;
+}
+.topimage{
+width: 100%;
+}
+.topimage image{
+width: 100%;
+/* height: 160rpx; */
+}
+
+.tabbox{
+  height: 90rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  border-bottom: 1px solid #f2f2f2;
+  background-color: #ffffff;
+  padding: 0 20rpx;
+}
+
+/* .tabbox view:last-child{
+  margin-left: 30rpx;
+  line-height: 90rpx;
+  text-indent: 10rpx;
+} */
+.select{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+  /* border-bottom: 2rpx solid #f97704; */
+  color: #f97704;
+  line-height: 90rpx;
+  text-align: center;
+}
+.tabitem{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 25%;
+  line-height: 90rpx;
+  height: 90rpx;
+  text-align: center;
+}
+
+.line{
+  width: 100rpx;
+  height: 2rpx;
+  background: #f97704;
+}
+.personnelbox{
+  display: grid;
+  grid-template-columns: auto auto;
+  /* grid-template-rows: 630rpx 630rpx; */
+  /* grid-column-gap:20rpx; */
+  grid-row-gap: 10rpx;
+  grid-column-gap: 10rpx;
+  width: 720rpx;
+  padding: 12rpx 0 0 0;
+  margin: 0 auto;
+}
+.personnel{
+  border-radius: 12rpx;
+  width: 330rpx;
+display: grid;
+padding: 12rpx;
+background-color: #ffffff;
+
+}
+
+.personnelview{
+  /* background-color: #f97704; */
+  /* width: 318rpx; */
+  height: 100%;
+}
+
+.icon-xingxing1{
+  color: #FFE648;
+}
+
+.bootmage{
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10rpx;
+}
+.bootmage view{
+font-size: 24rpx;
+color: #666666;
+}
+/* .bg_color{
+  background-color: #f97704;
+  background: -webkit-linear-gradient(left, #FBA649 0%, #F56D23 100%);
+  -webkit-text-fill-color: transparent;
+} */
+
+.personnelviewimages{
+  /* width: 318rpx; */
+  /* padding: 12rpx 6rpx 0 12rpx; */
+  /* height:450rpx; */
+  background:url(http://mf.100good.cn/plug-in/front/mlswap/images/loader.gif) no-repeat center center;
+  background-size: contain;
+
+}
+
+.personnelviewimages image{
+  border-radius: 12rpx;
+  width: 100%;
+  /* padding-left: 6rpx; */
+}
+.swiper_image{
+  width: 100%;
+}
+
+
+

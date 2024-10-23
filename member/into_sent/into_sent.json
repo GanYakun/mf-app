@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "haosong-poster-dialog": "/components/haosong-poster-dialog/index",
+    "poster": "/components/wxa-plugin-canvas/poster"
+  }
+}

@@ -1,0 +1,74 @@
+/* member/write_off/write_off.wxss */
+.btn{
+  padding-top: 30rpx;
+  padding-bottom: 30rpx;
+  box-sizing: border-box;
+  background-color: white;
+}
+.btn text{
+  margin-top: 30rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  margin: 0;
+  font-size: 32rpx;
+  font-family: PingFang;
+  font-weight: 500;
+  color: #FFFFFF;
+  line-height: 20rpx;
+  height: 80rpx;
+  width: calc(100% - 140rpx);
+  background: #FE7C37;
+  margin-left: 75rpx;
+  box-shadow: 0px 3rpx 7rpx 0px rgba(220,85,13,0.35);
+  border-radius: 40rpx;
+}
+.info-item text{
+  font-size: 30rpx;
+  font-family: PingFang;
+  font-weight: 500;
+  color: #999999;
+  line-height: 60rpx;
+}
+
+.detail-title{
+  font-size: 30rpx;
+  font-family: PingFang;
+  font-weight: 500;
+  color: #999999;
+  line-height: 60rpx;
+}
+
+.info-item .content{
+  color: #333333;
+}
+image{
+  width: 100%;
+  height: 470rpx;
+  margin-top: 42rpx;
+}
+.detail{
+  font-size: 26rpx;
+  color: #555555;
+}
+.group{
+  display: flex;
+  flex-direction: column;
+}
+.scroll{
+  flex: 1;
+  /* /* height: calc(100%  -  env(safe-area-inset-bottom)); */
+  /* height: calc(100%  -  80rpx - env(safe-area-inset-bottom)); 
+  height: calc(100%  -  80rpx - constant(safe-area-inset-bottom));  */
+  overflow: hidden;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+.page-group{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+}
+

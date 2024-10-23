@@ -1,0 +1,96 @@
+.title-left {
+  font-size: 34rpx;
+  font-weight: 700;
+  color: #000
+}
+
+.title-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between
+}
+
+.headlines-floor-item {
+  width: 100%;
+  color: #333
+}
+
+.more {
+  font-size: 28rpx;
+  color: #000;
+  margin-left: auto
+}
+
+.filter-list,
+.filter-list1,
+.filter-list2 {
+  width: 100%;
+  white-space: nowrap;
+  padding-top: 20rpx
+}
+
+.filter-list .filter-item {
+  display: inline-block;
+  width: 17%;
+  margin-right: 1%;
+  text-align: center;
+  border-radius: 130rpx;
+  font-size: 24rpx;
+  color: #444
+}
+
+.ad-image-list {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap
+}
+
+.headlines-list-item {
+  width: 100%;
+  border-radius: 12rpx;
+  padding: 15rpx;
+  box-sizing: border-box;
+  display: flex;
+  border-radius: 16rpx;
+  background-color: #fff;
+  margin-top: 20rpx
+}
+
+.list-item-image {
+  width: 200rpx;
+  height: 150rpx;
+  border-radius: 12rpx
+}
+
+.item-content {
+  margin-left: 20rpx;
+  width: calc(100% - 220rpx)
+}
+
+.item-title {
+  font-size: 28rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #000
+}
+
+.item-introduce {
+  margin-top: 10rpx;
+  font-size: 26rpx;
+  color: #999;
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical
+}
+
+.filter-item>view {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}

@@ -1,0 +1,13 @@
+<import src="../../wxParse/wxParse.wxml" />
+<leftbutton toptitle="{{pagelist.title}}"></leftbutton>
+<view class="title">
+{{pagelist.title}}
+</view>
+
+<!-- 作者，来源，发布时间等 -->
+<view class="alsourcef"> 
+<view class="alsourcef_item">作者：{{pagelist.createName}}  </view>
+<view class="alsourcef_item" wx:if="{{pagelist.source}}">来源： {{pagelist.source}} </view>
+<view class="alsourcef_item">浏览：{{pagelist.createDate}}</view>
+</view>
+			<template is='wxParse' data="{{wxParseData:article.nodes}}" />

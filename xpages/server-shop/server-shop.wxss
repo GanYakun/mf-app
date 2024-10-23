@@ -1,0 +1,52 @@
+/* xpages/server-shop/server-shop.wxss */
+.server-item{
+  width: calc(100% - 40rpx);
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  margin: 0 auto;
+  margin-bottom: 20rpx;
+  display: flex;
+  overflow: hidden;
+}
+.server-item:first-child{
+  margin-top: 20rpx;
+}
+.server-item>image{
+  width: 300rpx;
+  height: 225rpx;
+  border-radius: 16rpx;
+  display: block;
+}
+.server-introu{
+  padding: 15rpx 20rpx 15rpx 30rpx;
+  width: calc(100% - 300rpx - 50rpx);
+}
+
+.server-introu>view:nth-child(1){
+  font-size: 28rpx;
+  color: #000000;
+  
+}
+
+.server-introu>view:nth-child(1){
+  font-size: 28rpx;
+  color: #000000;
+  
+}
+
+.server-introu>view:nth-child(2){
+  font-size: 28rpx;
+  color: #b5b5b5;
+  text-overflow: -o-ellipsis-lastline;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.server-introu>view:nth-child(3){
+  color: #f21c1c;
+  margin-top: 20rpx;
+  font-size: 30rpx;
+}

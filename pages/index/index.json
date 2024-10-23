@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "van-count-down": "/miniprogram_npm/vant/count-down/index",
+    "navBar": "/components/navbar/navbar",
+    "tabindex":"/components/tab-navigation/index",
+    "swiperAuto":"/components/swiperAuto/swiperAuto",
+    "sample-item":"/components/sample-item/index",
+    "DefaultSwiper":"/components/DefaultSwiper/DefaultSwiper",
+    "floor-list": "/components/floor-list/index"
+  },
+  "navigationBarTitleText": "首页",
+  "navigationStyle":"custom",
+  "navigationBarTextStyle":"black"
+}

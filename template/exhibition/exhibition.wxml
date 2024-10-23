@@ -1,0 +1,37 @@
+<wxs module="filter" src='/utils/filter.wxs'></wxs>
+<template name='exhibition'>
+	<view class="contentss" catchtap="checklist" data-hometitle="{{item.homeTitle}}" data-id="{{item.id}}">
+  <view class="listimage">
+	<view class="listimage-logo" wx:if="{{item.brandLogoPath}}">
+	<image src="{{imgur}}{{filter.jsonzhuanhuan(item.brandLogoPath)[0].path}}" mode="heightFix"></image>
+	</view>
+  <image src="{{imgur}}{{item.topImage}}" mode="widthFix"></image>
+  </view>
+		
+		<view class='jieshaobox'>
+		<!-- <view style="display:flex;">
+			<view class="jieshao">
+				<text>{{item.homeTitle}}</text>
+			</view>
+			<view class="itemPriceView">
+			<text  wx:if="{{item.costMoneyTotal&&item.costMoneyTotal!=0}}">¥{{item.costMoneyTotal}}</text>
+		</view>
+		</view> -->
+		<view class="jieshao">
+				<text decode="true"><block wx:if="{{item.bname}}">[{{item.bname}}]&nbsp;</block>{{item.homeTitle}}</text>
+				<text class="itemPrice" wx:if="{{item.costMoneyTotal&&item.costMoneyTotal!=0}}">¥{{item.costMoneyTotal}}</text>
+			</view>
+			
+			<!-- <view class="jieshaos" wx:if="{{item.subtitle}}" style="color:#666;">
+		{{item.subtitle?item.subtitle:''}} </view> -->
+			<view class="tuo">
+				<view class="ellipsebox" wx:for='{{item.attrTagArray}}' wx:key='key'>
+					<!-- <view class="ellipse">{{item}}</view> -->
+					<!-- <view class="ellipse">{{item.designerDecoratorEntity.atStyle}}</view> -->
+				</view>
+			</view>
+		</view>
+
+	</view>
+
+</template>

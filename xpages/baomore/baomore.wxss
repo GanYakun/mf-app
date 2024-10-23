@@ -1,0 +1,17 @@
+@import "/utils/font.wxss";
+page{
+  background-color: #f1f1f1;
+}
+.headebox{
+  background-color: #ffffff;
+  font-size: 33rpx;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  text-indent: 40rpx;
+  width: 100%;
+}
+
+.icon-shaixuan{
+  font-size: 30rpx;
+  margin-left: 30rpx;
+}

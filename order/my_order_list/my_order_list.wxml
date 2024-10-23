@@ -1,0 +1,139 @@
+<leftbutton toptitle="我的订单"></leftbutton>
+ <!-- 加载弹窗开始 -->
+ <Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 加载弹窗结束 -->
+<view class="container" style="height:calc(100% - {{LeftButtonnavHeight}}rpx);">
+	<view class="tabList">
+		<view wx:for='{{tabList}}' wx:key="tabKey" wx:for-item="tabItem" class="tab">
+			<label wx:if='{{current==index}}' class="selected" data-name="{{tabItem.name}}">{{tabItem.name}}</label>
+			<label wx:else catchtap="onChangeTab" data-name="{{tabItem.name}}" data-index="{{index}}" data-orderstatus="{{tabItem.orderStatus}}">{{tabItem.name}}</label>
+			<view class="tab-border" wx:if="{{index!=tabList.length-1}}"></view>
+		</view>
+	</view>
+	<swiper easing-function="easeOutCubic" current="{{current}}" class="swiper-box" style="height:calc(100% - 80rpx);" duration="300" bindchange="tabChange">
+
+
+		<!-- 订单 -->
+		<swiper-item wx:for="{{tabList}}" wx:key="key" data-index="{{index}}">
+			<scroll-view bindscrolltolower="solidLower" scroll-top="{{scroolTop}}" scroll-y='true' style="height:100%" class="orderList">
+				<block wx:for="{{orderlist}}" wx:key="key">
+					<view class="commot" bindtap="onOrderDetailTap" data-id="{{item.id}}" data-orderType="{{item.orderType}}" style="margin-top:20rpx">
+						<view class="topstore">
+							<view class="storeimage">
+								<image style="width:50rpx;height:50rpx;" src="{{imgurl}}{{item.imagePath}}"></image>
+							</view>
+							<view class="storename">门店{{item.ownStore == null?'':item.ownStore}}</view>
+							<view class="storetext" wx:if="{{item.orderStatus==1}}">待付款</view>
+							<view class="storetext" wx:if="{{item.orderStatus==0}}">待发货</view>
+							<view class="storetext" wx:if="{{item.orderStatus==8}}">待收货</view>
+							<view class="storetext" wx:if="{{item.orderStatus==2}}">已完成</view>
+							<view class="storetext" wx:if="{{item.orderStatus==5}}">买家取消</view>
+							<view class="storetext" wx:if="{{item.orderStatus==7}}">订单关闭</view>
+							<view class="storetext" wx:if="{{item.orderClassification==1}}">线下支付</view>
+							
+						</view>
+						<view class="ordertop" wx:for="{{item.orderDetailsList}}" wx:key="key">
+							<image src="{{imgurl}}{{item.imagePath}}" mode="aspectFill"></image>
+							<view class="title-t">
+								<text>{{item.itemName}}</text>
+								<view class="tongj">
+									<view class="tatol">{{item.productName}}</view>
+									<view class="tatol"><text decode="true" class="tatolprice">￥{{item.unitPrice}}&nbsp;&nbsp;</text>x{{item.productCounts}}</view>
+								</view>
+							</view>
+						</view>
+						<!-- 规格 -->
+						<view class="info-title guige" catchtap="tcguige">
+							<text decode="true">x{{item.productCounts}}&nbsp;合计：￥{{item.actuallyPaidAmount}}</text>
+						</view>
+						<!-- 运费统计 -->
+						<view class="postage">
+							<view catchtap="longcopy" data-text="{{item.orderNum}}">下单日期：{{item.createDate}} 订单号：{{item.orderNum}}</view>
+						</view>
+						<!-- 各个按钮 -->
+						<view class="shangp">
+							<view class="shangp-b" catchtap="onOrderDetailTap" data-id="{{item.id}}" data-orderType="{{item.orderType}}">订单详情</view>
+              <!-- wx:if="{{item.orderStatus==0&&item.actuallyPaidAmount>0}}" -->
+							<view class="shangp-b" wx:if="{{false}}" data-id="{{item.id}}" catchtap="onApplyTap" data-click="1" data-ordernum="{{item.orderNum}}">退换货申请</view>
+							<view class="shangp-bs" catchtap="gouby" wx:if="{{item.orderStatus==1}}" data-ordernum="{{item.orderNum}}" data-prices="{{item.actuallyPaidAmount}}" >去付款</view>
+							<view class="shangp-bs" catchtap="goPinjia" wx:if="{{item.orderStatus==2&&item.orderClassification==2}}" data-ordernum="{{item.orderNum}}" data-prices="{{item.actuallyPaidAmount}}" >去评价</view>
+							<view class="shangp-bs" wx:if="{{item.orderStatus==1||item.orderStatus==10||(item.orderStatus==0&&item.orderClassification==2&&item.actuallyPaidAmount<=0)}}" catchtap="onCancelOrderTap" data-id="{{item.id}}" data-orderstatus="5" hidden="{{item.orderClassification==1}}">取消订单</view>
+							<!-- && item.orderStatus==0 -->
+							<view class="shangp-bs" wx:if="{{item.qrcode&&item.qrcode!='null'&&item.qrcode!='undefined'&&item.orderStatus==0}}" catchtap="lookqrc" data-id="{{item.id}}" data-qrcurl="{{item.qrcode}}" data-orderstatus="5">查看二维码</view>
+						</view>
+
+					</view>
+				</block>
+			</scroll-view>
+		</swiper-item>
+
+	</swiper>
+	<view class="mask" wx:if="{{click == 1}}" bindtap="screenEd" data-click="0">
+
+	</view>
+	<view class="content" wx:if="{{click == 1}}">
+		<view class="title">退换货申请</view>
+		<view class="item flex">
+			<label>订单号：</label>
+			<input value="{{ordernum}}"></input>
+		</view>
+		<view class="items flex"  bindtap="onTypeTap">
+			<label>类型：</label>
+			<view class="type flex-r-s">
+				<view>{{valueName}}</view>
+				<view class="iconfont icon-icon-down"></view>
+			</view>
+		</view>
+		<view class="options" wx:if="{{isclick == 1}}">
+			<view class="select {{selected == index?'selected':''}}" wx:for="{{thTypeArr}}" wx:key="key" data-isclick="0" data-value="{{item.typecode}}" data-index="{{index}}" bindtap="onSelectTap">{{item.typename}}</view>
+		</view>
+		<view class="item flex">
+			<label>展示图：</label>
+			<view class="choose" bindtap="chooseImage">选择</view>
+		</view>
+		<view class="item">
+			<view class="tips">
+				<view>最多可以上传3张图片,格式：</view>
+				<view>jpg,jpeg,gif,png,bmp</view>
+			</view>
+			<view class="item">
+				<view class="selectimg flex">
+					<view class="img" wx:for="{{imgarr}}">
+						<image src="{{item}}"></image>
+						<view class="delete" bindtap="onDeleteTap" data-index="{{index}}">x</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<view class="item flex">
+			<label>退换货原因：</label>
+			<textarea bindinput="reason"></textarea>
+		</view>
+		<view class="item ">
+			<view class="btnss">
+				<view class="btn1" bindtap="submit" data-click="0">确定</view>
+				<view class="btn2" bindtap="screenEd" data-click="0">取消</view>
+			</view>
+
+
+		</view>
+	</view>
+
+</view>
+
+
+
+
+
+<view class="fadeIn" wx:if="{{iosDialog2}}">
+        <view class="weui-mask"></view>
+        <view class="weui-dialog">
+            <view class="weui-dialog__bd">
+							<image class="toastimg" src="{{imgurl}}{{qrcurl}}"></image>
+						</view>
+            <view class="weui-dialog__ft" >
+						<view class="weui-dialog__ft_son" bindtap="close">	关闭</view>
+            </view>
+        </view>
+		</view>
+		<Allpagesneed></Allpagesneed>

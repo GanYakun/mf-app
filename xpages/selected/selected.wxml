@@ -1,0 +1,55 @@
+<view class="mask" wx:if="{{mask}}" bindtap="hide"></view>
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 加载弹窗结束 -->
+<leftbutton toptitle="{{TopTitle}}"></leftbutton>
+<view class="PageBox" style="height:calc(100% - {{tabIndexHeight+LeftButtonnavHeight}}rpx)">
+  <!-- <view class="topxuanze">
+<view class="topxuanzeitem" wx:for='{{sublists}}' wx:key="key" bindtap="screenEd" data-index="{{index}}" data-searchOptionRootCode="{{item.searchOptionRootCode}}" >
+{{item.searchOptionRootName}}<text class="iconfont icon-jiantou9" ></text>
+</view>
+</view> -->
+  <!-- <view class="{{mask?'selected':'screenBox-show'}}" style="height:{{mask?topheight:0}}rpx">
+<view class="gridbuju" wx:if="{{mask}}" style="width: {{pageWindowwidth-40}}rpx;">
+<view class="{{item.id==customization[0]?'selectedvals':'selectedval'}}" catchtap="selected"  data-id="{{item.id}}" data-curinex="{{0}}" data-index="{{index}}" wx:if="{{maskindex==0}}" wx:for="{{selectedval}}" wx:key="key">{{item.searchName}}</view>
+<view class="{{item.id==customization[1]?'selectedvals':'selectedval'}}" wx:for="{{selectedval1}}" data-id="{{item.id}}" data-curinex="{{1}}" catchtap="selected" wx:if="{{maskindex==1}}" wx:key="key">{{item.searchName}}</view>
+</view>
+</view> -->
+
+
+  <view class="tabbar" style="top:{{LeftButtonnavHeight}}rpx">
+    <scroll-view scroll-x="true" class="scroll-view_H" style="width: 100%;" scroll-with-animation="true" id="scroll-view" scroll-left="{{scrollLeft}}" >
+      <view  wx:for="{{tabList}}" wx:key='key' id="item{{item.id}}" class="item scroll-view-item_H" bindtap="OnTabTap" data-index="{{index}}" data-id="{{item.id}}"  style="{{customization[0] == item.id?'color:#ff7931':''}}">{{item.searchName}}
+        <view class="line" wx:if="{{customization[0] == item.id}}"></view>
+      </view>
+    </scroll-view>
+  </view>
+
+
+
+
+  <!-- 图片以及文字 -->
+  <scroll-view scroll-y="true" scroll-top='{{topNum}}' style="height:calc(100%  - 80rpx)" bindscrolltolower="slideusage"
+    class="vertical-scroll">
+    <block wx:for='{{list.list}}' wx:key='key'>
+      <view class="concat">
+        <image class='showimage' src="{{imgur}}{{item.topImage}}" catchtap="allhomelist"
+          data-hometitle="{{item.homeTitle}}" data-id="{{item.id}}" mode="widthFix"></image>
+          <view style="width:100%;display:flex;align-items: center;">
+        <view class="title">{{item.homeTitle}}</view>
+        <view class="homeArea">¥{{item.costMoneyTotal}}</view>
+      </view>
+        <!-- <view class="redindex">
+          推荐指数：<text wx:for='{{item.recommendLevel}}' wx:key="key" class="iconfont icon-xingxing1"></text>
+        </view> -->
+        <!-- <view class="price"><text style="margin-right:5rpx;" wx:if="{{item.homeArea != '定制'}}">¥</text>{{item.homeArea}}
+        </view> -->
+      </view>
+    </block>
+  </scroll-view>
+
+</view>
+
+
+<Allpagesneed></Allpagesneed>
+<tabindex></tabindex>

@@ -1,0 +1,194 @@
+/* member/collection/collection.wxss */
+@import "../../utils/font.wxss";
+page{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: #f7f7f7;
+}
+.casesearch{
+  border: 1px solid #ddd;
+    margin:20rpx;
+    background: #FFF;
+    border-radius: 84rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0 20rpx;
+    display: flex;
+
+}
+.casesearch .input{
+  flex: 1;
+}
+.casesearch input{
+  height: 80rpx;
+    line-height: 80rpx;
+}
+.icon-sousuo{
+  display: block;
+  width:40rpx;
+  height:40rpx;
+  text-align: center;
+    line-height: 80rpx;
+    font-size: 18px;
+}
+
+/* .vertical-scroll {
+  width: 100%;
+  height: calc(100% - 1000rpx - 64px);
+  background: #f2f2f2;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+} */
+
+.lists{
+  padding:20rpx;
+  margin-bottom: 200rpx;
+
+}
+.lists .item{
+  margin-bottom: 20rpx;
+}
+.lists .item .itemc{
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+}
+.lists .item .itemc .itemc_right{
+  margin-left: 20rpx;
+  color: #999;
+    font-size: 12px;
+    width: 65%;
+}
+.lists .itemc_prise .name{
+font-size: 14px;
+font-weight: bold;
+color: #000;
+}
+.lists .itemc_prise .date{
+  font-size: 12px;
+  color: #999999;
+}
+.lists .item .itemc .itemc_right view{
+  white-space: pre-line;
+}
+.lists .item .itemc .itemc_right .names{
+
+  font-size: 14px;
+  color: #000;
+  font-weight: bold;
+}
+.lists .item .itemc .img{
+  width: 200rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+ display: flex;
+ margin-top: -5rpx;
+}
+.lists .item .itemc .img image{
+  width: 100%;
+  height: 0;
+}
+.lists .item .itembtn{
+
+  padding: 5px;
+    text-align: right;
+    background: #FFF;
+}
+.lists .item .itembtn view{
+  color: #666666;
+  display: inline-block;
+  height: 56rpx;
+  line-height: 56rpx;
+  padding: 0 30rpx;
+  font-size: 12px;
+  border-radius: 30rpx;
+  border: 1px solid #e3e3e3;
+}
+.fixedfooter{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  width: 100%;
+    color: #555;
+    height: 90rpx;
+    background: #fff;
+    box-shadow: 1px 0 4px #d9d8d8;
+    align-items: center;
+}
+.fixedfooter .img{
+  width: 80rpx;
+  height: 80rpx;
+}
+.fixedfooter .img image{
+  width: 100%;
+  height: 100%;
+}
+.fixedfooter .item{
+  display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+  font-size: 12px;
+  text-align: center;
+  width: 25%;
+}
+
+.distributed{
+  margin: 0 auto;
+  color: #333;
+  font-weight: bold;
+  font-size: 28rpx;
+  margin-top: 30rpx;
+  text-align: center;
+}
+
+.tab-item {
+  width: 33.33%;
+  padding-left: 40rpx;
+  padding-right: 40rpx;
+  height: 100%;
+  line-height: 88rpx;
+  text-align: center;
+  word-break: break-all;
+  display: inline-block !important;
+  -webkit-line-clamp: 1 !important;
+  -webkit-box-orient: vertical;
+}
+
+
+.shopname{
+  font-size: 28rpx;
+  color: #000;
+}
+
+.shopSubtitle{
+  background: #f3f3f3;
+  padding: 0 15rpx;
+  font-size: 24rpx;
+  border-radius: 12rpx;
+}
+.shopPrice{
+  color: #ff6c00;
+  margin-top: 10rpx;
+}
+
+.date{
+  margin-top: 20rpx;
+  display: flex;
+  justify-content: space-between;
+}
+.onDeleteTap{
+  font-size: 18rpx;
+  border-radius: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background: #f3f3f3;
+  padding: 0 20rpx;
+  color: #757575;
+}.icon-xihuan{
+  font-size: 16rpx;
+  margin-right: 10rpx;
+}

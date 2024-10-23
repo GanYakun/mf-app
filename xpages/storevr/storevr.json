@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed"
+  },
+  "navigationBarTitleText": "实体门店vr"
+}

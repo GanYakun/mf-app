@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "popup": "/components/popup/popup",
+    "phonepopup":"/components/phonepopup/phonepopup"
+  },
+  "navigationBarTitleText": "评论",
+  "Allpagesneed":"/components/Allpagesneed/Allpagesneed"
+}

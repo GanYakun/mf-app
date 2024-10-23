@@ -1,0 +1,4 @@
+<!--pages/latest_events/latest_events.wxml-->
+<scroll-view class="vertical-scroll" scroll-y="true">
+  
+</scroll-view>

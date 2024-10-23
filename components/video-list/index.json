@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "video-item": "/components/video-item/index",
+    "comment-list-dialog": "../comment-list-dialog/index"
+  }
+}

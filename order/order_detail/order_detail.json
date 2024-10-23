@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "address-list-poup":"/components/address-list-poup/address-list-poup",
+    "transaction-description":"/components/transaction-description/transaction-description"
+  }
+}

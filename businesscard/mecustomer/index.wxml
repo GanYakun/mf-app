@@ -1,0 +1,209 @@
+<wxs src="../../utils/filter.wxs" module="filter"></wxs>
+<!-- 我的客户 -->
+<leftbutton toptitle="{{toptitle}}"></leftbutton>
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<view class="selectTime" style="top:{{LeftButtonnavHeight}}rpx" >
+    <view class="left" style="margin-left:20rpx">
+      <picker style="width:100%" mode="date" start="2015-01-01" end="2050-09-09" value="{{currentdate}}" fields="day"  bindchange="startbindDateChange">
+      <view class="picker-box">
+        {{currentdate}}
+        <view  class="iconfont icon-youjiantou" ></view>
+      </view>
+      </picker>
+      
+    </view>
+
+    <view class="right" style="margin:0 20rpx">
+      <picker mode="date" value="{{endDate}}" start="2015-01-01" end="2050-09-09" fields="day"   bindchange="bindDateChange">
+        <view class="picker">
+          <view class="picker-box">
+            {{endDate||'结束时间'}}
+        <view  class="iconfont icon-youjiantou" ></view>
+      </view>
+        </view>
+      </picker>
+      <view class="search" bindtap="search">搜索</view>
+    </view>
+  </view>
+<scroll-view style="height:calc(100% - {{navHeight+60}}rpx)" scroll-y="true"
+  bindscrolltolower="{{xindex==1?'receivelower':'lower'}}">
+
+  <view class="topbox">
+  </view>
+  <view class="newlyadded">
+    <view>
+      本月新增：<text class="newlyadded_num">{{newCount}}</text>
+    </view>
+    <view class="division"></view>
+    <view>报名总数：<text class="newlyadded_num">{{list.length}}</text></view>
+  </view>
+
+
+  <!-- 客户列表 -->
+  <view class="cusbox">
+    <view bindtap="onTap" data-index="0" style="{{xindex==0?'color:#ff9731':''}}">报名客户</view>
+    <view bindtap="onTap" data-index="1" style="{{xindex==1?'color:#ff9731':''}}">领券客户</view>
+  </view>
+
+
+
+  <!-- <view class="selected" wx:if="{{xindex == 0}}">
+    <view class="left"  bindtap="isChoose">
+        <view class="iconfont icon-dagou"></view>
+        <view style="margin:0 20rpx">{{typename}}</view>
+        <view class="iconfont icon-icon-down" style="{{choose ==0?'color:#666':''}}"></view>
+    </view>
+
+    <view class="division"></view>
+    <view class="right" bindtap="screen" data-mask="1">
+      <view class="iconfont icon-shaixuan"></view>
+      <view style="margin:0 20rpx">筛选</view>
+      <view class="iconfont icon-icon-down" style="{{mask ==0?'color:#666':''}}"></view>
+    </view>
+  </view> -->
+  <!-- 请选择弹窗 -->
+  <block wx:if="{{xindex == 0}}">
+    <view class="dropMenu" wx:if="{{choose==1}}">
+      <scroll-view scroll-y="true" style="height:200rpx">
+        <view class="{{indexs==index?'select':''}}" wx:for="{{dataDictionaryData}}" wx:key="key" bindtap="choose"
+          data-type="{{item.typecode}}" data-typename="{{item.typename}}" data-choose="0" data-index="{{index}}">
+          {{item.typename}}</view>
+      </scroll-view>
+    </view>
+  </block>
+  <!-- 请选择弹窗 -->
+
+  <!-- 报名客户 -->
+  <block wx:if="{{xindex == 0}}">
+    <!-- <nodata wx:if="{{list.length==0}}"></nodata> -->
+    <view class="nodata" wx:if="{{list.length==0}}">暂无数据</view>
+    <view class="cuslist" wx:for="{{list}}" wx:key="key">
+      <view class="cuslist_1">
+        <view class="cuslist_2">
+
+          <view>
+            <view class="row1 flex">
+              <view class="flex">
+                <text class="iconfont icon-webicon08"></text>
+                <view>{{item.name}}</view>
+              </view>
+
+            </view>
+            <view class="row2 row flex">
+              <view class="flex">
+                <text class="iconfont icon-fuwurexian"></text>
+                <view catchtap="callPhone" data-phone="{{item.tel}}">{{item.tel}}</view>
+                <!-- <text data-copy="{{item.tel}}" class="copy" catchtap="copy">复制</text> -->
+              </view>
+              <view class="flex">
+                <text class="iconfont icon-yingyeshijian"></text>
+                <view>{{filter.timetransformation(item.createDate)}}</view>
+              </view>
+            </view>
+            <view class="row flex" wx:if="{{item.houseAddress}}">
+              <text class="iconfont icon-zhufang"></text>
+              <view>{{item.houseAddress}}</view>
+            </view>
+            <view class="row flex" wx:if="{{item.houseStructureName}}">
+              <text class="iconfont icon-fabu1"></text>
+              <view>{{item.houseStructureName}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </block>
+
+  <view class="cuslist" wx:for="{{Collectcoupons}}" bindtap="clickOrder" data-clickMessage="{{item}}" wx:key="key"
+    wx:if="{{xindex == 1}}">
+    <view class="cuslist_1">
+      <view class="cuslist_2">
+
+        <view>
+          <view class="newrow1 flex">
+            <view class="flex">
+              <text class="iconfont icon-webicon08"></text>
+              <view>{{item.nick}}</view>
+            </view>
+            <view class="iconfont icon-yihexiao" wx:if="{{item.writeOff==1}}"></view>
+          </view>
+          <view class="coupMessag">
+            <view class="row2 row flex">
+              <view class="flex">
+                <text class="iconfont icon-yingyeshijian"></text>
+                <view>
+                  {{filter.timetransformation(item.createDate)}}
+                </view>
+              </view>
+              <view class="row flex">
+                <text class="iconfont icon-fuwurexian"></text>
+                <view>
+                  {{item.phone}}
+                </view>
+              </view>
+            </view>
+           
+            <view class="row flex newlibao" wx:if="{{item.period}}">
+              <text class="iconfont icon-chanpin" style="flex-shrink: 0;"></text>
+              <view style="flex-shrink: 0;">{{item.period}}</view>
+              <view style="flex: 1; overflow: hidden; margin-left: 20rpx;">{{item.productName}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="nodata" wx:if="{{Collectcoupons.length == 0 &&xindex == 1 }}">暂无数据</view>
+  <view class="nodata" wx:if="{{!Collectcoupons &&xindex == 1 }}">暂无数据</view>
+  
+</scroll-view>
+<button class="share-url" open-type="share" bindtap="shareUrl">分享报名链接  →</button>
+<view class="mask" wx:if="{{mask == 1}}" bindtap="close" data-mask="0"></view>
+<view class="screen" wx:if="{{mask == 1}}" animation="{{animationData}}">
+  <view class="form">
+    <form action="" catchsubmit="formSubmit" catchreset="formReset">
+      <view class="title">
+        <view class="name">筛选</view>
+        <view class="iconfont icon-cha" bindtap="close" data-mask="0"></view>
+      </view>
+      <view class="items">
+        <view class="date">时间范围</view>
+      </view>
+      <view class="items" style="font-size:13px">
+        <view class="flex">
+          <picker mode="date" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+            <view class="picker">
+              {{!startDate?'请选择':startDate}}
+            </view>
+          </picker>
+          <text class="iconfont icon-jiantou9"></text>
+        </view>
+        <view style="margin:0 20rpx">——</view>
+        <view class="flex">
+          <picker mode="date" value="{{endDate}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChanges">
+            <view class="picker">
+              {{!endDate?'请选择':endDate}}
+            </view>
+          </picker>
+          <text class="iconfont icon-jiantou9"></text>
+        </view>
+      </view>
+      <view class="items">
+        <view class="date">姓名</view>
+        <input value="{{name}}" placeholder="请输入姓名" placeholder-style="font-size:13px" bindinput="name"></input>
+      </view>
+      <view class="items">
+        <view class="date">电话</view>
+        <input value="{{tel}}" placeholder="请输入电话" placeholder-style="font-size:13px" bindinput="phone"></input>
+      </view>
+      <view class="btns">
+        <button bindtap="reset" class="reset">重置</button>
+        <button formType="submit" class="submit"
+          style="border-radius: 0rpx !important;font-weight:0px !important;height:88rpx !important" bindtap="finish"
+          data-mask="0">完成</button>
+      </view>
+    </form>
+  </view>
+</view>

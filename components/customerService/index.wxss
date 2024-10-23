@@ -1,0 +1,12 @@
+.kefu{
+  position: fixed;
+  bottom: 120rpx;
+  right: 30rpx;
+  width: 70rpx;
+  height: 70rpx;
+  z-index: 9999;
+}
+.kefu image{
+  width: 100%;
+  height: 100%;
+}

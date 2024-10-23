@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "floor-item-gongge":"/components/floor-item-gongge/index",
+    "floor-list": "/components/floor-list/index"
+  }
+}

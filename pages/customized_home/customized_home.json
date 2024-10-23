@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "leftbutton":"/components/leftbutton/index",
+    "count-down":"/miniprogram_npm/vant/count-down"
+  }
+
+}

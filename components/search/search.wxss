@@ -1,0 +1,114 @@
+@import '../../utils/weui.wxss';
+@import "../../utils/font.wxss";
+
+.weui-search-bar__form {
+  border-radius: 60rpx;
+  background: #f2f2f2;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.weui-search-bar__input{
+  padding: 0 !important;
+}
+
+.weui-search-bar__label {
+  border-radius: 50rpx;
+}
+
+.searchalls {
+  position: absolute;
+  top: 0;
+  height: 0;
+  width: 100%;
+  transition: 0.3s;
+  z-index: 999;
+}
+.weui-search-bar {
+  padding: 0 16rpx;
+}
+
+.searchall {
+  position: absolute;
+  top: 0;
+  z-index: 999;
+  transition: 0.3s;
+  background-color: #ffffff;
+  height: 200rpx;
+  width: 100%;
+}
+
+.icon-cha {
+  color: #333;
+}
+
+.topsearch {
+  width: 95%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 10% 70% 10%;
+  grid-column-gap: 20rpx;
+  margin-top: 10rpx;
+  justify-content: center;
+  align-items: center;
+}
+
+.topsearchs {
+  width: 95%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 10% 70% 10%;
+  grid-column-gap: 20rpx;
+  justify-content: center;
+  align-items: center;
+  margin-top: -1px;
+}
+
+.shurukuang {
+  padding: 10rpx 0 10rpx 0;
+  border: 1px #333 solid;
+  display: flex;
+  align-items: center;
+}
+
+.stringrendering {
+  margin-left: 20rpx;
+  color: #666666;
+  font-size: 28rpx;
+  white-space: nowrap;
+}
+
+.getoptions {
+  text-indent: 20rpx;
+  color: #666666;
+  font-size: 28rpx;
+  width: 35%;
+  border-top: 1px #ffffff solid;
+  border-left: 1px #333 solid;
+  border-bottom: 1px #333 solid;
+  border-right: 1px #333 solid;
+}
+
+.placeholder {
+  font-size: 24rpx;
+  text-align: center;
+  color: #c2c2c2;
+}
+
+.metabox {
+  margin-left: 20rpx;
+}
+
+.searchword {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.icon-icon-down {
+  margin-left: 10rpx;
+}
+
+.isearch {
+  width: 100%;
+  top: 0;
+  z-index: 99;
+}

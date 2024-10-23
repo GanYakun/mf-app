@@ -1,0 +1,29 @@
+<!--components/organization-view/index.wxml-->
+<view class="organization-view__mask" hidden="{{!_show}}" catchtap="closeOrganizationView">
+</view>
+<view class="organization-view__container {{_show ? 'organization-view__container__show':''}}">
+  <view class="organization-view__title">选择部门</view>
+  <scroll-view class="organization-view__top" scroll-x scroll-with-animation scroll-into-view="top-index-{{_listIndex}}">
+    <view id="top-index-{{index}}" wx:for="{{_topBarList}}" class="organization-view__top_item" catchtap="onTopbarItemTap" data-index="{{index}}">
+      <view class="organization-view__top_item_tag {{item.selected ? 'organization-view__top_item_tag_selected':''}}">{{item.departName}}</view>
+      <image class="organization-view__arrow" src="{{ftpurl}}/ic_arrow_right.png" mode="widthFix" wx:if="{{item.children && item.children.length > 0}}"/>
+    </view>
+  </scroll-view>
+  <view class="organization-view__content">
+    <swiper style="width: 100%; height: 100%;" current="{{_listIndex}}" bindchange="onListIndexChange">
+      <swiper-item wx:for="{{_topBarList}}" wx:for-item="topBarItem" wx:for-index="topBarIndex" catchtouchmove="stopTouchMove">
+        <scroll-view class="organization-view__content_list" scroll-y>
+          <view class="organization-view__content_list_item" wx:for="{{topBarItem.children}}" catchtap="changeOrganizationSelected" data-index="{{index}}" data-top-index="{{topBarIndex}}">
+            <view class="organization-view__content_list_item_text {{item.selected ? 'organization-view__content_list_item_text_selected':''}}">{{item.departName}}</view>
+            <image class="organization-view__arrow" src="{{ftpurl}}/ic_arrow_right.png" mode="widthFix" wx:if="{{item.children && item.children.length > 0}}"/>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="organization-view__bottom">
+    <view class="organization-view__bottom_cancel" bindtap="onCancel">取消</view>
+    <view class="organization-view__bottom_confirm" bindtap="onConfirm">确认</view>
+  </view>
+  <view class="safe-area"></view>
+</view>

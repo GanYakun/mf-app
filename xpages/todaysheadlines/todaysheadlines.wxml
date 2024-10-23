@@ -1,0 +1,11 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<scroll-view scroll-y="true" bindscrolltolower="slideusage" class="vertical-scroll">
+  <leftbutton toptitle="{{content.newsClass.name}}"></leftbutton>
+<view class="box">
+<view class="neibox" wx:for="{{content.list}}"  catchtap="testlife" data-id="{{item.id}}" wx:key="key">
+<image src="{{imgur}}{{filters.jsonzhuanhuan(item.thumbnailPath)[0].path}}"  mode="aspectFill" wx:if="{{filters.jsonzhuanhuan(item.thumbnailPath)[0].path}}"></image>
+<view class="imagetitle">{{item.title}}</view>
+</view>
+</view>
+</scroll-view>
+<Allpagesneed></Allpagesneed>

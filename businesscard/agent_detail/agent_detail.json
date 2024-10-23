@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "leftbutton":"/components/leftbutton/index"
+  },
+  "navigationBarTitleText": "经纪人详情",
+  "navigationStyle":"custom"
+}

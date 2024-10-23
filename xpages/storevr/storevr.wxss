@@ -1,0 +1,100 @@
+@import "../../utils/font.wxss";
+page{
+  background-color: #f1f1f1;
+}
+scroll-view ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+.carousel{
+  width: 100%;
+  background-color: rebeccapurple;
+}
+.carousel_swiper{
+  width: 100%;
+  height: 400rpx;
+  display: block;
+  position: relative;
+  background: #f4f4f4;
+}
+.carouselImg{
+  width: 100%;
+  height: inherit;
+ 
+}
+
+.contentbox:first-child{
+  margin-top: 0;
+}
+.contentbox{
+
+  background-color: #ffffff;
+  width: 710rpx;
+  margin: 0 auto;
+  padding: 0rpx 0 20rpx 0 ;
+  margin-top: 20rpx;
+  border-radius: 12rpx;
+}
+
+.introduce{
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+.title{
+  text-align: center;
+  font-size: 26rpx;
+  color: #000;
+}
+
+.contentimg{
+  width: 100%;
+  margin: 0 auto;
+}
+.listmessage{
+margin-top: -70rpx;
+}
+.listmessage,.listmessages{
+margin-left: 3%;
+font-size: 24rpx;
+color: #666666;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.contentimgas{
+  width: 94%;
+  margin: 0 auto;
+}
+.contentimgas image{
+  width: 100%;
+  margin-top: 30rpx;
+  border-radius: 20rpx;
+}
+
+.listmessages{
+  margin-top: 10rpx;
+}
+
+.lookmore{
+  position: relative;
+  bottom: 75rpx;
+  left: 435rpx;
+  width: 240rpx;
+  height: 80rpx;
+  font-size: 28rpx;
+  color: #ff5000;
+  border: 1px solid #ff5000;
+  background-color: #fff7ef;
+  text-align: center;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+}
+
+.iconfont{
+  font-size: 32rpx;
+  color: #666666;
+  margin-right: 10rpx;
+}

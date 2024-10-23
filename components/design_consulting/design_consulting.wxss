@@ -1,0 +1,42 @@
+/* components/design_consulting/design_consulting.wxss */
+@import "/iconfont.wxss";
+.btn1 {
+  position: fixed;
+  bottom: 92rpx;
+  right: 0;
+  z-index: 99;
+}
+
+.btn1 .chat-btn {
+  width: 80rpx;
+  background-color: rgb(255, 1, 0);
+  position: relative;
+  padding: 20rpx 0;
+}
+
+.btn1 .chat-btn .name {
+  color: #fff;
+  padding: 0 10px;
+  overflow-x: hidden;
+  line-height: 1.428571429;
+  white-space: pre-wrap;
+  box-sizing: border-box;
+  font-size: 16px;
+  text-align: center;
+}
+
+.btn1 .chat-btn .num {
+  position: absolute;
+  width: 52rpx;
+  height: 52rpx;
+  color: #fff;
+  right: 56rpx;
+  top: -27rpx;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 23px;
+  font-size: 14px;
+  font-weight: bold;
+  background-color: #ff3b30;
+
+}

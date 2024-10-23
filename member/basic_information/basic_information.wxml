@@ -1,0 +1,26 @@
+<!--member/basic_information/basic_information.wxml-->
+<view class="container">
+	<view class="lins"></view>
+	<view class="h10"></view>
+
+	<view class="main">
+		<view class="item1">176098098989</view>
+
+		<view class="item2">
+			<input placeholder="昵称" value="小仙女" />
+		</view>
+
+		<view class="item2">
+			<input placeholder="电话" value="18788143158" />
+		</view>
+
+		<view class="item2">
+			<input placeholder="邮箱" value="18788176761@qq.com" />
+		</view>
+
+
+	</view>
+</view>
+<view class="btn-main">
+	<view class="btn">确认修改</view>
+</view>

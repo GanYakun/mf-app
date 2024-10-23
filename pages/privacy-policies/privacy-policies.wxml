@@ -1,0 +1,11 @@
+<!--pages/privacy-policies/privacy-policies.wxml-->
+<view class="privacy-policies__page" style="--left-button-nav-height: {{LeftButtonnavHeight}}rpx;">
+  <leftbutton toptitle="隐私政策"></leftbutton>
+  <view class="privacy-policies__container">
+    <scroll-view class="privacy-policies__scroll" scroll-y>
+      <view class="privacy-policies__scroll-content">
+        <rich-text style="font-size: 28rpx;" space="nbsp" nodes="{{privacyPoliciesData}}"></rich-text>
+      </view>
+    </scroll-view>
+  </view>
+</view>

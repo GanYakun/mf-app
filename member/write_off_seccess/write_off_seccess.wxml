@@ -1,0 +1,6 @@
+<leftbutton toptitle="核销成功"></leftbutton>
+<view class="group">
+  <image src="{{imgUrl}}" />
+  <text class="text">已成功消券</text>
+  <text class="btn">返回</text>
+</view>

@@ -1,0 +1,2 @@
+<!--xpages/h5page/h5page.wxml-->
+<web-view src="{{url}}"></web-view>

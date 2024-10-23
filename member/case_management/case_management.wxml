@@ -1,0 +1,105 @@
+<!--member/case_management/case_management.wxml-->
+<view class="casesearch flex">
+	<view class="input">
+		<input placeholder="输入标题" placeholder-style="font-size:12px" bindinput="keyWord"></input>
+	</view>
+	<view class="iconfont icon-sousuo" bindtap="onSearchTap"></view>
+</view>
+<scroll-view scroll-y="true" class="vertical-scroll">
+	<view class="lists" wx:if="{{type == 0}}">
+		<view class="item"  wx:for="{{myQwjxFunList}}">
+			<view class="itemc flex-r-s">
+				<view class="itemc_left">
+					<view class="title">{{item.homeTitle}}</view>
+					<view class="date">{{item.createDate}}</view>
+				</view>
+        <!-- <view class="icon"> -->
+         	<view class="iconfont icon-daishenpi1" wx:if="{{item.audited == 0 || item.audited == 2}}"></view>
+        <!-- </view> -->
+        <!-- <view class="icon"> -->
+        	<view class="iconfont icon-yishenpi" wx:if="{{item.audited ==1}}"></view>
+        <!-- </view> -->
+			
+			</view>
+			<!-- <view class="itembtn flex_right">
+				<view>查看评论</view>
+				<view  style="margin-left:10rpx" bindtap="onEditTap" data-id="{{item.id}}" data-id="{{item.id}}" data-briefcontent="{{item.briefContent}}" data-topimagelist="{{item.topImageList}}" data-title="{{item.title}}" data-type="{{0}}" wx:if="{{item.audited ==0}}">编辑</view>
+			</view> -->
+
+		</view>
+	</view>
+  <view class="lists" wx:if="{{type == 1}}">
+		<view class="item"  wx:for="{{myGzfFunList}}">
+			<view class="itemc flex-r-s">
+				<view class="itemc_left">
+					<view class="title">{{item.homeTitle}}</view>
+					<view class="date">{{item.createDate}}</view>
+				</view>
+        <!-- <view class="icon"> -->
+         	<view class="iconfont icon-daishenpi1" wx:if="{{item.audited == 0 || item.audited == 2}}"></view>
+        <!-- </view> -->
+        <!-- <view class="icon"> -->
+        	<view class="iconfont icon-yishenpi" wx:if="{{item.audited ==1}}"></view>
+        <!-- </view> -->
+			
+			</view>
+			<!-- <view class="itembtn flex_right">
+				<view>查看评论</view>
+				<view  style="margin-left:10rpx" bindtap="onEditTap" data-id="{{item.id}}" data-id="{{item.id}}" data-briefcontent="{{item.briefContent}}" data-topimagelist="{{item.topImageList}}" data-title="{{item.title}}" data-type="{{0}}" wx:if="{{item.audited ==0}}">编辑</view>
+			</view> -->
+
+		</view>
+	</view>
+  <view class="lists" wx:if="{{type == 2}}">
+		<view class="item"  wx:for="{{myMmpFunList}}">
+			<view class="itemc flex-r-s">
+				<view class="itemc_left">
+					<view class="title">{{item.homeTitle}}</view>
+					<view class="date">{{item.createDate}}</view>
+				</view>
+        <!-- <view class="icon"> -->
+         	<view class="iconfont icon-daishenpi1" wx:if="{{item.audited == 0 || item.audited == 2}}"></view>
+        <!-- </view> -->
+        <!-- <view class="icon"> -->
+        	<view class="iconfont icon-yishenpi" wx:if="{{item.audited ==1}}"></view>
+        <!-- </view> -->
+			
+			</view>
+			<!-- <view class="itembtn flex_right">
+				<view>查看评论</view>
+				<view  style="margin-left:10rpx" bindtap="onEditTap" data-id="{{item.id}}" data-id="{{item.id}}" data-briefcontent="{{item.briefContent}}" data-topimagelist="{{item.topImageList}}" data-title="{{item.title}}" data-type="{{0}}" wx:if="{{item.audited ==0}}">编辑</view>
+			</view> -->
+
+		</view>
+	</view>
+  <view class="lists" wx:if="{{type == 3}}">
+		<view class="item"  wx:for="{{mySuccessCaseList}}">
+			<view class="itemc flex-r-s">
+				<view class="itemc_left">
+					<view class="title">{{item.caseTitle}}</view>
+					<view class="date">{{item.createDate}}</view>
+				</view>
+        <!-- <view class="icon"> -->
+         	<view class="iconfont icon-daishenpi1" wx:if="{{item.audited == 0 || item.audited == 2}}"></view>
+        <!-- </view> -->
+        <!-- <view class="icon"> -->
+        	<view class="iconfont icon-yishenpi" wx:if="{{item.audited ==1}}"></view>
+        <!-- </view> -->
+			
+			</view>
+			<!-- <view class="itembtn flex_right">
+				<view>查看评论</view>
+				<view  style="margin-left:10rpx" bindtap="onEditTap" data-id="{{item.id}}" data-id="{{item.id}}" data-briefcontent="{{item.briefContent}}" data-topimagelist="{{item.topImageList}}" data-title="{{item.title}}" data-type="{{0}}" wx:if="{{item.audited ==0}}">编辑</view>
+			</view> -->
+
+		</view>
+	</view>
+</scroll-view>
+<!-- <view class="fixedfooter flex">
+	<view wx:for="{{list}}" class="item">
+   <view class="img">
+	 <image style="{{item.iconPath}}"></image>
+	 </view>
+		<view class="title">{{item.text}}</view>
+	</view>
+</view> -->

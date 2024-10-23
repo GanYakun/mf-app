@@ -1,0 +1,23 @@
+/* 
+此文件为开发者工具生成，生成时间: 2021/3/31 上午9:48:26
+使用方法：
+在 popup.wxss 文件末尾引入样式
+```
+@import "./popup-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .btnss {
+        background-color: rgb(17, 17, 17);
+    }
+
+    .weui-half-screen-dialog__tips {
+        color: rgb(209, 209, 209);
+    }
+
+    .btnquxiao {
+        background-color: rgb(17, 17, 17);
+        color: rgb(209, 209, 209);
+    }
+}

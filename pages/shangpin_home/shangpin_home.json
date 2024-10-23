@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "design_consulting":"/components/design_consulting/design_consulting",
+    "furniture_tabbar":"/components/furniture_tabbar/furniture_tabbar",
+    "footer":"/components/footer/footer"
+  }
+}

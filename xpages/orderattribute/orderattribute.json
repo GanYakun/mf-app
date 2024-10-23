@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed",
+    "leftbutton":"/components/leftbutton/index",
+    "transaction-description":"/components/transaction-description/transaction-description"
+  },
+  "navigationBarTitleText": "确认订单"
+}

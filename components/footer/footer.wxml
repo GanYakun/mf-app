@@ -1,0 +1,6 @@
+<!--components/footer/footer.wxml-->
+<view class="footer">
+	<view class="span1">尚品宅配昆明店 | 服务热线 0871-68123333 </view>
+	<view class="span2 ">
+		© 2004-2019 kmspzp.cn 滇ICP备10002618号-3 我的家，就要定制!</view>
+</view>

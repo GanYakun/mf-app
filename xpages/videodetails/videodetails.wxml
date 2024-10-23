@@ -1,0 +1,30 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+
+<scroll-view style="height:{{pageWindowHeight}}rpx;" scroll-y='true' bindscrolltolower="slideusage" scroll-top='{{topNum}}'>
+
+<view class="playvideo">
+<video src="{{imgur}}{{xvideourl}}"></video>
+
+</view>
+
+<text class="titles">{{title}}</text>
+<view class="hotideo">
+热门视频
+</view>
+<view class="listshuju" wx:for="{{list}}" data-title="{{item.title}}" wx:key="key"  data-videopath="{{item.videoPath}}"  bindtap="listshuju" >
+	<view class="listitem">
+		<view class="item" style="background:url({{imgur}}{{filters.jsonzhuanhuan(item.thumbnailPath)[0].path}}); background-size:100% 100%;" mode="aspectFill">
+			<view class="play"><text class="iconfont icon-shipin"></text></view>
+		</view>
+
+		<view class="tuwen">
+			<text class="title">{{item.title}}</text>
+			<view>
+				<text class="iconfont icon-guanliyuan"></text>{{item.author}}
+				<text class="iconfont icon-bofang"></text>{{item.hits}}次
+			</view>
+		</view>
+	</view>
+</view>
+</scroll-view>
+<Allpagesneed></Allpagesneed>

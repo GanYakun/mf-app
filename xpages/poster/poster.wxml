@@ -1,0 +1,3 @@
+<!--xpages/poster/poster.wxml-->
+<wxml-to-canvas  class="widget" width="375" height="600"></wxml-to-canvas>
+<button catchtap="savephoto">保存到本地</button>

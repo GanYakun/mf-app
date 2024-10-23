@@ -1,0 +1,190 @@
+/* businesscard/my_agent/my_agent.wxss */
+@import "/utils/font.wxss";
+page{
+  background: #f2f2f2;
+}
+.container{
+  overflow: scroll;
+}
+.head_box {
+  /* width: 250px;
+  margin: auto;
+  overflow: hidden; */
+  margin: 40rpx auto;
+}
+
+.home_top {
+  height: 270rpx;
+}
+
+.home_top:after {
+  content: '';
+  width: 120%;
+  height: 270rpx;
+  position: absolute;
+  z-index: -1;
+  left: -10%;
+  top: 0;
+  border-radius: 0 0 40% 40%;
+  background: linear-gradient(to right,#FDAC28, #FD6A23);
+}
+.search{
+  width: 695rpx;
+  height: 86rpx;
+  background: linear-gradient(to right, #FED494,#FEB792);
+  line-height: 86rpx;
+  border-radius: 86rpx;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+.main{
+  margin-top: -130rpx;
+}
+.agent_box{
+  align-items: center;
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx 30rpx;
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-left: 20rpx;
+  width: calc(100% - 100rpx);
+}
+.flex{
+  display: flex;
+}
+.agent_box .left{
+  margin-left: 10rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #666;
+}
+.agent_box .left text{
+  font-size: 30px;
+  color: rgb(255,121,49);
+  margin-bottom: 20rpx;
+}
+.agent_box .right{
+  text-align: center;
+  width: 156rpx;
+  height: 60rpx;
+  border-radius: 3rpx;
+  background: linear-gradient(to right,#FDAC28, #FD6A23);
+  color: #fff;
+  font-size: 12px;
+  border-radius: 3rpx;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  justify-content: center;
+  border-radius: 6rpx;
+  margin-left: auto;
+}
+.lists{
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  width: calc(100% - 40rpx);
+  border-radius: 14rpx;
+  /* background-color: #fff; */
+  overflow: hidden;
+}
+.lists .item{
+  padding: 20rpx;
+  background: #fff;
+  margin-bottom: 20rpx;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+.item .left{
+  width: 75%;
+  font-size: 18px;
+}
+.item .left .phone{
+  color: #666;
+  margin:0 0 30rpx;
+  border-bottom: 1px solid rgb(221,221,221);
+  padding-bottom: 40rpx;
+  font-size: 15px;
+}
+.item .left .date{
+  color: #666;
+  margin-top: 30rpx;
+  font-size: 12px;
+}
+.item .right{
+  color: #666;
+  font-size: 12px;
+}
+.item .right .snum text{
+  font-size: 30px;
+  color: rgb(255,121,49);
+  margin-bottom: 20rpx;
+}
+.image{
+  width: 200rpx;
+  height: 180rpx;
+}
+.image image{
+  width: 100%;
+  height: 100%;
+}
+.tips{
+  font-size: 18px;
+  color: #666;
+  margin: 40rpx 0;
+}
+.btns{
+  width: 320rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 40rpx;
+  font-size: 16px;
+  background: linear-gradient(to right,#FDAC28, #FD6A23);
+  color: #fff;
+}
+.list{
+  height: 100%;
+  margin: auto 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.topbox{
+  height: 200rpx;
+}
+.dwg{
+  margin-top: 10000rpx;
+}
+
+.goyao{
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+.showTips{
+  background: #999999;
+  border-radius: 16rpx;
+  width: 200rpx;
+  height: 70rpx;
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 99;
+}

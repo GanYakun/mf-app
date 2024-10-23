@@ -1,0 +1,73 @@
+<view class="container">
+  
+  <view class="bg" style="height:100%">
+    <leftbutton toptitle="成为经纪人"></leftbutton>
+    <view class="main" wx:if="{{isshow}}" style="height:100%">
+
+      <view class="main_box" wx:if="{{!hideConBox}}">
+        <view class="context">
+          <rich-text nodes="{{introduce?introduce:''}}"></rich-text>
+
+        </view>
+        <!-- <view class="recommender">推荐人：{{name}}</view> -->
+
+      </view>
+      <form bindsubmit="{{hideConBox?'become_agent':'nextStep'}}">
+      <!-- 成为经纪人要填的资料开始 -->
+      <view class="main_box data-box" wx:if="{{hideConBox}}">
+        <view class="basic-information">
+          <view>基本信息(带<text>*</text>为必填项)</view>
+          <view class="basic-box">
+            <view><text>*</text>姓名:<view> <input name="name" /> </view>
+            </view>
+            <view><text>*</text>电话:<view> <input type="number" name="telephone" /> </view>
+            </view>
+            <view class="wechat"><text>*</text>微信:<view> <input name="vechat" /> </view>
+            </view>
+          </view>
+
+
+
+        </view>
+        <view class="basic-information" style="margin-top:50rpx">
+          <view>佣金结算账户</view>
+          <view class="basic-box yh-box">
+            <view>开户名称:<view> <input name="accountName" /> </view>
+            </view>
+            <view>开户银行:<view> <input name="bankName" /> </view>
+            </view>
+            <view>银行账号:<view> <input type="number" name="bankAccount" /> </view>
+            </view>
+          </view>
+        </view>
+      </view>
+
+      <view wx:if="{{hideConBox}}" style="margin-top: 15rpx; color: #fff; font-size: 20rpx; text-align: center;">经纪人截止日期{{myDate}}</view>
+      <!-- 成为经纪人要填的资料结束 -->
+      <!-- <view class="btns" bindtap="become_agent" wx:if="{{isshow}}">成为经纪人</view> -->
+      <button class="btns" form-type="submit" wx:if="{{isshow}}">{{hideConBox?'成为经纪人':'下一步'}}</button>
+      </form>
+    </view>
+
+    <!-- 已成为经几人 -->
+    <view class="main" wx:if="{{!isshow}}">
+      <view class="main_box">
+        <image src="../../images/people.png" mode="widthFix" style="height:0"></image>
+        <view class="main_box_view" wx:if="{{!isSuccess}}">你已于{{usermessageTime}}通过推荐人<text
+            class="mesname">{{usermessage.fromMemberNick}}</text>申请成为经纪人，无需再次申请</view>
+            <view class="main_box_view" wx:else>你已通过推荐人<text
+            class="mesname">{{name}}</text>申请成为经纪人
+            </view>
+      </view>
+     
+
+    </view>
+  </view>
+</view>
+
+
+<!-- <popup id='popup' iosDialog1="{{iosDialog1}}" bind:guanbi="close">
+</popup>
+
+<phonepopup id='phonepopup' iosDialog2="{{iosDialog2}}" bind:guanbi="close">
+</phonepopup> -->

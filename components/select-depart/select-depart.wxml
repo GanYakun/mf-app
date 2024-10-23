@@ -1,0 +1,28 @@
+<!--components/select-depart/select-depart.wxml-->
+<!-- 部门弹窗start -->
+<view class="pickerbackview" hidden="{{!pickerShow}}">
+  <scroll-view class="picker-scroll" scroll-y="true">
+  <view style="height: {{LeftButtonnavHeight}}rpx;"></view>
+    <picker-view class="pickerback" immediate-change="true" bindchange="pickercarend1">
+      <picker-view-column>
+        <view class="pickertext" wx:for="{{getDepartmentList}}" data-id="{{item.id}}" data-departName="{{item.departName}}" bindtap="clickItem">{{item.departName}}</view>
+      </picker-view-column>
+    </picker-view>
+    <picker-view class="pickerback" immediate-change="true" bindchange="pickercarend2">
+      <picker-view-column>
+        <view class="pickertext" wx:for="{{getDepartmentList[firstindex].children}}" data-id="{{item.id}}" data-departName="{{item.departName}}" bindtap="clickItem">{{item.departName}}</view>
+      </picker-view-column>
+    </picker-view>
+    <picker-view class="pickerback" immediate-change="true" bindchange="pickercarend3">
+      <picker-view-column>
+        <view class="pickertext" wx:for="{{getDepartmentList[firstindex].children[secondindex].children}}" data-id="{{item.id}}" data-departName="{{item.departName}}" bindtap="clickItem">{{item.departName}}</view>
+      </picker-view-column>
+    </picker-view>
+    <view class="btnview">
+      <view class="btn btn-cancel" bindtap="clickCancel">取消</view>
+      <view class="btn btn-sure" bindtap="clickSure">确认</view>
+    </view>
+    <view style="height: 20rpx;"></view>
+  </scroll-view>
+</view>
+<!-- 部门弹窗end -->

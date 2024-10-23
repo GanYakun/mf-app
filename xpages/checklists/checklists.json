@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "swiperAuto":"/components/swiperAuto/swiperAuto",
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed",
+    "messagepopup":"/components/messagepopup/messagepopup",
+    "leftbutton":"/components/leftbutton/index"
+  }
+}

@@ -1,0 +1,16 @@
+<view class="swiperbox">
+	<swiper circular="true"  autoplay="true" interval="2500" class="slide" 
+		style="width:100%;height: {{swheight}}rpx;" bindchange="bindchange">
+		<swiper-item skip-hidden-item-layout="{{true}}" class="slideitem" wx:for="{{DataArr}}" wx:key="key">
+			<image style="width:100%;height:100%;"  catchtap="selectedbtn" data-newclassid="{{item.indexType}}"     data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" data-url="{{dinzhibanner[0].url}}" bindload="imageLoad" src="{{imgur}}{{item.imageVo.imagePath}}">
+			</image>
+		</swiper-item>
+	</swiper>
+	<!--重置小圆点的样式 -->
+	<view class="dots" wx:if="{{DataArr.length>1}}"> 
+  <block wx:for="{{DataArr}}" wx:key="key"> 
+   <view class="dot{{index == current ? ' active' : ''}}"></view> 
+  </block> 
+ 	</view> 
+</view>
+

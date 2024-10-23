@@ -1,0 +1,110 @@
+<scroll-view scroll-y="true" style="height:calc(100% - 158rpx)">
+  <leftbutton toptitle="{{type==1?'生成名片':'修改名片'}}"></leftbutton>
+  <view class="topBox">
+    <view class="hedimg" bindtap="chooseImage">
+      <image wx:if="{{userimg}}" src="{{userimg}}"></image>
+      <image wx:if="{{!userimg}}" src="./images/icon_default_header.png" mode="aspectFit"></image>
+      <text>点击修改</text>
+    </view>
+  </view>
+
+  <view class="contentMessage">
+    <text style="font-size:28rpx">基本信息</text>
+    <view>
+      <text style="color:#ff4e29;margin-right:10rpx;"></text>微信号
+      <input bindinput="weixinNumber" placeholder="请输入微信号" value="{{weixinNumber?weixinNumber:''}}" />
+    </view>
+    <view>
+      <text style="color:#ff4e29;margin-right:10rpx;">*</text>门店
+      <picker bindchange="bindPickerChange" class="picker" value="{{pindex}}" range="{{storeArr}}" range-key='NAME'>
+        {{storeArr[pindex].NAME}}
+      </picker>
+      <text class="iconfont icon-youjiantou"></text>
+    </view>
+    <view>
+
+      <text style="color:#ff4e29;margin-right:10rpx;"></text>微信二维码
+      <block wx:if="{{!wxImages}}">
+        <text class="iconfont icon-jia" bindtap="weImage" decode="true">&nbsp;点击上传</text>
+      </block>
+      <view class="thumbnail" wx:if="{{wxImages}}">
+        <image wx:if="{{wximg == 'new'}}" src="{{wxImages[0]}}" bindtap="weImage" mode="widthFix" class="thumbnail">
+        </image>
+        <image wx:if="{{wximg != 'new'}}" src="{{imgurl}}{{wxImages}}" bindtap="weImage" mode="widthFix"
+          class="thumbnail"></image>
+        <text class="iconfont icon-lajitong" bindtap="deleteImage" data-type="weImage" decode="true">&nbsp;删除</text>
+      </view>
+    </view>
+
+    <view wx:if="{{false}}">
+      <text style="color:#ff4e29;margin-right:10rpx;"></text>名片背景(800px乘650px)
+      <block wx:if="{{!backgroundImages}}">
+        <text class="iconfont icon-jia" bindtap="backgroundImage">点击上传</text>
+      </block>
+      <view class="thumbnail" wx:if="{{backgroundImages}}">
+        <image wx:if="{{bgimg != 'new'}}" src="{{imgurl}}{{backgroundImages}}" bindtap="backgroundImage" mode="widthFix"
+          class="thumbnail"></image>
+        <image wx:if="{{bgimg == 'new'}}" src="{{backgroundImages[0]}}" bindtap="backgroundImage" mode="widthFix"
+          class="thumbnail"></image>
+        <text class="iconfont icon-lajitong" bindtap="deleteImage" data-type="backgroundImages"
+          decode="true">&nbsp;删除</text>
+      </view>
+    </view>
+
+    <view class="personal-profile">
+      <view class="profile-box">个人简介</view>
+      <view class="video-upload">
+        <view class="video-title">
+          <view>VCR视频（单个）</view>
+          <view bindtap="upVideo">上传 > </view>
+        </view>
+        <view class="up-video flex-c" wx:if="{{videoPath||cardVedioPathVirtual}}">
+          <video src="{{cardVedioPathVirtual?imgurl+cardVedioPathVirtual:videoPath}}" bindloadedmetadata="videometa"  style="height:{{height}}rpx; width:{{width}}rpx;" ></video>
+          <view>
+          <text class="iconfont icon-lajitong video-delete" bindtap="deleteVideo" decode="true"></text>
+        </view>
+        </view>
+        <view class="video-introduce">
+          <textarea bindinput="videoInput" value="{{vedioIntroduce}}"></textarea>
+        </view>
+      </view>
+      <view class="image-upload">
+        <view class="image-title">
+          <view>品牌/个人美照（多图）</view>
+          <view bindtap="upImage">上传> </view>
+        </view>
+        <view class="image-video">
+        <view wx:if="{{tempFilePaths&&tempFilePaths.length>0}}" wx:for="{{tempFilePaths}}" wx:key="key">
+          <image mode="aspectFill" src="{{item}}"></image>
+          <!-- <view class="move-box" bindtap="moveTap" data-index="{{index}}">
+          <view class="iconfont icon-fanhui" data-type="left"></view>
+          <view class="iconfont icon-fanhui right-fanhui" data-type="right"></view>
+          <view class="iconfont icon-lajitong delete-image" data-type="delete"></view>
+          </view> -->
+        </view>
+        <view wx:if="{{cardImagePath&&cardImagePath.length>0}}" wx:for="{{cardImagePath}}"  wx:key="key">
+          <image mode="aspectFill" src="{{item.url||imgurl+item}}"></image>
+          <!-- <image mode="aspectFill" src="{{item}}"></image> -->
+          <view class="move-box" bindtap="moveTap" data-index="{{index}}">
+          <view class="iconfont icon-fanhui" data-type="left"></view>
+          <view class="iconfont icon-fanhui right-fanhui" data-type="right"></view>
+          <view class="iconfont icon-lajitong delete-image" data-type="delete"></view>
+          </view>
+        </view>
+          
+        </view>
+        <view class="video-introduce">
+          <textarea value="{{adImageIntroduce}}" bindinput="imgIntroInput"></textarea>
+        </view>
+      </view>
+      <textarea wx:if="{{false}}" bindinput="personalIntroduction" value="{{personalIntroduction?personalIntroduction:''}}"
+        cursor-spacing="200rpx"></textarea>
+    </view>
+
+  </view>
+
+
+
+</scroll-view>
+
+<view class="submit" catchtap="onTap">提交</view>

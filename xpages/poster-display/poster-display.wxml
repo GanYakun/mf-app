@@ -1,0 +1,6 @@
+<!--xpages/poster-display/poster-display.wxml-->
+<leftbutton toptitle="分享海报"></leftbutton>
+<view class="shareimage">
+  <image src="{{imgsrc}}" class="poster" mode="widthFix" data-imgurl="{{imgsrc}}" bindtap="imgYu" show-menu-by-longpress="{{true}}"></image>
+</view>
+<view bindtap="saveimage" class="saveimg" data-imgurl="{{imgsrc}}">保存到本地</view>

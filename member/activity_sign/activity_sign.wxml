@@ -1,0 +1,16 @@
+<!--member/activity_sign/activity_sign.wxml-->
+<leftbutton toptitle="签到特权"></leftbutton>
+<scroll-view class="scroll" scroll-y="true" style="height:calc(100% - {{LeftButtonnavHeight}}rpx);" bindscrolltolower="loadMoreData">
+  <view class="activity-sign-item" wx:for="{{activitySignList}}" wx:key="index">
+    <image class="top-img" src="{{imgurl}}/{{item.imagePath}}" mode="widthFix"></image>
+    <view class="title">{{item.name}}</view>
+    <text class="content">{{item.introduction?item.introduction: ""}}</text>
+    <view class="time">    <br/>
+      <view>活动时间：{{item.receiveStartTime}} ~ {{item.receiveEndTime}}</view>
+      <view>活动地点：{{item.place?item.place: ""}}</view>
+    </view>
+    <view class="btn-claim" bindtap="clickSign" data-index="{{index}}">生成签到二维码</view>
+  </view>
+  <view style="height: 30rpx;"></view>
+</scroll-view>
+<activity-sign-dialog show="{{isShow}}" times="{{times}}" imgurl="{{qrCodeUrl}}"></activity-sign-dialog>

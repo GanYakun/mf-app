@@ -1,0 +1,111 @@
+/* member/case_management/case_management.wxss */
+/* member/user_praise/user_praise.wxss */
+@import "../../utils/font.wxss";
+page{
+  background-color: #f2f2f2;
+}
+.casesearch{
+  border: 1px solid #ddd;
+    margin:10rpx;
+    background: #FFF;
+    border-radius: 84rpx;
+    height: 80rpx;
+    line-height: 80rpx;
+    padding: 0 20rpx;
+
+}
+.casesearch .input{
+  flex: 1;
+}
+.casesearch input{
+  height: 80rpx;
+    line-height: 80rpx;
+}
+.icon-sousuo{
+  display: block;
+  width:40rpx;
+  height:40rpx;
+  text-align: center;
+    line-height: 80rpx;
+    font-size: 18px;
+}
+.fixedfooter{
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  z-index: 999;
+  width: 100%;
+    color: #555;
+    height: 90rpx;
+    background: #fff;
+    box-shadow: 1px 0 4px #d9d8d8;
+    align-items: center;
+}
+.fixedfooter .img{
+  width: 80rpx;
+  height: 80rpx;
+}
+.fixedfooter .img image{
+  width: 100%;
+  height: 100%;
+}
+.fixedfooter .item{
+  font-size: 12px;
+  text-align: center;
+  width: 25%;
+}
+.lists{
+  padding:20rpx;
+  margin-bottom: 200rpx;
+
+}
+.lists .item{
+  margin-bottom: 20rpx;
+}
+.lists .item .itemc{
+  background-color: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx 20rpx 0;
+}
+.lists .item .itemc .itemc_left{
+  color: #999;
+    font-size: 12px;
+}
+.lists .item .itemc .itemc_left view{
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.lists .item .itemc .itemc_left .title{
+
+  color: #000;
+    font-weight: bold;
+    font-size: 14px;
+}
+.icon{
+  width: 120rpx;
+  height: 120rpx;
+}
+.icon-daishenpi1{
+font-size: 60px;
+color: #f00;
+}
+.icon-yishenpi{
+  font-size: 60px;
+  color: #57b987
+}
+.lists .item .itembtn{
+  margin-top: 2rpx;
+  padding: 5px;
+    text-align: right;
+    background: #FFF;
+}
+.lists .item .itembtn view{
+  color: #666666;
+  display: inline-block;
+  height: 56rpx;
+  line-height: 56rpx;
+  padding: 0 30rpx;
+  font-size: 12px;
+  border-radius: 30rpx;
+  border: 1px solid #e3e3e3;
+}

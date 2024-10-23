@@ -1,0 +1,63 @@
+<!--businesscard/order_detail/order_detail.wxml-->
+<view class="container">
+  <leftbutton toptitle="{{TopTitle}}"></leftbutton>
+  <!-- <scroll-view scroll-y="true"> -->
+  <view class="head_box">
+    <view class="home_top">
+      <view class="search">
+        <view class="iconfont icon-sousuo" style="font-size:40rpx"></view>
+        <input placeholder="请输入产品关键字" style="width:400rpx" placeholder-style="color:#fff"></input>
+      </view>
+    </view>
+    <view class="user_box">
+        <view class="row1 flex">
+          <view class="iconfont icon-webicon08"></view>
+          <label class="nickName">{{pageMessage.nick}}</label>
+          <view></view>
+        </view>
+        <view class="row2 flex">
+          <view class="date flex">
+            <text class="iconfont icon-shizhong"></text>
+            <label>{{pageMessage.createDate}}</label>
+          </view>
+          <view class="phone flex">
+            <text class="iconfont icon-fuwurexian"></text>
+            <label>{{pageMessage.phone}}</label>
+          </view>
+        </view>
+      </view>
+    
+  </view>
+
+  <scroll-view class="slode" scroll-y="true" style="height:calc(100% - 385rpx)">
+    <view class="main">
+      <view class="lists" wx:for="{{orderList}}" style="margin-top:{{index==0?0:20}}rpx" wx:key="key" wx:for-item="items">
+        <view class="item flex" wx:for="{{items.orderDetailsList}}" wx:key="key" wx:for-item='item'>
+           <view class="left">
+             <image src="{{imgur}}{{item.imagePath}}"></image>
+           </view>
+           <view class="right">
+             <view wx:if="{{item.productName!=''}}" class="title">{{item.productName}}</view>
+             <view wx:if="{{item.productName==''}}" class="title">{{item.itemName}}</view>
+             <view class="nums flex">
+               <view class="num">x <text>{{item.productCounts}}</text></view>
+               <view class="price">￥<text> {{item.unitPrice}}</text></view>
+             </view>
+            
+           </view>
+        </view>
+        <view class="order_detail">
+          <view>订单编号：{{items.orderNum}}</view>
+          <view>下单时间：{{items.createDate}}</view>
+          <view>支付时间：{{items.paymentTime?items.paymentTime:''}}</view>
+          <view class="count">
+          <view>共{{items.orderDetailsList.length}}件 小计：<text> ￥{{items.actuallyPaidAmount}}</text></view>
+        </view>
+        </view>
+        
+      </view>
+    </view>
+  </scroll-view>
+
+<!-- </scroll-view> -->
+</view>

@@ -1,0 +1,59 @@
+@import './new.wxss';
+.coup-box{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.coup-box>view:first-child{
+ display: flex;
+}
+.coup-box>view:first-child>image{
+  width: 40rpx;
+  height: 0;
+}
+
+.coup-box>view:last-child{
+  font-size: 26rpx;
+  color: #f08300;
+}
+.icon-zhuyi{
+  transform: rotate(180dge);
+  color: #593600;
+  font-size: 26rpx;
+}
+
+.tips-jie{
+  display: flex;
+  align-items: center;
+  color: #593600;
+  font-size: 26rpx;
+  margin-top: 15rpx;
+}
+.tips-jie>view:first-child{
+  transform: rotate(180dge);
+  margin-right: 20rpx;
+}
+
+.discount-price{
+  margin-top: 15rpx;
+  text-align: end;
+}
+.discount-price>text{
+  color:#000000;
+  font-size: 28rpx;
+}
+
+.discount-price>text:nth-child(2){
+  color:#f08300;
+  font-size: 26rpx;
+  margin-left: 20rpx;
+  margin-right: 30rpx;
+
+}
+.discount-price>text:nth-child(4){
+  color:#f08300;
+  font-size: 26rpx;
+  margin-left: 20rpx;
+
+}

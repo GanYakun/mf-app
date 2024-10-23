@@ -1,0 +1,53 @@
+<wxs src="../../utils/filter.wxs" module="filter"></wxs>
+<!-- 我的客户 -->
+<leftbutton toptitle="意向客户"></leftbutton>
+
+<scroll-view style="height:calc(100% - {{LeftButtonnavHeight}}rpx)" scroll-y="true" bindscrolltolower="lower">
+  
+<!-- <scroll-view style="height:calc(100% - 604px)" scroll-y="true" bindscrolltolower="lower"> -->
+  <!-- 意向客户 -->
+  
+  <view class="cuslist"  wx:for="{{list}}" bindtap="Potendetails" data-item="{{item}}"  wx:key="key">
+    <view class="cuslist_1">
+      <view class="cuslist_2">
+        
+        <view>
+          <view class="row1 flex">
+            <view class="flex">
+              <text class="iconfont icon-webicon08" style="font-size:38rpx;"></text>
+              <view class="nick">{{!item.decodeNick?'':item.decodeNick}}</view>
+            </view>
+           
+          </view>
+          <view class="row2 row flex">
+            <view class="flex">
+              <text class="iconfont icon-fuwurexian"></text>
+              <view wx:if="{{item.phone}}">{{item.phone}}</view>
+              <view wx:else>{{item.account}}</view>
+
+            </view>
+            <view class="flex">
+              <text class="iconfont icon-yingyeshijian"></text>
+              <view>{{filter.timetransformation(item.createRelationDate)}}</view>
+            </view>
+          </view>
+          <view class="row flex" wx:if="{{item.houseAddress}}">
+            <text class="iconfont icon-zhufang"></text>
+            <view>{{item.houseAddress}}</view>
+          </view>
+          <view class="row flex" wx:if="{{item.houseStructureName}}">
+            <text class="iconfont icon-fabu1"></text>
+            <view>{{item.houseStructureName}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{list.length==0}}" class="Nodata">
+    暂无数据
+  </view>
+
+ 
+</scroll-view>
+<Allpagesneed></Allpagesneed>

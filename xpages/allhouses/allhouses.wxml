@@ -1,0 +1,108 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<import src="../../wxParse/wxParse.wxml"/>
+<scroll-view scroll-y="true" style="height:{{pageWindowHeight}}rpx;" bindscrolltolower="slideusage" >
+	<leftbutton toptitle="{{TopTitle}}"></leftbutton>
+<view class="headebox">
+	<view class="heade">
+		<view class="headetitle" style="color:{{index==hidindex?'#94f830':'#333333'}}" data-statu="open"><text class="members">团队成员</text><text class="city">[昆明]</text><text  class="ourteam">Our Team</text></view>
+		<view class="headetitle titleshaixuan" bindtap="powerDrawer" style="color:{{index==hidindex?'#94f830':'#333333'}}" data-statu="open">筛选</view>
+	</view>
+</view>
+
+<view>
+	<view class="h5-box">
+		<template is="wxParse" data="{{wxParseData:article.nodes}}" />
+	</view>
+	<view class="content">
+		<block wx:for="{{content.list}}" wx:key='key'>
+			<view class="cintentimg" bindtap="allhouse_detail" data-id="{{item.id}}">
+				<view class="beijintu">
+					<image src="{{imgur}}{{filters.jsonzhuanhuan(item.logoPath)[0].path}}" mode="aspectFill"></image>
+				</view>
+				<view class="inaddress">
+					<text class="textcolor" decode="true"><text style="font-size:24rpx;color:#000000;font-weight: bold;	">{{item.name}}</text>&nbsp;{{item.designerDepartmentName}}</text>
+				</view>
+				<view class="frequency"><text class="iconfont icon-renqiiconx"></text>人气：{{item.popularity}}</view>
+				<view class="introducecontent">{{!item.designConcept?'':item.designConcept}}</view>
+			</view>
+
+
+		</block>
+	</view>
+</view>
+
+
+<!-- 右侧抽屉 -->
+<!-- <view class='mask' bindtap="powerDrawerclose" data-statu="close" wx:if="{{showModalStatus}}"> </view>
+<view class='Drawer' animation="{{animationData}}" wx:if="{{showModalStatus}}">
+
+	<view class="dirwerbox">
+		<view class="drawertext" catchtap="cancel">取消</view>
+		<view class="drawertitle">装修效果图</view>
+		<view class="drawertext">确定</view>
+	</view>
+
+	<view class="choice">
+		<scroll-view scroll-y='true' style="height:{{scrollHeight-70}}px;">
+			<block wx:for='{{choice}}' wx:key='key'>
+				<view class="listchioce" catchtap="chioce" data-index="{{index}}" data-flag="{{item.flag}}">
+					<view class="listchioceleft">{{item.name}}</view>
+					<view class="listchioceright">{{item.select}}<text class="iconfont icon-youjiantou" hidden="{{item.flag}}"></text>
+						<text class="iconfont icon-jiantou9" hidden="{{!item.flag}}"></text>
+					</view>
+				</view>
+				<view hidden="{{!item.flag}}">
+					<block wx:for='{{item.list}}' wx:key='key'>
+						<view class="detail" catchtap="chiocetext" data-chtext="{{item}}">
+							{{item}}
+						</view>
+					</block>
+				</view>
+			</block>
+		</scroll-view>
+	</view>
+
+</view> -->
+
+
+<view class="fadeIn" wx:if="{{iosDialog22}}">
+	<view class="weui-mask" bindtap="closemask"></view>
+	<view class="weui-dialog">
+		<view style="margin-bottom:40rpx">设计师筛选</view>
+			<view class="items">
+				<view class="flex">
+					<label>店面：</label>
+					<view class="type flex-r-s" bindtap="onTypeTap">
+						<view>{{value}}</view>
+						<view class="iconfont icon-icon-down">
+						</view>
+					</view>
+				</view>
+				<view class="options" wx:if="{{isclick == 1}}">
+					<view class="select {{selected == index?'selected':''}}" wx:for="{{departmentList}}" wx:key="key" data-isclick="0" data-value="{{item.typename}}" data-index="{{index}}" bindtap="onSelectTap" data-typecode="{{item.typecode}}">{{item.typename}}</view>
+				</view>
+			</view>
+			<view class="items">
+				<view class="flex">
+					<label>设计师类别：</label>
+					<view class="type flex-r-s" bindtap="onTypeTap1">
+						<view>{{values}}</view>
+						<view class="iconfont icon-icon-down">
+						</view>
+					</view>
+				</view>
+				<view class="options1" wx:if="{{isclick1 == 1}}">
+				<view class="select {{selected == index?'selected':''}}" wx:for="{{typeList}}" wx:key="key" data-isclick1="0" data-values="{{item.typename}}" data-index="{{index}}" bindtap="onSelectTap" data-typecodes="{{item.typecode}}">{{item.typename}}</view>
+				</view>
+			</view>
+			<view class="items">
+				<view class="flex">
+					<label>姓名：</label>
+					<input class="name" bindinput="nameinput"></input>
+				</view>
+			</view>
+		<view class="queding" catchtap="queding" >确定</view>
+	</view>
+</view>
+</scroll-view >
+<Allpagesneed></Allpagesneed>

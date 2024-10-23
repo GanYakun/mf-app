@@ -1,0 +1,48 @@
+<!--pages/register/register.wxml-->
+<view class="container">
+	<view class="h20"></view>
+	<view class="formWrap">
+
+		<view class="item-view">
+			<view class="szeyFont my_light icon-color"></view>
+			<input placeholder="请输入手机号" maxlength="11" type="number"></input>
+		</view>
+
+		<view class="item-view">
+			<view class="szeyFont lock icon-color"></view>
+			<input placeholder="请设置6-20位登录密码" maxlength="20" password="{{true}}"></input>
+		</view>
+
+		<view class="item-view">
+			<view class="szeyFont safe icon-color"></view>
+			<input placeholder="请输入图文验证码" maxlength="4"></input>
+
+			<view class="rowR" bindtap="onImgCodeTap">
+				<view class="imgCode">{{imgCode}}</view>
+			</view>
+
+		</view>
+
+		<view class="item-view">
+			<view class="szeyFont lock icon-color"></view>
+			<input placeholder="请输入短信验证码" type="number"></input>
+
+			<view class="rowR" bindtap='bindCodeTap'>
+				<view class="txtCode">获取短信验证码</view>
+			</view>
+
+		</view>
+
+	</view>
+
+	<view class="xieyi-view">
+		<checkbox-group bindchange="onRentingTypeChange">
+			<checkbox value="0" checked="{{checked}}" />
+			<view class="weui-cell__bd">我已看过并同意<label style="color:#f97704;">《中德木林森用户注册协议》</label></view>
+		</checkbox-group>
+	</view>
+	<view class="h5"></view>
+	<view class="btnBox flex-r" bindtap='{{checked==true ? "onRegisterTap": "onTiXing"}}'>
+		<view class="btn flex-1 {{checked==true ? 'enable':''}}">立即注册</view>
+	</view>
+</view>

@@ -1,0 +1,73 @@
+@import "/utils/font.wxss";
+.topboxs{
+  width: 100%;
+  background-color: #fff;
+  padding-bottom: 30rpx;
+  padding-top: 20rpx;
+}
+.pagingbox{
+display: grid;
+grid-template-columns:220rpx 220rpx 220rpx ;
+grid-column-gap: 20rpx;
+width: 94%;
+margin: 0 auto;
+}
+.pagingbox>view{
+  border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
+}
+.pagingboxs{
+  display: grid;
+  grid-template-columns:220rpx 220rpx 220rpx ;
+  grid-column-gap: 20rpx;
+  width: 94%;
+  margin: 0 auto;
+  }
+.pagingboxs>view{
+
+    border-radius: 3px;
+    background-color: #fff;
+}
+
+
+.uppage,.nextpage{
+line-height: 90rpx;
+text-align: center;
+font-size: 24rpx;
+}
+
+.numpage{
+  
+  font-size: 24rpx;
+}
+.numpagebox{
+  width: 100%;
+  display: flex;
+}
+.numpage1{
+  width: 80%;
+  text-align: center;
+  line-height: 90rpx;
+}
+.numpage2{
+  width: 20%;
+  line-height: 90rpx;
+  color: #ddd;
+}
+
+.drop-down{
+  text-align: center;
+ 
+}
+
+.numpageboxs{
+  border: 1px #333 solid;
+  line-height: 50rpx;
+  text-align: center;
+}
+
+.pagexuanze{
+  width: 100%;
+}
+

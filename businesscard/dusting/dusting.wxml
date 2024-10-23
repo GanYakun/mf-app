@@ -1,0 +1,38 @@
+
+<wxs module="filter" src='/utils/filter.wxs'></wxs>
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<scroll-view class="scroll-fans" scroll-y="{{true}}">
+  <leftbutton toptitle="加微海报"></leftbutton>
+  <bloc wx:if="{{fansList.length>0}}">
+<swiper current="{{currentIndex}}" class="swiper-block" previous-margin="95rpx" next-margin="95rpx" autoplay="{{false}}" bindchange="swiperChange" circular="{{true}}">
+      <block wx:for="{{fansList}}"  wx:key="bannerList">
+        <swiper-item item-id="{{index}}"  class="swiper-item" data-index="{{index}}" wx:if="{{item.posterImgPath}}">
+          <image mode="aspectFill" src="{{imgur}}{{filter.jsonzhuanhuan(item.posterImgPath)[0].path}}" class="slide-image {{swiperIndex==index||currentIndex==index?'active':''}}" />  
+          <view class="swiper-name">{{item.title?item.title:''}}</view>
+           </swiper-item>
+           
+       </block>
+
+       
+    </swiper>
+<scroll-view scroll-into-view="{{scrollId}}" scroll-with-animation="{{true}}" class="scroll-box" scroll-x="{{true}}">
+<view class="scroll-view" id="scroll{{index}}" wx:for="{{fansList}}" bindtap="scrollTap" data-index="{{index}}"  wx:if="{{item.posterImgPath}}">
+<view class="{{swiperIndex==index?'active-mall-image':''}}">
+<image wx:if="{{item.posterIthumbnailPath}}" src="{{imgur}}{{filter.jsonzhuanhuan(item.posterIthumbnailPath)[0].path}}" mode="aspectFill"></image>
+<image wx:else mode="aspectFill" src="{{imgur}}{{filter.jsonzhuanhuan(item.posterImgPath)[0].path}}" class="slide-image {{swiperIndex==index?'active':''}}" />  
+</view>
+</view>
+</scroll-view>
+<view class="generate" bindtap="renderToCanvas">生成分享广告</view>
+</bloc>
+<block wx:else>
+<nodata ></nodata>
+</block>
+
+</scroll-view>
+
+
+<view class="dwg">
+  <wxml-to-canvas  class="widget" width="750" height="1340"></wxml-to-canvas>
+</view>
+    

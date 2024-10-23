@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "floor-swiper": "/components/floor-swiper/index",
+    "floor-item-gongge":"/components/floor-item-gongge/index"
+  }
+}

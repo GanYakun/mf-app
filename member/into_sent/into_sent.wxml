@@ -1,0 +1,16 @@
+<!--member/into_send/into_sent.wxml-->
+<leftbutton toptitle="首进壕送"></leftbutton>
+<scroll-view class="scroll" scroll-y="true" style="height:calc(100% - {{LeftButtonnavHeight}}rpx);" bindscrolltolower="loadMoreData">
+  <!-- <image style="width: 100%;" mode="widthFix" src="{{posterTestImage}}"></image> -->
+  <view class="into-sent-item" wx:for="{{haoSongList}}" bindtap="toHaosongDetail" data-index="{{index}}">
+    <image class="top-img" src="{{imgurl}}/{{item.imagePath}}" mode="widthFix"></image>
+    <view class="title">{{item.name}}</view>
+    <text class="content">{{item.introduction}}</text>
+    <view class="time">领取时间：{{item.receiveStartTime}}~{{item.receiveEndTime}}</view>
+    <view class="btn-claim" catchtap="onCreatePoster" data-index="{{index}}">生成海报，并分享</view>
+  </view>
+  <view style="height: 30rpx;"></view>
+</scroll-view>
+<poster id="poster" config="{{postConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
+<haosong-poster-dialog show="{{showPoster}}" poster-image="{{posterImage}}" bindclose="onPosterDialogClose"></haosong-poster-dialog>
+

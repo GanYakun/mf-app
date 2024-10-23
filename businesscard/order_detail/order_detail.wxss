@@ -1,0 +1,141 @@
+/* businesscard/order_detail/order_detail.wxss */
+/* businesscard/my_agent/my_agent.wxss */
+@import "/utils/font.wxss";
+page{
+  background: #f2f2f2;
+}
+.head_box {
+  /* width: 250px;
+  margin: auto;
+  overflow: hidden; */
+  margin: 20rpx auto;
+}
+
+.home_top {
+  display: relative;
+  flex-direction: column;
+  align-items: center;
+  height: 270rpx;
+
+}
+
+.home_top:after {
+  content: '';
+  width: 120%;
+  height: 270rpx;
+  position: absolute;
+  z-index: -1;
+  left: -10%;
+  top: 0;
+  border-radius: 0 0 40% 40%;
+  background: linear-gradient(to right,#FDAC28, #FD6A23);
+}
+.search{
+  width: 695rpx;
+  height: 86rpx;
+  background: linear-gradient(to right, #FED494,#FEB792);
+  line-height: 86rpx;
+  border-radius: 86rpx;
+  color: #fff;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.user_box{
+  align-items: center;
+  background: #fff;
+  border-radius: 10rpx;
+  padding: 20rpx;
+  justify-content: space-between;
+  margin-top: -130rpx;
+}
+.user_box label{
+  margin-left: 20rpx;
+}
+.flex{
+  display: flex;
+  align-items: center;
+}
+.user_box .row1{
+  border-bottom: 1px solid rgb(244,245,247);
+  padding-bottom: 20rpx;
+}
+.row1 .nickName{
+  font-size: 18px;
+}
+.row2{
+  margin-top: 20rpx;
+  color: #666;
+}
+.row2 .date{
+  font-size: 12px;
+}
+.row2 .phone{
+  font-size: 15px;
+  margin-left: 80rpx;
+}
+.lists{
+  padding: 20rpx;
+  background: #fff;
+  border-radius:12rpx ;
+  margin-top: 20rpx;
+  box-shadow: rgba(138,138,138,0.24);
+}
+.item{
+  border-bottom: 1px solid rgb(221,221,221);
+  padding: 20rpx 0;
+  justify-content: space-between;
+}
+.item .left{
+  width: 176rpx;
+  height: 176rpx;
+}
+.item .left image{
+  width: 100%;
+  height: 100%;
+}
+.item .right{
+  margin-left: 40rpx;
+  width: 70%;
+}
+.item .right .title{
+  font-size: 15px;
+}
+.item .right .nums{
+  margin-top: 20rpx;
+  font-size: 12px;
+  justify-content: space-between;
+}
+.item .right .nums .num text{
+  font-size: 18px;
+}
+.item .right .nums .price{
+  color: rgb(255,121,49);
+}
+.item .right .nums .price text{
+font-size:18px ;
+}
+.order_detail{
+  font-size: 12px;
+  color: #666;
+  margin-top: 20rpx;
+  line-height: 40rpx;
+}
+
+.count{
+  font-size: 12px;
+  color: #666;
+  background: #fff;
+  display: flex;
+  justify-content: flex-end;
+}
+.count text{
+  font-size: 18px;
+  color: rgb(255,121,49);
+}
+
+.main{
+  padding: 0 30rpx;
+}

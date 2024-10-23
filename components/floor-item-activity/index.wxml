@@ -1,0 +1,78 @@
+<!--components/activity-floor-item/index.wxml-->
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<view class="activity-floor-item" wx:if="{{_item.adImageList.proList && _item.adImageList.proList.length > 0 && false}}">
+  <view class="title-wrapper">
+    <text class="title-left" style="line-height: 38rpx;">{{_item.name}}</text>
+    <view class="activity-time-right" wx:if="{{false}}">
+      <text class="year-month-day">{{filters.Timeprocessing(_item.adImageList.promotionsStartTime)[0]}}</text>
+      <text class="year-month-day">{{filters.Timeprocessing(_item.adImageList.promotionsStartTime)[1]}}</text>
+      <text class="year-month-day">{{filters.Timeprocessing(_item.adImageList.promotionsStartTime)[2]}}</text>
+      <text style="color:#333">至</text>
+      <!-- {{dangqilist[0].promotionsEndTime}} -->
+      <text class="year-month-day"
+        style="margin-left:10rpx">{{filters.Timeprocessing(_item.adImageList.promotionsEndTime)[0]}}</text>
+      <text class="year-month-day">{{filters.Timeprocessing(_item.adImageList.promotionsEndTime)[1]}}</text>
+      <text class="year-month-day">{{filters.Timeprocessing(_item.adImageList.promotionsEndTime)[2]}}</text>
+    </view>
+    <view class="activity-time-right" wx:else style="display:flex">
+      <text style="margin-right:10rpx;">距结束</text>
+      <count-down time="{{time}}" down-style="index" ischecklist="{{true}}"> </count-down>
+    </view>
+  </view>
+
+  <view class="ad-image-list">
+    <scroll-view style="width:100%;" scroll-x='true'>
+      <view class="activity-pro-list">
+        <view class="activity-pro-item" wx:for="{{_item.adImageList.proList}}" catchtap="onAction"
+          data-event-type="detail" data-position="{{index}}">
+          <image class="activity-pro-image" mode="widthFix" src="{{imgur}}{{item.picUrl}}" lazy-load="{{true}}"></image>
+          <view class="activity-pro-name">{{item.productName}}</view>
+          <view class="activity-pro-price">
+            <view>{{item.itemName}}</view>
+            <view>￥<text style="color: #ff0000; font-size: 32rpx;">{{filters.toFix2(item.minOnePrice)}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+<!-- wx:if="{{_item.adImageList.proList && _item.adImageList2.length > 0  }}" -->
+<view wx:if="{{_item.adImageList.proList && _item.adImageList2.length > 0  }}">
+  <view class="title-wrapper">
+    <text class="title-left" style="line-height: 38rpx;">{{_item.name}}</text>
+    <view class="activity-time-right" wx:if="{{false}}">
+      <text class="year-month-day">{{filters.Timeprocessing(_item.adImageList.promotionsStartTime)[0]}}</text>
+      <text class="year-month-day">{{filters.Timeprocessing(_item.adImageList.promotionsStartTime)[1]}}</text>
+      <text class="year-month-day">{{filters.Timeprocessing(_item.adImageList.promotionsStartTime)[2]}}</text>
+      <text style="color:#333">至</text>
+      <!-- {{dangqilist[0].promotionsEndTime}} -->
+      <text class="year-month-day"
+        style="margin-left:10rpx">{{filters.Timeprocessing(_item.adImageList.promotionsEndTime)[0]}}</text>
+      <text class="year-month-day">{{filters.Timeprocessing(_item.adImageList.promotionsEndTime)[1]}}</text>
+      <text class="year-month-day">{{filters.Timeprocessing(_item.adImageList.promotionsEndTime)[2]}}</text>
+    </view>
+    <view class="activity-time-right" wx:else style="display:flex">
+      <text style="margin-right:10rpx;">距结束</text>
+      <count-down time="{{time}}" down-style="index" ischecklist="{{true}}"> </count-down>
+    </view>
+  </view>
+
+  <view class="banner-list" wx:if="{{_item.bannerList.length>0}}">
+    <floor-swiper img-list="{{_item.bannerList}}" width="{{_itemWidth}}" binditemtap="onBannerTap" data-event-type="banner"></floor-swiper>
+  </view>
+
+  <!-- <scroll-view class="item-box" enable-flex="{{true}}" scroll-x="{{true}}"> -->
+    <view class="item-box">
+    <view class="item-box-view" style="width: {{_item.adImageList2.length < 2 ? 'calc(100% - 10rpx)':'calc(50% - 10rpx)'}}" wx:for="{{_item.adImageList2}}" wx:key="key" catchtap="onAction"
+      data-event-type="detail" data-position="{{index}}" data-adlist-type="adImageList2">
+      <image class="item-image" mode="aspectFit" src="{{imgur}}{{item.imageVo.imagePath}}"
+        lazy-load="{{true}}"></image>
+      <view class="item-info">
+        <rich-text nodes="{{item.describe}}" space="nbsp"></rich-text>
+      </view>
+    </view>
+    </view>
+  <!-- </scroll-view> -->
+
+</view>

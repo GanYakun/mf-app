@@ -1,0 +1,168 @@
+/* pages/tab-classification/tab-classification.wxss */ 
+page, .page {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+}  
+
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  color: #939393;
+  align-items: flex-start;
+}
+.nav_left { 
+  display: flex;
+  flex-direction: column;
+  width: 25%;
+  background: #f5f5f5;
+  text-align: center;
+  /* height: 100%; */
+}
+
+/*左侧栏list的item*/
+
+.nav_left .nav_left_items {
+  height: 40px;
+  line-height: 40px;
+  padding: 6px 0;
+  /* border-bottom: 1px solid #dedede; */
+  font-size: 14px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/*左侧栏list的item被选中时*/
+
+.nav_left .nav_left_items.active {
+  background: #fff;
+  color: #f97704;
+  /* border-left: 3px #FD5607 solid; */
+}
+
+/*右侧栏主盒子*/
+
+.nav_right {
+  width: 75%;
+  height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background: #fff;
+   display: flex;
+  flex-direction: column;
+  
+}
+
+/*右侧栏list的item*/
+
+.nav_right .nav_right_items {
+  float: left;
+  width: 33.33%;
+  height: 100px;
+  /* background: #ff00ff; */
+  text-align: center;
+  /* margin-bottom: 20rpx; */
+}
+
+.nav_right .nav_right_items image {
+  width: 100rpx;
+  height: 100rpx;
+  margin-top: 20rpx;
+}
+
+.nav_right .nav_right_items text {
+  display: block;
+  /* margin-top: 20rpx; */
+  font-size: 12px;
+  color: #f97704;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.imgaes-banner {
+  width: 100%;
+  position: relative;
+  padding-top: 24.22%;
+  background: #f2f2f2;
+}
+.imgaes-banner image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+
+.zhaunqu-view {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 28rpx;
+  margin-top: 20rpx;
+  align-items: center;
+  justify-content: center;
+}
+
+.lins-view {
+  width: 30px;
+  height: 1px;
+  background: #ccc;
+}
+
+.text_view {
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+  color: #f97704;
+}
+.sc-view{
+  width: 100%;
+  /* height: 100%; */
+  /* flex-grow: 1; */
+  overflow: hidden;
+}
+.nodata_text {
+  color: black;
+  font-size: 14px;
+  text-align: center;
+}
+
+.noData-mains {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.img-mains { 
+  position: relative;
+  width: 100%;
+  padding-top: 50%;
+}
+.img-views {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column
+}
+
+.imgss {
+  height: 150rpx;
+  width: 180rpx;
+}
+.txt-nos{
+  font-size: 32rpx;
+  color: #999;
+  margin-top: 20rpx;
+}

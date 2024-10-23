@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed",
+    "leftbutton":"/components/leftbutton/index"
+  },
+  "navigationBarTitleText": "现金券"
+}

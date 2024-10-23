@@ -1,0 +1,22 @@
+{
+  "component": true,
+  "usingComponents": {
+    "floor-item": "/components/floor-item/index",
+    "floor-item-activity": "/components/floor-item-activity/index",
+    "floor-item-libao": "/components/floor-item-libao/index",
+    "floor-item-sample": "/components/floor-item-sample/index",
+    "floor-item-detail": "/components/floor-item-detail/index",
+    "floor-item-shop": "/components/floor-item-shop/index",
+    "floor-item-step": "/components/floor-item-step/index",
+    "floor-item-designer": "/components/floor-item-designer/index",
+    "floor-item-evaluate": "/components/floor-item-evaluate/index",
+    "floor-item-top-banner": "/components/floor-item-top-banner/index",
+    "floor-item-top-menu": "/components/floor-item-top-menu/index",
+    "floor-item-form": "/components/floor-item-form/index",
+    "floor-item-video": "/components/floor-item-video/index",
+    "recycle-view": "/components/recycle-view/recycle-view",
+    "recycle-item": "/components/recycle-view/recycle-item",
+    "floor-item-gongge":"/components/floor-item-gongge/index",
+    "floor-item-headlines":"/components/floor-item-headlines/floor-item-headlines"
+  }
+}

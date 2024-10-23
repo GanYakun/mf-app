@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "phonepopup":"/components/phonepopup/phonepopup",
+    "messagepopup":"/components/messagepopup/messagepopup",
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed"
+  }
+
+}

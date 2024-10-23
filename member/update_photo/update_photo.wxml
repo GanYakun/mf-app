@@ -1,0 +1,17 @@
+<!--member/update_photo/update_photo.wxml-->
+<view class="container">
+	<view class="lins"></view>
+	<view class="h10"></view>
+
+	<view class="main">
+		<view class="img-view">
+			<!-- <open-data type="userAvatarUrl"></open-data> -->
+			<image src="{{imgurl}}{{imagepath}}"></image>
+		</view>
+
+		<view class="xuanze" bindtap="chooseImage">选择头像</view>
+	</view>
+</view>
+<view class="btn-main">
+	<view class="btn" bindtap="onSureTap" data-src="{{tempFilePaths}}">确认修改</view>
+</view>

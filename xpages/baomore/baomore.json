@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "drawer":"/components/drawer/drawer",
+    "shoplist":"/components/shoplist/shoplist"
+  },
+  "navigationBarTitleText": "更多"
+  
+}

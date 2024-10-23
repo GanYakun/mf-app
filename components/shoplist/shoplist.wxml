@@ -1,0 +1,36 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<!-- {{isbaokuan}}
+{{isbaokuan!=1}} -->
+<view>
+
+
+	<view class="content" wx:if="{{isbaokuan==1}}">
+		<block wx:for="{{shoplists}}" wx:key='key'>
+			<view class="cintentimg" catchtap="details" data-id="{{item.tWebProduct.pid}}" data-cid="{{item.tWebProduct.cid}}" data-typeId="{{typeId}}" data-productname="{{item.tWebProduct.productName}}" data-itemname="{{item.tWebProduct.itemName}}">
+				<image class="image-pic" src="{{imgurl}}{{item.tWebProduct.picUrl}}" mode="aspectFill" />
+				<view class="inaddress" wx:if="{{item.tWebProduct.productName!=null}}">{{item.tWebProduct.productName}}</view>
+				<view class="inaddress" wx:else>{{item.tWebProduct.itemName}}</view>
+				<view class="frequency"><text>￥</text>{{filters.toFix2(item.tWebProduct.minOnePrice)}}</view>
+			</view>
+		</block>
+	</view>
+
+	<view class="content" wx:else>
+		<block wx:for="{{shoplists}}" wx:key='key'>
+			<view class="cintentimg" catchtap="details" data-id="{{item.itemId}}" data-cid="{{item.cid}}" data-typeId="{{typeId}}" data-productname="{{item.productName}}" data-itemname="{{item.itemName}}">
+				<image class="spot-good" src="{{ftpurl}}{{item.kunmingSpotImagePath}}" hidden="{{item.kunmingSpotImagePath == null}}" mode="aspectFit" />
+				<view class="imageicon" wx:if="{{item.activityLabelImage}}">
+					<image src="{{imgurl}}{{item.activityLabelImage}}" mode="widthFix"></image>
+				</view>
+				<image class="image-pic" src="{{imgurl}}{{item.picUrl}}" mode="aspectFit"></image>
+				<view class="inaddress" wx:if="{{item.productName!=null}}">
+					<block wx:if="{{item.bname}}">[{{item.bname}}]</block> {{item.productName}}
+				</view>
+				<view class="inaddress" wx:else>
+					<block wx:if="{{item.bname}}">{{item.bname}}</block> [{{item.itemName}}]
+				</view>
+				<view class="frequency"><text>￥</text>{{filters.toFix2(item.minOnePrice)}}</view>
+			</view>
+		</block>
+	</view>
+</view>

@@ -1,0 +1,21 @@
+<!--member/claim_coupons/claim_coupons.wxml-->
+<leftbutton toptitle="首进壕送"></leftbutton>
+<scroll-view scroll-y="true" style="height:calc(100% - {{LeftButtonnavHeight}}rpx)">
+  <block wx:if="{{haosongDetail}}">
+    <image class="top-img" src="{{imageUrl}}{{haosongDetail.imagePath}}" mode="widthFix"></image>
+    <official-account class="official-account"></official-account>
+    <view class="claim-layout" wx:if="{{isShare}}">
+      <text>领取时间：{{haosongDetail.receiveStartTime}}~{{haosongDetail.receiveEndTime}}</text>
+      <view bindtap="confirmReceiveHaoSong">登录领取</view>
+    </view>
+    <view class="rule-layout">
+      <view class="rule-title">活动规则</view>
+      <rich-text class="rule-des" nodes="{{haosongDetail.content}}"></rich-text>
+    </view>
+    <view style="height: 30rpx;"></view>
+  </block>
+  <block wx:else>
+    <view style="width: 100%; min-height: 100%; display: flex; align-items: center; justify-content: center; background: #f2f2f2;">{{status}}</view>
+  </block>
+</scroll-view>
+

@@ -1,0 +1,33 @@
+<!--member/set/set.wxml-->
+<view class="container">
+	<view class="setUpList">
+		<!-- <view class="h10"></view> -->
+		<view class="item" bindtap="onUpdateBasicInfo">
+			<view>修改基本资料</view>
+			<view class="szeyFont bracket-right-o" style="font-size:24rpx;color:#666;"></view>
+		</view>
+		<view class="item" bindtap="onUpdatePwd">
+			<view>修改密码</view>
+			<view class="szeyFont bracket-right-o" style="font-size:24rpx;color:#666;"></view>
+		</view>
+		<view class="item" bindtap="onUpdatePhoto">
+			<view>修改头像</view>
+			<view class="szeyFont bracket-right-o" style="font-size:24rpx;color:#666;"></view>
+		</view>
+
+		<view class="item">
+			<view>微信绑定</view>
+			<view class="niName">软耳兔兔</view>
+			<view class="item-views">
+				<button style="width:150rpx; font-weight: normal;" class="imgs">立即绑定</button>
+				<!-- <button style="width:150rpx; font-weight: normal;" class="imgs">立即解绑</button> -->
+				<view class="szeyFont bracket-right-o" style="font-size:24rpx;color:#666;"></view>
+			</view>
+
+		</view>
+
+
+
+
+	</view>
+</view>

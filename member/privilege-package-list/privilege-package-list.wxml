@@ -1,0 +1,34 @@
+<!--member/privilege-package-list/privilege-package-list.wxml-->
+<view class="page-content">
+  <leftbutton toptitle="签到特权"></leftbutton>
+  <scroll-view class="privilege-package-scroll" scroll-y>
+    <view wx:for="{{myReceiveRecordProList}}" class="privilege-package-item-wrapper">
+      <view class="privilege-package-item" catchtap="{{item.status != 0 ? '':'toPrivilegeProDetail'}}" data-item="{{item}}">
+        <!-- ic_privilege_package_bottom.png -->
+        <image class="privilege-package-bottom" src="{{ftpurl}}/ic_privilege_package_bottom.png"/>
+
+        <image class="privilege-package-pro-image" src="{{imageUrl}}/{{item.imagePath}}" mode="aspectFill"/>
+
+        <view class="divider-view">
+          <view class="circle1"></view>
+          <view class="dot-line">
+          </view>
+          <view class="circle2"></view>
+        </view>
+
+        <view class="privilege-package-pro-info">
+          <view class="privilege-package-pro-name clamp1">{{item.title}}</view>
+          <view class="privilege-package-pro-desc-group">
+            <view class="privilege-package-pro-desc clamp2">{{item.content}}</view>
+            <!-- <view class="privilege-package-btn-use">使用</view> -->
+            <view class="privilege-package-btn-use {{item.status != 0 ? 'privilege-package-btn-use-disabled':''}}">{{item.statusName}}</view>
+          </view>
+          <view class="privilege-package-pro-time clamp2">
+            <text>活动时间:</text>
+            <text style="color: #ED9D54; margin-left: 10rpx;">{{item.beginTime}} ~ {{item.endTime}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

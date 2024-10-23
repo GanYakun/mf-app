@@ -1,0 +1,49 @@
+/* member/activity_sign/activity_sign.wxss */
+.scroll{
+  background-color: #efefef;
+}
+.activity-sign-item{
+  width: calc(100% - 56rpx);
+  height: auto;
+  margin: 30rpx 28rpx 0 28rpx;
+  background: #FFFFFF;
+  border-radius: 17rpx;
+  display: flex;
+  flex-direction: column;
+}
+.activity-sign-item .top-img{
+  width: 100%;
+  height: 554rpx;
+  background: #f8f8f8;
+  border-radius: 17rpx 17rpx 0 0;
+  display: block;
+}
+.activity-sign-item .title{
+  font-size: 33rpx;
+  font-weight: bold;
+  color: #333333;
+  margin: 38rpx 37rpx 0 37rpx;
+}
+.activity-sign-item .content{
+  font-size: 25rpx;
+  font-weight: 500;
+  color: #777777;
+  margin: 26rpx 41rpx 0 39rpx;
+}
+.activity-sign-item .time{
+  font-size: 25rpx;
+  font-weight: 500;
+  color: #666666;
+  margin: 35rpx 0 0 38rpx;
+}
+.activity-sign-item .btn-claim{
+  width: calc(100% - 284rpx);
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  background: #F68535;
+  border-radius: 40rpx;
+  margin: 29rpx 142rpx 44rpx 142rpx;
+  font-size: 31rpx;
+  color: white;
+}

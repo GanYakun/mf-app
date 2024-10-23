@@ -1,0 +1,19 @@
+<search id="search" title="{{searchtitle}}"></search>
+
+<block wx:for="{{list}}" wx:key="key">
+	<view class="casebox">
+		<view style="display:flex">
+			<view class="casenameandtime">
+				<view class="casename">{{item.name}}</view>
+				<view class="casetime">{{item.time}}</view>
+			</view>
+			<view class="shenpi">
+				<text hidden="{{item.isapproval}}" class="iconfont icon-daishenpi" ></text>
+			</view>
+		</view>
+		<view class="lookcomment">
+			<view class="commentss" catchtap="look">查看评论</view>
+		</view>
+	</view>
+
+</block>

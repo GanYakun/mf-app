@@ -1,0 +1,257 @@
+{
+  "description": "项目配置文件，详见文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": false,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": false,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "useIsolateContext": true,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "disableUseStrict": false,
+    "minifyWXML": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false,
+    "ignoreUploadUnusedFiles": true,
+    "useStaticServer": true,
+    "lazyloadPlaceholderEnable": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.19.6",
+  "appid": "wx23089c37e272d453",
+  "projectname": "mufei_shop",
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "cloudfunctionRoot": "cloudfunctions/",
+  "skeleton-config": {
+    "global": {
+      "loading": "",
+      "text": {
+        "color": "#EEEEEE"
+      },
+      "image": {
+        "shape": "",
+        "color": "#EFEFEF",
+        "shapeOpposite": []
+      },
+      "button": {
+        "color": "#EFEFEF",
+        "excludes": []
+      },
+      "pseudo": {
+        "color": "#EFEFEF",
+        "shape": "circle",
+        "shapeOpposite": []
+      },
+      "excludes": [],
+      "remove": [],
+      "empty": [],
+      "hide": [],
+      "grayBlock": [],
+      "showNative": false,
+      "backgroundColor": "#f7f7f7",
+      "mode": "fullscreen",
+      "templateName": "skeleton",
+      "cssUnit": "rpx",
+      "decimal": 4
+    },
+    "pages": {
+      "/pages/index/index": {}
+    }
+  },
+  "cloudfunctionTemplateRoot": "cloudfunctionTemplate/",
+  "condition": {
+    "miniprogram": {
+      "list": [
+        {
+          "name": "成为经纪人",
+          "pathName": "businesscard/invitation/invitation",
+          "query": "q:\"http://mf.100good.cn/mlsmall/card_share?memberId=464&name=改天是那天\"",
+          "scene": 1011
+        },
+        {
+          "name": "会员中心",
+          "pathName": "businesscard/index/index",
+          "query": "orderstatus=undefined",
+          "scene": null
+        },
+        {
+          "name": "核销列表",
+          "pathName": "businesscard/writeoff/writeoff",
+          "query": "id=1609317957000",
+          "scene": null
+        },
+        {
+          "name": "预算报价",
+          "pathName": "xpages/budgetquotation/budgetquotation",
+          "query": "id=203&toptext=预算",
+          "scene": null
+        },
+        {
+          "name": "老版会员中心",
+          "pathName": "pages/tab-member/tab-member",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "登陆注册",
+          "pathName": "pages/Loginregistration/Loginregistration",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "电子名片",
+          "pathName": "xpages/Electroniccard/Electroniccard",
+          "query": "http://mf.100good.cn/mlsmall/card_share?memberId=364&name=星星泡饭",
+          "scene": 1011
+        },
+        {
+          "name": "没有经纪人的页面",
+          "pathName": "businesscard/invitationfather/invitationfather",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "我的客户",
+          "pathName": "businesscard/mecustomer/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "意向客户详情页",
+          "pathName": "businesscard/Potendetails/Potendetails",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "意向客户列表",
+          "pathName": "businesscard/Potentialcustomers/Potentialcustomers",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "商品页面",
+          "pathName": "pages/tab-classification/tab-classification",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "本月爆款",
+          "pathName": "xpages/hotproduct_detail/hotproduct_detail",
+          "query": "id=0 &cname=123",
+          "scene": null
+        },
+        {
+          "name": "国际软装",
+          "pathName": "xpages/classification/classification",
+          "query": "id=2&cname=测试",
+          "scene": null
+        },
+        {
+          "name": "现金券",
+          "pathName": "xpages/currentactivity/currentactivity",
+          "query": "id=2&cname=测试",
+          "scene": null
+        },
+        {
+          "name": "裁剪图片",
+          "pathName": "businesscard/Cropimage/Cropimage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "视频上传",
+          "pathName": "pages/video_upload/video_upload",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "样板房征集",
+          "pathName": "xpages/modelhouses/modelhouses",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "毛坯房详情",
+          "pathName": "xpages/checklist/checklist",
+          "query": "newsClassId=128&objectId=201&pagetitle=test&type=0",
+          "scene": null
+        },
+        {
+          "name": "开始核销的页面",
+          "pathName": "businesscard/Writeoffoperation/Writeoffoperation",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "精选组合",
+          "pathName": "xpages/selectedchecklist/selectedchecklist",
+          "query": "newsClassId=129&objectId=33",
+          "scene": null
+        },
+        {
+          "name": "一元下定",
+          "pathName": "xpages/byoneyuan/byoneyuan",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "新版编辑名片",
+          "pathName": "businesscard/newmake_card/newmake_card",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "优化的首页",
+          "pathName": "pages/AllPage/AllPage",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "毛坯房列表",
+          "pathName": "xpages/roughhouse/roughhouse",
+          "query": "newsClassId=127",
+          "scene": null
+        },
+        {
+          "name": "测试闪退问题",
+          "pathName": "xpages/pageTest/pageTest",
+          "query": "newsClassId=128&objectId=201&pagetitle=test&type=0",
+          "scene": null
+        }
+      ]
+    }
+  },
+  "editorSetting": {
+    "tabIndent": "insertSpaces",
+    "tabSize": 2
+  }
+}

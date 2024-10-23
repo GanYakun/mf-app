@@ -1,0 +1,19 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+
+<scroll-view style="height:{{pageWindowHeight}}rpx;" scroll-y='true' bindscrolltolower="slideusage">
+<view class="listshuju" wx:for="{{list.list}}" wx:key="key" data-index="{{index}}" data-videopath="{{item.videoPath}}" data-title="{{item.title}}"  catchtap="listshuju">
+	<view class="listitem">
+		<view class="item" style="background:url({{imgur}}{{filters.jsonzhuanhuan(item.thumbnailPath)[0].path}}); background-size:100% 100%;" mode="aspectFill">
+			<view class="play"><text class="iconfont icon-shipin"></text></view>
+		</view>
+
+		<view class="tuwen">
+			<text class="title">{{item.title}}</text>
+			<view>
+				<text class="iconfont icon-guanliyuan"></text>管理员
+				<text class="iconfont icon-bofang"></text>13次
+			</view>
+		</view>
+	</view>
+</view>
+</scroll-view>

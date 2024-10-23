@@ -1,0 +1,51 @@
+<view class="page" style="--left-button-nav-height: {{LeftButtonnavHeight}}rpx;">
+  <leftbutton toptitle="登录"></leftbutton>
+  <view class="container">
+    <scroll-view class="author-scroll" scroll-y>
+      <view class="author-scroll-content">
+        <button class="author-choose-avatar" open-type="{{ supportUserInfoEdit ? 'chooseAvatar':'' }}" bindchooseavatar="{{supportUserInfoEdit ? 'onChooseWxAvatarSuccess':''}}" bind:tap="{{supportUserInfoEdit ? '':'toChooseAvatar'}}">
+          <image src="{{ authorAvator ? authorAvator:'/images/ic_default_header.png'}}" class="author-avatar" mode="aspectFill"></image>
+          <image src="/images/ic_camera.png" class="author-avatar-camera"></image>
+        </button>
+
+        <view class="author-form">
+          <view class="author-form-item">
+            <view class="author-form-item-key"><text class="author-form-item-required">*</text>昵称:</view>
+            <view class="author-form-item-val">
+              <input placeholder-class="input-holder-class" type="nickname" cursor-spacing="100" placeholder="请输入昵称" bindinput="onNickNameInput"/>
+            </view>
+          </view>
+
+          <view class="author-form-item">
+            <view class="author-form-item-key"><text class="author-form-item-required">*</text>性别:</view>
+            <view class="author-form-item-val">
+              <radio-group bind:change="onSexChange">
+                <radio value="1" checked="{{registerForm.sex == '男'}}">男</radio>
+                <radio value="2" checked="{{registerForm.sex == '女'}}">女</radio>
+              </radio-group>
+            </view>
+          </view>
+
+          <view class="author-form-item">
+            <view class="author-form-item-key"><text class="author-form-item-required">*</text>联系电话:</view>
+            <view class="author-form-item-val">
+              <input disabled placeholder-class="input-holder-class" placeholder="" value="{{registerForm.phoneNum}}"/>
+              <button class="author-form-item-get-phone" open-type="getPhoneNumber" bindgetphonenumber="onGetPhoneNumber" bind:tap="confirmGetPhonenumber">{{!registerForm.phoneNum ? '点我获取':'重新获取'}}</button>
+            </view>
+          </view>
+        </view>
+
+        <view class="author-form-submit" bind:tap="toAuthor">授权登录</view>
+        <view class="agreement" style="padding: 0; margin-bottom: 120rpx;">
+          <!-- 登录即代表您已阅读并同意 -->
+          <checkbox-group bind:change="onAgreementChange">
+            <checkbox value="1" checked="{{agreement}}">您已阅读</checkbox>
+            <view class="agreement-color" bind:tap="toServiceAgreement">《用户服务协议》</view>和<view class="agreement-color" bind:tap="toPrivacyPolicies">《隐私政策》</view>
+          </checkbox-group>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
+
+<author-agreement-dialog show="{{showAuthorAgreementDialog}}" bind:confirm="onAuthorAgreement"></author-agreement-dialog>

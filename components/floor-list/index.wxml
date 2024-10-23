@@ -1,0 +1,194 @@
+<!--components/floor-list/index.js.wxml-->
+<!-- mallItemSkuVO -->
+<view style="width: 100%; height:100%;">
+
+  <!-- 菜单栏 -->
+  <view class="item-wrapper top-menu" style="margin-top:{{topHeight}}rpx" wx:if="{{_topMenu && _topMenu.length > 0}}">
+    <floor-item-top-menu top-menu="{{_topMenu}}" bindaction="onAction" bindhidemenu="close"></floor-item-top-menu>
+  </view>
+
+  <recycle-view class="floor-list" scroll-y="{{true}}" bindscroll="onScroll" batch="{{batchSetRecycleData}}" id="recycleId" height="{{_height}}" bindscrolltolower="onScrollToLower">
+
+    <!-- 顶部空白占位 -->
+    <!-- <view class="item-wrapper top-layout" wx:if="{{!_isPageShow}}"
+      style="height:{{_pageButtonHeight+_pageMenuButtonTop + 10+70}}rpx"></view> -->
+
+    <!-- 顶部菜单栏占位 -->
+    <!-- <view class="item-wrapper top-layout" wx:if="{{_topMenu && _topMenu.length > 0}}"
+      style="height:{{marginHeight}}rpx"></view> -->
+
+    <!-- 顶部轮播图 -->
+    <view class="item-wrapper top-banner" wx:if="{{_topBanner && _topBanner.length > 0}}">
+      <floor-item-top-banner top-banner="{{_topBanner}}" bindaction="onAction"></floor-item-top-banner>
+    </view>
+    <!-- (item.type==4?(item.adImageList.proList.length>0&&item.adImageList2.length>0?true:false):true) -->
+    <block wx:for="{{_floorList}}">
+    <block wx:if="{{item.type==4?(item.adImageList.proList.length>0&&item.adImageList2.length>0?true:false):true}}">
+    <recycle-item id="floor-item" class="item-wrapper floor-item"
+      style="padding-left:20rpx;padding-right:20rpx;box-sizing:border-box;"  wx:key="key" wx:if="{{(item.type==2?(item.adImageList && item.adImageList.length > 0?true:false):true)}}">
+  
+      <!-- 预约表单 -->
+      <view class="item-wrappe" wx:if="{{item.type == '12'}}">
+        <floor-item-form msg-list="{{item.msgList}}"></floor-item-form>
+      </view>
+      <!-- 预约表单结束 -->
+
+      <!-- 普通楼层item -->
+      <block wx:if="{{item.type=='1'}}">
+        <floor-item item="{{item}}" item-width="{{floorWidth}}" bindaction="onAction"></floor-item>
+
+        <!-- 查看更多 -->
+        <view class="loader" bindtap="more" data-source="{{item}}" wx:if="{{item.adImageList || item.adImageList1}}">
+          <view class="loader-inner ball-pulse">
+            <view></view>
+            <view></view>
+            <view></view>
+            <text style="font-size:24rpx;">查看更多</text>
+          </view>
+        </view>
+      </block>
+
+      <!-- 大礼包楼层item -->
+      <block wx:elif="{{item.type=='2'}}">
+        <floor-item-libao item="{{item}}" item-width="{{floorWidth}}" bindaction="onAction"></floor-item-libao>
+
+        <!-- 查看更多 -->
+        <view class="loader" bindtap="more" data-source="{{item}}" wx:if="{{item.adImageList || item.adImageList1}}"
+          hidden="{{true}}">
+          <view class="loader-inner ball-pulse">
+            <view></view>
+            <view></view>
+            <view></view>
+            <text style="font-size:24rpx;">查看更多</text>
+          </view>
+        </view>
+      </block>
+
+      <block wx:elif="{{item.type == '3'}}">
+        <floor-item-gongge item="{{item}}" bindaction="onAction"></floor-item-gongge>
+      </block>
+
+      <!-- 活动包括当期活动、限时抢购楼层item -->
+      <block wx:elif="{{item.type=='4'}}">
+        <floor-item-activity item="{{item}}" item-width="{{floorWidth}}" bindaction="onAction">
+        </floor-item-activity>
+
+        <!-- 查看更多 -->
+        <view class="loader" bindtap="more" data-source="{{item}}" wx:if="{{item.adImageList || item.adImageList1}}">
+          <view class="loader-inner ball-pulse">
+            <view></view>
+            <view></view>
+            <view></view>
+            <text style="font-size:24rpx;">查看更多</text>
+          </view>
+        </view>
+      </block>
+
+      <!-- 样品特卖楼层 -->
+      <block wx:elif="{{item.type=='5'}}">
+        <floor-item-sample item="{{item}}" item-width="{{floorWidth}}" bindaction="onAction"></floor-item-sample>
+
+        <!-- 查看更多 -->
+        <view class="loader" bindtap="more" data-source="{{item}}" wx:if="{{item.adImageList || item.adImageList1}}">
+          <view class="loader-inner ball-pulse">
+            <view></view>
+            <view></view>
+            <view></view>
+            <text style="font-size:24rpx;">查看更多</text>
+          </view>
+        </view>
+      </block>
+
+      <!-- 细节头条场景楼层 -->
+      <block wx:elif="{{item.type=='6'}}">
+        <floor-item-detail item="{{item}}" item-width="{{floorWidth}}" bindaction="onAction"></floor-item-detail>
+
+        <!-- 查看更多 -->
+        <view class="loader" bindtap="more" data-source="{{item}}" wx:if="{{item.adImageList || item.adImageList1}}"
+          hidden="{{true}}">
+          <view class="loader-inner ball-pulse">
+            <view></view>
+            <view></view>
+            <view></view>
+            <text style="font-size:24rpx;">查看更多</text>
+          </view>
+        </view>
+      </block>
+
+      <!-- 实体门店楼层 -->
+      <block wx:elif="{{item.type=='7'}}">
+        <floor-item-shop item="{{item}}" item-width="{{floorWidth}}" bindaction="onAction"></floor-item-shop>
+
+        <!-- 查看更多 -->
+        <view class="loader" bindtap="more" data-source="{{item}}" wx:if="{{item.adImageList || item.adImageList1}}">
+          <view class="loader-inner ball-pulse">
+            <view></view>
+            <view></view>
+            <view></view>
+            <text style="font-size:24rpx;">查看更多</text>
+          </view>
+        </view>
+      </block>
+
+      <!-- 全案设计 -->
+      <block wx:elif="{{item.type=='8'}}">
+        <floor-item-designer item="{{item}}" item-width="{{floorWidth}}" bindaction="onAction"></floor-item-designer>
+
+        <!-- 查看更多 -->
+        <view class="loader" bindtap="more" data-source="{{item}}" wx:if="{{item.adImageList || item.adImageList1}}">
+          <view class="loader-inner ball-pulse">
+            <view></view>
+            <view></view>
+            <view></view>
+            <text style="font-size:24rpx;">查看更多</text>
+          </view>
+        </view>
+      </block>
+
+      <!-- 装修流程图楼层 -->
+      <block wx:elif="{{item.type=='9'}}">
+        <floor-item-step item="{{item}}" item-width="{{floorWidth}}" bindaction="onAction"></floor-item-step>
+
+        <!-- 查看更多 -->
+        <view class="loader" bindtap="more" data-source="{{item}}" wx:if="{{item.adImageList || item.adImageList1}}"
+          hidden="{{true}}">
+          <view class="loader-inner ball-pulse">
+            <view></view>
+            <view></view>
+            <view></view>
+            <text style="font-size:24rpx;">查看更多</text>
+          </view>
+        </view>
+      </block>
+
+      <!-- 用户口碑楼层 -->
+      <block wx:elif="{{item.type=='10'}}">
+        <floor-item-evaluate item="{{item}}" item-width="{{floorWidth}}" bindaction="onAction"></floor-item-evaluate>
+
+        <!-- 查看更多 -->
+        <view class="loader" bindtap="more" data-source="{{item}}" wx:if="{{item.adImageList || item.adImageList1}}">
+          <view class="loader-inner ball-pulse">
+            <view></view>
+            <view></view>
+            <view></view>
+            <text style="font-size:24rpx;">查看更多</text>
+          </view>
+        </view>
+      </block>
+
+      <block wx:elif="{{item.type=='11'}}">
+        <floor-item-video item="{{item}}" item-width="{{floorWidth}}" play-index="{{playIndex}}" bindaction="onAction"
+          bindvideoinit="onVideoInit"></floor-item-video>
+      </block>
+
+      <!-- 今日头条楼层 -->
+      <block wx:elif="{{item.type=='13'}}">
+        <floor-item-headlines item="{{item}}" item-width="{{floorWidth}}" play-index="{{playIndex}}"
+          bindaction="onAction"></floor-item-headlines>
+      </block>
+     
+    </recycle-item>
+  </block>
+  </block>
+  </recycle-view>
+</view>

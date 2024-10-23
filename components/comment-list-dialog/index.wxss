@@ -1,0 +1,146 @@
+/* components/comment-list-dialog/index.wxss */
+.mask {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, .6);
+  z-index: 100;
+}
+
+.dialog {
+  position: fixed;
+  height: 70%;
+  background: #fff;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateY(100%);
+  z-index: 101;
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+  box-sizing: border-box;
+}
+
+.dialog-show {
+  transform: translateY(0);
+  transition: .5s;
+  z-index: 101;
+}
+
+.title {
+  position: relative;
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+}
+
+.title image {
+  position: absolute;
+  left: 20rpx;
+  width: 60rpx;
+  height: 60rpx;
+  padding: 10rpx;
+  box-sizing: border-box;
+}
+
+.title view {
+  width: 100%;
+  text-align: center;
+}
+
+.comment-list {
+  width: 100%;
+  height: calc(100% - 208rpx);
+  box-sizing: border-box;
+}
+
+.comment-item {
+  width: calc(100% - 20rpx);
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px #f2f2f2 solid;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+}
+
+.comment-item:last-child {
+  border: none;
+}
+
+.header {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  margin-top: 8rpx;
+}
+
+.comment-info {
+  width: calc(100% - 100rpx);
+  margin-left: 20rpx;
+}
+
+.nick-name {
+  font-size: 32rpx;
+  font-weight: 100;
+  color: #666;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+}
+
+.comment-content {
+  font-size: 28rpx;
+  color: #333;
+  margin-top: 10rpx;
+}
+
+.nick-name view {
+  font-size: 28rpx;
+  color: 999;
+  font-weight: normal;
+  margin-left: 20rpx;
+}
+
+.comment-bar {
+  width: 100%;
+  height: 120rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background: #f2f2f2;
+}
+
+.comment-header {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 10rpx;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.comment-input {
+  width: calc(100% - 140rpx);
+  height: 80rpx;
+  margin-left: 20rpx;
+  margin-right: 20rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
+  box-sizing: border-box;
+}
+

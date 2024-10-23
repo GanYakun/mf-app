@@ -1,0 +1,26 @@
+<leftbutton toptitle="{{TopTitle}}"></leftbutton>
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<view class="topbox">
+<view class="livinginbox">
+<view class="livingin" wx:for="{{livingin}}" wx:key="key" catchtap="clicklivingin" data-name="{{item.name}}"  data-id="{{item.id}}"  data-newclassid="{{item.newsclassId}}">{{item.name}}</view>
+
+
+</view>
+
+</view>
+
+
+<view class="listshuju" wx:for="{{list}}" wx:key="key" data-index="{{index}}" data-newclassid="{{item.newsclassId}}"  catchtap="listshuju" >
+<view class="listitem">
+<image src="{{imgur}}{{filters.jsonzhuanhuan(item.thumbnailPath)[0].path}}" mode="aspectFill"></image>
+<view class="tuwen">
+<text class="title">{{item.title}}</text>
+<!-- <view> <rich-text nodes="{{item.introduce}}"></rich-text></view> -->
+<view>  {{item.introduce}}</view>
+
+</view>
+</view>
+</view>
+
+<Allpagesneed></Allpagesneed>
+

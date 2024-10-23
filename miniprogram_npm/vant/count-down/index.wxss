@@ -1,0 +1,32 @@
+@import '../common/index.wxss';.van-count-down{color:#333;font-size:14px;line-height:20px}
+.colon {
+  display: inline-block;
+  margin: 0 4px;
+  color: #333;
+  font-weight: bold;
+}
+.block {
+  display: inline-block;
+  /* width: 22px; */
+  padding: 0 10rpx;
+  color: #fff;
+  font-size: 12px;
+  text-align: center;
+  background-color: #f97704;
+  border-radius: 6rpx;
+}
+.swiper_container{
+  height: 50rpx;
+  width: 30rpx;
+}
+
+.timeBig{
+  font-size: 28rpx;
+  color: #ff6c00;
+}
+
+.timestyle{
+  /* display: table-cell;
+  vertical-align:bottom; */
+  line-height: 38rpx;
+}

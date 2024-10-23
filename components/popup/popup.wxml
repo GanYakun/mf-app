@@ -1,0 +1,50 @@
+
+
+
+  <view class="fadeIn" wx:if="{{iosDialog1}}">
+        <view class="weui-mask"></view>
+        <view class="weui-dialog">
+            <view class="weui-dialog__hd"><strong class="weui-dialog__title">需要授权</strong></view>
+            <view class="weui-dialog__bd">是否继续获取授权</view>
+            <view class="weui-dialog__ft">
+                <button style="padding:0;height:100rpx;line-height:100rpx" class="weui-dialog__btn weui-dialog__btn_default btnss" data-isjixu="false" bindtap="close">取消</button>
+                <!-- <button style="padding:0;height:100rpx;line-height:100rpx" class="weui-dialog__btn weui-dialog__btn_primary btnss" open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo" data-isjixu="true" >继续</button> -->
+                <button style="padding:0;height:100rpx;line-height:100rpx" class="weui-dialog__btn weui-dialog__btn_primary btnss" catchtap="GetUserInformation">继续</button>
+            </view>
+        </view>
+    </view>
+
+
+    <!-- <view class="fadeIn" wx:if="{{dialog2}}">
+
+        <view class="weui-mask" bindtap="close"></view>
+        <view class="weui-half-screen-dialog">
+            <view class="weui-half-screen-dialog__bd">
+              <text class="iconfont icon-cha" bindtap="closephone"></text>
+                <view class="weui-half-screen-dialog__tips">
+                    是否同意小程序获取您的手机号
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__ft">
+               <button style="padding:0;height:100rpx;line-height:100rpx" class="weui-dialog__btn weui-dialog__btn_primary btnquxiao" data-isjixu="true" bindtap="closephone" >不同意</button>
+                <button style="padding:0;height:100rpx;line-height:100rpx" class="weui-dialog__btn weui-dialog__btn_primary btnss" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-isjixu="true" >同意</button>
+            </view>
+        </view>
+    </view> -->
+
+
+    <view class="fadeIn" wx:if="{{dialog2}}">
+        <view class="weui-mask" bindtap="close"></view>
+        <view class="weui-half-screen-dialog">
+            <view class="weui-half-screen-dialog__bd">
+              <text class="iconfont icon-cha" bindtap="closephone"></text>
+                <view class="weui-half-screen-dialog__tips">
+                    是否同意小程序获取您的手机号
+                </view>
+            </view>
+            <view class="weui-half-screen-dialog__ft">
+               <button style="padding:0;height:100rpx;line-height:100rpx" class="weui-dialog__btn weui-dialog__btn_primary btnquxiao" data-isjixu="true" bindtap="closephone" >不同意</button>
+                <button style="padding:0;height:100rpx;line-height:100rpx" class="weui-dialog__btn weui-dialog__btn_primary btnss" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-isjixu="true" >同意</button>
+            </view>
+        </view>
+    </view>

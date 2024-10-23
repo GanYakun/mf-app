@@ -1,0 +1,201 @@
+<wxs src="../../utils/filter.wxs" module="filter"></wxs>
+<leftbutton toptitle="订单详情"></leftbutton>
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<view class="page-box" style="height:calc(100% - ({{LeftButtonnavHeight+botViewHieght}}rpx)">
+
+  <!-- 收货地址开始 -->
+  <view class="receiving-address" catchtap="updateAddress" wx:if="{{list.orderStatus == 1}}">
+    <view class="iconfont icon-dizhi2" style="color:#f97004;font-size:24px"></view>
+    <view style="width:80%;margin-left:20rpx">
+      <!-- 姓名和电话 -->
+      <view class="nameandphone">
+        <view class="name">{{list.consignee}}</view>
+        <view class="phone">{{list.consigneeTelephone}}</view>
+        <view class="dangqianaddress" wx:if="{{list.orderStatus==1}}">修改收货地址</view>
+      </view>
+      <!-- 省市区域 -->
+      <view class="band">
+        <view>{{list.provinceCityCounty?list.provinceCityCounty:''}}{{list.detailAddress?list.detailAddress:''}}{{list.addressAlias?list.addressAlias:''}}</view>
+      </view>
+    </view>
+    <view class="rightdayu">
+      <text class="iconfont icon-youjiantou" style="color: #9d9d9d;"></text>
+    </view>
+  </view>
+  <!-- 收货地址结束 -->
+  <view class="order-scroll" style="max-height:calc(100% - {{list.orderStatus == 1?359:196}}rpx);" >
+    <!-- 大礼包订单显示在这里开始 -->
+    <view class="list" wx:if="{{list.orderType == 4}}">
+      <view class="title">
+        <!-- <view style="font-size: 30rpx;">{{list.period?list.period:'订单详情'}}</view> -->
+        <view style="font-size: 30rpx;">购物清单</view>
+        <!-- <view class="status" wx:if="{{list.orderStatus==1}}">待付款</view> -->
+      </view>
+      <view class="item" wx:for="{{list.orderDetailsList}}" wx:key='key' wx:for-item="item">
+        <view class="left" style="display:flex;width:80%">
+          <view class="image">
+            <image src="{{imgurl}}{{item.imagePath}}" mode="aspectFill"></image>
+          </view>
+          <view class="context">
+            <view class="name clamp1">{{item.productName}}</view>
+            <view class="price">￥{{item.unitPrice}}</view>
+            <view class="count">x{{item.productCounts}}</view>
+          </view>
+        </view>
+        <view class="right" wx:if="{{orderType==4}}">
+          剩余：{{item.productCounts-(item.writeOffQuantity?item.writeOffQuantity:0)}}</view>
+      </view>
+      <view class="order" wx:if="{{false}}">
+        <view class="ordernum"><label for=""> 订单编号：</label>{{list.orderNum}}</view>
+        <view class="date"><label for="">创建时间：</label>{{list.createDate}}</view>
+        <view class="price">
+          <text wx:if="{{list.orderStatus==1}}">需付款</text>
+          <text wx:else>实付</text>
+          <view class="num">￥{{list.actuallyPaidAmount}}</view>
+        </view>
+      </view>
+    </view>
+    <!-- 大礼包订单显示在这里结束 -->
+
+     <!-- 其他订单显示在这里开始 -->
+     <view class="list" wx:else>
+      <view class="title" wx:if="{{false}}">
+        <view style="font-size: 30rpx;">购物清单</view>
+      </view>
+      <view class="item vertical" wx:for="{{list.orderDetailsList}}" wx:if="{{index<5 || yesMore}}" wx:key='key' wx:for-item="item" catchtap="toShop" data-id="{{item.productId}}">
+        <view class="item-shop-message">
+          <view class="image">
+            <image src="{{imgurl}}{{item.imagePath}}" mode="aspectFit"></image>
+          </view>
+          <view class="context">
+            <view class="name clamp1">{{item.productName}}</view>
+            <view class="guige">{{item.propertiesName}}</view>
+             <view class="subtitle" wx:if="{{item.subtitle}}">
+            <text class="explain-title">说明:</text>
+            {{item.subtitle}}
+          </view>
+            <!-- <view class="count">x{{item.productCounts}}</view> -->
+          </view>
+        </view>
+        <view class="item-shop-more-message">
+          <view>{{item.onlineAndOffline==1?'线下支付':'线上支付'}}</view>
+          <view><text style="font-size:21rpx;">¥</text>{{item.unitPrice}}</view>
+          <view>x{{item.productCounts}}</view>
+          <view>小计:{{item.subtotal}}</view>
+        </view>
+    </view>
+    </view>
+    <!-- 其他订单显示在这里结束 -->
+    <!-- 查看更多开始 -->
+    <view class="look-more" wx:if="{{list.orderDetailsList.length>5 && !yesMore}}" catchtap="lookMore"><text decode="true">查看更多&nbsp;</text><view class="iconfont icon-xiangshang" decode="true"></view></view>
+    <!-- 查看更多结束 -->
+
+    <view class="write_detail" wx:if="{{list.writeOffList.length>0}}">
+      <view class="title">
+        <view class="tags"></view>
+        <view>核销明细</view>
+      </view>
+      <view class="item" wx:for="{{list.writeOffList}}" wx:key='key'>
+        <view class="writelist">
+          <view>管理员{{filter.encodeName(item.writeOffName)}}核销</view>
+          <view>{{filter.timetransformationTime(item.createDate)}}</view>
+        </view>
+        <view class="productlist">
+          <view class="item" wx:for="{{item.child}}" wx:key='key'>
+            {{item.productName}} -{{item.writeOffNum}}
+          </view>
+        </view>
+        <view class="gap"></view>
+
+      </view>
+
+    </view>
+    <!-- 订单信息开始 -->
+    <view class="order-information">
+      <view>订单信息</view>
+      <view>订单编号：{{list.orderNum}}</view>
+      <view wx:if="{{list.discountedPric&&list.discountedPrice>0}}">优惠抵扣：{{list.discountedPrice}}</view>
+      <view>订单备注：<view class="order-remark">{{list.remark?list.remark:''}}</view>
+      </view>
+      <view>创建时间：{{list.createDate}}</view>
+    </view>
+    <!-- 订单信息结束 -->
+  </view>
+
+  <!-- 交易说明开始 -->
+  <view class="transaction-explain">
+    <transaction-description  style="height:100%"></transaction-description>
+  </view>
+  <!-- 交易说明结束 -->
+
+  <!-- 待付款底部区域开始 -->
+  <view class="footer" wx:if="{{list.orderStatus==1}}">
+    <!-- <view class="btn1" bindtap="onCancelOrderTap" data-id="{{list.id}}" data-orderstatus="5">取消订单</view> -->
+    <view class="total">x{{PageProductCounts}}</view>
+    <view style="font-size: 28rpx;margin-right:20rpx;margin-top:6rpx;">合计：<text style="color:#f97705">￥{{list.actuallyPaidAmount}}</text></view>
+    <view class="btn2" catchtap="gouby" data-ordernum="{{list.orderNum}}" data-prices="{{list.actuallyPaidAmount}}">等待付款
+    </view>
+  </view>
+  <!-- 待付款底部区域结束 -->
+
+  <!-- 有核销的订单底部开始 -->
+  <view class="footer" style="justify-content: start;" wx:if="{{list.orderType == 4}}">
+    <view style="margin-left:20rpx">总数：{{PageProductCounts}}
+    </view>
+    <view style="margin-left:20rpx">已核销：{{PageWriteOffQuantity}}</view>
+  </view>
+  <!-- 有核销的订单底部结束 -->
+
+  <!-- 线下订单底部区域开始 -->
+  <view class="footer" wx:if="{{list.orderStatus==10}}">
+    <!-- <view class="btn1" bindtap="onCancelOrderTap" data-id="{{list.id}}" data-orderstatus="5">取消订单</view> -->
+    <text class="total">x{{PageProductCounts}}</text>
+    <view style="font-size: 28rpx;margin-right:20rpx;margin-top:6rpx;">合计：<text style="color:#f97705">￥{{list.actuallyPaidAmount}}</text></view>
+    <view class="btn2" catchtap="exportManifest" data-id="{{list.id}}">导出清单
+    </view>
+  </view>
+  <!-- 线下订单的底部区域结束 -->
+
+
+<!-- 选择地址的弹窗开始 -->
+<address-list-poup 
+showAddressPoup="{{showAddressPoup}}"
+isShowLoding="{{isShowLoding}}"
+bindclose="close"
+bindupdateAddress="updateAddress"
+addList = "{{addList}}"
+/>
+<!-- 选择地址的弹窗结束 -->
+
+
+</view>
+
+
+<!-- <view class="container" wx:else>
+  <leftbutton toptitle="订单详情"></leftbutton>
+  <view class="orderinfo">
+    <view class="row1 flex">
+      <view>订单号：{{list.orderNum}}</view>
+      <view class="state" wx:if="{{list.orderStatus == 0}}">状态：<span>待发货</span></view>
+      <view class="state" wx:if="{{list.orderStatus == 1}}">状态：<span>待付款</span></view>
+      <view class="state" wx:if="{{list.orderStatus == 8}}">状态：<span>待收货</span></view>
+      <view class="state" wx:if="{{list.orderStatus == 2}}">状态：<span>待评价</span></view>
+      <view class="state" wx:if="{{list.orderStatus == 5}}">状态：<span>买家取消</span></view>
+    </view>
+    <view wx:if="{{ist.remark != null}}">备注：{{list.remark}}</view>
+  </view>
+  <view class="uinfo">
+    <view class="title">收货人信息</view>
+    <view class="item">收货人：{{list.consignee}}</view>
+    <view class="item">地址：{{list.provinceCityCounty}}{{list.detailAddress}}</view>
+    <view class="item">手机号码：{{list.consigneeTelephone}}</view>
+  </view>
+  <view class="uinfo">
+    <view class="title">付款信息</view>
+
+    <view class="item" wx:if="{{list.paymentMethod == 0}}">付款方式：微信支付</view>
+    <view class="item" wx:if="{{list.paymentMethod == 1}}">付款方式：支付宝支付</view>
+    <view class="item" wx:if="{{list.paymentTime!=null}}">付款时间：{{list.paymentTime}}</view>
+    <view class="item">应付金额：￥{{list.actuallyPaidAmount}}</view>
+  </view>
+</view> -->

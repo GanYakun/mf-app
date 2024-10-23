@@ -1,0 +1,67 @@
+/* member/update_pwd/update_pwd.wxss */ 
+page {
+  background: #ededed;
+}
+
+.lins {
+  width: 100%;
+  height: 1px;
+  background: #999;
+}
+
+.main {
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+}
+
+.item1 {
+  width: 100%;
+  height: 88rpx;
+  border: 1px solid #d7d7d7;
+  background: #f0f0f0;
+  color: #252525;
+  font-size: 27rpx;
+  padding-left: 15px;
+  box-sizing: border-box;
+  line-height: 88rpx;
+  margin-bottom: 20rpx;
+}
+
+.item2 {
+  width: 100%;
+  height: 88rpx;
+  border: 1px solid #d7d7d7;
+  background: #fff;
+  color: #252525;
+  font-size: 27rpx;
+  padding-left: 15px;
+  box-sizing: border-box;
+  line-height: 88rpx;
+  margin-bottom: 20rpx;
+}
+
+.item2 input {
+  width: 100%;
+  height: 88rpx;
+}
+
+.btn-main {
+  width: 100%;
+  height: 100rpx;
+  box-sizing: border-box;
+  padding: 5px;
+  background: #e7e7e7;
+  position: fixed;
+  bottom: 0;
+}
+
+.btn {
+  height: 80rpx;
+  border-radius: 4rpx;
+  background: #f97704;
+  line-height: 80rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+}

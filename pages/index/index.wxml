@@ -1,0 +1,52 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<import src="index.skeleton.wxml" />
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- <Loding wx:if="true"></Loding> -->
+
+<!-- 加载弹窗结束 -->
+
+<view class="container">
+	<search id="search" title="查找商品关键字" pageWindowHeight="{{pageWindowHeight}}" saveoptions="{{saveoptions}}" chiocetext="{{chiocetext}}" startnewsClassId="{{155}}" isindexpage="1" pagemenuButtontop="{{pagemenuButtontop}}" oldnewclassid="-2" bind:dianji="searchword"></search>
+
+	<!-- 最新版搜索 -->
+  <!-- wx:if="{{!isPageShow}}" -->
+	<view class="searchbox" style="height:{{(pagebuttonheight+pagemenuButtontop+8)}}rpx">
+		<view class="nav-bar" style="height:{{statusBarHeight}}px;"></view>
+		<view class="nav-bar" style="height:{{titleBarHeight}}px;">
+			<view class="titleView" style="height:{{titleBarHeight}}px;line-height: {{titleBarHeight}}px;padding-left: 20rpx;"><image style="width:46%;height:0rpx;display:block" wx:if="{{pagebuttonheight!=0}}" src="http://100good.cn/plug-in/front/mls/images/2021/logo.png" mode="widthFix"></image>
+			</view>
+		</view>
+		<!-- <view class="TopsearchView" style="margin-top:{{pagemenuButtontop+4}}rpx;margin-bottom:{{pagemenuButtontop-statusheight+8}}rpx;padding-left:2vw;width:calc(100% - {{buttonWidth+20}}rpx)">
+		</view> -->
+	</view>
+
+	<!-- 搜索开始 -->
+	<view wx:if="{{pagebuttonheight+pagemenuButtontop+6}}" class="new-search-box" style="background:#ffffff;top:{{pagebuttonheight+pagemenuButtontop+6}}rpx">
+		<view class="newest" style="border-radius:{{pagebuttonheight}}rpx ;">
+			<view class="indexsearch" style="width:100%;">
+				<view class="searchinput" catchtap="searchbtn">
+					<view class="iconfont icon-sousuo"></view>
+					<input confirm-type='search' bindinput='bindinputtext' bindconfirm='searchword' bindfocus='Focusstarts' style="width:100%;text-align:left" placeholder="搜索  瓷砖  地板  洁具  窗帘  灯具  背景墙  墙布" placeholder-style="color:#c2c2c2;text-align:left;text-indent:10rpx;" bindblur='testfoucs'></input>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- 搜索结束 -->
+
+	<!-- 楼层 -->
+	<view class="floor-list-wrapper" style="height:calc(100% - {{tabIndexHeight?tabIndexHeight:90}}rpx);">
+		<!-- <view wx:if="{{!floorList || floorList.length <= 0}}" class="loading-view">
+			<image class="loading-img"></image>
+		</view> -->
+		<template is="skeleton" wx:if="{{loading}}" />
+		<floor-list list="{{floorList}}" top-banner="{{topBanner}}" top-menu="{{topNewsClassList}}" msg-list="{{msgList}}" topHeight="{{pagebuttonheight+pagemenuButtontop+8+58}}" page-menu-button-top="{{pagemenuButtontop}}" page-button-height="{{pagebuttonheight}}" height="{{floorListHeight}}" bindfloorloadfinish="onFloorLoadFinish" is-page-show="{{isPageShow}}"></floor-list>
+		<!-- is-page-show="{{isPageShow}}"  -->
+	</view>
+	<!-- 楼层 -->
+	<tabindex bind:isclick="setad" clicktab-type="index"></tabindex>
+</view>
+
+
+<Allpagesneed></Allpagesneed>
+<!-- <kefu /> -->

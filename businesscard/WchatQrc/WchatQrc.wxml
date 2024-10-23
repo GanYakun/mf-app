@@ -1,0 +1,22 @@
+<!--businesscard/WchatQrc/WchatQrc.wxml-->
+<leftbutton toptitle="{{PageData.name}}{{PageData.name?'的':''}}微信二维码" customStyle="WchatQrc"></leftbutton>
+
+<scroll-view style="height:calc(100% - {{navHeight}}rpx)" scroll-y="true">
+  <view class="qrcBackgroud">
+    <view class="CardName">{{PageData.name}}</view>
+    <view class="PhoneAndWechatNUm">
+      <view> <text class="iconfont icon-shouji1"></text>{{PageData.phone}}</view>
+      <view> <text class="iconfont icon-weixin"></text>{{PageData.weixinNumber?PageData.weixinNumber:''}}</view>
+    </view>
+    <view class="WechatQrc" bindtap="lookQrc" data-imgurl="{{qrcimg}}"><image src="{{qrcimg}}" mode="aspectFit" show-menu-by-longpress="{{true}}"></image></view>
+    <view class="scan">微信扫描二维码添加好友</view>
+ <view class="saveQrc" bindtap="saveQrc" data-imgurl="{{qrcimg}}">保存二维码图片</view>
+</view>
+
+<image src="../image/step.png"  style="width:100%;margin-top:52rpx;" mode="widthFix"></image>
+<!-- <image src="{{test}}" style="width:100%;" mode="widthFix"></image> -->
+<!-- <image  style="width:100%; "   mode="widthFix" src="{{qrcimg}}"></image> -->
+</scroll-view>
+<!-- <image id="conimage" style="width:100%; position:fixed; top:-10000px;"   mode="widthFix" src="{{qrcimg}}"></image> -->
+
+<canvas style="width: 100%; position:fixed; top:-10000px;" type="2d" id="convertor" canvas-id="convertor1"></canvas>

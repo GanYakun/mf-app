@@ -1,0 +1,12 @@
+<!--member/evaluate_list/evaluate_list.wxml-->
+<view class="container">
+	<view class="swiper-tab">
+		<view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">我给卖家的评论</view>
+		<view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">卖家给我的评论</view>
+	</view>
+
+	<scroll-view scroll-y class="vertical-scroll" scroll-with-animation="true" bindscroll="scrolltoupper" bindscrolltolower="lower" bindscrolltoupper="upper" upper-threshold="100" lower-threshold="100" scroll-top="{{topNum}}">
+		<view hidden="{{currentTab != 0}}">我给卖家的评论1</view>
+		<view hidden="{{currentTab != 1}}">卖家给我的评论2</view>
+	</scroll-view>
+</view>

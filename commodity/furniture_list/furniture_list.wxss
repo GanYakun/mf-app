@@ -1,0 +1,140 @@
+/* pages/furniture_list/furniture_list.wxss */
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
+  color: transparent;
+}
+
+.sortBox {
+  height: 80rpx;
+  line-height: 80rpx;
+  background: #fff;
+  padding: 0 40rpx;
+  color: #888;
+  border-bottom: 1px solid #f2f2f2;
+  border-top: 1px solid #f2f2f2;
+  font-size: 14px;
+}
+
+.sortBox .item {
+  width: 20%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+.sortBox .item .icon {
+  margin-left: 30rpx;
+}
+
+.content-list {
+  padding: 40rpx 20rpx;
+}
+
+.content-list .item {
+  margin-bottom: 20rpx;
+}
+
+.content-list .item .img {
+  width: 708rpx;
+  height: 432rpx;
+}
+
+.content-list .item .img image {
+  width: 100%;
+  height: 100%;
+}
+
+.content-list .item .title {
+  color: #333;
+  font-size: 14px;
+  margin-top: 20rpx;
+}
+
+.content-list .item .infos {
+  font-size: 12px;
+  color: #666666;
+  margin-top: 10rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.content-list .dzDn {
+  align-items: center;
+  font-size: 12px;
+  margin-top: 20rpx;
+}
+
+.content-list .item .span1 {
+  align-items: center;
+}
+
+.content-list .item .span2 {
+  align-items: center;
+  width: calc(100% - 300rpx);
+}
+
+.content-list .item .span2 label {
+  color: #999999;
+  margin-left: 20rpx;
+}
+
+.content-list .item .span2 text {
+  color: #666666;
+  margin-left: 20rpx;
+}
+
+.content-list .item .span3 {
+  align-items: center;
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 99999;
+  left: 0;
+  top: 0;
+  background: rgba(0, 0, 0, .7);
+}
+
+.screenBox {
+  background: #f4f4f4;
+  position: fixed;
+  z-index: 9999999;
+  top: 0;
+  height: 100%;
+  width: 560rpx;
+  overflow: hidden;
+  overflow-y: auto;
+  right: 0px;
+  transform: translateX(100%);
+  transition: linear 0.3s;
+}
+
+.screenBox-show {
+  transform: translateX(0);
+}
+
+.screenBox .title {
+  padding: 20rpx;
+  border-bottom: 1px solid #d8d8d8;
+  border-top: 1px solid #d8d8d8;
+  position: fixed;
+  background: #fff;
+  width: 520rpx;
+  z-index: 2;
+  align-items: center;
+}
+.screenBox .screen-list{
+  margin-top: 100rpx;
+  background-color: #fff;
+}
+.screenBox .screen-list .item{
+  border-bottom: 1px solid #d8d8d8;
+  height: 50rpx;
+  line-height: 50rpx;
+  padding:20rpx ;
+  color: #333333;
+}

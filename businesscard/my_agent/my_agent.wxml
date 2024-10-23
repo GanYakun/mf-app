@@ -1,0 +1,57 @@
+<!--businesscard/my_agent/my_agent.wxml-->
+<!-- 左上角返回按钮和返回首页的按钮 -->
+<leftbutton toptitle="我的经纪人"/>
+  <scroll-view scroll-y="true" style="height:calc(100% - {{navHeight}}rpx)" bindscrolltolower='lower'>
+    
+
+  <view class="head_box">
+    <view class="home_top">
+      <view class="search">
+        <view class="iconfont icon-sousuo" style="font-size:40rpx"></view>
+        <input placeholder="请输入经纪人姓名、电话搜索" style="width:400rpx" placeholder-style="color:#fff" bindblur='lose' bindinput='Entering'></input>
+      </view>
+    </view>
+    <view class="main">
+      <view class="agent_box">
+        <view class="left">
+          <view class="num"> <text>{{listData.length}}</text>人</view>
+          <view class="title">经纪人数</view>
+        </view>
+        <view class="goyao">
+        <button class="right" bindgetuserinfo="getUserInfo" wx:if="{{isGetUserinfo}}"  open-type="getUserInfo" >去邀请</button>
+        <button class="right" bindtap="NogetUserinfo" wx:else>去邀请</button>
+      </view>
+      </view>
+      <view class="lists">
+        <view class="item" wx:for="{{listData}}" data-id="{{item.id}}" wx:key="key" bindtap="agent_detail" data-nick="{{item.decodeNick}}" data-phone="{{item.phone}}" data-applyBrokerDate="{{item.applyBrokerDate}}" data-cjCount="{{item.cjCount}}" data-id="{{item.id}}">
+          <view class="left">
+            <view class="name">{{item.decodeNick}}</view>
+            <view class="phone">{{item.phone}}</view>
+            <view class="date">{{item.applyBrokerDate}}</view>
+          </view>
+          <view class="right">
+            <view class="snum"> <text>{{!item.cjCount?'0':item.cjCount}}</text> 户</view>
+            <view class="title">累计</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="list" hidden="{{!list}}">
+    <view class="image">
+      <image></image>
+    </view>
+    <view class="tips">你还没有经纪人</view>
+    <view class="btns" bindtap="invitation">去邀请</view>
+  </view>
+
+</scroll-view>
+<!-- 加载弹窗 -->
+<view class="showTips" wx:if="{{showTips}}">加载中...</view>
+
+<view class="dwg">
+  <!-- <wxml-to-canvas  class="widget" width="{{pageWidth}}" height="{{pageHeight}}"></wxml-to-canvas> -->
+  <wxml-to-canvas  class="widget" width="{{750}}" height="{{1340}}"></wxml-to-canvas>
+</view>
+
+<!-- <canvas style="width: 100%; height: 100%; position:fixed; top:-10000px;" type="2d" id="convertor" canvas-id="convertor1"></canvas> -->

@@ -1,0 +1,66 @@
+<!-- 效果图详情界面 -->
+
+<!-- 轮播图 -->
+<scroll-view scroll-y="true" style="height:{{pageWindowHeight-100}}rpx">
+	<leftbutton toptitle="{{TopTitle}}"></leftbutton>
+	<swiper class="lunboswiper" circular="true">
+			<swiper-item>
+				<image wx:if="{{modelList.topImageImageVo.imagePath!=''}}" style="height:100%;width:100%;" mode="aspectFill" src="{{imgur}}{{modelList.topImageImageVo.imagePath}}"></image>
+			</swiper-item>
+		<block wx:for="{{modelList.imagePathImageVoList}}" wx:key="key">
+			<swiper-item>
+				<image wx:if='{{item.imagePath}}' style="height:100%;width:100%;" mode="aspectFill" src="{{imgur}}{{item.imagePath}}"></image>
+			</swiper-item>
+		</block>
+		
+	</swiper>
+	<view></view>
+
+	<!-- 内容部分 -->
+	<view class="transferContent">
+		<view class="notan">{{modelList.caseTitle}}</view>
+		<view class="caseIdea">{{modelList.caseIdea}}</view>
+		<!-- 复选框弹窗 -->
+		<view class="checkboxes">
+			<view class="hasboxedvalue" wx:for="{{hasboxedvalue}}"  wx:key="key"  catchtap="onPopupTap" data-remark="{{item.remark}}">
+				<text class="iconfont icon-xuanzhong"></text>{{item.name}}
+			</view>
+		</view>
+
+		<!-- 广告图 -->
+		<view class="mapps">
+			<image style="width:100%;" mode="widthFix" wx:if='{{adimage}}' src="{{imgur}}{{adimage}}"></image>
+		</view>
+	</view>
+	<!-- 作品展示 -->
+	<view class="professional" hidden="{{isshowhtml}}">
+		<view class="eclipsedesignerinstallation">
+			<view class="pictures_dss">作品展示</view>
+		</view>
+		<view class="show_elided">
+			<import src="../../wxParse/wxParse.wxml" />
+			<view class="cont">
+				<template is='wxParse' data="{{wxParseData:article.nodes}}" />
+			</view>
+		</view>
+	</view>
+
+</scroll-view>
+
+<view class="bootmtwo">
+	<view catchtap="getcollection" data-id="{{modelList.id}}">收藏</view>
+	<!-- <button open-type='contact' style="font-size:24rpx;width:100%;font-weight: normal;background-color: #ffffff;padding: 0;display:flex;align-items: center;justify-content: center;"><view>在线客服</view></button> -->
+	<button bindtap="kefu" style="font-size:24rpx;width:100%;font-weight: normal;background-color: #ffffff;padding: 0;display:flex;align-items: center;justify-content: center;"><view>在线客服</view></button>
+</view>
+
+
+<!-- 获取手机号弹窗 -->
+<!-- <phonepopup id='phonepopup' iosDialog2="{{iosDialog2}}" bind:guanbi="phoneclose">
+</phonepopup> -->
+
+<!-- 信息弹窗 -->
+<messagepopup isshow="{{iosDialog22}}" remark="{{remark}}" />
+<kefu/>
+
+<Allpagesneed></Allpagesneed>
+

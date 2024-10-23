@@ -1,0 +1,66 @@
+<!--components/video-swiper/index.wxml-->
+<view class="video-swiper-container">
+  <swiper class="video-swiper" circular="{{circular}}" easing-function="{{easingFunction}}" vertical current="{{currentSwiper}}" duration="{{duration}}" bindchange="animationfinish">
+    <swiper-item wx:for="{{curQueue}}">
+      <view class="video_item">
+        <video style="width: 100%; flex-grow: 1;" id="video_{{index}}" loop="{{loop}}" enable-play-gesture enable-progress-gesture show-center-play-btn="{{false}}" direction="0" controls="{{true}}" src="{{item.url}}" data-id="{{item.id}}" object-fit="{{item.objectFit || 'cover'}}" data-index="{{index}}" bindplay="onPlay" bindpause="onPause" bindended="onEnded" binderror="onError" bindtimeupdate="onTimeUpdate" bindwaiting="onWaiting" bindprogress="onProgress" bindloadedmetadata="onLoadedMetaData" bindtap="onVideoTap" bindfullscreenchange="onFullScreenChange">
+          <!-- <view class="fullscreen-controls" hidden="{{!curQueue[currentPlay].isFullScreen}}">
+            <view class="video-controls" hidden="{{!showControls}}">
+              <image class="btn-play-pause"
+                src="{{curQueue[currentPlay].isPlaying ? './images/ic_pause.png':'./images/ic_play.png'}}"
+                catchtap="onPlayOrPause" data-index="{{currentPlay}}" />
+              <view class="time">
+                {{curQueue[currentPlay].currentTimeText ? curQueue[currentPlay].currentTimeText:"00:00"}}</view>
+              <view class="progress-bar">
+                <progress class="progress secondary" activeColor="rgba(255, 255, 255, 0.5)"
+                  backgroundColor="rgba(255, 255, 255, 0.2)" percent="{{curQueue[currentPlay].buffered}}"
+                  stroke-width="3" />
+                <progress class="progress" backgroundColor="transparent" activeColor="#ffffff"
+                  percent="{{curQueue[currentPlay].percent}}" stroke-width="3" />
+                <slider style="margin-top:0; margin-bottom:0; margin-left:6rpx; margin-right:6rpx;"
+                  backgroundColor="transparent" activeColor="transparent" block-color="#ffffff" block-size="12"
+                  value="{{curQueue[currentPlay].percent}}" catchchanging="onSliderChanging"
+                  catchchange="onSliderChange" data-index="{{currentPlay}}" catchtap="onSliderChange" />
+              </view>
+              <view class="time">{{curQueue[currentPlay].durationText ? curQueue[currentPlay].durationText:"00:00"}}
+              </view>
+              <image class="btn-fullscreen"
+                src="{{curQueue[currentPlay].isFullScreen ? './images/ic_exit_full_screen.png':'./images/ic_fullscreen.png'}}"
+                catchtap="onSwitchFullScreen" data-index="{{currentPlay}}" />
+            </view>
+          </view> -->
+        </video>
+        <view class="bottom-content" style="background: black; min-height: 180rpx;">
+          <slot name="bottom-{{item.index}}"></slot>
+        </view>
+      </view>
+    </swiper-item>
+  </swiper>
+
+  <!-- <view class="bottom-controls">
+    <view class="video-controls" hidden="{{!showControls}}">
+      <image class="btn-play-pause"
+        src="{{curQueue[currentPlay].isPlaying ? './images/ic_pause.png':'./images/ic_play.png'}}"
+        catchtap="onPlayOrPause" data-index="{{currentPlay}}" />
+      <view class="time">{{curQueue[currentPlay].currentTimeText ? curQueue[currentPlay].currentTimeText:"00:00"}}
+      </view>
+      <view class="progress-bar">
+        <progress class="progress secondary" activeColor="rgba(255, 255, 255, 0.5)"
+          backgroundColor="rgba(255, 255, 255, 0.2)" percent="{{curQueue[currentPlay].buffered}}" stroke-width="3" />
+        <progress class="progress" backgroundColor="transparent" activeColor="#ffffff"
+          percent="{{curQueue[currentPlay].percent}}" stroke-width="3" />
+        <slider style="margin-top:0; margin-bottom:0; margin-left:6rpx; margin-right:6rpx;"
+          backgroundColor="transparent" activeColor="transparent" block-color="#ffffff" block-size="12"
+          value="{{curQueue[currentPlay].percent}}" catchchanging="onSliderChanging" catchchange="onSliderChange"
+          data-index="{{currentPlay}}" catchtap="onSliderChange" />
+      </view>
+      <view class="time">{{curQueue[currentPlay].durationText ? curQueue[currentPlay].durationText:"00:00"}}</view>
+      <image class="btn-fullscreen"
+        src="{{curQueue[currentPlay].isFullScreen ? './images/ic_exit_full_screen.png':'./images/ic_fullscreen.png'}}"
+        catchtap="onSwitchFullScreen" data-index="{{currentPlay}}" />
+    </view>
+    <view class="bottom-content">
+      <slot name="bottom"></slot> 
+    </view>
+  </view> -->
+</view>

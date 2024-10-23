@@ -1,0 +1,27 @@
+/* member/evaluate_list/evaluate_list.wxss */ 
+page{
+  background: #f1f1f1;
+}
+.swiper-tab{
+  width: 100%;
+  border-bottom: 2rpx solid #f1f1f1;
+  text-align: center;
+  height: 88rpx;
+  line-height: 88rpx;
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  background: #fff;
+  padding: 0px 10rpx;
+  box-sizing: border-box;
+}
+.swiper-tab-item{
+  width: 50%; 
+  color:#666;
+  font-size: 26rpx;
+
+}
+.active{
+  color:#f97704;
+  border-bottom: 4rpx solid #f97704;
+}

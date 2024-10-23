@@ -1,0 +1,11 @@
+<!--components/floor-item-libao/index.wxml-->
+<view class="ad-image-list" wx:if="{{_item.adImageList.length>0 && _item.adImageList.length > 0}}">
+  <scroll-view style="width:100%;" scroll-x='true'>
+    <view class="activity-pro-list">
+      <view class="activity-pro-item" wx:for="{{_item.adImageList}}" catchtap="onAction" data-event-type="detail" data-position="{{index}}" wx:key="key">
+        <image class="activity-pro-image" mode="widthFix" src="{{imgur}}{{item.imagePath}}" lazy-load="{{true}}"></image>
+        <view class="activity-promotions-name">{{item.promotionsPeriod}}</view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,160 @@
+@import "../../utils/font.wxss";
+page{
+  background-color: #f1f1f1;
+}
+scroll-view ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+.carousel{
+  width: 100%;
+  background-color: rebeccapurple;
+}
+.carousel_swiper{
+  width: 100%;
+  height: 400rpx;
+  display: block;
+  position: relative;
+  background: #f4f4f4;
+}
+.carouselImg{
+  width: 100%;
+  height: inherit;
+ 
+}
+
+.contentbox:first-child{
+  margin-top: 0;
+}
+.contentbox{
+
+  background-color: #ffffff;
+  width: 710rpx;
+  margin: 0 auto;
+  padding: 30rpx 0 20rpx 0 ;
+  margin-top: 20rpx;
+  border-radius: 12rpx;
+}
+
+.introduce{
+  margin-top: 10rpx;
+  font-size: 28rpx;
+  text-align: center;
+}
+.title{
+  text-align: center;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.contentimg{
+  width: 96%;
+  margin: 0 auto;
+}
+.listmessage,.listmessages{
+margin-left: 3%;
+font-size: 24rpx;
+color: #666666;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+}
+.contentimgas{
+  width: 100%;
+  margin: 0 auto;
+}
+.contentimgas image{
+  width: 100%;
+  margin-top: 30rpx;
+  border-radius: 20rpx;
+}
+
+.listmessages{
+  margin-top: 10rpx;
+  display: flex;
+  align-items: baseline;
+}
+
+.lookmore{
+padding: 0 15rpx;
+  height:50rpx;
+  font-size: 24rpx;
+  color: #ff5000;
+  border: 1px solid #ff5000;
+  background-color: #fff7ef;
+  line-height:50rpx;
+  border-radius: 8rpx;
+  margin-left: 20rpx;
+}
+
+.threebtn{
+  display: flex;
+  padding: 20rpx 0;
+  font-size: 24rpx;
+}
+
+.iconfont{
+  font-size: 32rpx;
+  color: #666666;
+  margin-right: 10rpx;
+}
+
+.icon-icon-071{
+  font-size: 40rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #ff5000;
+  background-color: #fff7ef;
+  border: 1px solid #ff5000;
+  width: 100rpx;
+  border-radius: 8rpx;
+  margin-left: 20rpx;
+  height: 50rpx;
+}
+
+.getinto{
+  height: 50rpx;
+  line-height: 50rpx;
+  padding: 0 15rpx;
+  color: #ffffff;
+  border: 1px solid #ff5000;
+  background-color: #ff5000;
+  border-radius: 8rpx;
+}
+
+.newaddress{
+  white-space: normal !important;
+}
+.newaddress>view{
+  width: 70%;
+}
+
+
+.directcall{
+  display: flex;
+  align-items: center;
+  padding: 0 12rpx;
+  border-radius: 8rpx;
+  background: #ff5000;
+  color: #ffffff;
+  margin-left: 20rpx;
+}
+
+.icon-phone{
+  font-size:24rpx;
+  color: #ffffff;
+}
+
+.callPhone{
+  display: flex;
+  align-items: center;
+}
+
+.store-view {
+  padding-bottom: 30rpx;
+  padding-top: 25rpx;
+  box-sizing: border-box;
+}

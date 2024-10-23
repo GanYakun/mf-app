@@ -1,0 +1,25 @@
+<!--member/update_pwd/update_pwd.wxml-->
+<view class="container">
+	<view class="lins"></view>
+	<view class="h10"></view>
+
+	<view class="main">
+
+		<view class="item2">
+			<input placeholder="原密码" password="{{true}}" bindinput="OriginalPassword" />
+		</view>
+
+		<view class="item2">
+			<input placeholder="请设置新登录密码" password="{{true}}" bindinput="NewPassword" />
+		</view>
+
+		<view class="item2">
+			<input placeholder="确认密码" password="{{true}}" bindinput="ConfirmPassword"/>
+		</view>
+
+
+	</view>
+</view>
+<view class="btn-main">
+	<view class="btn" bindtap="onSureTap">确认修改</view>
+</view>

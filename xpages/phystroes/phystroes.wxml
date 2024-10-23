@@ -1,0 +1,49 @@
+<Loding wx:if="{{isShowLoding}}"></Loding>
+
+<wxs module="jsonfun" src="../../utils/filter.wxs"></wxs>
+<!-- 头部轮播图 -->
+<scroll-view scroll-y='true' style="height:{{pageWindowHeight}}rpx" bindscrolltolower="slideusage">
+  <leftbutton toptitle="{{TopTitle}}"></leftbutton>
+  <!-- <view class='carousel'> 
+  <swiper class='carousel_swiper' indicator-dots="true" indicator-color="#f4f4f4" indicator-active-color="#4eb8b8" autoplay="true" interval='2000' circular='true'>
+    <block wx:for="{{carouselList}}" wx:key="key">
+      <swiper-item bindtap='chomeCarouselClick' data-url='{{item.url}}'>
+        <image class="carouselImg" src='{{item.url}}' mode='aspectFill' ></image>
+      </swiper-item>
+    </block>
+  </swiper>
+ </view> -->
+  <view class="store-view">
+    <block wx:for="{{lists}}" wx:key="key">
+      <view class="contentbox">
+        <view class="title">
+          {{item.name}}
+        </view>
+        <view class="introduce" wx:if="{{item.trafficRoute}}">{{item.trafficRoute}}</view>
+        <view class="contentimg">
+          <view class="contentimgas">
+            <image catchtap="contentimg" data-title="{{item.name}}" data-id="{{item.id}}" data-imgarr="{{item.thumbnailsPath}}" style="height:{{!jsonfun.jsonzhuanhuan(item.mobileRollPicturePath)[0].path?'100rpx':''}};" src="{{imgur}}{{jsonfun.jsonzhuanhuan(item.mobileRollPicturePath)[0].path}}" mode="widthFix"></image>
+          </view>
+          <view class="threebtn">
+            <view class="getinto" catchtap="lookvr" data-url="{{item.roam}}">进入vr全景</view>
+            <view class="lookmore" catchtap="contentimg" data-title="{{item.name}}" data-id="{{item.id}}" data-imgarr="{{item.thumbnailsPath}}">查看更多实景图</view>
+            <view class="iconfont icon-icon-071" catchtap="Navigation" data-wapmapurl="{{item.wapMapUrl}}"></view>
+            <view>
+              <text class="iconfont "></text>
+            </view>
+          </view>
+        </view>
+        <view class="listmessage callPhone" catchtap="call" data-phone="{{item.telephone}}"><text class="iconfont icon-fuwurexian"></text>
+          服务热线：{{item.telephone}}
+          <view class="directcall"><text class="iconfont icon-phone" catchtap="call" data-phone="{{item.telephone}}"></text>直接拨打</view>
+        </view>
+        <view class="listmessages"><text class="iconfont icon-yingyeshijian"></text>营业时间： {{item.openingHours}}</view>
+        <view class="listmessages newaddress" style="display:flex;"><text class="iconfont icon-dizhi"></text>本馆地址： <view>{{item.address}}</view>
+        </view>
+      </view>
+    </block>
+  </view>
+  <nodata wx:if="{{lists.length==0}}"></nodata>
+</scroll-view>
+
+<Allpagesneed></Allpagesneed>

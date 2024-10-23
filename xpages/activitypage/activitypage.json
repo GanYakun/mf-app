@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed",
+    "tabindex":"/components/tab-navigation/index",
+    "leftbutton":"/components/leftbutton/index",
+    "sample-item":"/components/sample-item/index"
+  }
+}

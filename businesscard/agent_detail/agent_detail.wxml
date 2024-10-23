@@ -1,0 +1,190 @@
+<!-- 我的客户 -->
+<wxs src="../../utils/filter.wxs" module="filter"></wxs>
+<leftbutton toptitle="经纪人详情"></leftbutton>
+<scroll-view style="height:calc(100% - {{navHeight}}rpx)" scroll-y="true" bindscrolltolower="{{xindex==1?'receivelower':'lower'}}">
+  <view class="topbox">
+  </view>
+  <view class="newlyadded">
+    <!-- <view>
+    本月新增：<text class="newlyadded_num">3</text>
+  </view>
+  <view class="division"></view>
+  <view>报名总数：<text class="newlyadded_num">0</text></view> -->
+    <view class="item">
+      <view class="left">
+        <view class="name">{{nick}}</view>
+        <view class="phone">{{phone}}</view>
+        <view class="date">{{applybrokerdate}}</view>
+      </view>
+      <view class="right">
+        <view class="snum"> <text>{{cjcount}}</text> 户</view>
+        <view class="title">成交户数</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="add">
+    <view>
+      本月新增：<text class="newlyadded_num">{{newCount}}</text>
+    </view>
+    <view class="division"></view>
+    <view>报名总数：<text class="newlyadded_num">{{list.length}}</text></view>
+  </view>
+
+  <!-- 搜索功能 -->
+  <!-- <view class="search" wx:if="{{xindex==0}}">
+    <view class="iconfont icon-sousuo" style="font-size:40rpx;color:#d3d3d3"></view>
+    <input placeholder="请输入产品关键词" style="width:400rpx" placeholder-style="color:#d3d3d3" bindinput="keyWords"></input>
+  </view> -->
+  <!-- 搜素功能结束 -->
+
+  <!-- 筛选开始 -->
+  <!-- <view class="selected" wx:if="{{xindex==0}}">
+    <view class="left"  bindtap="isChoose">
+        <view class="iconfont icon-dagou"></view>
+        <view style="margin:0 20rpx">{{typename}}</view>
+        <view class="iconfont icon-icon-down" style="{{choose ==0?'color:#666':''}}"></view>
+    </view>
+
+    <view class="division"></view>
+    <view class="right" bindtap="screen" data-mask="1">
+      <view class="iconfont icon-shaixuan"></view>
+      <view style="margin:0 20rpx">筛选</view>
+      <view class="iconfont icon-icon-down" style="{{mask ==0?'color:#666':''}}"></view>
+    </view>
+  </view> -->
+<!-- 筛选结束 -->
+
+  <block wx:if="{{xindex==0}}">
+  <view class="dropMenu" wx:if="{{choose==1}}">
+    <scroll-view scroll-y="true" style="height:200rpx">
+      <view class="{{indexs==index?'select':''}}" wx:for="{{dataDictionaryData}}" wx:key="key" bindtap="choose" data-type="{{item.typecode}}" data-typename="{{item.typename}}" data-choose="0" data-index="{{index}}" >{{item.typename}}</view>
+    </scroll-view>
+   
+  </view>
+  </block>
+
+  <!-- 客户列表 -->
+  <view class="cusbox">
+    <view bindtap="onTap" data-index="0" style="{{xindex==0?'color:#ff9731':''}}">报名客户</view>
+    <view bindtap="onTap" data-index="1" style="{{xindex==1?'color:#ff9731':''}}">领券客户</view>
+  </view>
+  <view class="cuslist" wx:for="{{list}}" wx:key="key" wx:if="{{xindex == 0}}">
+    <view class="cuslist_1">
+      <view class="cuslist_2">
+        <view>
+          <view class="row1 flex">
+            <view class="flex">
+              <text class="iconfont icon-webicon08"></text>
+              <view>{{item.name}}</view>
+            </view>
+            <!-- <view class="isruler">{{item.customerStatusName}}</view> -->
+          </view>
+          <view class="row2 row flex">
+            <view class="flex">
+              <text class="iconfont icon-fuwurexian"></text>
+              <view catchtap="callPhone" data-phone="{{item.tel}}">
+                <!-- {{filter.Telephoneencryptionfour(item.phone)}} -->
+                {{item.tel}}
+              </view>
+            </view>
+            <view class="row flex">
+              <text class="iconfont icon-yingyeshijian"></text>
+              <view>{{createDate}}</view>
+            </view>
+          </view>
+          <view class="row flex" wx:if="{{item.houseAddress}}">
+            <text class="iconfont icon-zhufang"></text>
+            <view>{{item.houseAddress}}</view>
+          </view>
+          <view class="row flex" wx:if="{{item.houseStructureName}}">
+            <text class="iconfont icon-fabu1"></text>
+            <view>{{item.houseStructureName}}</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="cuslist" wx:for="{{Collectcoupons}}" bindtap="clickOrder" data-clickMessage="{{item}}" wx:key="key" wx:if="{{xindex == 1}}">
+    <view class="cuslist_1">
+      <view class="cuslist_2">
+        <view>
+          <view class="newrow1 flex">
+            <view class="flex">
+              <text class="iconfont icon-webicon08"></text>
+              <view>{{item.nick}}</view>
+            </view>
+            <view class="iconfont icon-yihexiao" wx:if="{{item.writeOff==1}}"></view>
+          </view>
+          <view class="coupMessag">
+          <view class="row2 row flex">
+            <view class="flex">
+              <text class="iconfont icon-yingyeshijian"></text>
+              <view>
+                  {{filter.timetransformation(item.createDate)}}
+                </view>
+            </view>
+            <view class="row flex">
+              <text class="iconfont icon-fuwurexian"></text>
+              <view catchtap="callPhone" data-phone="{{item.phone}}">
+                <!-- {{filter.Telephoneencryptionfour(item.phone)}} -->
+                {{item.phone}}
+              </view>
+            </view>
+          </view>
+          <view class="row flex newlibao" wx:if="{{item.period}}">
+            <text class="iconfont icon-chanpin"></text>
+            <view>{{item.period}}</view>
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<view class="mask" wx:if="{{mask == 1}}" bindtap="close" data-mask="0"></view>
+<view class="screen" wx:if="{{mask == 1}}" animation="{{animationData}}">
+  <view class="form">
+    <form action="" catchsubmit="formSubmit" catchreset="formReset">
+      <view class="title">
+        <view class="name">筛选</view>
+        <view class="iconfont icon-cha" bindtap="close" data-mask="0"></view>
+      </view>
+      <view class="items">
+        <view class="date">时间范围</view>
+      </view>
+      <view class="items" style="font-size:13px">
+        <view class="flex">
+          <picker mode="date" start="2015-09-01" end="2050-09-01" bindchange="bindDateChange">
+            <view class="picker">
+              {{!startDate?'请选择':startDate}}
+            </view>
+          </picker>
+          <text class="iconfont icon-jiantou9"></text>
+        </view>
+        <view style="margin:0 20rpx">——</view>
+        <view class="flex">
+          <picker mode="date" value="{{endDate}}" start="2015-09-01" end="2050-09-01" bindchange="bindDateChanges">
+            <view class="picker">
+              {{!endDate?'请选择':endDate}}
+            </view>
+          </picker>
+          <text class="iconfont icon-jiantou9"></text>
+        </view>
+      </view>
+      <view class="items">
+        <view class="date">姓名</view>
+        <input value="{{name}}" placeholder="请输入姓名" placeholder-style="font-size:13px" bindinput="name"></input>
+      </view>
+      <view class="items">
+        <view class="date">电话</view>
+        <input value="{{tel}}" placeholder="请输入电话" placeholder-style="font-size:13px" bindinput="phone"></input>
+      </view>
+      <view class="btns">
+        <button formType="reset" class="reset" bindtap="reset">重置</button>
+        <button formType="submit" class="submit"
+          style="border-radius: 0rpx !important;font-weight:0px !important;height:88rpx !important" bindtap="finish" data-mask="0">完成</button>
+      </view>
+    </form>
+  </view>
+</view>

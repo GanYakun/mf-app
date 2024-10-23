@@ -1,0 +1,19 @@
+/* pages/downloadImgAndShare/downloadImgAndShare.wxss */
+page {
+  height: 100%;
+  overflow: scroll;
+}
+.container {
+  width: 300px;
+  /* height: 200px; */
+  flex-direction: row;
+  justify-content: space-around;
+  background-color: #ffffff;
+
+}
+.img {
+  width: 170px;
+  height: 350px;
+  /* borderRadius: 20px, */
+  /* border-radius: 20px; */
+}

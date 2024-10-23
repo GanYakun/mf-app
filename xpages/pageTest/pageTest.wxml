@@ -1,0 +1,8 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<import src="../../wxParse/wxParse.wxml" />
+<leftbutton toptitle="多张图片测试"></leftbutton>
+<view style="margin-top:100rpx;">
+  <template is="wxParse" data="{{wxParseData:htmltext.nodes}}" />
+</view>
+
+<Loding wx:if="{{isShowLoding}}"></Loding>

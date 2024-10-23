@@ -1,0 +1,72 @@
+<!-- 右侧抽屉 -->
+<view class='mask' bindtap="powerDrawerclose" data-statu="close" wx:if="{{showModalStatus}}"> </view>
+<view class='Drawer' animation="{{animationData}}" wx:if="{{showModalStatus}}">
+	<!-- <view class="dirwerbox">
+		<view class="drawertext" catchtap="cancel" hidden="{{isscreen}}">取消</view>
+		<view class="drawertext1" catchtap="isscreen" hidden="{{!isscreen}}"><text class="iconfont icon-fanhui"></text></view>
+		<view class="drawertitle">{{toptext}}</view>
+		<view class="drawertext" bindtap="_success">{{isscreen?'':'确定'}}</view>
+	</view> -->
+
+
+	<view class="choice">
+		<scroll-view scroll-y='true' style="height:{{scrollHeight-50}}px;">
+			<view style="height:{{LeftButtonnavHeight}}rpx;width:100%;"></view>
+			<view class="black" wx:if="{{isscreen}}" catchtap="isscreen"><text class="iconfont icon-fanhui"></text>返回</view>
+			<block wx:for='{{choice}}' wx:key='key'>
+				<view hidden="{{isscreen}}" class="listchioce" catchtap="chioce" data-index="{{index}}" data-id="{{item.id}}" data-listchioce="{{item.searchOptionRootCode}}" data-toptext="{{item.searchOptionRootName}}">
+					
+					<view class="listchioceleft">{{item.searchOptionRootName}}</view>
+					<block wx:if="{{index+isallshopfenlei!=01}}">
+						<view class="listchioceright" wx:if="{{_customization}}">{{_customization[index].searchName}}
+							<text class="iconfont icon-youjiantou"></text>
+						</view>
+						<view class="listchioceright" wx:elif="{{index+isallshopfenlei!=11}}">{{item.select?item.select:''}}
+							<text class="iconfont icon-youjiantou"></text>
+						</view>
+					</block>
+				</view>
+			</block>
+			<!-- 设计师 -->
+			<view wx:if="{{isshop==0}}">
+				<view hidden="{{isscreen}}" class="listchioce" catchtap="xsource" data-index="{{choice.length}}" data-id="{{item.id}}"
+					data-listchioce="{{item.searchOptionRootCode}}" data-toptext="设计师">
+					<view class="listchioceleft">设计师</view>
+					<view class="listchioceright">{{resourcesps}}
+						<text class="iconfont icon-youjiantou"></text>
+					</view>
+				</view>
+			</view>
+
+			<!-- 点击后选择 -->
+			<view class="SubOptionsBox" hidden="{{!isscreen}}" wx:for-item="item1">
+				<view class="detail {{!ArrChioce[ArrIndex]?'yesdetail':''}}" catchtap="chiocetext"  wx:if="{{isshowall!=1}}" data-id="" data-chtext="">
+					全部
+				</view>
+				<block wx:for='{{canchoicemixin}}' wx:key='key'>
+					<view class="detail {{ArrChioce[ArrIndex]==item.id?'yesdetail':''}}" wx:if="{{isshop==1||isshop==2}}"  catchtap="chiocetext" data-id="{{item.id}}"
+						data-chtext="{{item.cname}}">
+						{{item.cname}}
+					</view>
+					<view class="detail {{ArrChioce[ArrIndex]==item.id?'yesdetail':''}}"  wx:else catchtap="chiocetext" data-id="{{item.id}}"
+						data-chtext="{{shejishi?item.name:item.searchName}}">
+						{{shejishi?item.name:item.searchName}}
+					</view>
+				</block>
+			</view>
+
+		</scroll-view>
+		<view class="Filterbutton">
+<view bindtap="Reset">重置</view>
+<view bindtap="_success">确定</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 组件 -->
+<!-- <import src="../../template/exhibition/exhibition.wxml"/>
+<block wx:for="{{exlist.list}}" wx:key="unique" >
+<template is="exhibition" data="{{item}}" />
+
+</block> -->

@@ -1,0 +1,85 @@
+<!--pages/design_author/design_author.wxml-->
+<view class="container">
+  <scroll-view class="vertical-scroll" slot="body" scroll-y="true" bindscroll="indexScroll">
+    <view class="author-info flex">
+      <view class="author-left">
+        <view class="img">
+          <image src="/images/img/1.jpg"></image>
+        </view>
+        <view class="name">刘韬然</view>
+        <view class="popularity">
+          <label>人气：</label>
+          <text>123</text>
+        </view>
+      </view>
+      <view class="author-right">
+        <view class="motto">设计就是空间、色彩、设计回归本位</view>
+        <view class="item">
+         <label>部门:</label>
+         <text>fds</text>
+        </view>
+        <view class="item">
+         <label>等级:</label>
+         <text>fds</text>
+        </view>
+        <view class="item">
+         <label>类别:</label>
+         <text>fds</text>
+        </view>
+        <view class="item">
+         <label>作品:</label>
+         <text>fds</text>
+        </view>
+        <view class="item">
+         <label>擅长风格:</label>
+         <text>fds</text>
+        </view>
+        <view class="item">
+         <label>从业时间:</label>
+         <text>fds</text>
+        </view>
+        <view class="item">
+         <label>综合评分:</label>
+         <text>fds</text>
+        </view>
+
+      </view>
+    </view>
+    <!-- 评论 -->
+    <view class="evaluates flex-r-s">
+      <view>评论</view>
+      <view>我要评论</view>
+      <view class="design-btn">免费预约设计</view>
+    </view>
+   <!-- 案例 -->
+    <view class="case-list">
+      <view class="tabbar flex">
+        <view class="item">TA的案例</view>
+        <view class="item">我秀我家</view>
+      </view>
+      <view class="lists flex-r-s">
+        <view class="item">
+          <view class="img">
+            <image src="/images/img/1.jpg"></image>
+          </view>
+          <view class="content">
+            <view class="title clamp1">中交·碧桂园·映像美庐3室2厅2卫现代简</view>
+          <view class="dexr clamp2">独特的造形设计，简单、时尚大方的花纹，优雅吸引了追求时尚的现代人</view>
+          <view class="list-other flex-r-s">
+           <view class="list-left flex">
+            <view class="szeyFont attention" style="color:#999999;"></view>
+            <text>36</text>
+           </view>
+           <view class="list-right flex">
+            <view class="szeyFont appreciatefill" style="color:#999999;"></view>
+            <text>赞(0)</text>
+           </view>
+          </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>
+<design_consulting></design_consulting>
+<furniture_tabbar></furniture_tabbar>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed"
+  },
+  "navigationBarTitleText": "门店详情"
+}

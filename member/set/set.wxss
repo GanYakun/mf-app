@@ -1,0 +1,49 @@
+/* member/set/set.wxss */ 
+page{
+  background: #EDEDED;
+}
+.setUpList{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+ 
+  justify-content: center;
+}
+.item{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 27rpx;
+  color: #666;
+  padding: 20rpx;
+  box-sizing: border-box;
+  background: -webkit-gradient(linear, 0 0, 0 100%, from(#FEFEFE), to(#F3F3F3));
+  border-bottom: 1px solid #e5e5e5;
+}
+.item-views{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.niName{
+  flex-grow: 1;
+  text-align: center;
+}
+.imgs{
+  font-size: 26rpx;
+  border:none;
+  margin-right: 10rpx;
+  padding: 0;
+  line-height: 1;
+  color: #ff9800;
+  float: right;
+  align-items: center;
+  
+}
+button::after {
+  border: none;
+}
+  

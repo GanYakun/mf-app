@@ -1,0 +1,13 @@
+<template name='caselist'>
+
+<view  class="casebox" catchtap="tests" >
+<view class="casenameandtime">
+<view class="casename">{{item.name}}</view>
+<view class="casetime">{{item.time}}</view>
+</view>
+<view class="shenpi">
+<text hidden="{{item.isapproval}}" class="iconfont icon-daishenpi" ></text>
+</view>
+</view>
+
+</template>

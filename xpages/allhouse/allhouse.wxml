@@ -1,0 +1,128 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 加载弹窗结束 -->
+<import src="../../wxParse/wxParse.wxml" />
+<scroll-view scroll-y="true" style="height:{{pageWindowHeight}}rpx;" bindscrolltolower="slideusage">
+	<leftbutton toptitle="{{TopTitle}}"></leftbutton>
+	<view class="headebox">
+		<view class="heade">
+			<view class="headetitle" style="color:{{index==hidindex?'#94f830':'#333333'}}" data-statu="open"><text
+					class="members">团队成员</text><text class="city">[昆明]</text><text class="ourteam">Our Team</text></view>
+			<!-- <view class="headetitle titleshaixuan" bindtap="powerDrawer" style="color:{{index==hidindex?'#94f830':'#333333'}}"
+				data-statu="open">筛选</view> -->
+		</view>
+	</view>
+
+	<view>
+		<view class="h5-box">
+			<template is="wxParse" data="{{wxParseData:article.nodes}}" />
+		</view>
+		<view class="content">
+			<block wx:for="{{content.list}}" wx:key='key'>
+				<view class="cintentimg" bindtap="allhouse_detail" data-id="{{item.id}}">
+					<view class="beijintu">
+						<image src="{{imgur}}{{filters.jsonzhuanhuan(item.logoPath)[0].path}}" mode="widthFix" style="height:0;"></image>
+					</view>
+					<view class="context">
+						<view class="inaddress">
+							<view class="textcolor" decode="true">{{item.name}}</view>
+							<view>{{item.designerDepartmentName}}</view>
+						</view>
+						<view>
+						<view>类型：{{!item.designerTypeName?'':item.designerTypeName}}</view>
+						<view style="display:flex;justify-content: space-between;align-items: center;">
+							<view>级别：{{!item.designerLevelName?'':item.designerLevelName}}</view>
+							<view class="frequency">
+								<!-- <text class="iconfont icon-renqiiconx"></text> -->
+								<image src="../../images/huo.svg" style="width:20rpx;margin-right:5rpx" mode="widthFix"></image>
+								人气：{{item.popularity}}</view>
+						</view>
+					</view>
+					</view>
+				</view>
+			</block>
+		</view>
+	</view>
+
+
+	<!-- 右侧抽屉 -->
+	<!-- <view class='mask' bindtap="powerDrawerclose" data-statu="close" wx:if="{{showModalStatus}}"> </view>
+<view class='Drawer' animation="{{animationData}}" wx:if="{{showModalStatus}}">
+
+	<view class="dirwerbox">
+		<view class="drawertext" catchtap="cancel">取消</view>
+		<view class="drawertitle">装修效果图</view>
+		<view class="drawertext">确定</view>
+	</view>
+
+	<view class="choice">
+		<scroll-view scroll-y='true' style="height:{{scrollHeight-70}}px;">
+			<block wx:for='{{choice}}' wx:key='key'>
+				<view class="listchioce" catchtap="chioce" data-index="{{index}}" data-flag="{{item.flag}}">
+					<view class="listchioceleft">{{item.name}}</view>
+					<view class="listchioceright">{{item.select}}<text class="iconfont icon-youjiantou" hidden="{{item.flag}}"></text>
+						<text class="iconfont icon-jiantou9" hidden="{{!item.flag}}"></text>
+					</view>
+				</view>
+				<view hidden="{{!item.flag}}">
+					<block wx:for='{{item.list}}' wx:key='key'>
+						<view class="detail" catchtap="chiocetext" data-chtext="{{item}}">
+							{{item}}
+						</view>
+					</block>
+				</view>
+			</block>
+		</scroll-view>
+	</view>
+
+</view> -->
+
+
+	<view class="fadeIn" wx:if="{{iosDialog22}}">
+		<view class="weui-mask" bindtap="closemask"></view>
+		<view class="weui-dialog">
+			<view style="margin-bottom:40rpx">设计师筛选</view>
+			<view class="items">
+				<view class="flex">
+					<label>店面：</label>
+
+					<view class="type flex-r-s" >
+						<picker bindchange="onSelectTap" style="height:100%;width:95%;text-align:left;" value="{{multiIndex}}" range="{{departmentList}}" range-key="typename">
+							{{departmentList[multiIndex].typename}}
+						</picker>
+						<view class="iconfont icon-icon-down">
+						</view>
+					</view>
+
+				</view>
+				
+			</view>
+			<view class="items">
+				<view class="flex">
+					<label>设计师类别：</label>
+					<view class="type flex-r-s" >
+						<picker bindchange="onSelectTapsj" style="height:100%;width:95%;text-align:left;" value="{{multiIndex}}" range="{{typeList}}" range-key="typename">
+							{{typeList[multiIndexsj].typename}}
+						</picker>
+						<view class="iconfont icon-icon-down">
+						</view>
+					</view>
+				</view>
+				<!-- <view class="options1" wx:if="{{isclick1 == 1}}">
+					<view class="select {{selected == index?'selected':''}}" wx:for="{{typeList}}" wx:key="key" data-isclick1="0"
+						data-values="{{item.typename}}" data-index="{{index}}" bindtap="onSelectTap"
+						data-typecodes="{{item.typecode}}">{{item.typename}}</view>
+				</view> -->
+			</view>
+			<view class="items">
+				<view class="flex">
+					<label>姓名：</label>
+					<input class="name" bindinput="nameinput"></input>
+				</view>
+			</view>
+			<view class="queding" catchtap="queding">确定</view>
+		</view>
+	</view>
+</scroll-view>
+<Allpagesneed></Allpagesneed>

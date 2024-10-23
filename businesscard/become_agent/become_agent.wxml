@@ -1,0 +1,18 @@
+<!--businesscard/invitation/invitation.wxml-->
+<view class="container">
+  <view class="bg">
+    <view class="main">
+      <view class="main_box">
+        <view class="context">
+          <view class="img">
+            <image></image>
+          </view>
+          <view class="tips">你已于2020年09月28日过推荐人 <text>李晓梦</text>申请成为经纪人，无需再次申请</view>
+        </view>
+
+      </view>
+      <view class="btns" bindtap="onUserTap">去会员中心</view>
+    </view>
+
+  </view>
+</view>

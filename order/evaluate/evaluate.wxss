@@ -1,0 +1,117 @@
+/* order/evaluate/evaluate.wxss */
+page{
+  background-color: #efefef;
+}
+
+.evaluate-box{
+  width: calc(100% - 40rpx);
+  margin: 0 auto;
+  margin-top: 20rpx;
+  padding: 30rpx 30rpx;
+  border-radius: 20rpx;
+  box-sizing: border-box;
+  background-color: #ffffff;
+  margin-bottom: 30rpx;
+}
+.border{
+  height: 2rpx;
+  background-color: #efeff0;
+  margin-top: 30rpx;
+}
+
+.satisfied-box{
+  margin: 0 auto;
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.satisfied{
+  display: flex;
+  justify-content: center;
+  padding: 20rpx 0rpx;
+  background-color: #f9efd4;
+  align-items: center;
+  border-radius: 20rpx;
+  width: calc(50% - 15rpx);
+  position: relative;
+  z-index: 9;
+}
+.nosel{
+  background-color: #f7f8f8;
+}
+.satisfied>image{
+  width: 80rpx;
+  height: 0;
+  display: block;
+  margin-right: 20rpx;
+}
+.satisfied>view{
+  height: max-content;
+  font-size: 30rpx;
+  color: #000000;
+}
+
+.eva-lable{
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.call-me{
+  font-size: 36rpx;
+  color: #f08300;
+  margin: 50rpx 0;
+  text-align: center;
+}
+.eva-lable>view:nth-child(odd){
+  margin-right: 40rpx;
+}
+.eva-lable>view{
+  width: calc(50% - 20rpx);
+  text-align: center;
+  border: solid thin #dcdddd;
+  font-size: 28rpx;
+  box-sizing: border-box;
+  height: 80rpx;
+  line-height: 80rpx;
+  margin-bottom: 40rpx;
+  border-radius: 40rpx;
+
+}
+.selc-lable{
+  background-color: #ddddde;
+}
+
+.eva-input{
+  width: 82%;
+  margin: 0 auto;
+  height: 150rpx;
+  background-color: #f8f8f8;
+  position: relative;
+  border-radius: 20rpx;
+  padding: 20rpx 20rpx 60rpx 20rpx;
+}
+
+.number-of-words{
+  position: absolute;
+  right: 30rpx;
+  bottom: 20rpx;
+  color: #9fa0a0;
+  font-size: 28rpx;
+}
+
+.eva-sub{
+  margin: 0 auto;
+  background-color: #ffae51;
+  line-height: 100rpx;
+  height: 100rpx;
+  border-radius: 50rpx;
+  font-size: 32rpx;
+  margin-top: 60rpx;
+  color: #ffffff;
+  text-align: center;
+  width: 80%;
+}

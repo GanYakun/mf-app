@@ -1,0 +1,14 @@
+<!--components/activity-sign-dialog/activity-sign-dialog.wxml-->
+<view class="dialog-content" hidden="{{!show}}">
+  <view class="center-layout">
+    <image style="width: 39rpx;height: 39rpx;" src="{{ftpUrl}}/ic_close_dialog.png" bindtap="close"></image>
+    <view class="qr-code-bg">
+      <image style="width: 439rpx;height: 400rpx;" src="{{ftpUrl}}/ic_activity_sign_qr.png"></image>
+      <view class="qr-code">
+        <image class="qr-code-img" src="{{hostUrl}}/{{imgurl}}" show-menu-by-longpress="{{true}}"></image>
+        <text>活动时间：{{times}}</text>
+        <view style="height: 20rpx;"></view>
+      </view>
+    </view>
+  </view>
+</view>

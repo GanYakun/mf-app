@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "activity-sign-dialog": "/components/activity-sign-dialog/activity-sign-dialog"
+  }
+}

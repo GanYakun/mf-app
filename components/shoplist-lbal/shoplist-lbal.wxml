@@ -1,0 +1,36 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<!-- {{isbaokuan}}
+{{isbaokuan!=1}} -->
+<view>
+
+	
+	<view class="content" wx:if="{{isbaokuan==1}}" >
+		<block wx:for="{{shoplists}}" wx:key='key'>
+			<view class="cintentimg" catchtap="details" data-id="{{item.tWebProduct.pid}}" data-cid="{{item.tWebProduct.cid}}" data-typeId="{{typeId}}" data-productname="{{item.tWebProduct.productName}}" data-itemname="{{item.tWebProduct.itemName}}">
+				<image src="{{imgurl}}{{item.tWebProduct.picUrl}}" mode="widthFix" ></image>
+				<view class="inaddress" wx:if="{{item.tWebProduct.productName!=null}}">{{item.tWebProduct.productName}}</view>
+				<view class="inaddress" wx:else>{{item.tWebProduct.itemName}}</view>
+				<view class="frequency"><text>￥</text>{{filters.toFix2(item.tWebProduct.minOnePrice)}}</view>
+			</view>
+		</block>
+	</view>
+
+		<view class="content"  wx:else>
+		<block wx:for="{{shoplists}}" wx:key='key'>
+			<view class="cintentimg" catchtap="details" data-id="{{item.itemId}}" data-cid="{{item.cid}}" data-typeId="{{typeId}}" data-productname="{{item.productName}}" data-itemname="{{item.itemName}}">
+				<view class="listimage-logo" wx:if="{{item.brandLogoPath}}">
+				<image src="{{imgurl}}{{filters.jsonzhuanhuan(item.brandImagesPath)[0].path}}" mode="heightFix">
+				</image>
+	</view>
+				<image src="{{imgurl}}{{item.picUrl}}" mode="widthFix" ></image>
+        <view class="price-box">
+				
+				<view class="inaddress" wx:if="{{item.productName!=null}}"><block wx:if="{{item.bname}}">[{{item.bname}}] </block>{{item.productName}}</view>
+				<view class="inaddress" wx:else><block wx:if="{{item.bname}}"> [{{item.bname}}]</block>{{item.itemName}}</view>
+				<view class="frequency"><text>￥</text>{{filters.toFix2(item.minOnePrice)}}</view>
+        </view>
+			</view>
+		</block>
+	</view>
+</view>
+

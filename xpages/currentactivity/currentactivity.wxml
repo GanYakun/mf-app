@@ -1,0 +1,65 @@
+<leftbutton toptitle="现金券"></leftbutton>
+<import src="../../wxParse/wxParse.wxml" />
+<wxs src="/utils/filter.wxs"  module="filter"></wxs>
+<scroll-view style="height:calc(100% - 105rpx - {{LeftButtonnavHeight}}rpx)" scroll-y="true">
+  <view class="Notice" wx:if="{{nopromotionsContent}}">
+    <template is='wxParse' data="{{wxParseData:article.nodes}}" />
+
+  </view>
+  <view class="shoplist">
+    <view class="item" wx:for="{{xiangoulist}}" wx:key="key" bindtap="{{buyItAlone==1?(isxuanzhongclick?'':'isxuanzhong'):''}}" data-index="{{index}}"
+      data-isclick="{{item.isclick}}" data-num="{{item.total}}" data-limitcounts="{{item.limitCounts}}" data-surplusstock="{{item.surplusStock}}" data-minoneprice="{{item.skuPrice}}"
+      data-pid="{{item.skuPrice}}"  style="border-redius:12rpx;">
+      <view class="cashcoupon">
+        <view wx:if="{{buyItAlone==1}}" class="shopname {{item.isclick||isAllclick?'click':''}} ">
+          <view class="fangkuang">
+            <text wx:if="{{item.isclick || isAllclick}}" class="iconfont icon-gougou"></text>
+          </view>
+        </view>
+        <view class="shoptitle">{{item.productName}}</view>
+      </view>
+      <image src="{{imgur}}{{item.picUrl}}" mode="widthFix" style="border-radius: 12rpx;"></image>
+      <view class="bootomview">
+        <view class="describe">{{item.subtitle?item.subtitle:''}}</view>
+        <view class="price" wx:if="{{buyItAlone==1}}"><text style="font-size:24rpx;">￥</text>{{item.skuPrice}}</view>
+        <view class="buyNum">
+          <view wx:if="{{buyItAlone == 1}}">
+            剩余库存：{{item.surplusStock}}
+          </view>
+          <view class="QuantityModification" wx:if="{{buyItAlone==1}}">
+            <text style="margin-right:20rpx;">每人限购：{{item.limitCounts}}</text>
+            <view class="btnAdditionAndSubtraction"  style="border-right: 0;" catchtap="numjian" data-num="{{item.total}}" data-minoneprice="{{item.skuPrice}}" data-isclick="{{item.isclick}}" data-index="{{index}}"  data-limitcounts="{{item.limitCounts}}" data-surplusstock="{{item.surplusStock}}">-</view>
+            <view class="btnAdditionAndSubtraction numbuy"  style="width:60rpx;border-right: 0;">{{item.total==0?1:item.total}}</view>
+            <view class="btnAdditionAndSubtraction"  catchtap="numjia" data-minoneprice="{{item.skuPrice}}" data-isclick="{{item.isclick}}" data-num="{{item.total}}" data-limitcounts="{{item.limitCounts}}" data-index="{{index}}" data-surplusstock="{{item.surplusStock}}">+</view>
+          </view>
+          <view class="typenum" wx:if="{{buyItAlone==0}}">
+            <text style="margin-right:20rpx;">X{{item.limitCounts}}</text>
+          </view>
+          <view class="QuantityModification" wx:if="{{buyItAlone==0}}">
+            
+          </view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  
+</scroll-view>
+<view class="heji" wx:if="{{!isnoshuzu}}">
+    <view class="shopname allClick {{isAllclick?'click':''}}" wx:if="{{buyItAlone == 1}}" catchtap="allclick">
+      <view class="fangkuang" >
+        <text wx:if="{{isAllclick}}" class="iconfont icon-gougou"></text>
+      </view>
+      <text style="margin-left:20rpx;font-size:28rpx;">全选</text>
+    </view>
+    <view class="shopname allClick teshushopname" wx:if="{{buyItAlone == 0}}">
+            剩余库存：{{xiangoulist[0].surplusStock/xiangoulist[0].limitCounts}}份
+            <view style="font-size:20rpx;color:#999999">(每人限购1份)</view>
+    </view>
+    <view class="totalView">
+    <text style="font-size:28rpx;">合计:</text><text decode="true" class="jiesuanprice">&nbsp;&nbsp;&nbsp;￥{{filter.toFix2(zongprice)}}</text>
+    <text class="jiesuanle" bindtap="settlement" decode="true">支付金额￥{{filter.toFix2(zongprice)}}</text>
+   </view>
+  </view>
+<Allpagesneed></Allpagesneed>

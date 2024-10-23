@@ -1,0 +1,9 @@
+<!--
+  
+  广告图列表页  宫格布局
+
+-->
+
+<leftbutton toptitle="{{item.name}}"></leftbutton>
+
+<floor-item-gongge item="{{item}}"  bindaction="onAction" is-adv-list = "{{true}}"></floor-item-gongge>

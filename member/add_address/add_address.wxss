@@ -1,0 +1,156 @@
+/* member/add_address/add_address.wxss */
+page {
+  background: #f1f1f1;
+}
+
+.main {
+  width: 100%;
+  /* padding: 10rpx 20rpx; */
+  box-sizing: border-box;
+  /* background: #fff; */
+}
+
+
+.item2 {
+  height: 88rpx;
+  color: #252525;
+  font-size: 27rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+  line-height: 88rpx;
+  background: #fff;
+  margin: 20rpx;
+  border-radius: 20rpx;
+  display: flex;
+}
+label{
+  width: 30%;
+  color: #999999;
+}
+
+.item2 input {
+  width: 70%;
+  height: 88rpx;
+}
+.textarea{
+  display: flex;
+  color: #252525;
+  font-size: 27rpx;
+  background: #fff;
+  margin: 20rpx;
+  border-radius: 20rpx;
+  height: 170rpx;
+  padding: 20rpx;
+}
+textarea {
+  width: 70%;
+  height: 170rpx;
+}
+
+.rowTxt {
+  height: 88rpx;
+  overflow: hidden;
+  color: #252525;
+  font-size: 27rpx;
+  line-height: 88rpx;
+}
+
+.rowTxts {
+  color: #666;
+  font-size: 27rpx;
+  height: 88rpx;
+  overflow: hidden;
+  line-height: 88rpx;
+}
+
+.formAsk {
+  height: 88rpx;
+  overflow: hidden;
+  font-size: 24rpx;
+  color: #666;
+  line-height: 88rpx;
+  padding: 0px 20rpx;
+  background: #fff;
+  margin: 0 20rpx;
+  border-radius: 20rpx;
+}
+
+.editAdd {
+  padding: 0px;
+}
+
+.editAdd .rowCont {
+  padding: 12rpx 30rpx;
+}
+
+.bracket {
+  font-size: 24rpx;
+  color: #999;
+}
+
+
+/*复选框外框样式*/
+checkbox .wx-checkbox-input {
+  width: 30rpx;
+  height: 30rpx;
+  border: 4rpx solid #999;
+  border-radius: 100%;
+}
+
+/*复选框外框选中样式*/
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  border-color: #3cbcee;
+}
+
+/*复选框选中后内部样式*/
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 50%;
+  height: 50%;
+  background: #3cbcee;
+  border-radius: 100%;
+  content: '';
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}
+
+
+
+.btn-main {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+  background: #e7e7e7;
+  position: fixed;
+  bottom: 30rpx;
+}
+
+.btnss {
+  width: 100%;
+  background: #f97704;
+  text-align: center;
+  font-size: 28rpx;
+  color: #fff;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50rpx;
+
+}
+
+.btnss_view {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 5px;
+ margin-top: 60rpx;
+}
+
+.delete {
+  /* background-color: #940101; */
+  margin-top: 30rpx;
+  font-size: 28rpx;
+  color: #940101;
+  padding-right:30rpx ;
+  box-sizing: border-box;
+  text-align: end;
+}

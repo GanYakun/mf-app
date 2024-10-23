@@ -1,0 +1,60 @@
+<leftbutton toptitle="核销"></leftbutton>
+<wxs module="filter" src="../../utils/filter.wxs" ></wxs>
+<view class="topback">
+  <view class="hexiaobox" catchtap="startHexiao">
+    <view class="hexiaoimg">
+  <image src="../image/hexiao.png" mode="widthFix" style="width:50rpx;height:0"></image>
+</view>
+<view class="Startwriteoff">开始核销</view>
+  </view>
+
+
+
+</view>
+
+<view class="content" style="height:calc(100% - {{LeftButtonnavHeight}}rpx - 440rpx)">
+  <view class="timeclick">
+<view  wx:for="{{chioce}}" catchtap="Select" data-index="{{index}}" wx:key="key">{{item}}
+  <view class="Select" wx:if="{{SelectIndex==index}}"></view>
+</view>
+<view style="margin-left: 20rpx;" catchtap="screen">筛选
+  <view class="Select" wx:if="{{SelectIndex==111}}"></view></view>
+
+</view>
+
+<view class="write_detail" wx:if="{{PageData.results.length>0}}" style="height:100%" >
+  <view class="title">
+        <view class="tags"></view>
+        <view>核销明细</view>
+      </view>
+      <scroll-view bindscrolltolower="bindBootm"  enhanced="{{true}}" scroll-y="true" style="height: calc(100% - 80rpx);" >
+        
+      <view class="item" wx:for="{{PageData.results}}" wx:key='key'>
+        <view class="writelist">
+          
+          <view>订单号：{{item.orderNum}}</view>
+          <view>
+            <text decode="true"> {{filter.timetransformationTimeHours(item.createDate)}}</text>
+           
+          </view>
+        </view>
+        <view class="productlist" >
+          <view class="item" wx:for="{{item.child}}" wx:key='key'>
+            {{item.productName}} -{{item.writeOffNum}}
+          </view>
+          <view class="orderMemberName">
+            <text class="iconfont icon-icon-05"></text>
+            {{item.orderMemberName?item.orderMemberName:''}}
+          </view>
+        </view>
+        <view class="gap"></view>
+
+      </view>
+    </scroll-view>
+     
+    </view>
+    <view else style="width:100%;color:#666666;text-align:center;margin-top:30rpx;">
+      暂无数据
+    </view>
+</view>
+

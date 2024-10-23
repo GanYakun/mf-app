@@ -1,0 +1,113 @@
+
+.address-poup-show {
+  transition: 0.5s;
+  height: 60%;
+  width: 100%;
+  position: fixed;
+  z-index: 21;
+  bottom: 0;
+  background-color: #ffffff;
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+  /* transition:1s; */
+  /* animation-name:fadeInBootom;
+	animation-duration: 0.5s;
+  animation-iteration-count: 1; */
+
+}
+
+.address-poup-hide {
+  transition: 0.5s;
+  height: 0;
+  width: 100%;
+  position: fixed;
+  z-index: 21;
+  bottom: 0;
+  background-color: #ffffff;
+}
+
+.mask {
+  transition: 1s;
+  background-color: rgba(0, 0, 0, 0.3);
+  /* filter: blur(2px);     */
+  position: fixed;
+  top: 0;
+  z-index: 20;
+  height: 100%;
+  width: 100%;
+}
+
+.scroll-box{
+  height: calc(100% - 80rpx - 120rpx);
+  margin-bottom: 0 !important;
+}
+.main {
+  width: 98%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 30rpx;
+  margin-left: 2%;
+}
+.title {
+  text-align: center;
+  font-size: 28rpx;
+  color: #000000;
+  height: 80rpx;
+  line-height: 80rpx;
+}
+.close {
+  position: absolute;
+  margin-top: 20rpx;
+  right: 30rpx;
+  z-index: 23;
+}
+.item-view {
+  width: 100%;
+  background: #fff;
+  padding: 20rpx;
+  border-bottom: 1px solid #e5e5e5;
+  background: #fff;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.mian-view {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-right: 10rpx;
+}
+.phone-name {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  font-size: 28rpx;
+  color: #000;
+  justify-content: space-between;
+}
+.address {
+  font-size: 24rpx;
+  color: #666;
+  margin: 10rpx 0px;
+}
+.address-n {
+  font-size: 24rpx;
+  color: #999;
+}
+.add_address {
+  width: 96%;
+  margin: 0 auto;
+  color: #ffffff;
+  background-color: #f97004;
+  font-weight: bold;
+  font-size: 28rpx;
+  text-align: center;
+  margin-top: 20rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  border-radius: 8rpx;
+}

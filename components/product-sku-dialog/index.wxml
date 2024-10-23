@@ -1,0 +1,87 @@
+<!--components/product-sku-dialog/produck-sku-dialog.wxml-->
+<view wx:if="{{_show}}" class="produck-sku-dialog__mask" catchtap="closeDialog"></view>
+
+<view wx:if="{{_show}}" class="produck-sku-dialog__container {{_showAnimation ? 'show':''}}" bind:transitionend="onAnimationEnd">
+  <view class="produck-sku-dialog__top-info">
+    <view class="produck-sku-dialog__product-info">
+      <image class="produck-sku-dialog__product-info-thumb" src="{{imgurl}}/{{_selectedProSkuInfo.skuimg}}"/>
+      <view class="produck-sku-dialog__product-info-properties">
+        <view class="produck-sku-dialog__product-info-name-group">
+          <view class="produck-sku-dialog__product-info-name"><text class="clamp1">{{_skuInfo.productDictionary.productName}}</text></view>
+          <view class="iconfont icon-guanbi produck-sku-dialog__close" catchtap="closeDialog"></view>
+        </view>
+
+        <block wx:if="{{_skuSelectTips}}">
+          <view class="produck-sku-dialog__sku-select-tips">{{_skuSelectTips}}</view>
+        </block>
+        <block wx:else>
+          <view class="produck-sku-dialog__product-info-price">¥{{_selectedProSkuInfo["$displayPrice"]}}</view>
+
+          <view class="produck-sku-dialog__num-group">
+            <text class="produck-sku-dialog__shop-stock">库存:{{(_skuInfo.orderType == '1' || _skuInfo.orderType == '3') ? (_selectedProSkuInfo.surplus_stock || 0):(_selectedProSkuInfo.stock || 0)}}</text>
+            <block wx:if="{{_skuInfo.orderType == '1'}}">
+              <text class="produck-sku-dialog__shop-stock">限购:{{_selectedProSkuInfo.limit_counts}}</text>
+              <text class="produck-sku-dialog__shop-stock">限量:{{_selectedProSkuInfo.sale_counts}}</text>
+            </block>
+            <block wx:else>
+              <text wx:if="{{_skuInfo.productDictionary.limitCounts}}" class="produck-sku-dialog__shop-stock">限购:{{_skuInfo.productDictionary.limitCounts || 0}}</text>
+              <text wx:if="{{_skuInfo.productDictionary.limitQuantity}}" class="produck-sku-dialog__shop-stock">限量:{{_skuInfo.productDictionary.limitQuantity || 0}}</text>
+            </block>
+          </view>
+        </block>
+      </view>
+    </view>
+
+    <view class="produck-sku-dialog__sku-tips">图片仅供参考，以实际的规格型号为准</view>
+  </view>
+  <view class="produck-sku-dialog__content">
+    <!-- 产品卖点 -->
+    <view class="produck-sku-dialog__subtitle" wx:if="{{_skuInfo.productDictionary.subtitle}}">{{_skuInfo.productDictionary.subtitle}}</view>
+
+    <view class="produck-sku-dialog__sku-list">
+      <view wx:for="{{_skuInfo.skuPropertiesList}}" wx:for-item="skuItem" wx:for-index="skuIndex" class="produck-sku-dialog__sku-item">
+        <view class="produck-sku-dialog__sku-item-key">{{skuItem.pname}}</view>
+        <view class="produck-sku-dialog__sku-item-val-list">
+          <view wx:for="{{skuItem.propValueIdList}}" wx:for-item="skuPropItem" wx:for-index="skuPropIndex" class="produck-sku-dialog__sku-item-val-item {{skuPropItem.selected ? 'selected':''}} {{skuPropItem.disabled ? 'disabled':''}}" catch:tap="{{skuPropItem.disabled ? 'resetSkuProps':'onSkuPropItemTap'}}" data-sku-index="{{skuIndex}}" data-sku-prop-index="{{skuPropIndex}}">{{skuPropItem.name}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view wx:if="{{_skuInfo.Deposit && _skuInfo.Deposit.length > 0}}" wx:for="{{_skuInfo.Deposit}}" class="produck-sku-dialog__deposit-group" wx:key="key">
+      <view class="produck-sku-dialog__deposit-detail">定金¥{{item.salePrice}}可抵¥{{item.offsetAmount}}</view>
+      <view class="produck-sku-dialog__deposit-count-down">
+        <text class="produck-sku-dialog__deposit-count-down-key">剩余时间：</text>
+        <van-count-down time="{{item.promotionsEndTime}}" isshoptime='true' format="DD 天 HH 小时 mm 分 ss 秒"/>
+      </view>
+    </view>
+
+    <view class="produck-sku-dialog__buy-num-group">
+      <view class="produck-sku-dialog__buy-num-group-key">购买数量</view>
+      <view class="produck-sku-dialog__buy-num-group-set-val">
+        <view class="produck-sku-dialog__buy-num-action-button" catchtap="toReduceNum">-</view>
+        <view class="produck-sku-dialog__buy-num-input">
+          <input type="number" type="number" model:value="{{_buyNum}}"/>
+        </view>
+        <view class="produck-sku-dialog__buy-num-action-button" catchtap="toAddBuyNum">+</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="produck-sku-dialog__bottom-button-group">
+    <block wx:if="{{_skuInfo.sourceAction == 'addCart'}}">
+      <view class="produck-sku-dialog__bottom-button add-cart single" catchtap="toAddCart">加入购物车</view>
+    </block>
+
+    <block wx:elif="{{_skuInfo.sourceAction == 'buyNow'}}">
+      <view class="produck-sku-dialog__bottom-button buy-now {{_skuInfo.supportDeposit ? 'left':'single'}}" catchtap="toBuyNow">{{_skuInfo.payType == 'online' ? '线上支付':'线下支付'}}</view>
+      <block wx:if="{{_skuInfo.supportDeposit}}">
+        <view class="produck-sku-dialog__bottom-button deposit right" catchtap="toPayDeposit">支付定金</view>
+      </block>
+    </block>
+
+    <block wx:else>
+      <view class="produck-sku-dialog__bottom-button add-cart left" catchtap="toAddCart">加入购物车</view>
+      <view class="produck-sku-dialog__bottom-button buy-now right" catchtap="toBuyNow">{{_skuInfo.payType == 'online' ? '线上支付':'线下支付'}}</view>
+    </block>
+  </view>
+</view>

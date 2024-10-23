@@ -1,0 +1,78 @@
+<!-- <view class="van-count-down">
+  <slot wx:if="{{ useSlot }}"/>
+  <block wx:else>{{ formattedTime }}</block>
+</view> -->
+
+<view wx:if="{{downStyle == 'index'}}">
+  <view class="timestyle">
+    <block >
+    <text class="timeBig">{{ checkTime.days?checkTime.days:'0'}}</text>
+    <text style="font-size:22rpx;">天</text>
+    </block>
+    <block >
+    <text class="timeBig">{{ checkTime.hours?checkTime.hours:'0' }}</text>
+    <text style="font-size:22rpx;">时</text>
+    <text class="timeBig">{{checkTime.minutes?(checkTime.minutes>9?checkTime.minutes:'0'+checkTime.minutes):'00'}}</text>
+    <text style="font-size:22rpx;">分</text>
+      <text class="timeBig">{{checkTime.seconds?(checkTime.seconds>9?checkTime.seconds:'0'+checkTime.seconds):'00'}}</text>
+      <text style="font-size:22rpx;">秒</text>
+    </block>
+  </view>
+</view>
+<bloc wx:if="{{downStyle!='index'}}">
+<view class="van-count-down" wx:if="{{!isshoptime && !ischecklist}}" catchtap='testsss'>
+  <slot wx:if="{{ useSlot }}" />
+  <block wx:else> <span class="block">{{ xtimedata.hours }}</span>
+    <span class="colon">:</span>
+    <span class="block">{{ xtimedata.minutes }}</span>
+    <span class="colon">:</span>
+    <span class="block">{{ xtimedata.seconds }}</span></block>
+</view>
+
+
+<text wx:if="{{isshoptime}}">{{ formattedTime }}</text>
+<block wx:if="{{ischecklistS}}">
+  
+  
+  <view style="display:flex" catchtap="testsss">
+    <text catchtap="testsss">{{ checkTime.days?checkTime.days:'00' }}:{{ checkTime.hours?checkTime.hours:'00' }}:</text>
+    <!-- 分 -->
+    <swiper class="swiper_container" vertical="true" current="{{checkTime.minutes}}" circular="true" interval="5000">
+      <block wx:for="{{60}}" wx:key="key">
+        <swiper-item catchtouchmove='catchTouchMove'>
+          <view class="swiper_item">{{item<10?'0'+item:item}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+    :
+<!-- 秒 -->
+    <swiper class="swiper_container" vertical="true" current="{{checkTime.seconds}}" circular="true" interval="5000">
+      <block wx:for="{{60}}" wx:key="key">
+        <swiper-item catchtouchmove='catchTouchMove'>
+          <view class="swiper_item">{{item<10?'0'+item:item}}</view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+
+</block>
+
+<block wx:if="{{ischecklist}}">
+  <view class="timestyle">
+    <text class="timeBig">{{ checkTime.days?checkTime.days:'0'}}</text>
+    <text style="font-size:22rpx;">天</text>
+    <text class="timeBig">{{ checkTime.hours?checkTime.hours:'0' }}</text>
+    <text style="font-size:22rpx;">小时</text>
+    <text class="timeBig">{{checkTime.minutes?(checkTime.minutes>9?checkTime.minutes:'0'+checkTime.minutes):'00'}}</text>
+    <text style="font-size:22rpx;">分</text>
+    <block >
+      <!-- wx:if="{{isShowSecond}}" -->
+      <text class="timeBig">{{checkTime.seconds?(checkTime.seconds>9?checkTime.seconds:'0'+checkTime.seconds):'00'}}</text>
+      <text style="font-size:22rpx;">秒</text>
+    </block>
+  </view>
+  
+
+
+</block>
+</bloc>

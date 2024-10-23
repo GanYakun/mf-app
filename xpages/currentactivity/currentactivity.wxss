@@ -1,0 +1,194 @@
+
+@import "../../utils/font.wxss";
+@import "../../wxParse/wxParse.wxss";
+page{
+  background-color: #f7f7f7;
+}
+.shoplist{
+  width: 710rpx;
+  margin: 0 auto;
+  /* display: grid; */
+  /* grid-template-columns: 345rpx 345rpx; */
+  /* grid-column-gap: 20rpx; */
+  /* grid-row-gap: 20rpx; */
+  padding: 0 0 20rpx 0;
+}
+.item{
+  padding: 10rpx 20rpx 30rpx 20rpx;
+  overflow: hidden;
+  background-color: #ffffff;
+  border-radius: 16rpx;
+  margin-top: 30rpx;
+}
+.item image{
+  height: 230rpx;
+}
+
+
+.bootomview{
+/* border-top: 1px solid #f2f2f2; */
+padding: 0 10rpx;
+}
+
+.describe{
+  font-size: 26rpx;
+  color: #999999;
+}
+.buyNum{
+  display: flex;
+  margin-top: 20rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+.buyNum>view{
+font-size: 24rpx;
+color: #999999;
+}
+.btnAdditionAndSubtraction{
+  height: 40rpx;
+  width: 40rpx;
+  /* border: 2rpx #999999 solid ; */
+  text-align: center;
+  line-height: 40rpx;
+  
+}
+
+.numbuy{
+  background: #f8f8f8;
+  border-radius: 8rpx;
+}
+
+.shopname{
+  /* position: absolute; */
+  /* margin-top: 200rpx;
+  margin-left: 290rpx; */
+  font-size: 26rpx;
+  display: flex;
+  align-items: center;
+}
+
+.fangkuang{
+  width: 35rpx;
+  height: 35rpx;
+  line-height: 35rpx;
+  text-align: center;
+  border-radius: 35rpx;
+  /* background-color: #FE7A32; */
+  border: #999999 1rpx solid;
+  /* box-shadow: 0px 10rpx 20rpx 0px #8a8a8a3d; */
+  /* font-size: 44rpx;
+  margin-right: 10rpx;
+  color: #ffffff; */
+  /* color: #cccccc; */
+}
+
+.item image{
+  width: 100%;
+  height: 260rpx;
+}
+
+.price{
+  margin-top: 20rpx;
+  font-size: 30rpx;
+  color: #fd481b;
+  display: flex;
+  align-items: center;
+}
+
+.icon-gougou{
+  font-size: 28rpx;
+  color: #ffffff;
+  /* position: absolute; */
+}
+
+.heji{
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  height: 105rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+  background-color: #ffffff;
+  z-index: 99;
+}
+
+.jiesuanprice{
+  color: #f97004;
+}
+
+.jiesuanle{
+  background: linear-gradient(to right,#f09436, #eb5f2a );
+  color: #ffffff;
+  font-size: 24rpx;
+  padding: 20rpx 40rpx;
+  height: 40rpx;
+  border-radius: 40rpx;
+  margin-left: 12rpx;
+}
+
+.shoptitle{
+  font-size: 30rpx;
+  /* text-align: center; */
+  margin-left: 20rpx;
+}
+
+.shopcontent{
+  margin-top: 10rpx;
+  font-size: 20rpx;
+color: #666;
+padding-bottom: 20rpx;
+white-space: pre-wrap;
+}
+
+.Notice{
+background: #FE7A32;
+padding: 40rpx 20rpx;
+color: #ffffff;
+font-size: 26rpx;
+/* margin-bottom: 20rpx; */
+}
+
+.cashcoupon{
+  padding: 20rpx 0rpx;
+  display: flex;
+  align-items: center;
+}
+
+.QuantityModification{
+  display: flex;
+  align-items: center;
+}
+
+.allClick{
+  position: absolute;
+  left: 60rpx;
+}
+.click .fangkuang{
+/* background:#000000 ; */
+background: linear-gradient(to right, #fd8600 , #ff4f00); 
+border: #999999 0rpx solid;
+
+}
+
+.wxParse-p .rich-img {
+
+  width: 100% !important;
+  height: auto;
+}
+
+.typenum{
+  margin-left: auto;
+}
+.teshushopname{
+  display: flex;
+  flex-direction: column;
+}
+
+.totalView{
+  text-align: end;
+  margin-left: auto;
+  margin-right: 30rpx;
+}

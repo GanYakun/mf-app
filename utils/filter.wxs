@@ -1,0 +1,271 @@
+var filters = {
+  toFix: function (value) {
+    return value.toFixed(0) // 此处2为保留两位小数，保留几位小数，这里写几    
+  },
+  toFix2: function (value) {
+    if(typeof(value)=='undefined'){
+      return value
+  }else{
+      return value.toFixed(2)
+  } 
+  },
+  // 保留两位小数进阶，如果.00则不显示两位数
+  toFixNoTwoZero: function (value) {
+    if(typeof(value)=='undefined'){
+      return value
+  }else{
+      var num =  (value.toFixed(2)).split('.')
+      if(num[1]=='00'){
+        return num[0]
+      }else{
+        return value.toFixed(2)
+      }
+      
+      
+
+  }
+  },
+
+  toStr: function (value) {
+    return value.toString()
+  },
+  toNum: function (value) {
+    return value.toNumber()
+  },
+  toParseInt: function (value) {
+    return parseInt(value)
+  },
+  ConvertToArray:function(value){
+    return value.split(',')
+  },
+  jsonzhuanhuan: function (value) {
+    return JSON.parse(value)
+  },
+
+  //截取字符串最后一个
+  substringLast:function(value){
+  return value.substring(value.length-1,value.length)
+  },
+
+  //截取字符串除最后一个字的其他字
+  substringExceptLast:function(value){
+    var arr = ['0','1','2','3','4','5','6','7','8','9','.','~','-']
+    if(!value.length){
+      value = value.toString()
+    }
+    var num = ""
+    for(var i=0; i<value.length; i++) {
+      if(arr.indexOf(value.charAt(i)) != -1) {
+        num += value.charAt(i)
+      } else {
+        break
+      }
+    }
+    var unit = value.replace(num, "")
+
+    return {
+      num: num,
+      unit: unit    
+    }
+  },
+  //时间转为年月日  如2020-11-11转换为2020年11月11日
+  timetransformation: function (value) {
+    var time = value.slice(0, 4) + '年'+ value.slice(5, 7) + '月' + value.slice(8, 10) + '日'
+    return time
+  },
+
+  //时间转为年月日  如2020-11-11转换为2020.11.11
+  timetransformationTime: function (value) {
+    var time = value.slice(0, 4) + '.'+ value.slice(5, 7) + '.' + value.slice(8, 10)
+    return time
+  },
+
+  //时间转为年月日  如2020-11-11转换为11月11 只有月日
+  MonthDay: function (value) {
+    var time = value.slice(5, 7) + '月' + value.slice(8, 10) +'日'
+    return time
+  },
+
+  //时间转为年月日  如2020-11-11 16:01:45转换为2020.11.11 16:01
+  timetransformationTimeHours: function (value) {
+    var time = value.slice(0, 4) + '.'+ value.slice(5, 7) + '.' + value.slice(8, 10)+'&nbsp;&nbsp;'+value.slice(11, 13)+':'+value.slice(14,16)
+    return time
+  },
+  
+
+  //首页当期活动用到 转换为2020  09  09
+  Timeprocessing:function(value){
+    var year = value.slice(0, 4) 
+  var month = value.slice(5, 7)
+  var day =  value.slice(8, 10) 
+  var arr = [year,month,day]
+    return arr
+  },
+
+  //把电话号码加密，只看到前三位
+  Telephoneencryption:function(value){
+    return value.slice(0,3)+'********'
+  },
+
+  //把电话号码加密中间四位
+  Telephoneencryptionfour:function(value){
+    return value.slice(0,3)+'****'+value.slice(7,11)
+  },
+
+  //精确到百分位(不四舍五入版)
+  method: function (num) {
+    var p = num.toString().indexOf('.');
+    //另一种写法//('' + num).indexOf('.')
+    var r = 0;
+    if (p > 0) {
+      r = ('' + num).substring(0, p + 3);
+      //另一种写法//num.toString().substring(0, p+3);
+    } else {
+      r = num + '.00';
+    }
+    return r;
+  },
+
+  //我的名片页面规定超出几个字后显示省略号
+  wordProcessing: function (value) {
+    var Retentionlength = value.len
+    var content = value.content
+    if(Retentionlength<content.length){
+      var result = content.slice(0, Retentionlength)+'...'
+    }else{
+      var result = content
+    }
+    return result
+  },
+
+  //名字加密
+  NameEncryption:function(value){
+    return value.slice(0, 1)+'**'
+  },
+
+  // 名字转码
+  encodeName:function(value){
+
+    return decodeURIComponent(value)
+  },
+
+//时间戳转化为几天前，几小时前，几分钟前
+  getDateDiff:function (value) {
+    var dateTimeStamp = getDate(value).getTime()
+    var minute = 1000 * 60;
+    var hour = minute * 60;
+    var day = hour * 24;
+    var halfamonth = day * 15;
+    var month = day * 30;
+    var now = getDate();//有些特殊 不能使用 new Date()
+    var diffValue = now - dateTimeStamp;
+    if(diffValue < 0){return;}
+    var monthC =diffValue/month;
+    var weekC =diffValue/(7*day);
+    var dayC =diffValue/day;
+    var hourC =diffValue/hour;
+    var minC =diffValue/minute;
+    if(monthC>=1){
+        result="" + parseInt(monthC) + "月前";
+    }
+    else if(weekC>=1){
+        result="" + parseInt(weekC) + "周前";
+    }
+    else if(dayC>=1){
+        result=""+ parseInt(dayC) +"天前";
+    }
+    else if(hourC>=1){
+        result=""+ parseInt(hourC) +"小时前";
+    }
+    else if(minC>=1){
+        result=""+ parseInt(minC) +"分钟前";
+    }else
+        result="刚刚";
+    return result;
+},
+
+//查询该规格是否在此规格中
+findPropId:function(itemSkuStr,skuStr){
+  console.log(skuStr,itemSkuStr)
+},
+
+//查询数组里商品的总数量
+forNum:function(arrAry){
+  var num = 0
+  for(i=0;i<arrAry.length;i++){
+    num = num + (arrAry[i].goodsNum-1)+1
+  }
+  return num
+},
+timeFormat:function(value){
+  return value.replace("-","/")
+  
+},
+
+
+//当前时间加上几天后
+computingTime:function(value){
+  value = parseInt(value)
+  var timestamp = getDate().getTime();
+  var day = 86400000*value
+  var time =getDate(timestamp)
+  var endTime =getDate(day+timestamp)
+  var Y = time.getFullYear() + '-'
+  var M = (time.getMonth() + 1 < 10 ? '0' + (time.getMonth() + 1) : time.getMonth() + 1) + '-'
+  var D = (time.getDate() < 10 ? '0' + time.getDate() : time.getDate()) + ''
+  var Ys = endTime.getFullYear() + '-'
+  var Ms = (endTime.getMonth() + 1 < 10 ? '0' + (endTime.getMonth() + 1) : endTime.getMonth() + 1) + '-'
+  var Ds = (endTime.getDate() < 10 ? '0' + endTime.getDate() : endTime.getDate()) + ''
+  return (Y + M + D + '~' + Ys + Ms + Ds)
+},
+
+//查找一个元素是否在数组中
+filterElement:function(indexArr,ele){
+  var isExistence = indexArr.indexOf(ele)
+  if(!indexArr){
+    return false
+  }
+
+  return (isExistence == -1?false:true)
+}
+
+
+
+
+
+
+
+
+
+
+}
+
+module.exports = {
+  toFix: filters.toFix,
+  toFix2: filters.toFix2,
+  method: filters.method,
+  toStr: filters.toStr,
+  toParseInt: filters.toParseInt,
+  jsonzhuanhuan: filters.jsonzhuanhuan,
+  toNum: filters.toNum, //暴露接口调用
+  timetransformation:filters.timetransformation,
+  Telephoneencryption:filters.Telephoneencryption,
+  wordProcessing:filters.wordProcessing,
+  Timeprocessing:filters.Timeprocessing,
+  NameEncryption:filters.NameEncryption,
+  Telephoneencryptionfour:filters.Telephoneencryptionfour,
+  encodeName:filters.encodeName,
+  timetransformationTime:filters.timetransformationTime,
+  substringLast:filters.substringLast,
+  substringExceptLast:filters.substringExceptLast,
+  timetransformationTimeHours:filters.timetransformationTimeHours,
+  getDateDiff:filters.getDateDiff,
+  MonthDay:filters.MonthDay,
+  ConvertToArray:filters.ConvertToArray,
+  toFixNoTwoZero:filters.toFixNoTwoZero,
+  findPropId:filters.findPropId,
+  forNum:filters.forNum,
+  timeFormat:filters.timeFormat,
+  computingTime:filters.computingTime,
+  filterElement:filters.filterElement
+}

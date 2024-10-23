@@ -1,0 +1,36 @@
+
+<!--  
+      
+          修改地址的弹窗
+
+-->
+
+<Loding wx:if="{{_isShowLoding}}"></Loding>
+
+<view class="{{_showAddressPoup?'address-poup-show':'address-poup-hide'}}">
+	<view class="close"><text wx:if="{{_showAddressPoup}}" class="iconfont icon-cha" catchtap="close"></text></view>
+	<view class="title">选择收货地址</view>
+	<view class="scroll-box">
+		<scroll-view scroll-y='true' style="height:100%">
+			<view class="main">
+				<view class="item-view" wx:for="{{addressList}}" wx:key="key" bindtap="onAddAddress" data-xpanduan="yes"
+					data-index="{{index}}" data-consignee="{{item.consignee}}"
+					data-consigneetelephone="{{item.consigneeTelephone}}" data-provincecitycounty="{{item.provinceCityCounty}}"
+					data-detailaddress="{{item.detailAddress}}" data-addressalias="{{item.addressAlias}}"
+					data-zipcode="{{item.zipCode}}" data-id="{{item.id}}" data-type="0" data-isdefault="{{item.isDefault}}">
+					<view class="mian-view">
+						<view class="phone-name">
+							<view>{{item.consignee}}</view>
+							<view>{{item.consigneeTelephone}}</view>
+						</view>
+						<view class="address">{{item.provinceCityCounty}} | {{item.detailAddress}}</view>
+						<view class="address-n">地址别名：{{item.addressAlias==null?'未设置该地址别名':item.addressAlias}}</view>
+					</view>
+					<view class="szeyFont bracket-right-o" style="font-size:28rpx;color:#333;"></view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+	<view class="add_address" catchtap="addnewaddress" wx:if="{{_showAddressPoup}}">新增收货地址</view>
+</view>
+<view catchtap="close" class="{{_showAddressPoup?'mask':''}}"></view>

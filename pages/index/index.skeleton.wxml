@@ -1,0 +1,257 @@
+<!--
+此文件为开发者工具生成，生成时间: 2023/6/8上午11:00:20
+使用方法：
+在 /Users/apple/Downloads/aykj/木林森小程序svn/mufei_shop/pages/index/index.wxml 引入模板
+
+```
+<import src="index.skeleton.wxml"/>
+<template is="skeleton" wx:if="{{loading}}" />
+```
+
+在 /Users/apple/Downloads/aykj/木林森小程序svn/mufei_shop/pages/index/index.wxss 中引入样式
+```
+@import "./index.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view class="container">
+      <search id="search"></search>
+      <view class="searchbox" style="height:{{(pagebuttonheight+pagemenuButtontop+8)}}rpx">
+        <view class="nav-bar" style="height:{{statusBarHeight}}px;"></view>
+        <view class="nav-bar" style="height:{{titleBarHeight}}px;">
+          <view class="titleView" style="height:{{titleBarHeight}}px;line-height: {{titleBarHeight}}px;padding-left: 20rpx;">
+            <image mode="widthFix" style="width: 46%; height: 0px; display: block;" class="sk-image" wx:if="{{pagebuttonheight!=0}}"></image>
+          </view>
+        </view>
+      </view>
+      <view class="new-search-box" wx:if="{{pagebuttonheight+pagemenuButtontop+6}}" style="background:#ffffff;top:{{pagebuttonheight+pagemenuButtontop+6}}rpx">
+        <view class="newest" style="border-radius:32px ;">
+          <view class="indexsearch" style="width:100%;">
+            <view class="searchinput">
+              <view class="iconfont icon-sousuo sk-pseudo sk-pseudo-circle"></view>
+              <view placeholder="搜索  瓷砖  地板  洁具  窗帘  灯具  背景墙  墙布" placeholder-style="color:#c2c2c2;text-align:left;text-indent:5px;" style="width:100%;text-align:left" class="sk-image"></view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="floor-list-wrapper" style="height:calc(100% - 45px);">
+        <view is="components/floor-list/index">
+          <view style="width: 100%; height:100%;">
+            <view class="floor-list-index--item-wrapper floor-list-index--top-menu" style="margin-top:89px">
+              <view is="components/floor-item-top-menu/index">
+                <view class="menu-index--menuId">
+                  <swiper style="height:100%;width:100%;" current="0" autoplay="false">
+                    <swiper-item style="position: absolute; width: 100%; height: 100%; transform: translate(0%, 0px) translateZ(0px);">
+                      <view class="menu-index--popupmenubox">
+                        <view class="menu-index--popupmenu" data-event-type="topMenu" data-position="0">
+                          <view class="menu-index--imgmenu">
+                            <view></view>
+                            <text class="sk-transparent sk-image">毛坯案例</text>
+                          </view>
+                        </view>
+                        <view class="menu-index--popupmenu" data-event-type="topMenu" data-position="1">
+                          <view class="menu-index--imgmenu">
+                            <view></view>
+                            <text class="sk-transparent sk-image">精装案例</text>
+                          </view>
+                        </view>
+                        <view class="menu-index--popupmenu" data-event-type="topMenu" data-position="2">
+                          <view class="menu-index--imgmenu">
+                            <view></view>
+                            <text class="sk-transparent sk-image">美家视频</text>
+                          </view>
+                        </view>
+                        <view class="menu-index--popupmenu" data-event-type="topMenu" data-position="3">
+                          <view class="menu-index--imgmenu">
+                            <view></view>
+                            <text class="sk-transparent sk-image">实体门店</text>
+                          </view>
+                        </view>
+                        <view class="menu-index--popupmenu" data-event-type="topMenu" data-position="4">
+                          <view class="menu-index--imgmenu">
+                            <view></view>
+                            <text class="sk-transparent sk-image">定制家具</text>
+                          </view>
+                        </view>
+                        <view class="menu-index--popupmenu" data-event-type="topMenu" data-position="5">
+                          <view class="menu-index--imgmenu">
+                            <view></view>
+                            <text class="sk-transparent sk-image">国际软装</text>
+                          </view>
+                        </view>
+                        <view class="menu-index--popupmenu" data-event-type="topMenu" data-position="6">
+                          <view class="menu-index--imgmenu">
+                            <view></view>
+                            <text class="sk-transparent sk-image">成品家具</text>
+                          </view>
+                        </view>
+                        <view class="menu-index--popupmenu" data-event-type="topMenu" data-position="7">
+                          <view class="menu-index--imgmenu">
+                            <view></view>
+                            <text class="sk-transparent sk-image">大牌主材</text>
+                          </view>
+                        </view>
+                        <view class="menu-index--popupmenu" data-event-type="topMenu" data-position="8">
+                          <view class="menu-index--imgmenu">
+                            <view></view>
+                            <text class="sk-transparent sk-image">电器设备</text>
+                          </view>
+                        </view>
+                        <view class="menu-index--popupmenu" data-event-type="topMenu" data-position="9">
+                          <view class="menu-index--imgmenu">
+                            <view></view>
+                            <text class="sk-transparent sk-image">预算报价</text>
+                          </view>
+                        </view>
+                      </view>
+                    </swiper-item>
+                  </swiper>
+                  <view class="menu-index--swiper-dots">
+                    <view class="menu-index--swiper-dot menu-index--swiper-dot-active"></view>
+                    <view class="menu-index--swiper-dot"></view>
+                  </view>
+                </view>
+              </view>
+            </view>
+            <view is="components/recycle-view/recycle-view" class="floor-list-index--floor-list" id="2668b09b--recycleId">
+              <view class="view--wrap" id="8f2f9bda--content" style="height:622px;width:100%;transform:translateZ(0);-webkit-transform:translateZ(0);">
+                <scroll-view scroll-anchoring="true" class="view--content" lower-threshold="50" scroll-into-view="true" scroll-top="0" scroll-y="true" style="height:100%;position: relative;" throttle="true" upper-threshold="50">
+                  <view style="position: absolute;z-index:1;width:100%;left: 0;top: 0;opacity: 0;visibility: hidden;"></view>
+                  <view class="view--slot-before" style="height:0px"></view>
+                  <view style="position:relative;width:100%;z-index:10;background: url(&quot;&quot;) repeat;height:1638px;">
+                    <view style="position: absolute;left:0;width:100%;top:0px;">
+                      <view class="floor-list-index--item-wrapper floor-list-index--top-banner">
+                        <view is="components/floor-item-top-banner/index">
+                          <view class="banner-index--topswiper">
+                            <swiper autoplay="false" circular="true" class="banner-index--swiper_image" style="height: calc(158px + 7px);" current="0"></swiper>
+                            <view class="banner-index--swiper-dots">
+                              <view class="banner-index--swiper-dot"></view>
+                              <view class="banner-index--swiper-dot"></view>
+                              <view class="banner-index--swiper-dot"></view>
+                              <view class="banner-index--swiper-dot"></view>
+                              <view class="banner-index--swiper-dot"></view>
+                              <view class="banner-index--swiper-dot banner-index--swiper-dot-active"></view>
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                      <view is="components/recycle-view/recycle-item" class="floor-list-index--item-wrapper floor-list-index--floor-item" id="2668b09b--floor-item" style="padding-left:10px;padding-right:10px;box-sizing:border-box;">
+                        <view class="item--wx-recycle-item">
+                          <view is="components/floor-item-gongge/index">
+                            <view class="gongge-index--floor-item">
+                              <view class="gongge-index--ad-image-list">
+                                <view class="gongge-index--ad-image-half-item" data-adlist-type="adImageList3" data-event-type="detail" data-position="0">
+                                  <view class="gongge-index--ad-image-wrapper">
+                                    <image class="gongge-index--ad-image sk-image" lazy-load="true" mode="widthFix" style="height: 65.6501px;"></image>
+                                  </view>
+                                </view>
+                                <view class="gongge-index--ad-image-half-item" data-adlist-type="adImageList3" data-event-type="detail" data-position="1">
+                                  <view class="gongge-index--ad-image-wrapper">
+                                    <image class="gongge-index--ad-image sk-image" lazy-load="true" mode="widthFix" style="height: 65.6501px;"></image>
+                                  </view>
+                                </view>
+                                <view class="gongge-index--ad-image-half-item" data-adlist-type="adImageList3" data-event-type="detail" data-position="2">
+                                  <view class="gongge-index--ad-image-wrapper">
+                                    <image class="gongge-index--ad-image sk-image" lazy-load="true" mode="widthFix" style="height: 65.6501px;"></image>
+                                  </view>
+                                </view>
+                                <view class="gongge-index--ad-image-half-item" data-adlist-type="adImageList3" data-event-type="detail" data-position="3">
+                                  <view class="gongge-index--ad-image-wrapper">
+                                    <image class="gongge-index--ad-image sk-image" lazy-load="true" mode="widthFix" style="height: 65.6501px;"></image>
+                                  </view>
+                                </view>
+                              </view>
+                              <view></view>
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                      <view is="components/recycle-view/recycle-item" class="floor-list-index--item-wrapper floor-list-index--floor-item" id="2668b09b--floor-item" style="padding-left:10px;padding-right:10px;box-sizing:border-box;">
+                        <view class="item--wx-recycle-item">
+                          <view is="components/floor-item-activity/index">
+                            <view>
+                              <view class="activity-index--title-wrapper">
+                                <text class="activity-index--title-left sk-transparent sk-text-5-2632-809 sk-text" style="line-height: 19px;">限时限量</text>
+                                <view class="activity-index--activity-time-right" style="display:flex">
+                                  <text style="margin-right:5px;" class="sk-transparent sk-text-18-7500-464 sk-text">距结束</text>
+                                  <view is="miniprogram_npm/vant/count-down/index">
+                                    <view>
+                                      <view class="timestyle down-index--timestyle">
+                                        <text class="timeBig down-index--timeBig sk-transparent sk-opacity">4</text>
+                                        <text style="font-size:11px;" class="sk-transparent sk-opacity">天</text>
+                                        <text class="timeBig down-index--timeBig sk-transparent sk-text-13-1579-257 sk-text">12</text>
+                                        <text style="font-size:11px;" class="sk-transparent sk-opacity">时</text>
+                                        <text class="timeBig down-index--timeBig sk-transparent sk-text-13-1579-385 sk-text">59</text>
+                                        <text style="font-size:11px;" class="sk-transparent sk-opacity">分</text>
+                                        <text class="timeBig down-index--timeBig sk-transparent sk-text-13-1579-265 sk-text">41</text>
+                                        <text style="font-size:11px;" class="sk-transparent sk-opacity">秒</text>
+                                      </view>
+                                    </view>
+                                  </view>
+                                </view>
+                              </view>
+                              <view class="activity-index--banner-list">
+                                <view is="components/floor-swiper/index" data-event-type="banner">
+                                  <view class="swiper-index--swiper-wrapper" style="height:155px">
+                                    <swiper autoplay="false" circular="true" class="swiper-index--swiper" interval="2500" current="0">
+                                      <swiper-item class="swiper-index--swiper-item" data-position="0" style="position: absolute; width: 100%; height: 100%; transform: translate(0%, 0px) translateZ(0px);">
+                                        <image class="swiper-index--image sk-image" data-index="0" lazy-load="true" mode="widthFix" style="height: 146.698px;"></image>
+                                      </swiper-item>
+                                    </swiper>
+                                  </view>
+                                </view>
+                              </view>
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                  </view>
+                </scroll-view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view is="components/tab-navigation/index">
+        <view class="navigation-index--bodys" style="height:45px; --bottom-inset:">
+          <view class="navigation-index--bootomtab">
+            <view data-index="0">
+              <view>
+                <image class="navigation-index--tab-image sk-image"></image>
+              </view>
+              <text class="sk-transparent sk-text-18-7500-6 sk-text" style="background-position-x: 50%;">首页</text>
+            </view>
+            <view data-index="1">
+              <view>
+                <image class="navigation-index--tab-image sk-image"></image>
+              </view>
+              <text class="sk-transparent sk-text-18-7500-709 sk-text" style="background-position-x: 50%;">产品</text>
+            </view>
+            <view data-index="2">
+              <view class="navigation-index--tab-box">
+                <image class="navigation-index--tab-image sk-image"></image>
+              </view>
+              <text class="navigation-index--tab-special-text sk-transparent sk-text-18-7500-596 sk-text" style="background-position-x: 50%;">免费设计</text>
+            </view>
+            <view data-index="3">
+              <view>
+                <image class="navigation-index--tab-image sk-image"></image>
+              </view>
+              <text class="sk-transparent sk-text-18-7500-838 sk-text" style="background-position-x: 50%;">客服</text>
+            </view>
+            <view data-index="4">
+              <view>
+                <image class="navigation-index--tab-image sk-image"></image>
+              </view>
+              <text class="sk-transparent sk-text-18-7500-163 sk-text" style="background-position-x: 50%;">我的</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

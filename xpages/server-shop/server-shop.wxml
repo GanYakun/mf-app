@@ -1,0 +1,17 @@
+<!--xpages/server-shop/server-shop.wxml-->
+<!--businesscard/server-in-help-detail/server-in-help-detail.wxml-->
+<wxs module="filter" src="/utils/filter.wxs"></wxs>
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<leftbutton toptitle="{{extendName}}"></leftbutton>
+<scroll-view scroll-y="true" style="height:calc(100% - {{LeftButtonnavHeight}}rpx);background:#efefef">
+<view class="server-item" wx:for="{{list}}" wx:key="key" bindtap="serverDetail" data-index="{{index}}">
+<image mode="aspectFill" src="{{imgUrl+item.picUrl}}"></image>
+<view class="server-introu">
+  <view>{{item.productName}}</view>
+  <view>{{item.subtitle}}</view>
+  <view><text style="font-size:20rpx;">¥</text>{{item.minOnePrice||item.onePrice}}</view>
+</view>
+</view>
+  
+</scroll-view>
+<Allpagesneed></Allpagesneed>

@@ -1,0 +1,172 @@
+
+@import "/utils/weui.wxss";
+@import "/utils/font.wxss";
+.weui-search-bar{
+  background-color: #e1e2e0;
+}
+
+.headebox{
+  background-color: #ffffff;
+  font-size: 33rpx;
+  padding-top: 15rpx;
+  padding-bottom: 15rpx;
+  text-indent: 40rpx;
+  width: 96%;
+  margin: 0 auto;
+}
+
+.mask{
+  position:fixed;
+  width:100%;
+  height:100%;
+  background: #363636;
+  opacity: 0.5;
+  z-index: 100;
+top: 0;
+}
+.Drawer{
+  position:fixed;
+  background:#ffffff;
+  width:300px;
+  height:100%;
+  right:-300px;
+  z-index: 200;
+  top: 0%;
+  border-top-left-radius: 40rpx;
+  overflow: hidden;
+}
+
+.dirwerbox{
+  height: 100rpx;
+  background-color: #ffffff;
+  display: flex;
+align-items: center;
+text-indent: 30rpx;
+border-top-left-radius: 40rpx;
+
+}
+.wanqu{
+border-top-left-radius: 40rpx;
+}
+.drawertext,.drawercontent{
+  flex-grow: 1;
+  text-align: center;
+}
+.drawertext{
+  font-size: 28rpx;
+}
+.drawertext1{
+  flex-grow: 1;
+  /* text-align: left; */
+  font-size: 28rpx;
+  text-indent: 40rpx;
+}
+
+.drawertitle{
+  font-size: 33rpx;
+}
+
+/* .choice{
+  margin-top: 6%;
+} */
+
+.listchioce{
+  background-color: #ffffff;
+  height: 90rpx;
+display: flex;
+align-items: center;
+border-bottom: 1px solid #d8d8d8;
+}
+
+.listchioceleft{
+  margin-left: 30rpx;
+}
+
+.listchioceright{
+  margin-left: auto;
+  margin-right: 30rpx;
+}
+
+.detail{
+  background-color: #ffffff;
+  text-indent: 30rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  border-bottom: 1px solid #d8d8d8;
+}
+
+.shoptitle{
+  text-indent: 30rpx;
+  font-size: 28rpx;
+background-color: #ffffff;
+padding-top: 20rpx;
+}
+
+.Gongge{
+  padding: 20rpx 30rpx 10rpx 30rpx;
+  display: grid;
+  grid-template-columns: 33.33% 33.33% 33.33%;
+  grid-gap: 10rpx;
+  grid-column-gap: 10rpx;
+  background-color: #ffffff;
+  width: calc(100% - 60rpx);
+}
+  .son{
+    background-color: #f6f5f5;
+    padding: 10rpx 10rpx;
+    font-size:24rpx;
+    color: #666666;
+    border-radius: 12rpx;
+    text-align: center;
+    border: 1px #f6f5f5 solid;
+  }
+
+  .reset{
+    height: 100rpx;
+    width: 100%;
+  }
+
+  .resettext{
+    height: 100rpx;
+    width: 100%;
+    /* position: absolute; */
+    bottom: 0;
+    display: flex;
+  }
+  .resettext>view{
+    width: 50%;
+    height: 100rpx;
+    line-height: 100rpx;
+    text-align: center;
+    font-size: 28rpx;
+  }
+  .resettext>view:first-child{
+ background-color: #ffffff;
+
+  }
+  .resettext>view:last-child{
+    background-color: #f97004;
+    color: #ffffff;
+  }
+
+  .reallychioce{
+    border: 1px #f97004 solid;
+    color: #f97004;
+    background-color: #ffffff;
+    -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  }
+
+  .notoptext{
+    height: 80rpx;
+    font-size: 28rpx;
+    text-indent: 30rpx;
+    line-height: 80rpx;
+    background-color: #ffffff;
+  }
+
+
+  .scroll_h{
+    overflow: hidden;
+  }

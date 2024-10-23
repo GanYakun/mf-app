@@ -1,0 +1,178 @@
+@import "/utils/font.wxss";
+@import "/utils/weui.wxss";
+
+page {
+  background-color: #f7f7f7;
+}
+
+.listbox {
+  display: flex;
+  padding: 20rpx;
+  background-color: #ffffff;
+}
+
+.hideimg {
+  width: 100rpx;
+}
+
+.hideimg image {
+  width: 100%;
+  height: 100rpx;
+  border-radius: 50%;
+}
+
+
+.content {
+  margin-left: 20rpx;
+  width: 550rpx;
+}
+
+.username {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.koubeicontent {
+  line-height: 35rpx;
+  font-size: 24rpx;
+  color: #888888;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+
+}
+
+.text-collapse {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calltext {
+  font-size: 24rpx;
+  color: #F97704;
+}
+
+.userimage {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 15rpx;
+  margin-top: 20rpx;
+}
+
+.messagetime {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24rpx;
+  color: #d3d3d3;
+  align-items: flex-end;
+  margin-bottom: 10rpx;
+}
+
+.page-comments {
+  background-color: #ececec;
+  width: 100%;
+  padding: 20rpx;
+}
+
+.allow_comments_on {
+  display: flex;
+}
+
+.allow_comments_on>view:first-child {
+
+  font-size: 24rpx;
+  color: #566c92;
+  white-space: pre-line;
+  word-break: keep-all;
+  word-wrap: break-word;
+  white-space: pre-line;
+}
+
+.allow_comments_on>view:last-child {
+  color: #666666;
+  font-size: 24rpx;
+  text-overflow: ellipsis;
+  word-wrap: break-word
+}
+
+.icon-xihuan{
+  font-size: 32rpx;
+  line-height: 32rpx;
+}
+
+.icon-xihuan text {
+  font-size: 12px;
+  color: #666666;
+  line-height: 32rpx;
+}
+
+.dianzan {
+  color: #F97704;
+}
+
+.pingjiatext {
+  width: 530rpx;
+  height: 204rpx;
+  /* border: 1px solid #ccc; */
+  text-align: left;
+  background: #f5f5f5;
+  padding: 20rpx;
+  border-radius: 12rpx;
+}
+
+.pingjiacon {
+  display: flex;
+  justify-content: center;
+  margin: 30rpx 0;
+
+}
+
+.queding{
+  background-color: #f97704;
+  font-size: 32rpx;
+  color: #ffffff;
+  width: 200rpx;
+  height: 80rpx;
+  border-radius: 80rpx;
+  line-height: 80rpx;
+  margin: 0 auto;
+  margin-top: 10rpx;
+  margin-bottom: 30rpx;
+}
+
+.weui-dialog {
+  border-radius: 6rpx;
+  /* width: 700rpx; */
+  left: 24rpx;
+}
+
+
+.publishedcontent {
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 100rpx;
+  line-height: 100rpx;
+  background-color: #ffffff;
+  text-align: center;
+  position: fixed;
+  right: 20rpx;
+  bottom: 80rpx;
+  z-index: 99;
+}
+
+.icon-fabu {
+  font-size: 60rpx;
+  color: #999999;
+  /* margin-right: 30rpx; */
+}
+
+
+.icon-pinglunzhuanhuan{
+  font-size: 40rpx;
+  font-weight: bold;
+  line-height: 40rpx;
+}

@@ -1,0 +1,168 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view>
+	<leftbutton toptitle="样板房征集"></leftbutton>
+	<view class="newtopview" wx:if="{{advdata.length>0}}">
+		<!-- <view class="rectangle">
+			<image src="../../images/yusuan/tishi.png" mode="widthFix"></image>
+			10秒获取免费、专业、透明报价
+		</view>
+		<view class="haomuch">我家<text class="zhuangxiu">装修</text>需要花多少钱</view>
+		<view class="Numberofservices">已为昆明 <text class="number">1197</text>户业主提供了服务 </view>
+		<view class="newnum">
+			<text style="font-size:32rpx;margin-right:10rpx;">¥</text>
+			<text style="font-size:50rpx">{{zongprice}}</text>
+		</view> -->
+		<block wx:for="{{advdata}}" wx:key="key">
+
+		
+<image  catchtap="selectedbtn" wx:if="{{index==0}}" data-newclassid="{{item.indexType}}"    data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" src="{{imgur}}{{item.imageVo.imagePath}}" style="width:100%;" mode="widthFix"></image>
+</block>
+	</view>
+
+
+	<view class="topview">
+		<form bindsubmit="formSubmit" bindreset="formReset">
+			<view class="section">
+				<view class="sectioninput">
+					<view class="iconview">
+						<image src="../../images/yusuan/4.png" class="inputicon" mode="widthFix"></image>
+						<text>您的称呼</text>
+						<input name="callofduty" value='{{inputValue}}' placeholder="请输入称呼"
+							placeholder-style='font-size:28rpx;color:#c2c2c2' />
+					</view>
+				</view>
+				<!-- 你的手机号 -->
+				<view class="sectioninput">
+					<view class="iconview">
+						<image src="../../images/yusuan/2.png" class="inputicon" mode="widthFix"></image>
+						<text>您的手机号</text>
+						<input type="number" value='{{inputValue}}' name="phone" placeholder="请输入电话号码"
+							placeholder-style='font-size:28rpx;color:#c2c2c2' />
+					</view>
+				</view>
+
+				<view class="sectioninput">
+					<view class="iconview">
+						<image src="../../images/yusuan/1.png" class="inputicon" mode="widthFix"></image>
+						<text>房屋面积</text>
+						<input name="areacodes" type="number" value='{{inputValue}}' placeholder="请输入房屋面积"
+							placeholder-style='font-size:28rpx;color:#c2c2c2' />
+					</view>
+					<view class="lifnag">㎡</view>
+				</view>
+				<picker bindchange="bindPickerChange" value="{{index}}" range="{{huxindata}}" range-key="{{'typename'}}">
+				<view class="sectioninput" catchtap="">
+					<view class="iconview">
+						<image src="../../images/yusuan/3.png" style="width:28rpx;" class="inputicon" mode="widthFix"></image>
+						<text>房屋户型</text>
+
+						<input name="models" disabled="true" value='{{inputValues}}' placeholder="请选择房屋户型"
+							placeholder-style='font-size:28rpx;color:#c2c2c2' />
+					</view>
+					<view><text class="iconfont icon-een"></text></view>
+				</view>
+			</picker>
+
+
+				<view wx:if="{{ishuxin}}" class="huxin">
+					<view class="huixinbox">
+						<view>选择您的房屋户型</view>
+						<view wx:for="{{huxindata}}" wx:key="key" catchtap="huxinchioceson" data-name="{{item.typename}}"
+							data-typecode="{{item.typecode}}">{{item.typename}}</view>
+					</view>
+				</view>
+
+				<view class="uplodephoto" catchtap="chooseImage">
+					<view class="upicon">
+						<image src="../../images/yusuan/carmer.png" mode="widthFix"></image>
+						上传户型图
+					</view>
+
+
+
+					<view class="images-boxc" wx:for="{{imgShow}}" wx:for-item="item" wx:key="image">
+						<image class="image_size" data-index="{{index}}" data-src="{{item}}" src="{{item}}" bindtap="clickImage">
+						</image>
+						<view class="delete-image" data-index="{{index}}" catchtap="deleteImage"><text
+								class="iconfont icon-yuanX"></text></view>
+					</view>
+				</view>
+
+				<view class="iconfont icon-zhuyi1"><text style="font-size:22rpx;color:#999999">最多可上传三张</text></view>
+
+
+				<view class="btn-area">
+					<button class="btn" style="height:100%;padding:0;margin:0;width:100%" formType="submit">提交</button>
+				</view>
+
+			</view>
+
+		</form>
+
+
+
+
+
+
+	</view>
+
+
+	<view class="bottomview">
+		<!-- 装修的预算 -->
+		<view class="optname-budget"  id="comment" >
+			<!-- <view class="optname-budgetbox">
+				<view class="optnametitle">您的装修预算为<text style="color: #f97704;">{{zongprice}}</text>元</view>
+				<view class="sanbaiplus">300+昆明在建工地随时参观</view>
+				<view class="costly">
+
+					<view>材料费</view>
+					<view style="color:#f97704">{{thousandNum}}</view>
+					<view>元</view>
+					<view>人工费</view>
+					<view style="color:#f97704">{{thousandNumrengon}}</view>
+					<view>元</view>
+					<view>设计费</view>
+					<view style="color:#f97704">{{thousandNumsheji}}</view>
+					<view>元</view>
+					<view>质检费</view>
+					<view style="color:#f97704">{{thousandNumzhijian}}</view>
+					<view>元</view>
+
+				</view>
+			</view> -->
+			<block wx:for="{{advdata}}" wx:key="key">
+
+		
+			<image  catchtap="selectedbtn" wx:if="{{advdata.length>0}}" wx:if="{{index==1}}" data-newclassid="{{item.indexType}}"    data-modelname="{{item.modelName}}"  data-xcxpage="{{item.xcxpage}}"  data-id="{{item.contentId}}" src="{{imgur}}{{item.imageVo.imagePath}}" style="width:100%;" mode="widthFix"></image>
+		</block>
+		</view>
+
+
+		<view class="becareful">
+			<!-- <view class="tixin">
+				<image src="../../images/yusuan/tixing.png" mode="widthFix"></image>
+				<text>您的信息我们将严格保密</text>
+			</view>
+			<view><text style="font-weight: bold; color:#000">24小时</text>内我们将致电为您提供定制服务咨询</view> -->
+
+			<view class="contactview" data-phone="0871-68123333" catchtap="tophone" style="font-size:26rpx">联系我们：<text
+					style="color:#f97004;font-size: 32rpx;" >0871-68123333</text></view>
+		</view>
+
+		<!-- 广告 -->
+		<view class="adv flex" style="width:675rpx;margin:0 auto;margin-top:20rpx;">
+			<swiper class="advright" vertical="true" autoplay="true" easing-function="easeInOutCubic" circular="true"
+				interval="1000" display-multiple-items="5">
+				<block wx:for="{{msgList}}" wx:key="key">
+					<swiper-item>
+						<view class="advmain">
+							<view class="yuyuename">{{filter.NameEncryption(item.name)}}</view><text>{{item.time}}已申请样板房名额</text>
+						</view>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+		<view class="bootmtext">己经为昆明25525个客户提供“全屋定制家具”量尺设计安装服务；1250个客户提供“整体装修”服务。</view>
+	</view>
+</view>
+<Allpagesneed isone="2"></Allpagesneed>

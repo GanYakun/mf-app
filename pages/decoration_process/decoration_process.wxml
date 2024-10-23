@@ -1,0 +1,10 @@
+<!--pages/decoration_process/decoration_process.wxml-->
+<scroll-view class="vertical-scroll" slot="body" scroll-y="true">
+	<view class="htitle">基础装修十大装修流程</view>
+	<view class="lists" wx:for="{{lists}}" wx:key="index">
+		<view class="item" bindtap="process_details">
+			<view class="title">{{item.title}}</view>
+			<view class="time">{{item.time}}</view>
+		</view>
+	</view>
+</scroll-view>

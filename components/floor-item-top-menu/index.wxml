@@ -1,0 +1,50 @@
+<!--components/floor-item-top-menu/index.wxml-->
+<view class="menuId {{isShowMenu?'':'hiddeMenu'}}" wx:if="{{_topMenu && _topMenu.length>0}}">
+
+  <swiper wx:if="{{isShowMenu}}"  style="height:100%;width:100%;" indicator-dots="{{false}}" bindchange="onMenuPageChange">
+    <swiper-item>
+      <view class="popupmenubox">
+        <block wx:for="{{_topMenu}}"  wx:for-index="i" wx:key="key">
+          <view class="popupmenu" wx:if="{{i>=0&i<10}}" catchtap="onAction" data-event-type="topMenu" data-position="{{i}}">
+            <!-- wx:if="{{item.id==128 || item.id==127}}" -->
+            <view class="case" wx:if="{{false}}">
+            </view>
+            <view class="imgmenu">
+              <!-- <image src="{{imgur}}{{item.iconVo.imagePath}}"></image> -->
+              <view ></view>
+              <text>{{item.name}}</text>
+            </view>
+          </view>
+        </block>
+      
+      </view>
+    </swiper-item>
+
+    <swiper-item>
+      <view class="popupmenubox">
+        <block wx:for="{{_topMenu}}" wx:for-index="i" wx:key="key">
+          <view class="popupmenu" wx:if="{{i>=10&i<20}}" catchtap="onAction" data-event-type="topMenu" data-position="{{i}}">
+            <view class="case" wx:if="{{item.id==128 || item.id==127}}">
+
+            </view>
+            <view class="imgmenu">
+              <view ></view>
+
+              <!-- <image src="{{imgur}}{{item.iconVo.imagePath}}" lazy-load="{{true}}"></image> -->
+              <text>{{item.name}}</text>
+            </view>
+
+          </view>
+        </block>
+      </view>
+    </swiper-item>
+   
+  </swiper>
+  <!-- <view class="close" bindtap="close">
+          <text class="iconfont {{isShowMenu?'icon-cha':'icon-xiangxiayuanjiantouxiajiantouxianxing'}}"></text>
+        </view> -->
+  <view class="swiper-dots" wx:if="{{isShowMenu}}">
+    <view class="swiper-dot {{current == 0 ? 'swiper-dot-active':''}}"></view>
+    <view class="swiper-dot {{current == 1 ? 'swiper-dot-active':''}}"></view>
+  </view>
+</view>

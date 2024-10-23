@@ -1,0 +1,85 @@
+<!-- 购物车列表 -->
+<scroll-view scroll-y="true" bindscroll="scroll" style="height:{{pageWindowHeight-tabIndexHeight-100}}rpx;">
+	<leftbutton toptitle="购物车"></leftbutton>
+
+	<view class="zanwushuju" wx:if="{{gouwuchelist==''}}">暂无数据</view>
+	<view class="cartlist">
+		<block wx:for='{{gouwuchelist}}' wx:key='key'>
+			<view class="cartlistone">
+				<view class="{{item.ischioce?'ischange':'cartcircle'}}" bindtap="chioceshop" data-index="{{index}}"
+					data-quantity="{{item.quantity}}">
+					<text class="iconfont icon-gougou"></text>
+				</view>
+				<view class="cartimage">
+					<image src="{{imgur}}{{item.picUrl}}"></image>
+				</view>
+				<view class="shopname">
+					<view class="deleteshop">
+						<view>{{item.productName == null?item.itemName:item.productName}}</view>
+						<text class="iconfont icon-lajitong" data-id="{{item.id}}" data-index="{{index}}" bindtap="deleteshop" ></text>
+					</view>
+					<view class="guige">{{item.propertiesName}}</view>
+					<!-- <view style="display:flex;justify-content: space-between;align-items: center;"> -->
+					<view class="shopprice">
+						<view>￥<text style=" font-weight: bold;font-size: 30rpx;">{{item.onePrice}}</text></view>
+					
+					<view style="display:flex;justify-content: space-between;align-items: center;">
+						<view class="shopnum"  wx:if="{{item.NumClick && !isOtherShopnumClose}}" data-index="{{index}}">
+							<view class="changenum" data-index="{{index}}" bindtap="jian" style="border-radius: 12rpx 0 0 12rpx;">-
+							</view>
+							<view class="shopnumber">{{item.quantity}}</view>
+							<view class="changenum" data-index="{{index}}" bindtap="jia" style="border-radius: 0 12rpx 12rpx 0;">+
+							</view>
+						</view>
+							<view class="shopnumberNoClick" catchtap="NumClick" data-index="{{index}}" wx:else>x{{item.quantity}}</view>
+					
+					</view>
+					</view>
+					<!-- <view style="display:flex;justify-content: space-between;align-items: center;">
+						<view class="shopnum"  wx:if="{{item.NumClick && !isOtherShopnumClose}}" data-index="{{index}}">
+							<view class="changenum" data-index="{{index}}" bindtap="jian" style="border-radius: 12rpx 0 0 12rpx;">-
+							</view>
+							<view class="shopnumber">{{item.quantity}}</view>
+							<view class="changenum" data-index="{{index}}" bindtap="jia" style="border-radius: 0 12rpx 12rpx 0;">+
+							</view>
+						</view>
+							<view class="shopnumberNoClick" catchtap="NumClick" data-index="{{index}}" wx:else>x{{item.quantity}}</view>
+					
+					</view> -->
+					<!-- </view> -->
+				</view>
+			</view>
+		</block>
+	</view>
+
+</scroll-view>
+
+
+
+
+
+<!-- 底部去结算 -->
+<view class="button_bootm">
+	<view class="bootmbox">
+		<view style="display:flex;margin-left: 30rpx;">
+			<view class="{{isall?'allcirclebox':'circlebox'}}" bindtap="allchioce">
+				<text hidden="{{isall?false:true}}" class="iconfont icon-gougou fonttext"></text>
+			</view>
+			<view class="selectall" >全选</view>
+		</view>
+		<view style="display: flex;align-items: center;">
+			<view style="font-size: 28rpx;margin-right:20rpx">合计：<text style="color:#f97705">￥{{settlement}}</text></view>
+			<view class="settlement" catchtap="settlement">结算({{alllistnumber}})</view>
+		</view>
+	</view>
+</view>
+
+<popup id='popup' iosDialog1="{{iosDialog1}}" bind:guanbi="close" bind:goto="together">
+</popup>
+
+<phonepopup id='phonepopup' iosDialog2="{{iosDialog2}}" bind:guanbi="phoneclose">
+</phonepopup>
+
+<tabindex clicktab="3"></tabindex>
+
+<Allpagesneed isstyle="tabcart"></Allpagesneed>

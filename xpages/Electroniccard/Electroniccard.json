@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "leftbutton":"/components/leftbutton/index"
+  },
+  "navigationStyle":"custom",
+  "navigationBarTitleText": "我的名片"
+}

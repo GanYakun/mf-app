@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+ "count-down":"/miniprogram_npm/vant/count-down",
+ "CaseGoods":"/components/CaseGoods/CaseGoods",
+ "tabindex":"/components/tab-navigation/index"
+  }
+}

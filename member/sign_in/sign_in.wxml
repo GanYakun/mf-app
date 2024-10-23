@@ -1,0 +1,16 @@
+
+<view class="group-view">
+<leftbutton toptitle="活动签到"></leftbutton>
+
+  <scroll-view style="flex: 1; overflow: hidden;" wx:if="{{!isEmpit}}" 	scroll-y>
+  <view class="sign-in-group"> 
+    <image class="show-img" src="{{showImg}}" wx:if="{{showImg}}" mode="widthFix"></image>
+    <official-account class="official-account"></official-account>
+<image src="{{ signInClickImg }}" class="sign-in-click" mode="widthFix" bindtap="signIn"></image>
+<text class="text-title">活动规则</text>
+<rich-text class="text-content" nodes="{{content}}"/>
+  </view>
+</scroll-view>
+
+<view style=" display: flex; flex-direction: row;justify-content: center;align-items: center;width: 100%;height: 100%;" wx:if="{{isEmpit}}">{{empitText}}</view>
+</view>

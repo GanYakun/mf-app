@@ -1,0 +1,81 @@
+<!--businesscard/server-in-help/server-in-help.wxml-->
+<wxs module="filter" src="/utils/filter.wxs"></wxs>
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- <leftbutton toptitle="{{type=='meCoup'?'我的优惠券':'爱帮你家居服务'}}"></leftbutton> -->
+<leftbutton toptitle="我的优惠券"></leftbutton>
+<view class="top-tab-layout" wx:if="{{type=='meCoup'}}">
+    <!-- <view>全部</view> -->
+    <!-- class="select" -->
+    <view wx:for="{{tabs}}" hidden="{{index == 1}}" class="{{currentTab == index ? 'select':''}}" bindtap="onTabClick" data-index="{{index}}">{{item}}</view>
+</view>
+<view wx:if="{{type=='meCoup' && currentTab == 1}}" class="coupon-des">使用说明：下述首进壕送同一住址只能享受其一</view>
+<view wx:if="{{type=='meCoup' && currentTab == 2}}" class="coupon-des">使用说明：下述特权包同一住址只能使用其一</view>
+<scroll-view scroll-y="true" style="height:calc(100% - {{LeftButtonnavHeight}}rpx - 90rpx);background:#efefef" bindscrolltolower="loadMoreData">
+  
+  <!-- 木菲优惠券 -->
+  <block wx:if="{{currentTab == 0}}">
+    <view wx:for="{{coupList}}" wx:key="key" class="coup-box" style="background-image: url({{ftpUrl}}/bg_coup.png); ">
+      <view class=""></view>
+      <view class="">
+        <view class="coup-type-box">
+          <text class="coup-type">抵用券</text>
+          <text class="coup-title">{{item.couponTitle}}</text>
+        </view>
+        <view class="coup-troup">
+        <view> <text>·</text>购买服务时抵扣使用</view>
+        <view wx:if="{{item.timeType!=2}}"> <text>·</text>{{filter.timeFormat(item.validStartTime)+'~'+filter.timeFormat(item.validEndTime)}}</view>
+        <view wx:else> <text>·</text>{{filter.computingTime(item.validNum)}}</view>
+        <view> <text>·</text>券有效期内下单且支付可用</view>
+        </view>
+      </view>
+      <view class="three-box">
+        <view class="">{{item.couponAmount}}<text>元</text></view>
+        <view>{{item.fullReductionAmount?'满'+item.fullReductionAmount+'可用':'可全额抵扣使用'}}</view>
+        <view wx:if="{{type!='meCoup'}}" bindtap="shareCoup" data-index="{{index}}">去分享</view>
+        <view wx:else bindtap="goUse" class="{{item.consumptionStatus==1?'be-overdue':''}}" data-index="{{index}}">{{item.consumptionStatus==1?'已过期':'去使用'}}</view>
+      </view>
+    </view>
+    <nodata wx:if="{{!coupList||coupList.length<=0}}"></nodata> 
+  </block>
+
+  <!-- 首进壕送 -->
+  <block wx:if="{{type=='meCoup' && currentTab == 1}}">
+    <view class="coupons-item" wx:for="{{coupList}}" bindtap="toHaosongRecordDetail" data-index="{{index}}">
+      <image class="coupons-img" src="{{imageUrl}}/{{item.imagePath}}" mode="widthFix"></image>
+      <image class="coupons-status" src="{{newFtpUrl}}/{{item.receiveStatus == 0 ? 'ic_gift_coupons.png':'ic_gift_coupons_gray.png'}}"></image>
+      <view class="coupons-des">
+        <view class="left">
+          <text class="text1">{{item.name}}</text>
+          <text>使用时间：{{item.receiveStartTime}}~{{item.receiveEndTime}}</text>
+        </view>
+        <view class="right coupons-normal {{item.receiveStatus != 0 ? 'useless':''}}" catchtap="{{item.receiveStatus == 0 ? 'changeShowWriteOffCode':'doNothing'}}" data-index="{{index}}">{{item.receiveStatus == 0 ? '立即使用':item.receiveStatus == 1 ? '已领取':'已失效'}}</view>
+        <view class="left-circle"></view>
+        <view class="right-circle"></view>
+      </view>
+    </view>
+    <nodata wx:if="{{!coupList||coupList.length<=0}}"></nodata> 
+    <view style="height: 30rpx;"></view>
+  </block>
+
+  <!-- 签到特权 -->
+  <block wx:if="{{type=='meCoup' && currentTab == 2}}">
+    <view class="current-period-item" wx:for="{{receiveRecordList}}" wx:key="key">
+      <view class="left">
+        <view class="title-layout">
+          <view class="radio">特权包</view>
+          <view>{{item.promotionsPeriod}}</view>
+        </view>
+        <view class="time">活动时间：{{item.beginTime}} ~ {{item.endTime}}</view>
+      </view>
+      <view class="right {{item.promotionsStatus == '1'? 'normal':'failure'}}">
+        <text>特权包</text>
+      <view class="right-btn {{item.promotionsStatus == '1'? 'btn-use':'btn-failure'}}" bindtap="toUse"
+        data-id="{{item.promotionsId}}" data-status="{{item.promotionsStatus}}" data-record-id="{{item.recordId}}">{{item.promotionsStatusName}}</view>
+      </view>
+    </view>
+    <nodata wx:if="{{!receiveRecordList||receiveRecordList.length<=0}}"></nodata> 
+  </block>
+</scroll-view>
+<Allpagesneed></Allpagesneed>
+
+<claim-coupons-dialog qr-code-url="{{writeOffCodeUrl}}" show="{{showWriteOffCode}}"  bindclose="onWriteOffCodeClose" title="{{writeOffCodeName}}"></claim-coupons-dialog>

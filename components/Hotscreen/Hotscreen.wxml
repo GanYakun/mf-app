@@ -1,0 +1,68 @@
+<!-- 本月爆款的产品筛选 -->
+<view class='mask' bindtap="close" data-statu="close" wx:if="{{showModalStatus}}"> </view>
+<view class='Drawer' animation="{{animationData}}" wx:if="{{showModalStatus}}">
+  <view style="width:100%;height:{{LeftButtonnavHeight}}rpx"></view>
+  <view class="Topview" style="height:calc(100% - {{LeftButtonnavHeight}}rpx - 100rpx)">
+    <!-- 第一层的筛选按钮 -->
+    <view class="FilterElements">
+      <view wx:for="{{onescData}}" wx:if="{{item.isCommendDisplay == '1'}}" class="son {{screenarr[0]==item.id || searchid==item.id ?'reallychioce':''}}" catchtap="shopcidclick" data-topname="{{item.cname}}" data-id="{{item.id}}" wx:key="key">
+        {{item.cname}}
+      </view>
+    </view>
+    <!-- 返回上一层 -->
+    <!-- <view class="black" catchtap="black" data-index="{{chioceIndex}}" wx:if="{{chioceIndex!=0}}"><text class="iconfont icon-fanhui"></text>返回</view> -->
+    <!-- 第二层的筛选按钮 -->
+    <block wx:if="{{chioceIndex>0 && isShow}}">
+      <view class="scrTitle">{{onescrTitle}}</view>
+      <view class="FilterElements">
+        <view wx:for="{{twoscData}}" wx:if="{{item.isCommendDisplay == '1'}}" class="son {{screenarr[1]==item.id?'reallychioce':''}}" catchtap="twoshopcidclick" data-index="{{index}}" data-topname="{{item.cname}}" data-id="{{item.id}}" wx:key="key">
+          {{item.cname}}
+        </view>
+      </view>
+    </block>
+
+    <!-- 品牌 -->
+    <block wx:if="{{BrandList.length>1 && chioceIndex>1 && isShow}}">
+      <view class="scrTitle" wx:if="{{BrandList.length>0}}">品牌</view>
+      <view class="FilterElements">
+        <view wx:for="{{BrandList}}" class="son {{brandTab == index ? 'reallychioce':''}}" catchtap="BrAndQitClick" data-index="{{index}}" data-id="{{item.id}}" wx:key="key">
+          {{item.name}}
+        </view>
+      </view>
+    </block>
+    <!-- 品牌结束 -->
+
+    <!-- 第三层 -->
+    <block wx:if="{{chioceIndex>1 && isShow}}">
+      <view class="scrTitle">{{twoscrTitle}}</view>
+      <view class="FilterElements">
+        <view wx:for="{{threescData}}" class="son {{item.isClick?'reallychioce':''}}" catchtap="threeshopcidclick" data-index="{{index}}" data-topname="{{item.cname}}" data-id="{{item.id}}" wx:key="key">
+          {{item.cname}}
+        </view>
+      </view>
+    </block>
+
+    <!-- 第四层,产品标签 -->
+    <block>
+      <view class="scrTitle" wx:if="{{tagList.length>0}}">标签</view>
+      <view class="FilterElements">
+        <!-- data-isclick="{{item.isclick}}" 
+    class="son {{item.isclick?(noclick?(index==0?'reallychioce':''):'reallychioce'):''}}" 
+    catchtap="threeshopcidclick" data-index="{{index}}"
+    data-topname="{{item.cname}}" 
+    data-id="{{item.id}}" -->
+
+        <view wx:for="{{tagList}}" class="son {{item.selected ?  'reallychioce':''}}" data-index="{{index}}" data-id="{{item.CODE}}" catchtap="onTagTap" wx:key="key">
+          {{item.DESCRIPTION}}
+        </view>
+      </view>
+    </block>
+
+  </view>
+  <view class="reset">
+    <view class="resettext">
+      <view catchtap="reset" data-isone="{{isone}}">重置</view>
+      <view catchtap="_success">确定</view>
+    </view>
+  </view>
+</view>

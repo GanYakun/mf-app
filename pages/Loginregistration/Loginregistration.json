@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "author-agreement-dialog": "/components/author-agreement-dialog/author-agreement-dialog"
+  },
+  "navigationBarTitleText": "登录"
+}

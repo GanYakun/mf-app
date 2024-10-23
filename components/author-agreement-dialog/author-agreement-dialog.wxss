@@ -1,0 +1,116 @@
+/* components/author-agreement-dialog/author-agreement-dialog.wxss */
+.author-agreement-dialog__mask {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  right: 0;
+  top: 0;
+}
+
+.author-agreement-dialog__container {
+  width: 100%;
+  position: fixed;
+  z-index: 10000;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  transform: translateY(100%);
+  transition: .3s;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  border-top-left-radius: 30rpx;
+  border-top-right-radius: 30rpx;
+}
+
+.author-agreement-dialog__container__show {
+  transform: translateY(0);
+}
+
+.author-agreement-dialog__content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.author-agreement-dialog__title {
+  font-size: 32rpx;
+  color: black;
+  font-weight: 800;
+}
+
+.author-agreement-dialog__desc {
+  font-size: 28rpx;
+  color: #666666;
+  margin-top: 30rpx;
+}
+
+.author-agreement-dialog__bold {
+  font-weight: 800;
+  color: black;
+}
+
+.author-agreement-dialog__bottom-tips {
+  font-size: 24rpx;
+  color: #666666;
+  margin-top: 60rpx;
+}
+
+/* 203 53 72 */
+.agreement-entrance {
+  color: #cb3548;
+}
+
+.author-agreement-dialog__button-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin: 30rpx 0;
+}
+
+.author-agreement-dialog__button {
+  flex: 1;
+  overflow: hidden;
+  height: 88rpx;
+  line-height: 88rpx;
+  text-align: center;
+  font-size: 36rpx;
+  border-radius: 44rpx;
+  box-sizing: border-box;
+  padding: 0 !important;
+}
+
+button::after {
+  border: none !important;
+}
+
+.author-agreement-dialog__button.disagree {
+  border: thin solid #cb3548;
+  background: white;
+  color: #cb3548;
+}
+
+.author-agreement-dialog__button.agree {
+  border: thin solid #cb3548;
+  background: #cb3548;
+  color: white;
+  margin-left: 60rpx;
+}
+
+.author-agreement-dialog__safe-area {
+  width: 100%;
+  height: 0;
+  height: constant(safe-area-inset-bottom); 
+  height: env(safe-area-inset-bottom);
+}

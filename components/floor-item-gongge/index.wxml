@@ -1,0 +1,106 @@
+<wxs module="filters" src="/utils/filter.wxs"></wxs>
+<view class="floor-item" wx:if="{{_item}}">
+  <block wx:if="{{!isAdvList}}">
+  <view class="titles" wx:if="{{_item.name}}">
+    <!-- <view class="title">{{_item.name}}</view> -->
+    <view class="activity-time-right" wx:if="{{false}}">
+      <text class="year-month-day">{{filters.Timeprocessing(_item.messageList.promotionsStartTime)[0]}}.</text>
+      <text class="year-month-day">{{filters.Timeprocessing(_item.messageList.promotionsStartTime)[1]}}.</text>
+      <text class="year-month-day">{{filters.Timeprocessing(_item.messageList.promotionsStartTime)[2]}}</text>
+      <text >-</text>
+      <!-- {{dangqilist[0].promotionsEndTime}} -->
+      <text class="year-month-day" style="margin-left:10rpx">{{filters.Timeprocessing(_item.messageList.promotionsEndTime)[0]}}.</text>
+      <text class="year-month-day">{{filters.Timeprocessing(_item.messageList.promotionsEndTime)[1]}}.</text>
+      <text class="year-month-day">{{filters.Timeprocessing(_item.messageList.promotionsEndTime)[2]}}</text>
+    </view>
+    <!-- <view class="more" catchtap="onAction" data-event-type="advMore" data-position="{{2}}">
+      更多<text style="margin-left:5rpx">+</text></view> -->
+  </view>
+  </block>
+<!-- 样式一  宫格排列 只显示4张  需传够4张图-->
+  <view class="ad-image-list"  wx:if="{{_item.adImageList3.length>0 && _item.adImageList3}}">
+    <view class="ad-image-half-item" wx:for="{{_item.adImageList3}}" data-adlist-type="adImageList3" catchtap="onAction" data-event-type="detail" data-position="{{index}}">
+      <view class="ad-image-wrapper">
+        <image class="ad-image" src="{{imgur}}{{item.imageVo.imagePath}}" mode="widthFix" lazy-load="{{true}}"></image>
+      </view>
+    </view>
+  </view>
+<!-- 样式一 -->
+
+<!-- 样式三开始 上面放两张 下面放三张 -->
+<view class="ad-image-list-style3" wx:if="{{_item.adImageList1.length>0 && _item.adImageList1 }}">
+  <view class="grid-list">
+  <grid-image-view catchtap="onAction" data-event-type="detail" data-position="{{index}}" data-adlist-type="adImageList1"  class="image-item" style="{{index == 1 || index == 0 ? 'width: calc(50% - 12rpx);':''}}" wx:for="{{_item.adImageList1}}" ratio="{{index<2?0.657:0.826}}" src="{{imgur}}{{item.imageVo.imagePath}}" wx:key="key"></grid-image-view>
+</view>
+    <!-- <view class="ad-style3-top-box">
+      <view class="ad-style3-top" wx:for="{{_item.adImageList1}}" wx:key="key" catchtap="onAction" data-event-type="detail" data-position="{{index}}" data-adlist-type="adImageList1" wx:if="{{index<2}}">
+        <image class="ad-image" style="width:100%" src="{{imgur}}{{item.imageVo.imagePath}}" mode="widthFix" lazy-load="{{true}}"></image>
+      </view>
+    </view>
+    <view class="ad-style3-bottom-box">
+      <view class="ad-style3-bottom" wx:for="{{_item.adImageList1}}" wx:key="key" catchtap="onAction" data-event-type="detail" data-position="{{index}}" data-adlist-type="adImageList1"  wx:if="{{index>1&&index<5}}">
+        <image class="ad-image" style="width:100%" src="{{imgur}}{{item.imageVo.imagePath}}" mode="widthFix" lazy-load="{{true}}"></image>
+      </view>
+    </view> -->
+
+  </view>
+<!-- 样式三结束 -->
+<!-- 样式二  左边一大张  右边两张-->
+  <view class="ad-image-list" wx:if="{{false}}" wx:if="{{_item.adImageList2.length>0 &&_item.adImageList2}}">
+    <view class="ad-style2-left">
+      <view class="style2-left-image" wx:for="{{_item.adImageList2}}" wx:key="key" catchtap="onAction" data-event-type="detail" data-adlist-type="adImageList2" data-position="{{index}}" wx:if="{{index % 3 == 0 && index<3}}">
+        <image class="ad-image" style="width:100%" src="{{imgur}}{{item.imageVo.imagePath}}" mode="widthFix" lazy-load="{{true}}"></image>
+      </view>
+    </view>
+    <view class="ad-style2-right" >
+      <view class="style2-right-image" wx:for="{{_item.adImageList2}}" wx:key="key" catchtap="onAction" data-event-type="detail" data-position="{{index}}" data-adlist-type="adImageList2" wx:if="{{index % 3 !=0 && index<3}}">
+        <image style="width:100%" class="ad-image" src="{{imgur}}{{item.imageVo.imagePath}}" mode="widthFix" lazy-load="{{true}}"></image>
+      </view>
+    </view>
+
+  </view>
+<!-- 样式二结束 -->
+
+
+
+<!-- 样式四  宫格排列 只显示8张  需传够8张图-->
+<view class="ad-image-list" wx:if="{{false}}" >
+    <view class="ad-image-half-item" wx:for="{{_item.adImageList}}" wx:if="{{index<8}}" catchtap="onAction" data-event-type="detail" data-position="{{index}}">
+      <view class="ad-image-wrapper">
+        <image class="ad-image" src="{{imgur}}{{item.imageVo.imagePath}}" mode="widthFix" lazy-load="{{true}}"></image>
+      </view>
+    </view>
+  </view>
+<!-- 样式四结束 -->
+
+<!-- 展示列表  宫格排列 只显示8张  需传够8张图-->
+<view class="ad-image-list isAdvList" wx:if="{{isAdvList}}" >
+    <view class="ad-image-half-item" wx:for="{{_item.adImageList}}" wx:if="{{index<8}}" catchtap="onAction" data-event-type="detail" data-position="{{index}}">
+      <view class="ad-image-wrapper">
+        <image class="ad-image" src="{{imgur}}{{item.imageVo.imagePath}}" mode="widthFix" lazy-load="{{true}}"></image>
+      </view>
+      <view class="ad-desc" style="text-align:center" >
+        <rich-text space="nbsp" nodes="{{item.describe}}"></rich-text>
+      </view>
+    </view>
+  </view>
+<!-- 展示列表结束 -->
+
+
+
+<view>
+</view>
+
+  <!-- 查看更多 -->
+  
+  <block wx:if="{{!isAdvList && false}}">
+  <view class="loader" catchtap="onAction" data-event-type="advMore" data-position="{{2}}" wx:if="{{item.adImageList || item.adImageList1}}">
+        <view class="loader-inner ball-pulse">
+          <view></view>
+          <view></view>
+          <view></view>
+          <text style="font-size:24rpx;">查看更多</text>
+        </view>
+      </view>
+    </block>
+</view>

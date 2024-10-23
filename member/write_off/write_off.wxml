@@ -1,0 +1,31 @@
+<view class="page-group">
+  <leftbutton style="display: block;" toptitle="{{isShare ? '确认核销':'领取记录'}}"></leftbutton>
+  <block wx:if="{{haosongReceiveRecordDetail}}">
+    <scroll-view class="scroll" scroll-y="{{true}}">
+      <view class="group">
+        <view class="info-item">
+          <text>客户：</text>
+          <text class="content">{{haosongReceiveRecordDetail.receiveMemberName}}</text>
+        </view>
+        <view class="info-item">
+          <text>领取时间：</text>
+          <text class="content">{{haosongReceiveRecordDetail.receiveTime}}</text>
+        </view>
+      </view>
+      <text class="detail-title">详细信息：</text>
+    
+      <image wx:if="{{haosongReceiveRecordDetail.imagePath}}" src="{{imgUrl}}/{{haosongReceiveRecordDetail.imagePath}}" mode="widthFix"/> 
+      <view class="detail">
+        <rich-text nodes="{{haosongReceiveRecordDetail.content}}"></rich-text>
+      </view>
+
+    </scroll-view>
+    <view class="btn" wx:if="{{isShare}}">
+      <text bindtap="confirmWriteOff">确认核销</text>
+    </view>
+  </block>
+  <block wx:else>
+    <view style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center;">{{status}}</view>
+  </block>
+<!-- <view class="space"></view> -->
+</view>

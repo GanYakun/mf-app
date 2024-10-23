@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "tabindex":"/components/tab-navigation/index",
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed",
+    "search":"/components/search/search",
+    "leftbutton":"/components/leftbutton/index",
+    "house-screen":"/components/house-screen/house-screen"
+  }
+}

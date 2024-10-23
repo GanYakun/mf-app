@@ -1,0 +1,19 @@
+/* xpages/process_details/process_details.wxss */
+.box{
+  padding: 20rpx;
+}
+.title{
+  text-align: center;
+}
+.tips{
+  margin-top: 20rpx;
+  font-size: 11px;
+  color: #999999;
+  justify-content: center;
+}
+.tips .item{
+  margin-right: 20rpx;
+}
+.images{
+  margin-top: 20rpx;
+}

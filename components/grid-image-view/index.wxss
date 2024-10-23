@@ -1,0 +1,19 @@
+/* components/grid-image-view/index.wxss */
+.grid-image-view {
+  position: relative;
+  width: 100%;
+  background: #e5e5e5;
+  box-sizing: border-box;
+  border-radius: 10rpx;
+  overflow: hidden;
+}
+
+.image {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10rpx;
+}
+

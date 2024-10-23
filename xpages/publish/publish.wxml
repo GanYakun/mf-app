@@ -1,0 +1,56 @@
+<leftbutton toptitle="评价"></leftbutton>
+<scroll-view style="height:calc(100% - {{LeftButtonnavHeight}}rpx)" scroll-y='true' bindscrolltolower="slideusage">
+<view class="boxid">
+	<textarea placeholder="请输入您对设计团队的评价" placeholder-class="textarea-style" class="asbbox" bindinput='inputs' placeholder-class="inputBox" value="{{pingjiaconcent}}">
+</textarea>
+
+</view>
+<view class="scoring">
+请对我们的服务进行评价，感谢您的支持!
+<view style="margin-top:10rpx">
+服务态度：<text class="iconfont {{index+1>serverIndex?'icon-xingxingkongxin':'icon-xingxing4'}}" bindtap="serviceScoringTap" wx:for="{{5}}" wx:key="key" data-index="{{index}}" ></text>
+</view>
+<view>
+专业能力：<text class="iconfont {{index+1>majorIndex?'icon-xingxingkongxin':'icon-xingxing4'}}" bindtap="majorTap" wx:for="{{5}}" wx:key="key" data-index="{{index}}"></text>
+</view>
+<view>
+
+</view>
+</view>
+
+<!-- 发表评论 -->
+<view class="comments">
+	<view class="commentsbox">
+
+		<view class="comments-section" catchtap="publish">发表评价</view>
+		<view class="comments-num">已经有{{totalCount}}条评论</view>
+	</view>
+</view>
+
+<!-- 评论的列表 -->
+
+<view class="commentslist">
+	<view class="commentslistbox">
+		<view class="item flex" wx:for="{{lists}}">
+			<view class="img">
+				<image src="{{imgurl}}{{item.imageVo.imagePath}}"></image>
+			</view>
+			<view style="width: calc( 100% - 150rpx)">
+				<view><text decode="true">{{item.memberName}}&nbsp;&nbsp;&nbsp;</text><text style="color:#888">时间：{{item.createDate == null?'':item.createDate}}</text></view>
+				<view style="margin-top:10rpx;">
+					{{item.commentContent == null?'':item.commentContent}}
+				</view>
+				<view class="business-reply" wx:if="{{item.replyContent}}">
+				商家回复：{{item.replyContent?item.replyContent:''}}
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+
+
+</scroll-view>
+
+<Allpagesneed></Allpagesneed>

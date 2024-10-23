@@ -1,0 +1,40 @@
+<!--businesscard/current-period/current-period.wxml-->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<leftbutton toptitle="当期活动"></leftbutton>
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+
+<scroll-view scroll-y="true" style="height:calc(100% - {{LeftButtonnavHeight}}rpx)" scroll-y="true" bindscrolltolower="scroll">
+  <view class="promotionsContent" wx:if="{{promotionsContent}}">
+    <rich-text nodes="{{promotionsContent}}"></rich-text>
+  </view>
+
+  <!-- 当期活动(原来的限时抢购)列表页 -->
+  <view class="snap-up-list">
+    <view class="item" wx:for="{{list}}" wx:key="key" catchtap="shopclick" data-pid="{{item.pid}}" data-itemname="{{item.itemName}}" data-productname="{{item.productName}}" data-cid="{{item.cid}}" data-promotionsid="{{item.promotionsId}}" data-index="{{index}}" data-minoneprice="{{item.minOnePrice}}">
+      <image src="{{imgur}}{{item.picUrl}}" mode="widthFix"></image>
+      <view class="snap-up-message">
+        <view class="shopname">
+          {{item.productName?item.productName:item.itemName}}
+        </view>
+        <view class="subtitle" wx:if="{{item.subtitle}}">{{item.subtitle}}</view>
+        <view class="snap-up-buybox">
+          <view class="snap-up-price">
+            <view><text style="font-size:26rpx">￥</text>{{filters.toFix2(item.salePrice)}}</view>
+            <!-- <view>¥{{filters.toFix2(item.onePrice)}}</view> -->
+          </view>
+          <view class="snap-up-btn">
+            <text>去抢购</text>
+            <view class="gou-snap-up">
+              <view class="gou-snap-up-view">
+                <view style="width:{{((item.surplusStock/item.saleCounts)>1?1:(item.surplusStock/item.saleCounts))*100}}%"></view>
+              </view>
+              <text>剩{{item.surplusStock}}件</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 当期活动列表页结束 -->
+
+</scroll-view>

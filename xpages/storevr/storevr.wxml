@@ -1,0 +1,19 @@
+<wxs module="jsonfun" src="../../utils/filter.wxs"></wxs>
+<!-- 头部轮播图 -->
+<scroll-view scroll-y='true' style="height:{{pageWindowHeight}}rpx">
+  <leftbutton toptitle="VR实景"></leftbutton>
+<block wx:for="{{list}}" wx:key="key">
+<view class="contentbox" catchtap="contentimg" data-roam="{{item.roam}}">
+<view class="contentimg">
+<view class="contentimgas">
+<image style="height:{{!jsonfun.jsonzhuanhuan(item.mobileRollPicturePath)[0].path?'100rpx':''}};" src="{{imgur}}{{jsonfun.jsonzhuanhuan(item.mobileRollPicturePath)[0].path}}"  mode="widthFix"></image>
+</view>
+</view>
+<view class="title">
+{{item.name}}
+</view>
+</view>
+</block>
+</scroll-view>
+<Allpagesneed></Allpagesneed>
+		    

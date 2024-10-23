@@ -1,0 +1,22 @@
+<!--components/comment-list-dialog/index.wxml-->
+<view class="mask" wx:if="{{_show}}" bindtap="hide"></view>
+<view class="dialog {{_show ? 'dialog-show':''}}">
+  <view class="title">
+    <image class="drop" src="./images/arrow.png" bindtap="hide"></image>
+    <view>{{commentCount ? commentCount:'0'}}条评论</view>
+  </view>
+  <scroll-view scroll-y="true" enable-flex="true" class="comment-list" bindscrolltolower="scrollToLower" scroll-anchoring="false">
+    <view class="comment-item" wx:for="{{commentList}}">
+      <image class="header" src="{{item.memberLogoPath}}"></image>
+
+      <view class="comment-info">
+        <view class="nick-name">{{item.memberName}}<view>{{item.timeago}}</view></view>
+        <view class="comment-content">{{item.content ? item.content:'此用户什么都没说'}}</view>
+      </view>
+    </view>
+  </scroll-view>
+  <view class="comment-bar">
+    <open-data class="comment-header" type="userAvatarUrl"></open-data>
+    <input class="comment-input" placeholder="说点什么吧..." confirm-type="send" bindconfirm="sendComment" value="{{content}}"/>
+  </view>
+</view>

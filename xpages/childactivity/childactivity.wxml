@@ -1,0 +1,37 @@
+ <import src="../../wxParse/wxParse.wxml"/>
+ <leftbutton wx:if="{{!isPageShow}}" toptitle="{{TopTitle}}"></leftbutton>
+<!-- 最新活动详情页面 -->
+<!-- 标题 -->
+<view class="title">
+{{pagelist.title}}
+</view>
+
+<!-- 作者，来源，发布时间等 -->
+<!-- <view class="alsourcef"> 
+<view class="alsourcef_item">作者：{{pagelist.createName}}  </view>
+<view class="alsourcef_item">来源：{{pagelist.source==null?'':pagelist.source}} </view>
+<view class="alsourcef_item">浏览：{{pagelist.hits}} </view>
+<view class="alsourcef_item">发布日期：{{pagelist.createDate}}</view>
+</view> -->
+
+<view class="alsourcef"> 
+  <view>
+    <text class="alsourcef_item">作者：{{pagelist.author}} </text>
+<text class="alsourcef_item" wx:if="{{pagelist.source}}">来源：{{pagelist.source==null?'':pagelist.source}}</text>
+  </view>
+  
+<view>
+<text class="alsourcef_item">浏览：{{pagelist.hits}} </text>
+<text class="alsourcef_item">发布日期：{{pagelist.createDate}}</text>
+</view>
+
+
+ 
+
+
+</view>
+
+<!-- html部分 -->
+<template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+
+<Allpagesneed></Allpagesneed>

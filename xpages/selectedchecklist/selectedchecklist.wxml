@@ -1,0 +1,88 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<leftbutton toptitle="{{pagedata.appointTitle}}"></leftbutton>
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<scroll-view  style="height:calc(100% - 100rpx - {{LeftButtonnavHeight}}rpx);width:100%;" scroll-y="true">
+
+	<view class="content">
+
+		<view style="text-align:center;font-size:30rpx;">{{pagedata.appointTitle}}</view>
+		<view class="shopnameas_two" wx:if="{{pagedata.homeIdea}}">{{pagedata.homeIdea == null?'暂无数据':pagedata.homeIdea}}</view>
+		<view style="display:flex;justify-content: space-between;align-items: center;">
+		<view class="itemprice" wx:if="{{pagedata.costMoneyTotal}}">
+						<text class="allMuch"><text style="color:#000;">合计：</text></text>
+						<!-- <text class="Symbol">￥</text> -->
+						<text style="font-size:40rpx;" wx:if="{{filters.substringExceptLast(pagedata.costMoneyTotal).num}}" decode="true">¥&nbsp;{{filters.substringExceptLast(pagedata.costMoneyTotal).num}}</text>
+						<text style="font-size:48rpx;font-weight:bold;" wx:elif="{{!filters.substringExceptLast(pagedata.costMoneyTotal).num}}">{{filters.substringExceptLast(pagedata.costMoneyTotal).unit}}</text>
+							<text	style="font-size:24rpx;margin-top:12rpx;" wx:if="{{filters.substringExceptLast(pagedata.costMoneyTotal).num}}">{{filters.substringExceptLast(pagedata.costMoneyTotal).unit}}</text>
+							</view>
+							<view class="btn1" catchtap="btn1" wx:if="{{pagedata.depositPrice}}" data-name="{{pagedata.designerName}}"> <text
+								style="font-size:34rpx; font-weight: bold;  margin-right: 10rpx;    margin-bottom: 4rpx;">{{pagedata.depositPrice}}</text>元抢名额
+						</view>
+				</view>
+
+				<view style="display:flex;justify-content: space-between;align-items: baseline;">
+    <view class="itemprice">
+      <view style="display:flex;align-items: flex-end;color:#000;" wx:if="{{time>0}}">
+        <view class="allMuch">限时：</view>
+          <count-down time="{{time}}" isShowSecond="{{true}}" ischecklist="true"> </count-down>
+					<view class="Limit"  wx:if="{{pagedata.limitedNumber}}">限量：<text
+            style="color:#ff6c00;font-size:32rpx;">{{pagedata.limitedNumber?pagedata.limitedNumber:0}}</text><text
+            style="font-size:20rpx; font-weight:400;">套</text></view>
+            <view class="btn2" wx:if="{{UnPageParameter.tWebtype == 'meijia'}}" catchtap="allhouse_detail" data-id="{{pagedata.designerId}}" data-popupornot="1">用户评价
+						</view>
+      </view>
+    </view>
+
+  </view>
+			</view>
+
+
+	
+
+	<CaseGoods shopArr="{{pagedata.perfectHomeSpaceList[0].bandGoodsList}}"  allprice="{{allprice}}" shoplist="{{shoplist}}"   hidden-product="{{true}}" >
+	</CaseGoods>
+	<!-- 富文本转换 -->
+	<view class="richtexteditor" wx:if="{{article}}">
+		<import src="../../wxParse/wxParse.wxml" />
+		<template is="wxParse" data="{{wxParseData:article.nodes}}" />
+	</view>
+	<!-- 广告位图 -->
+	<block wx:if="{{getWxBannerByRootIdKey[0].imageVo.imagePath}}">
+	<view class="advimg" wx:if="{{isshowguanggao}}">
+	 <image src="{{imgur}}{{getWxBannerByRootIdKey[0].imageVo.imagePath}}" mode="aspectFill" style="margin: auto;width: 100%;"></image>
+	</view>
+</block>
+
+
+</scroll-view>
+
+<!-- <view class="bootom-view" wx:if="{{shoplist.length>0}}"> -->
+<!-- <view class="bootom-view">
+
+	<view style="display:flex;align-items: flex-end;">
+	<view class="shop-list-len">x{{pagedata.perfectHomeSpaceList[0].bandGoodsList.length}}</view>
+	<view class="portfolio-box">
+		合计<text style="color:#eb662c;margin-left:10rpx;">¥</text>
+		<text class="portfolio-price">{{filters.substringExceptLast(pagedata.homeArea).num}}</text>
+							<text	style="font-size:24rpx;margin-top:12rpx;">{{filters.substringExceptLast(pagedata.homeArea).unit}}</text>
+	</view>
+</view>
+	<view class="snap-up" catchtap="btn1" wx:if="{{pagedata.depositPrice}}" data-name="{{pagedata.designerName}}">{{pagedata.depositPrice}}元抢名额</view>
+	
+</view> -->
+
+<tabindex isBuyShop="3" caseMessage="{{caseMessage}}" bindmyevent="collection">
+<view slot="btn" class="slot-btn">
+	<view bindtap="addToCart" >加入购物车</view>
+<view bindtap="nowBuy">
+	立即购买
+</view>
+
+
+
+
+</view>
+</tabindex>
+
+
+<Allpagesneed></Allpagesneed>

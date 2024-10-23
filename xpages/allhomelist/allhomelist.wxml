@@ -1,0 +1,201 @@
+<scroll-view style="height:{{pageWindowHeight-(istc?100:300)}}rpx" scroll-y="true">
+
+
+	<view class="topbox">
+		<view class="swiperimage">
+			<swiper class="slide">
+				<swiper-item class="slideitem" wx:for="{{pagedata.imageVoList}}" wx:key="key">
+
+					<image style="width:100%" src="{{imgur}}{{item.imagePath}}" mode="aspectFill"></image>
+
+
+				</swiper-item>
+			</swiper>
+		</view>
+
+		<view class="picturecolorbox">
+			<view wx:for="{{chiocelist}}" wx:key="key" class="{{index==chioceindex?'picturecolors':'picturecolor'}}" catchtap="chioceshijian" data-index="{{index}}">{{item}}</view>
+
+		</view>
+
+		<!-- 内容部分 -->
+		<view class="content-grids">
+			<view class="imagesControllertest">
+				<image style="width:100%;height:100%" src="{{imgur}}{{pagedata.topImage}}" mode="aspectFill"></image>
+				<view class="functionality">
+					<view class="functionalityone">
+						{{pagedata.designerName}}
+					</view>
+					<view class="functionalitytwo">
+						<view>预约</view>
+						<view>用户评价</view>
+					</view>
+				</view>
+			</view>
+			<!-- 右侧内容部分 -->
+			<view class="containsRights">
+				<view class="caseheritage">案例简介</view>
+				<!-- 左侧文字部分 -->
+				<view style="display:flex;align-items: center;">
+					<view class="alignment">
+						<view>◆</view>
+						<view>◆</view>
+						<view>◆</view>
+						<view>◆</view>
+						<view>◆</view>
+					</view>
+					<view class="alignment">
+						<view class="rigthname">户型:</view>
+						<view class="rigthname">风格:</view>
+						<view class="rigthname">面积:</view>
+						<view class="rigthname">价格:</view>
+						<view class="rigthname">设计说明:</view>
+					</view>
+					<view class="alignment" style="margin-left:10rpx">
+						<view>{{pagedata.searchOptionMap.house_type[0]}}</view>
+						<view>{{pagedata.searchOptionMap.pop_style[0]}}</view>
+						<view>{{pagedata.homeArea}}m³</view>
+						<view>￥{{pagedata.costMoneyTotal}}</view>
+						<view style="  visibility: hidden;">1</view>
+					</view>
+				</view>
+
+				<view class="rigthnsames">{{pagedata.subtitle}}</view>
+			</view>
+
+		</view>
+	</view>
+
+
+	<!-- 中部根据接口反的perfectHomeSpaceList来判断是否显示下面的内容 -->
+	<view hidden="{{pagedata.perfectHomeSpaceList==''}}">
+		<!-- 儿童房哈哈房等 -->
+		<view class="theiralignments">
+			<view wx:for="{{pagedata.perfectHomeSpaceList}}" wx:key="key" class="{{chicknum==index?'iconimages':'iconimage'}}" data-index="{{index}}" catchtap="iconimage" data-kongjianid="{{item.id}}" wx:if="{{item.isRecommend==0}}">
+				<text hidden="{{index==0}}" class="textsegmentation">|</text>
+				<image src="../../images/xicon/{{item.spaceIcon}}.png"></image>
+				{{item.spaceName}}
+			</view>
+		</view>
+
+
+		<!-- 中部内容 -->
+
+		<!-- 中部轮播图 -->
+		<view class="swiperimage" hidden="{{pagedata.perfectHomeSpaceList[chicknum].showImageVoList==''}}">
+			<swiper class="slide">
+				<swiper-item class="slideitem" wx:for="{{pagedata.perfectHomeSpaceList[chicknum].showImageVoList}}" wx:key="key">
+					<image style="width:100%" src="{{imgur}}{{item.imagePath}}" mode="aspectFill"></image>
+				</swiper-item>
+			</swiper>
+		</view>
+
+		<!-- 商品部分 -->
+		<view class="goodsrpc" hidden="{{pagedata.perfectHomeSpaceList[chicknum].bandGoodsList==''}}">
+			<view class="makegoods">
+				<view class="dangeshop" wx:for="{{pagedata.perfectHomeSpaceList[chicknum].bandGoodsList}}" wx:key="key">
+					<!-- 商品部分-------顶部商品名字和价格 -->
+					<view class="tophui">
+						<view class="shopname">{{item.itemName}}</view>
+						<view class="shoppricetwo">￥{{item.onePrice}}</view>
+						<view catchtap="updatebyclick" data-imagesrc="{{item.picVo.imagePath}}" data-goodsnum="{{item.goodsNum}}" data-price="{{item.onePrice}}" data-updateby="{{item.updateBy}}" data-topsku="{{item.skuId}}" data-chicknum="{{chicknum}}" data-index="{{index}}"><text class="iconfont {{item.updateBy==null?'icon-fangkuang':'icon-xuanzhong'}}"></text></view>
+					</view>
+					<view bindtap="shop" data-id="{{item.spuId}}">
+						<view class="shopimage">
+							<image src="{{imgur}}{{item.picVo.imagePath}}" mode="aspectFill"></image>
+						</view>
+						<view class="guige">
+							<view class="introducestyle">{{item.propertiesNameArray[0]}}</view>
+							<view class="introducestyle">{{item.propertiesNameArray[1]}}</view>
+							<view class="introducestyle">{{item.propertiesNameArray[2]}}</view>
+						</view>
+					</view>
+					<view class="numoperand" wx:if="{{item.updateBy!=null}}">
+						<view class="plusLowjian" catchtap="plusLowjian" data-index="{{index}}" data-price="{{item.onePrice}}" data-goodsNum="{{item.goodsNum}}">-</view>
+						<view class="plusLownum">{{item.goodsNum}}</view>
+						<view class="plusLowjia" catchtap="plusLowjia" data-index="{{index}}" data-price="{{item.onePrice}}" data-goodsNum="{{item.goodsNum}}">+</view>
+
+
+					</view>
+				</view>
+			</view>
+		</view>
+
+
+		<view class="yuankesigndesign">
+			<view wx:for="{{pagedata.perfectHomeSpaceList}}" wx:key="key" wx:if="{{item.isRecommend==1}}">
+				<view class="yuantitle">
+					<view class="yuantitleone">{{item.spaceName}}</view>
+				</view>
+				<view class="slidingsidebar">
+					<scroll-view scroll-x="true" style="" class="showmian">
+						<view style="display:flex">
+							<view wx:for="{{item.bandGoodsList}}" class="soliderbox" wx:key="key">
+
+
+
+								<view class="shopnametwo">
+									<image src="{{imgur}}{{item.picVo.imagePath}}" mode="aspectFill"></image>
+								</view>
+								<view class="priceandname">
+									<view class="priceandname">{{item.itemName}}</view>
+									<view class="shopprice">￥{{item.onePrice}}</view>
+								</view>
+								<view class="introducestyle">{{item.propertiesNameArray[0]}}</view>
+								<view class="introducestyle">{{item.propertiesNameArray[1]}}</view>
+								<view class="introducestyle">{{item.propertiesNameArray[2]}}</view>
+
+							</view>
+						</view>
+					</scroll-view>
+				</view>
+			</view>
+		</view>
+
+	</view>
+
+	<!-- 富文本转换 -->
+	<view class="richtexteditor">
+		<import src="../../wxParse/wxParse.wxml" />
+		<template is="wxParse" data="{{wxParseData:article.nodes}}" />
+	</view>
+
+
+</scroll-view>
+
+
+<!-- 固定的预览购物车 -->
+<view class="{{istc?'previeweds':'previewed'}}">
+	<view hidden="{{istc}}">
+		<view class="shouqitc" catchtap="shouqitc">
+			收起预览
+		</view>
+		<view class="boxboxss">
+			<view class="slidingsidebar">
+				<scroll-view scroll-x="true" style="" class="showmian">
+					<view style="display:flex">
+						<view wx:for="{{shoplist}}" class="soliderbox" wx:key="key">
+							<view class="previewimage">
+								<image src="{{imgur}}{{item.image}}" mode="aspectFill"></image>
+								<view class="shopclose" catchtap="deleteshop" data-price="{{item.price}}" data-index="{{index}}" data-goodsshopnum="{{item.goodsnum}}" data-konjian="{{item.kongjianid}}" data-skuid="{{item.skuid}}"><text class="iconfont icon-yuanX"></text></view>
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+		</view>
+	</view>
+</view>
+
+
+<!-- 固定的加入购物车 -->
+<view class="tccart">
+
+
+	<view class="joinselect">加入购物车</view>
+	<view class="numberpatternre">预览已选{{numberpatternre}}件</view>
+
+	<view class="combined">
+		合计：￥{{allprice}}
+	</view>
+</view>

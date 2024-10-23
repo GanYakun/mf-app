@@ -1,0 +1,87 @@
+.content {
+  width: 710rpx;
+  margin: 20rpx auto;
+}
+
+.content>view{
+  margin-top: 20rpx;
+}
+.content>view:first-child{
+  margin-top: 0;
+}
+
+.cintentimg {
+  width: 100%;
+  background-color: #ffffff;
+  border-right: 1px solid #f2f2f2;
+  border-bottom: 1px solid #f2f2f2;
+  box-sizing: border-box;
+  border-radius: 12rpx;
+  overflow: hidden;
+  position: relative;
+}
+
+.cintentimg image {
+  width: 100%;
+  height: 0rpx;
+  border-bottom-left-radius: 12rpx;
+  border-bottom-right-radius: 12rpx;
+}
+
+.inaddress {
+  font-size: 28rpx;
+  white-space: pre-wrap;
+  text-align: center;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0 6rpx;
+  /* max-width: 50%; */
+}
+
+.frequency {
+  font-size: 28rpx;
+  color: #f97704;
+  text-align: center;
+  margin-left: auto;
+}
+
+.frequency>text {
+  font-size: 19rpx;
+}
+
+.imageicon {
+  width: 50rpx;
+  position: absolute;
+  margin-top: 10rpx;
+  margin-left: 35%;
+
+}
+
+.imageicon image {
+  width: 100%;
+  height: 0;
+}
+
+.price-box{
+  display: flex;
+  padding: 20rpx 10rpx;
+  box-sizing: border-box;
+}
+.listimage-logo{
+  position: absolute;
+  width: 170rpx;
+  height: 100rpx;
+  top: 20rpx;
+  left: 20rpx;
+}
+.listimage-logo image{
+  width: 0;
+  height: 100%;
+  border-radius: 12rpx !important;
+  margin-left: auto;
+  display: block;
+  position: absolute;
+  right: 0;
+  top: 0;
+}

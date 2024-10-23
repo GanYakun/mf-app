@@ -1,0 +1,122 @@
+@import "../../utils/font.wxss";
+
+page {
+  background-color: #f1f1f1;
+  /* background-color: #ddd; */
+}
+
+.heade {
+  display: flex;
+  background-color: #ffffff;
+  height: 80rpx;
+  align-items: center;
+}
+
+.headetitle {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+}
+
+.content {
+  /* display: grid;
+    grid-template-columns: 50% 50%;
+     */
+  width: 710rpx;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-column-gap: 20rpx;
+  grid-row-gap: 20rpx;
+  margin-top: 20rpx;
+}
+
+.cintentimg {
+  /* width: 96%;
+        margin: 0 auto;
+        margin-top: 30rpx; */
+  width: 345rpx;
+  border-radius: 3px;
+  background-color: #ffffff;
+}
+
+.cintentimg image {
+  width: 100%;
+}
+
+
+
+.frequency {
+  margin-left: auto;
+  margin-right: 2%;
+}
+
+.icon-iconfontlingxing,
+.icon-shaixuan {
+  font-size: 25rpx;
+  margin-left: 10rpx;
+}
+
+
+.icon-een {
+  font-size: 18rpx;
+  color: #888888;
+}
+
+.judgesub {
+  line-height: 9rpx;
+  margin-left: 10rpx;
+}
+
+.upjudgesub {
+  transform: rotate(180deg);
+}
+
+.child-list-scroll {
+  white-space: nowrap;
+  background: #ffffff;
+  width: 100%;
+  padding: 0rpx 0 10rpx 0 ;
+  box-sizing: border-box;
+    border-bottom: 4rpx dashed #f5f5f5;
+  /* background: #efefef; */
+}
+
+.scroll-child{
+  padding: 0 20rpx;
+  font-size: 30rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+}
+.scroll-child image{
+  height: 80rpx;
+  width: 0;
+  margin-bottom: 5rpx;
+}
+.scroll-child>view{
+  display: flex;
+  flex-direction: column;
+align-items: center;
+}
+
+.scroll-child:last-child{
+  margin-right: 0;
+}
+
+.selectchild{
+  color: #f97704;
+}
+.prent-class{
+  background: #ffffff !important;
+}
+
+scroll-view ::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  color: transparent;
+  display: none;
+}
+
+

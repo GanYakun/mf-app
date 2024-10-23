@@ -1,0 +1,25 @@
+<view class="offerandcustomer {{isstyle}}">
+	<view class="customer" wx:if="{{!ishide}}">
+<view class="kefu {{isstyle}}" wx:if="{{istwo==1}}">
+<image src="./image/kf.svg" style="width:90%;height:0;" mode="widthFix" bindtap="kefu"></image>
+<!-- <view class="OnlineService">在线客服</view> -->
+<!-- <view class="OnlineService">客服</view> -->
+</view>
+</view>
+
+<view class="offer" wx:if="{{!ishide}}">
+<view class="xuanfuactivities " catchtap="huadongzhiding" wx:if="{{isone==1}}">
+<image src="./image/yy.svg" style="width:90%;height:0;"  mode="widthFix" ></image>
+
+			<!-- <text class="iconfont icon-purse"></text>
+			<text class="qualificqationszaitsev">预约免费</text>
+			<text class="qualificqationszaitsev">设计</text> -->
+</view>
+</view>
+<view class="hideAll {{ishide?'':'down'}} " catchtap="hidezujian" data-ishide="{{ishide?true:false}}">
+	<text class="iconfont icon-toHIdeIntro" ></text>
+</view>
+
+</view>
+
+

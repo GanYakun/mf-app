@@ -1,0 +1,31 @@
+<!--components/furniture_tabbar/furniture_tabbar.wxml-->
+
+<view class="mobileFooter">
+	<view class="footerList flex-r-s">
+		<view class="item" bindtap="home" bindtap="shangpin_home">
+			<view class="img">
+				<image src="./images/fIcn1.png"></image>
+			</view>
+			<view class="name">首页</view>
+		</view>
+		<view class="item" bindtap="furniture_list">
+			<view class="img">
+				<image src="./images/flcn2.png"></image>
+			</view>
+			<view class="name">万套案例</view>
+		</view>
+		<view class="item">
+			<view class="img">
+				<image src="./images/flcn3.png"></image>
+			</view>
+			<view class="name">昆明展厅</view>
+		</view>
+		<view class="item" bindtap="furniture_activity">
+			<view class="img">
+				<image src="./images/flcn4.png"></image>
+			</view>
+			<view class="name">最新活动</view>
+		</view>
+	
+	</view>
+</view>

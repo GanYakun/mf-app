@@ -1,0 +1,36 @@
+
+<view class="offerandcustomer {{isstyle}}" wx:if="{{judeCard && shareId}}">
+	<view class="iconfont icon-cha" wx:if="{{!ishide}}" catchtap="close"></view>
+	<view class="offer" wx:if="{{!ishide}}">
+		<view class="xuanfuactivities " catchtap="call" data-phone="{{phone}}">
+			<image src="./image/call.png" class="pageImage" style="width:90%;height:0;" mode="widthFix"></image>
+		</view>
+		<view class="xuanfuactivities " style="margin-top:20rpx;" catchtap="card" data-phone="0871-68123333">
+			<image src="./image/card.png" class="pageImage" style="width:90%;height:0;" mode="widthFix"></image>
+		</view>
+	</view>
+
+	<view class="customer" wx:if="{{!ishide}}" wx:if="{{false}}">
+		<view class="kefu {{isstyle}}">
+			<image src="./image/card.svg" class="pageImage" style="width:90%;height:0;" mode="widthFix" bindtap="kefu">
+			</image>
+		</view>
+	</view>
+
+	<view class="offer" wx:if="{{!ishide}}" wx:if="{{fasle}}">
+		<view class="xuanfuactivities " catchtap="huadongzhiding" wx:if="{{isone==1}}">
+			<image src="./image/yy.svg" class="pageImage" style="width:90%;height:0;" mode="widthFix"></image>
+
+			<!-- <text class="iconfont icon-purse"></text>
+			<text class="qualificqationszaitsev">预约免费</text>
+			<text class="qualificqationszaitsev">设计</text> -->
+		</view>
+	</view>
+
+
+	<view wx:if="{{ishide}}" class="hideAll {{ishide?'':'down'}} " catchtap="hidezujian"
+		data-ishide="{{ishide?true:false}}">
+		<view class="iconfont icon-xiangshang"></view>
+	</view>
+
+</view>

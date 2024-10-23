@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "video-swiper": "/components/video-swiper/index"
+  },
+  "navigationBarTextStyle": "white"
+}

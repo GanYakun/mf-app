@@ -1,0 +1,314 @@
+<!--pages/shangpin_home/shangpin_home.wxml-->
+<view class="container">
+	<scroll-view class="vertical-scroll" scroll-y="ture">
+		<swiper style="height:390rpx" autoplay="true" interval="3000" indicator-active-color="#d8212f" indicator-dots="true" indicator-color="#fff">
+			<block wx:for="{{swiperimg}}">
+				<swiper-item>
+					<image src="{{item}}" style="width:100%;height:100%"></image>
+				</swiper-item>
+			</block>
+		</swiper>
+
+		<!-- 功能菜单 -->
+		<view class="menulist">
+			<swiper class="swiperfunctions" style="height:432rpx" current='{{functionsCurrent}}' bindchange="swiperfunctions">
+				<swiper-item>
+					<view class="menu flex_left" display-multiple-items="8">
+						<block wx:for="{{menulist}}" wx:for-index="i" wx:key="key">
+							<view wx:if="{{i>=0&i<8}}" class="item" data-index="{{i}}">
+								<view class="img">
+									<image src="{{item.imgurl}}"></image>
+								</view>
+								<text>{{item.title}}</text>
+							</view>
+						</block>
+					</view>
+				</swiper-item>
+				<swiper-item>
+					<view class="menu flex_left" display-multiple-items="8">
+						<block wx:for="{{menulist}}" wx:for-index="i" wx:key="key">
+							<view class="item" wx:if="{{i>=8&i<16}}" data-index="{{index}}">
+								<view class="img">
+									<image src="{{item.imgurl}}"></image>
+								</view>
+								<text>{{item.title}}</text>
+							</view>
+						</block>
+					</view>
+				</swiper-item>
+			</swiper>
+			<!-- <view class="Dots">
+					<view wx:for="{{menulist}}" wx:key="key" class="indicatorDots{{index == functionsCurrent ? ' dots-active' : ''}}" bindchange="chuangfunctions" id="{{index}}"></view>
+				</view> -->
+		</view>
+		<!-- 免费设计名额 -->
+		<view class="design_form">
+			<view class="title">抢免费设计名额</view>
+			<view class="input">
+				<view class="item flex">
+					<view class=""></view>
+					<input placeholder="请输入您的称呼" placeholder-class=""></input>
+				</view>
+				<view class="item flex">
+					<view class=""></view>
+					<input placeholder="请输入您的手机号码"></input>
+				</view>
+			</view>
+			<view class="design_btn flex">
+				<view>一键定制我的家</view>
+				<view class=""></view>
+			</view>
+			<view class="tips">信息已经过加密处理，设计师将在24小时内与您电话联系！</view>
+		</view>
+		<view class="box1 flex">
+			<view class="item" wx:for="{{box1_lists}}">
+				<view class="img">
+					<image src="{{item.imgurl}}"></image>
+				</view>
+				<view class="name">{{item.title}}</view>
+			</view>
+		</view>
+		<!-- 最新活动 -->
+		<view class="news_activity white_bg">
+			<view class="title flex-r-s">
+				<view class="name">最新活动</view>
+				<view class="more flex">
+					<view>更多</view>
+					<view class=""></view>
+				</view>
+			</view>
+			<view class="banner-swiper">
+				<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" current='{{swiperCurrent}}' indicator-color="{{beforeColor}}" indicator-active-color="{{afterColor}}" circular='{{circular}}' previous-margin="{{previousmargin}}" next-margin="{{nextmargin}}" bindchange="swiperChange1">
+					<block wx:for="{{news_swiper}}" wx:key="key">
+						<swiper-item>
+							<view class="img">
+								<image src="{{item.imgurl}}" class="slide-image{{index == swiperCurrent ? ' active' : ''}}" bindchange="chuangEvent1" id="{{index}}"></image>
+								<view class="title">{{item.title}}</view>
+							</view>
+						</swiper-item>
+					</block>
+				</swiper>
+				<view class="Dots">
+					<view wx:for="{{news_swiper}}" wx:key="key" class="indicatorDots{{index == swiperCurrent ? ' dots-active' : ''}}" bindchange="chuangEvent" id="{{index}}"></view>
+				</view>
+			</view>
+		</view>
+		<!-- 热门楼盘 -->
+		<view class="hot_property white_bg">
+			<view class="title flex-r-s">
+				<view class="name">热门楼盘</view>
+				<view class="more flex">
+					<view>更多</view>
+					<view class=""></view>
+				</view>
+			</view>
+			<view class="lists flex-r-s">
+				<view class="item" wx:for="{{news_swiper}}">
+					<view class="img">
+						<image src="{{item.imgurl}}"></image>
+					</view>
+					<view class="title">{{item.title}}</view>
+				</view>
+			</view>
+		</view>
+		<!-- 功能定制 -->
+		<view class="customized white_bg">
+			<view class="title flex-r-s">
+				<view class="name">功能定制</view>
+			</view>
+			<view class="tabbar flex-r-s">
+				<scroll-view scroll-x="true" style="width:100%;">
+					<view class="name">
+						<view class="item {{currentindex1 == index ? 'selected' : ''}}" wx:for="{{tabbar}}" bindtap="click1" data-current1="{{index}}">{{item.name}}</view>
+					</view>
+				</scroll-view>
+				<view class="more flex">
+					<view>更多</view>
+					<view class=""></view>
+				</view>
+			</view>
+
+			<!-- <view class="slide-content"> -->
+			<swiper scroll-x="true" current="{{currentindex1}}" bindchange="slide" style="height:1200rpx">
+				<block wx:for="{{tabbar}}">
+					<swiper-item>
+						<view class="content">
+							<view class="top">
+								<view class="topimg">
+									<image src="{{item.imgurl}}"></image>
+								</view>
+								<view class="title">dsradfasdjask</view>
+							</view>
+							<view class="lists flex-r-s">
+								<view class="item" wx:for="{{item.imgs}}">
+									<view class="img">
+										<image src="{{item}}"></image>
+									</view>
+									<view class="title">{{item.title}}</view>
+								</view>
+							</view>
+						</view>
+					</swiper-item>
+				</block>
+
+
+			</swiper>
+			<!-- </view> -->
+
+		</view>
+		<!-- 空间定制 -->
+		<view class="white_bg">
+			<view class="title flex-r-s">
+				<view class="name">空间定制</view>
+			</view>
+			<view class="tabbar flex-r-s">
+				<scroll-view scroll-x="true" style="width:100%;">
+					<view class="name">
+						<view class="item {{currentindex == index ? 'selected' : ''}}" data-current="{{index}}" wx:for="{{tabbar}}" bindtap="click" data-index="{{index}}">{{item.name}}</view>
+					</view>
+				</scroll-view>
+				<view class="more flex">
+					<view>更多</view>
+					<view class=""></view>
+				</view>
+			</view>
+			<view class="banner-swiper">
+				<swiper indicator-dots="{{indicatorDots}}" autoplay="{{autoplay}}" current="{{currentindex}}" indicator-color="{{beforeColor}}" indicator-active-color="{{afterColor}}" circular='{{circular}}' previous-margin="{{previousmargin}}" next-margin="{{nextmargin}}" bindchange="swiperChange">
+					<block wx:for="{{tabbar}}" wx:key="key">
+						<swiper-item>
+							<view class="img">
+								<image src="{{item.imgurl}}" class="slide-image{{currentindex == index ? ' active' : ''}}" bindchange="chuangEvent" id="{{index}}"></image>
+								<view class="title">{{item.title}}</view>
+							</view>
+						</swiper-item>
+					</block>
+				</swiper>
+			</view>
+		</view>
+		<!-- 设计大师 -->
+		<view class="design_author white_bg">
+			<view class="title flex-r-s">
+				<view class="name">设计大师</view>
+				<view class="more_right flex">
+					<view class="">VR实景</view>
+					<view class="more flex">
+						<view>更多</view>
+						<view class=""></view>
+					</view>
+				</view>
+			</view>
+			<view class="lists">
+				<swiper autoplay="true" style="height:428rpx" display-multiple-items="3" interval="3000" duration="300">
+					<block wx:for="{{author_list}}">
+						<swiper-item>
+							<view class="item">
+								<view class="userimg">
+									<image src="{{item.userimg}}"></image>
+								</view>
+								<view class="name">{{item.name}}</view>
+								<view class="store">{{item.store}}</view>
+								<view class="popularity">
+									<label>人气：</label>
+									<text>{{item.popularity}}</text>
+								</view>
+							</view>
+						</swiper-item>
+					</block>
+				</swiper>
+			</view>
+		</view>
+		<!-- 今日头条 -->
+		<view class="headlines white_bg">
+			<view class="title flex-r-s">
+				<view class="name">今日头条</view>
+				<view class="more flex">
+					<view>更多</view>
+					<view class=""></view>
+				</view>
+			</view>
+			<view class="lists" wx:for="{{headlines_lists}}">
+				<view class="htitle">{{item.htitle}}</view>
+				<view class="img">
+					<image src="{{item.imgurl}}"></image>
+				</view>
+				<view class="item">
+					<view class="title">{{item.title}}</view>
+					<view class="date">
+						<label>时间：</label>
+						<text>{{item.date}}</text>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- 最新评论 -->
+		<view class="comment white_bg">
+			<view class="title flex-r-s">
+				<view class="name">最新评论</view>
+				<view class="more flex">
+					<view>更多</view>
+					<view class=""></view>
+				</view>
+			</view>
+			<view class="lists">
+				<view class="item flex" wx:for="{{comment_list}}">
+					<view class="userimg">
+						<image src="{{item.userimg}}"></image>
+					</view>
+					<view class="item_left">
+						<view class="title">{{item.title}}</view>
+						<view class="decr">{{item.decr}}</view>
+						<view class="imgs flex_left">
+							<view class="img" wx:for="{{item.imgs}}">
+								<image src="{{item}}"></image>
+							</view>
+						</view>
+						<view class="tips flex-r-s">
+							<view class="date">{{item.date}}</view>
+							<view class="praise flex">
+								<view class=""></view>
+								<view>{{item.praise}}</view>
+							</view>
+							<view class=""></view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+		<!-- 家具百科 -->
+		<view class="encyclopedia white_bg">
+			<view class="title flex-r-s">
+				<view class="name">家居百科</view>
+				<view class="tabbar1 flex-r-s">
+					<scroll-view scroll-x="true" style="width:100%;">
+						<view class="name">
+							<view class="item {{currentindex == index ? 'selected1' : ''}}" wx:for="{{tabbar}}" bindtap="clickTab" data-index="{{index}}">{{item.name}}</view>
+						</view>
+					</scroll-view>
+				</view>
+				<view class="more flex">
+					<view>更多</view>
+					<view class=""></view>
+				</view>
+			</view>
+			<swiper class="content" current="{{currentindex}}" bindchange="changeencyclopedia">
+				<block wx:for="{{tabbar}}">
+					<swiper-item>
+							<view class="item flex-r-s">
+								<view class="img">
+									<image src="{{item.imgurl}}"></image>
+								</view>
+								<view class="context">
+									<view class="title">{{item.title}}</view>
+									<view class="decr">dfghjfidfkofkopwefieofjeroifjewrfiowurf93w48ri9fjerofjerioflkjeridkfsj</view>
+								</view>
+							</view>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+		<footer>
+		</footer>
+	</scroll-view>
+	<design_consulting></design_consulting>
+	<furniture_tabbar></furniture_tabbar>
+</view>

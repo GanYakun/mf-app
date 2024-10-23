@@ -1,0 +1,104 @@
+/* pages/register/register.wxss */
+page {
+  background: #f2f2f2;
+}
+
+.formWrap {
+  width: 100%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 0rpx 20rpx;
+  box-sizing: border-box;
+}
+
+.item-view {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 20rpx 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.item-view input {
+  /* width: 60%; */
+  flex-grow: 2;
+  margin-left: 20rpx;
+  font-size: 28rpx;
+  color: #858585;
+}
+
+.rowR {
+  overflow: hidden;
+  padding-left: 20rpx;
+}
+
+.txtCode {
+  overflow: hidden;
+  font-size: 24rpx;
+  color: #fff;
+  background: #f97704;
+  padding: 0px 10rpx;
+  border-radius: 6rpx;
+  line-height: 60rpx;
+  flex-grow: 1;
+}
+
+.imgCode {
+  flex-grow: 1;
+  overflow: hidden;
+  font-size: 24rpx;
+  color: #333;
+  background: #ccc;
+  padding: 0px 10rpx;
+  border-radius: 6rpx;
+  line-height: 60rpx;
+  letter-spacing: 26rpx;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.icon-color {
+  color: #FB0018;
+  font-size: 18px;
+}
+
+.xieyi-view {
+  width: 100%;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 26rpx;
+  color: #666;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.xieyi-view checkbox-group {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/*复选框外框样式*/
+checkbox .wx-checkbox-input {
+  width: 30rpx;
+  height: 30rpx;
+  border: 4rpx solid #999;
+  border-radius: 100%;
+}
+/*复选框外框选中样式*/
+checkbox .wx-checkbox-input.wx-checkbox-input-checked {
+  border-color: #3cbcee;
+}
+/*复选框选中后内部样式*/
+checkbox .wx-checkbox-input.wx-checkbox-input-checked::before {
+  width: 50%;
+  height: 50%;
+  background: #3cbcee;
+  border-radius: 100%;
+  content: '';
+  transform: translate(-50%, -50%) scale(1);
+  -webkit-transform: translate(-50%, -50%) scale(1);
+}

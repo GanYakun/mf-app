@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "wxml-to-canvas":"/components/wxml-to-canvas/index",
+    "leftbutton":"/components/leftbutton/index"
+  },
+  "navigationStyle":"custom"
+
+}

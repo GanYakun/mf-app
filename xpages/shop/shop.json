@@ -1,0 +1,13 @@
+{
+  "usingComponents": {
+    "popup": "/components/popup/popup",
+    "phonepopup":"/components/phonepopup/phonepopup",
+    "van-count-down": "/miniprogram_npm/vant/count-down/index",
+    "messagepopup":"/components/messagepopup/messagepopup",
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed",
+    "leftbutton":"/components/leftbutton/index",
+    "sticky":"/components/@miniprogram-component-plus/sticky/miniprogram_dist",
+    "wxml-to-canvas":"/components/wxml-to-canvas/index",
+    "produck-sku-dialog": "/components/product-sku-dialog/index"
+  }
+}

@@ -1,0 +1,39 @@
+<!-- 
+  
+  查看自己的发布的用户口碑 
+  
+  -->
+  <leftbutton toptitle="{{list.title}}"></leftbutton>
+  <scroll-view style="height:calc(100% - {{LeftButtonnavHeight}}rpx);" scroll-y="{{true}}">
+    <view class="listbox" >
+      <view class="hideimg">
+			<image src="{{imgur}}{{list.memberLogoImage.imagePath}}" mode="aspectFill"></image>
+    </view>
+<view class="content">
+		
+    <view class="username">
+        {{list.title}}
+      </view>
+  
+			
+			<view class="koubeicontent">
+        {{list.briefContent}}</view>
+			<view class="userimage">
+				<view wx:for="{{list.topImageList}}" wx:for-item="img" wx:key="key" bindtap="previewImage" data-topimagelist="{{list.topImageList}}" data-index="{{index}}">
+					<image style="width:100%;height:120rpx;border-radius: 6px;" mode="aspectFill" src="{{imgur}}{{img.imagePath}}"></image>
+				</view>
+      </view>
+      <view class="messagetime"></view>
+      <!-- 评论内容 -->
+			<view class="page-comments" wx:if="{{list.reviewList.length>0}}">
+				<view class="allow_comments_on" wx:for="{{list.reviewList}}" wx:key="key">
+					<view class="pinglunname">{{item.memberName==null?'':item.memberName}}:</view>
+					<view>{{item.content}}</view>
+				</view>
+				<view>
+
+				</view>
+			</view>
+</view>
+</view>
+</scroll-view>

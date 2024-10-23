@@ -1,0 +1,301 @@
+/* 
+此文件为开发者工具生成，生成时间: 2021/3/31 上午9:48:26
+使用方法：
+在 Loding.wxss 文件末尾引入样式
+```
+@import "./Loding-wxa-auto-dark.wxss";
+```
+ */
+
+@media (prefers-color-scheme: dark) {
+    .loader {
+        color: rgb(17, 17, 17);
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0);
+        }
+
+        to {
+            transform: rotate(359deg);
+        }
+    }
+
+    @keyframes blink {
+        from {
+            opacity: 0.5;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    .loader[data-text]:before {
+        color: rgb(0, 0, 0);
+    }
+
+    .loader-default:after {
+        border: rgb(0, 0, 0);
+        border-left-color: rgba(0, 0, 0, 0);
+    }
+
+    .loader-default[half]:after {
+        border-right-color: rgba(0, 0, 0, 0);
+    }
+
+    .loader-double:after {
+        border-color: rgb(17, 17, 17);
+        border-left-color: rgba(0, 0, 0, 0);
+    }
+
+    .loader-double:before {
+        border-color: rgb(130, 61, 0);
+        border-right-color: rgba(0, 0, 0, 0);
+    }
+
+    .loader-bar[data-text]:before {
+        color: rgb(17, 17, 17);
+    }
+
+    .loader-bar:after {
+        background: rgb(0, 0, 0);
+    }
+
+    @keyframes moveBar {
+        from {
+            background-position: 0 0;
+        }
+
+        to {
+            background-position: 20rpx 20rpx;
+        }
+    }
+
+    @keyframes corners {
+        6% {
+            width: 60rpx;
+            height: 15rpx;
+        }
+
+        25% {
+            width: 15rpx;
+            height: 15rpx;
+            left: calc(100% - 15rpx);
+            top: 0;
+        }
+
+        31% {
+            height: 60rpx;
+        }
+
+        50% {
+            height: 15rpx;
+            top: calc(100% - 15rpx);
+            left: calc(100% - 15rpx);
+        }
+
+        56% {
+            width: 60rpx;
+        }
+
+        75% {
+            width: 15rpx;
+            left: 0;
+            top: calc(100% - 15rpx);
+        }
+
+        81% {
+            height: 60rpx;
+        }
+    }
+
+    .loader-border[data-text]:before {
+        color: rgb(17, 17, 17);
+    }
+
+    .loader-border:after {
+        background-color: rgb(47, 31, 0);
+    }
+
+    .loader-ball:before {
+        background-color: rgb(17, 17, 17);
+    }
+
+    .loader-ball:after {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    @keyframes shadow {
+        0% {
+            background-color: rgba(0, 0, 0, 0);
+            transform: scale(0);
+        }
+
+        40% {
+            background-color: rgba(0, 0, 0, 0);
+            transform: scale(0);
+        }
+
+        95% {
+            background-color: rgba(255, 255, 255, 0.75);
+            transform: scale(1);
+        }
+
+        100% {
+            background-color: rgba(255, 255, 255, 0.75);
+            transform: scale(1);
+        }
+    }
+
+    @keyframes kick {
+        0% {
+            transform: translateY(-80rpx) scaleX(0.95);
+        }
+
+        90% {
+            border-radius: 50%;
+        }
+
+        100% {
+            transform: translateY(0) scaleX(1);
+            border-radius: 50% 50% 20% 20%;
+        }
+    }
+
+    .loader-smartphone:after {
+        color: rgb(17, 17, 17);
+    }
+
+    @keyframes shake {
+        5% {
+            transform: translate3d(-1rpx, 0, 0);
+        }
+
+        10% {
+            transform: translate3d(1rpx, 0, 0);
+        }
+
+        15% {
+            transform: translate3d(-1rpx, 0, 0);
+        }
+
+        20% {
+            transform: translate3d(1rpx, 0, 0);
+        }
+
+        25% {
+            transform: translate3d(-1rpx, 0, 0);
+        }
+
+        30% {
+            transform: translate3d(1rpx, 0, 0);
+        }
+
+        35% {
+            transform: translate3d(-1rpx, 0, 0);
+        }
+
+        40% {
+            transform: translate3d(1rpx, 0, 0);
+        }
+
+        45% {
+            transform: translate3d(-1rpx, 0, 0);
+        }
+
+        50% {
+            transform: translate3d(1rpx, 0, 0);
+        }
+
+        55% {
+            transform: translate3d(-1rpx, 0, 0);
+        }
+    }
+
+    .loader-clock:before {
+        background: rgb(0, 0, 0);
+        box-shadow: rgb(0, 0, 0);
+    }
+
+    .loader-clock:after {
+        background: rgb(0, 0, 0);
+    }
+
+    .lodding {
+        background: rgb(17, 17, 17);
+    }
+
+    .mask {
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .close {
+        color: rgb(17, 17, 17);
+    }
+
+    .loading {
+        background-color: rgb(119, 71, 0);
+    }
+
+    .object {
+        background-color: rgb(52, 147, 152);
+    }
+
+    @keyframes object_big {
+        50% {
+            transform: scale(0.5);
+            -webkit-transform: scale(0.5);
+        }
+    }
+
+    @keyframes object_one {
+        50% {
+            transform: translate(-65px, -65px);
+            -webkit-transform: translate(-65px, -65px);
+        }
+    }
+
+    @keyframes object_two {
+        50% {
+            transform: translate(0, -65px);
+            -webkit-transform: translate(0, -65px);
+        }
+    }
+
+    @keyframes object_three {
+        50% {
+            transform: translate(65px, -65px);
+            -webkit-transform: translate(65px, -65px);
+        }
+    }
+
+    @keyframes object_four {
+        50% {
+            transform: translate(65px, 0);
+            -webkit-transform: translate(65px, 0);
+        }
+    }
+
+    @keyframes object_five {
+        50% {
+            transform: translate(65px, 65px);
+            -webkit-transform: translate(65px, 65px);
+        }
+    }
+
+    @keyframes object_six {
+        50% {
+            transform: translate(0, 65px);
+            -webkit-transform: translate(0, 65px);
+        }
+    }
+
+    @keyframes object_seven {
+        50% {
+            transform: translate(-65px, 65px);
+            -webkit-transform: translate(-65px, 65px);
+        }
+    }
+}

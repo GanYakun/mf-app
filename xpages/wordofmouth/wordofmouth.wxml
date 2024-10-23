@@ -1,0 +1,58 @@
+<view class="publishedcontent">
+<text class="iconfont icon-fabu" catchtap="fabu"></text>
+</view>
+<scroll-view scroll-y="true" style="height:{{pageWindowHeight}}rpx" bindscrolltolower="slideusage">
+	<leftbutton toptitle="{{TopTitle ? TopTitle:'用户口碑'}}"></leftbutton>
+	<view class="listbox" wx:for="{{countallusers.list}}" style="margin-top:{{index==0?0:20}}rpx;" wx:key="key">
+		<view class="hideimg">
+			<image src="{{imgur}}{{item.memberLogoImage.imagePath}}" mode="aspectFill"></image>
+		</view>
+
+		<view class="content">
+			<view class="username">{{item.title}}</view>
+			<view class="koubeicontent {{item.collapse?'text-collapse':''}}">{{item.briefContent}}</view>
+			<view class="calltext" hidden="{{item.collapse==undefined}}" data-index="{{index}}" catchtap="textqueries">{{item.collapse?"全文":"收起"}}</view>
+			<view class="userimage">
+				<view wx:for="{{item.topImageList}}" wx:for-item="img" wx:key="key" bindtap="previewImage" data-topimagelist="{{item.topImageList}}" data-index="{{index}}">
+					<image style="width:100%;height:120rpx;border-radius: 6px;" mode="aspectFill" src="{{imgur}}{{img.imagePath}}"></image>
+				</view>
+			</view>
+
+			<view class="messagetime">
+				<view class="messagetime-time">{{item.createDate}}</view>
+				<view style="display: flex;align-items: center;">
+					<text  class="iconfont icon-xihuan {{item.isclick == true?'dianzan':''}}" decode="true" bindtap="onPraiseTap" data-isclick="{{item.isclick}}" data-index="{{index}}" data-id="{{item.id}}">&nbsp;<text>{{item.praise}}</text>&nbsp;&nbsp;&nbsp;&nbsp;</text>
+					<text class="iconfont icon-pinglunzhuanhuan" catchtap="meyaopingjia" data-id="{{item.id}}" data-comment-index="{{index}}"></text>
+				</view>
+			</view>
+			<!-- 评论内容 -->
+			<view class="page-comments" hidden="{{item.reviewList==''}}">
+				<view class="allow_comments_on" wx:for="{{item.reviewList}}" wx:key="key">
+					<view class="pinglunname">{{item.memberName==null?'':item.memberName}}:</view>
+					<view>{{item.content}}</view>
+				</view>
+				<view>
+
+				</view>
+			</view>
+		</view>
+	</view>
+
+	<view class="fadeIn" wx:if="{{iosDialog22}}">
+		<view class="weui-mask" bindtap="close"></view>
+		<view class="weui-dialog" style="border-radius:24rpx;">
+				<view style="margin-top:20rpx">发表评价</view>
+				<view class="pingjiacon">
+					<textarea class="pingjiatext" bindinput="shurucontent" placeholder="请输入文字"></textarea></view>
+				<view class="queding" catchtap="queding">确定</view>
+			</view>
+
+	</view>
+
+</scroll-view>
+
+<!-- <popup id='popup' iosDialog1="{{iosDialog1}}" bind:guanbi="close">
+</popup>
+
+<phonepopup id='phonepopup' iosDialog2="{{iosDialog2}}" bind:guanbi="phoneclose">
+</phonepopup> -->

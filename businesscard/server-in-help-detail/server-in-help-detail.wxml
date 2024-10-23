@@ -1,0 +1,45 @@
+<!--businesscard/server-in-help-detail/server-in-help-detail.wxml-->
+<wxs module="filter" src="/utils/filter.wxs"></wxs>
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<leftbutton toptitle="暖心服务抵用券"></leftbutton>
+<scroll-view scroll-y="true" style="height:calc(100% - {{LeftButtonnavHeight}}rpx);background:{{qrCode?'#efefef':'#ffffff'}}">
+<block wx:if="{{coupList&&coupList.length>0}}">
+<view class="coup-view">
+  <view wx:for="{{coupList}}" wx:key="key" class="coup-box" style="background-image: url({{ftpUrl}}/bg_coup.png); ">
+    <view class=""></view>
+    <view class="">
+      <view class="coup-type-box">
+        <text class="coup-type">抵用券</text>
+        <text class="coup-title">{{item.couponTitle}}</text>
+      </view>
+      <view class="coup-troup">
+       <view> <text>·</text>购买服务时抵扣使用</view>
+       <view> <text>·</text>{{filter.timeFormat(item.getStartTime)+'~'+filter.timeFormat(item.getEndTime)}}</view>
+       <view> <text>·</text>券有效期内下单且支付可用</view>
+      </view>
+    </view>
+    <view class="three-box">
+      <view class="">{{item.couponAmount}}<text>元</text></view>
+      <view>{{item.fullReductionAmount?'满'+item.fullReductionAmount+'可用':'可全额抵扣使用'}}</view>
+      <view bindtap="shareCoup" data-id="{{item.id}}" wx:if="{{!qrCode&&!coupId}}">
+      <image  src="{{ftpUrl}}/ic_share.png" mode="widthFix"></image>
+      分享
+      </view>
+      <view wx:elif="{{item.isPast==1}}" class="be-overdue">已过期</view>
+      <view wx:elif="{{item.isUser==1}}" class="be-overdue">已被领取</view>
+      <view class="receive" wx:elif="{{coupId}}" bindtap="receive">立即领取</view>
+      <view wx:else></view>
+    </view>
+  </view>
+</view>
+  <view wx:if="{{!qrCode}}" class="instructions-for-use"><text>抵用券使用需知：</text>
+{{coupList[0].couponDescription}}
+  </view>
+  <view wx:else class="qr-code">
+  <image show-menu-by-longpress="{{true}}" src="{{imgur+qrCode}}" mode="widthFix"></image>
+  <view>识别二维码领取抵用券</view>
+  </view>
+</block>
+<nodata wx:else></nodata> 
+</scroll-view>
+<Allpagesneed></Allpagesneed>

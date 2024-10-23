@@ -1,0 +1,25 @@
+<!--components/leftbutton/index.wxml-->
+<block wx:if="{{Iswxml}}">
+  <view class="topbox {{customStyle}}" style="height:{{navHeight}}rpx;{{videoStyle}}">
+    <view class="returnButton" style="margin-top:{{leftboxTop}}rpx;margin-left:{{leftboxleft}}rpx;width:calc(100% - {{leftboxleft}}*2rpx - {{leftBoxWidth}}rpx)">
+      <view style="height:{{leftboxHeight-2}}rpx;border-radius:{{leftboxHeight}}rpx;">
+        <view catchtap="backpage" class="backpage">
+          <view wx:if="{{!isVideo}}" class="iconfont icon-fanhui" style="margin-right:10rpx;margin-left:10rpx"></view>
+          <image wx:if="{{isVideo}}" src="./images/icon_return_white.png" style="width:24rpx;height:24rpx;margin-right:18rpx;margin-left:10rpx" mode="aspectFit"/>
+        </view>
+        <view class="fenge"></view>
+        <view class="{{isVideo ? 'goIndex1' : 'goIndex'}}" catchtap="gohome">首页</view>
+      </view>
+      <view class="TopTitle">
+        <slot name="search" wx:if="{{_componentData.isShowSearch}}"></slot>
+        <view class="top-title-text" wx:else>{{_toptitle}}</view>
+      </view>
+      <!-- width:{{leftBoxWidth}}rpx; -->
+
+    </view>
+    <!-- <view class="mecard" style="line-height: {{leftboxHeight}}rpx;top:{{leftboxTop+4}}rpx">
+   <view class="TopTitle" style="width:calc(72% - {{leftBoxWidth+leftboxleft+leftboxleft}}rpx); margin-left:calc(28% + {{leftboxleft}}rpx);">{{toptitle}}</view>
+  </view> -->
+  </view>
+  <view class="seizeaseat" style="height:{{navHeight}}rpx"></view>
+</block>

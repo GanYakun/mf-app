@@ -1,0 +1,14 @@
+
+
+
+  <view class="fadeIn" wx:if="{{iosDialog2}}">
+        <view class="weui-mask"></view>
+        <view class="weui-dialog">
+            <view class="weui-dialog__hd"><strong class="weui-dialog__title">需要授权获取手机号</strong></view>
+            <view class="weui-dialog__bd">是否继续</view>
+            <view class="weui-dialog__ft">
+                <button style="padding:0;height:100rpx;line-height:100rpx" class="weui-dialog__btn weui-dialog__btn_default btnss" data-isjixu="false" bindtap="close">取消</button>
+                <button style="padding:0;height:100rpx;line-height:100rpx" class="weui-dialog__btn weui-dialog__btn_primary btnss" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" data-isjixu="true" bindtap="close">继续</button>
+            </view>
+        </view>
+    </view>

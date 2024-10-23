@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "swiperAuto":"/components/swiperAuto/swiperAuto"
+  },
+  "navigationBarTitleText": "无忧售后"
+}

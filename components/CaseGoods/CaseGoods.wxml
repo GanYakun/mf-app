@@ -1,0 +1,89 @@
+<!-- 精选组合用到的案例商品列表 -->
+<wxs module="filters" src='../../utils/filter.wxs'></wxs>
+<view class="goodsrpc" wx:if="{{shopArr}}">
+			<view class="makegoods">
+				<view class="dangeshop" wx:for="{{shopArr}}" wx:key="key"
+					catchtap="updatebyclick" data-isspecial="{{item.isSpecial}}" data-imagesrc="{{item.picVo.imagePath}}" data-spuid="{{item.spuId}}"
+					data-goodsnum="{{item.goodsNum}}" data-price="{{item.onePrice}}" data-updateby="{{item.updateBy}}"
+					data-topsku="{{item.skuId}}" data-chicknum="{{chicknum}}" data-index="{{index}}">
+					<!-- 商品部分-------顶部商品名字和价格 -->
+					<view bindtap="shop" data-id="{{item.spuId}}">
+						<view class="shopclick" wx:if="{{item.isSpecial==1 && !hiddenProduct}}">
+							<text class="iconfont icon-xuanzhong1"></text>
+						</view>
+						<view class="shopimage">
+							<image src="{{imgur}}{{item.picVo.imagePath}}" mode="widthFix"></image>
+						</view>
+						<view class="guige">
+							<view class="shopname">{{item.itemName}}</view>
+							<view class="PriceQuantity" >
+						<view class="shoppricetwo">￥{{filters.toFix2(item.onePrice)}}</view>
+						<block wx:if="{{!hiddenProduct}}">
+						<view class="numoperand" wx:if="{{item.isSpecial==1}}">
+						<view class="plusLowjian" catchtap="plusLowjian" data-index="{{index}}" data-price="{{item.onePrice}}"
+							data-goodsNum="{{item.goodsNum}}">-</view>
+						<view class="plusLownum">{{item.goodsNum}}</view>
+						<view class="plusLowjia" catchtap="plusLowjia" data-index="{{index}}" data-price="{{item.onePrice}}"
+							data-goodsNum="{{item.goodsNum}}">+</view>
+					</view>
+				</block>
+				<block wx:else>
+						<view class="goodsNum">x{{item.goodsNum}}</view>
+				</block>
+
+					</view>
+					<view class="DividingLine"></view>
+							<view class="introducestyle">{{item.propertiesNameArray[0]}}</view>
+							<view class="introducestyle">{{item.propertiesNameArray[1]}}</view>
+							<view class="introducestyle">{{item.propertiesNameArray[2]}}</view>
+
+						</view>
+					</view>
+				
+					
+
+				</view>
+			</view>
+		</view>
+
+
+		<!-- 固定的预览购物车 -->
+	<block wx:if="{{!hiddenProduct}}">
+<view class="{{istc?'previeweds':'previewed'}}" wx:if="{{shoplist.length>0}}">
+	<view wx:if="{{!istc}}">
+		<view class="boxboxss">
+			<view class="slidingsidebar">
+				<scroll-view scroll-x="true" style="" class="showmian">
+					<view style="display:flex">
+						<view wx:for="{{shoplist}}" class="soliderbox" wx:key="key">
+							<view class="previewimage">
+								<view class="shopclose" catchtap="deleteshop" data-price="{{item.price}}" data-index="{{index}}"
+									data-goodsshopnum="{{item.goodsnum}}" data-konjian="{{item.kongjianid}}" data-skuid="{{item.skuid}}">
+									<text class="iconfont icon-yuanX"></text>
+								</view>
+								<image src="{{imgur}}{{item.image}}" mode="widthFix"></image>
+							
+							</view>
+						</view>
+					</view>
+				</scroll-view>
+			</view>
+		</view>
+	</view>
+</view>
+</block>
+
+<view wx:if="{{shoplist.length>0 && !hiddenProduct}}" style="width:100%;height:100rpx;"></view>
+<!-- 固定的加入购物车 -->
+<!-- wx:if="{{shoplist.length>0 }}" -->
+<view class="tccart" wx:if="{{shoplist.length>0 &&!hiddenProduct}}" >
+	<view class="joinselect" catchtap="joinselect">加入购物车</view>
+	<view class="numberpatternre" catchtap="shouqitc" >预览已选{{shoplist.length}}件</view>
+
+	<view class="combined">
+		<text style="font-weight:bold;">合计：</text><text style="font-size:20rpx;color:#ff6c00">¥</text>
+		<text style="font-size:32rpx;font-weight:600;color:#ff6c00">{{filters.toFix2(allprice)}}</text>
+	</view>
+</view>
+<view>
+</view>

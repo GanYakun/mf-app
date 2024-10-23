@@ -1,0 +1,4 @@
+<!--components/grid-image-view/index.wxml-->
+<view class="grid-image-view" style="padding-top: {{ratio * 100}}%;">
+  <image class="image" src="{{src}}" mode="scaleToFill"></image>
+</view>

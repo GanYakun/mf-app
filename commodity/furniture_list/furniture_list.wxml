@@ -1,0 +1,146 @@
+<!--pages/furniture_list/furniture_list.wxml-->
+<view class="container">
+	<view class="sortBox flex-r-s">
+		<view class="item">综合</view>
+		<view class="item flex">
+			<view class="name">人气</view>
+			<view class="icon">
+				<view class="szeyFont triangleupfill" style="font-size:7px;line-height: 1;"></view>
+				<view class="szeyFont triangledownfill" style="font-size:6px;line-height: 1;"></view>
+			</view>
+		</view>
+		<view class="item flex">
+			<view class="name">浏览</view>
+			<view class="icon">
+				<view class="szeyFont triangleupfill" style="font-size:7px;line-height: 1;"></view>
+				<view class="szeyFont triangledownfill" style="font-size:6px;line-height: 1;"></view>
+			</view>
+		</view>
+		<view class="item flex">
+			<view class="name">最新</view>
+			<view class="icon">
+				<view class="szeyFont triangleupfill" style="font-size:7px;line-height: 1;"></view>
+				<view class="szeyFont triangledownfill" style="font-size:6px;line-height: 1;"></view>
+			</view>
+		</view>
+		<view class="item flex" bindtap="screenEd" data-mask="1">
+			<view class="name">筛选</view>
+			<view class="icon">
+				<view class="szeyFont filter" style="font-size:18px;line-height: 1;"></view>
+			</view>
+		</view>
+	</view>
+	<scroll-view class="vertical-scroll" slot="body" scroll-y="true" bindscroll="indexScroll">
+		<!-- 列表 -->
+		<view class="content-list">
+			<view class="item" bindtap="furniture_view">
+				<view class="img">
+					<image src="../../images/img/1.jpg"></image>
+				</view>
+				<view class="title nowarp">颐和18984室2厅3卫伴你童行</view>
+				<view class="infos">本方案以黄色的粒子漆为主面板，搭配纯白色的象牙白材料，给人一种清新柔和的气氛，柜体方面包括床、衣柜、书桌、吊柜四大类。</view>
+				<view class="dzDn flex-r-s">
+					<view class="span1 flex">
+						<view class="szeyFont attention" style="color:#999999;"></view>
+						<view style="margin-left:10rpx" style="color:#378b06;margin-left:20rpx">9</view>
+					</view>
+					<view class="span2 flex" bindtap="design_author">
+						<view class="szeyFont peoplefill" style="color:#999999;"></view>
+						<view>
+							<label>设计师</label>
+							<text>戚文思[新居]</text>
+						</view>
+					</view>
+					<view class="span3 flex">
+						<view class="szeyFont appreciatefill" style="color:#999999;"></view>
+						<view style="color:#378b06;margin-left:20rpx">赞(3)</view>
+					</view>
+				</view>
+			</view>
+			<view class="item">
+				<view class="img">
+					<image src="../../images/img/1.jpg"></image>
+				</view>
+				<view class="title clamp1">颐和18984室2厅3卫伴你童行</view>
+				<view class="infos">本方案以黄色的粒子漆为主面板，搭配纯白色的象牙白材料，给人一种清新柔和的气氛，柜体方面包括床、衣柜、书桌、吊柜四大类。</view>
+				<view class="dzDn flex-r-s">
+					<view class="span1 flex">
+						<view class="szeyFont attention" style="color:#999999;"></view>
+						<view style="margin-left:10rpx" style="color:#378b06;margin-left:20rpx">9</view>
+					</view>
+					<view class="span2 flex">
+						<view class="szeyFont peoplefill" style="color:#999999;"></view>
+						<view>
+							<label>设计师</label>
+							<text>戚文思[新居]</text>
+						</view>
+					</view>
+					<view class="span3 flex">
+						<view class="szeyFont appreciatefill" style="color:#999999;"></view>
+						<view style="color:#378b06;margin-left:20rpx">赞（3）</view>
+					</view>
+				</view>
+			</view>
+			<view class="item">
+				<view class="img">
+					<image src="../../images/img/1.jpg"></image>
+				</view>
+				<view class="title clamp1">颐和18984室2厅3卫伴你童行</view>
+				<view class="infos">本方案以黄色的粒子漆为主面板，搭配纯白色的象牙白材料，给人一种清新柔和的气氛，柜体方面包括床、衣柜、书桌、吊柜四大类。</view>
+				<view class="dzDn flex-r-s">
+					<view class="span1 flex">
+						<view class="szeyFont attention" style="color:#999999;"></view>
+						<view style="margin-left:10rpx" style="color:#378b06;margin-left:20rpx">9</view>
+					</view>
+					<view class="span2 flex">
+						<view class="szeyFont peoplefill" style="color:#999999;"></view>
+						<view>
+							<label>设计师</label>
+							<text>戚文思[新居]</text>
+						</view>
+					</view>
+					<view class="span3 flex">
+						<view class="szeyFont appreciatefill" style="color:#999999;"></view>
+						<view style="color:#378b06;margin-left:20rpx">赞（3）</view>
+					</view>
+				</view>
+			</view>
+			<footer></footer>
+		</view>
+		<!-- 聊天 -->
+		<design_consulting></design_consulting>
+	</scroll-view>
+	<!-- 底部 -->
+	<furniture_tabbar></furniture_tabbar>
+	<!-- 筛选 -->
+ 
+	<view class="mask" wx:if="{{mask == 1}}" bindtap="screenEd" data-mask="0"></view>
+		<view class="screenBox {{mask == 1 ? 'screenBox-show':''}}">
+      <view class="title flex-r-s">
+       <view style="color:#666666;font-size:12px" bindtap="screenEd" data-mask="0">取消</view>
+       <view>定制家具</view>
+       <view style="color:#666666;font-size:12px">确定</view>
+      </view>
+      <scroll-view class="vertical-scroll" slot="body" scroll-y="true" bindscroll="indexScroll">
+        <view class="screen-list">
+          <view class="item flex-r-s">
+            <view style="font-size:15px">空间设计</view>
+            <view style="font-size:14px">全部</view>
+          </view>
+           <view class="item flex-r-s">
+            <view style="font-size:15px">空间设计</view>
+            <view style="font-size:14px">全部</view>
+          </view>
+           <view class="item flex-r-s">
+            <view style="font-size:15px">空间设计</view>
+            <view style="font-size:14px">全部</view>
+          </view>
+           <view class="item flex-r-s">
+            <view style="font-size:15px">空间设计</view>
+            <view style="font-size:14px">全部</view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+
+</view>

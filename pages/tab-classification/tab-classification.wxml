@@ -1,0 +1,74 @@
+<!--pages/tab-classification/tab-classification.wxml-->
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 加载弹窗结束 -->
+<view class="page">
+<leftbutton toptitle="{{TopTitle}}" id="popup" wx:if="{{!isPageShow}}"></leftbutton>
+
+	<!--分类-->
+	<!--主盒子-->
+	<view class="container">
+		<!--左侧栏-->
+		<view class="nav_left">
+			<scroll-view scroll-y style="height:{{scrollHeight-tabIndexHeight-LeftButtonnavHeight}}rpx" class="sc-view" enable-flex="{{true}}" scroll-with-animation="true" bindscroll="scrolltoupper" bindscrolltolower="lower" bindscrolltoupper="upper" upper-threshold="100" lower-threshold="100">
+				<block wx:for="{{lists}}">
+					<view class="nav_left_items {{curIndex == index ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{index}}" wx:if="{{item.id!=897 && item.id!=1217}}">{{item.name}}</view>
+				</block>
+				<!-- <view class="nav_left_items {{curIndex == 99 ? 'active' : ''}}" bindtap="switchRightTab" data-index="{{99}}">本月爆款</view> -->
+			</scroll-view>
+		</view>
+
+		<!--右侧栏-->
+		<view class="nav_right">
+			<scroll-view scroll-y class="sc-view" style="height:calc(100% - {{tabIndexHeight+LeftButtonnavHeight}}rpx)">
+				<!-- <view wx:if="{{lists[curIndex].mallItemCatEntityList.length > 0}}"> -->
+				<block wx:for="{{lists[curIndex].mallItemCatEntityList}}" wx:for-index="topIndex" wx:if="{{curIndex==lists.length-1?(topIndex!=0?item.isCommendDisplay == '1':true):true}}">
+					<view class="nav_right_items" bindtap='onGoodItemTap' data-pos="{{index}}" data-position1="{{topIndex}}" data-id="{{item.id}}" data-cname="{{item.cname}}" data-pid="{{item.parentCid}}">
+						<view>
+							<!-- {{imgurl}}{{item.imagePath}} -->
+							<image src="{{item.parentCid == 0 && item.id == 0 ? '':imgurl}}{{item.imagePath}}"></image>
+							<text>{{item.name?item.name:item.cname}}</text>
+						</view>
+					</view>
+				</block>
+				<block wx:for="{{list}}" wx:key="key" wx:for-index="topIndex" wx:if="{{curIndex== 99}}">
+					<view class="nav_right_items" bindtap='hotproduct_detail' data-pos="{{index}}" data-position1="{{topIndex}}" data-id="{{item.id}}" data-cname="{{item.cname}}">
+						<view>
+							<image src="{{imgurl}}{{item.imagePath}}"></image>
+							<text>{{item.name?item.name:item.cname}}</text>
+						</view>
+					</view>
+				</block>
+				<block wx:for="{{lists}}" wx:for-index="topIndex" wx:if="{{curIndex== 100}}">
+					<view class="nav_right_items" bindtap='onGoodItemTap' data-pos="{{index}}" data-position1="{{topIndex}}" data-id="{{item.id}}" data-cname="{{item.cname}}">
+						<view>
+							<image src="{{imgurl}}{{item.imagePath}}" style="height:0" mode="widthFix"></image>
+						
+							<text>{{item.name?item.name:item.cname}}</text>
+						</view>
+					</view>
+				</block>
+				<!-- <view class="nodata_text" wx:else>该分类暂无数据</view> -->
+				<!-- <view class='noData-mains' wx:else>
+					<view class='img-mains'>
+						<view class='img-views'>
+							<image class='imgss' src='../../images/no-data.png'></image>
+							<view class='txt-nos'>即将上线，敬请期待！！！</view>
+						</view>
+					</view>
+				</view> -->
+			</scroll-view>
+		</view>
+	</view>
+	<!--分类-->
+</view>
+
+<!-- <popup id='popup' iosDialog1="{{iosDialog1}}" bind:guanbi="close">
+</popup> 
+
+<phonepopup id='phonepopup' iosDialog2="{{iosDialog2}}" bind:guanbi="close">
+</phonepopup> -->
+
+<tabindex clicktab-type="classification"></tabindex>
+<Allpagesneed></Allpagesneed>
+

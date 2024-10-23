@@ -1,0 +1,23 @@
+<!--components/floor-swiper/index.wxml-->
+<view class="swiper-wrapper" wx:if="{{_imgList && _imgList.length>0}}" style="height:{{SwiperHeight?SwiperHeight:251}}rpx">
+  <swiper class="swiper" circular="true"  autoplay="true" interval="2500" bindchange="onImageChange">
+    <swiper-item class="swiper-item" wx:for="{{_imgList}}" bindtap="onBannerTap" data-position="{{index}}">
+      <image class="image" src="{{imgur}}{{item.imageVo.imagePath}}" bindload="onImageLoad" data-index="{{index}}" binderror="onImageError" mode="widthFix" lazy-load="{{true}}"></image>
+    </swiper-item>
+  </swiper>
+
+  <!--重置小圆点的样式 -->
+	<view class="dots" wx:if="{{_imgList&&_imgList.length>1}}"> 
+    <block wx:for="{{_imgList}}" wx:key="key"> 
+    <view class="dot{{index == current ? ' active' : ''}}"></view> 
+    </block> 
+ 	</view> 
+</view>
+
+<view class="ad-image-list" wx:if="{{_imgList2 && _imgList2.length>0}}">
+    <view class="ad-image-half-item" wx:for="{{_imgList2}}" bindtap="onBannerTap" data-position="{{index}}" data-sources-type="bannerList2">
+      <view class="ad-image-wrapper">
+        <image class="ad-image" src="{{imgur}}{{item.imageVo.imagePath}}" mode="widthFix" lazy-load="{{true}}"></image>
+      </view>
+    </view>
+  </view>

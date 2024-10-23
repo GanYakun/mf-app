@@ -1,0 +1,69 @@
+/* components/haosong-poster-dialog/index.wxss */
+.haosong-poster-dialog__container {
+  position: fixed; 
+  left:0; 
+  top:0; 
+  width: 100vw; 
+  height: 100vh; 
+  background: rgba(0, 0, 0, .4); 
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.haosong-poster-dialog__content {
+  margin: 0 62rpx;
+  background: #eeeeee;
+  padding: 19rpx 33rpx 43rpx 33rpx;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: center;
+}
+
+.haosong-poster-dialog__top {
+  padding: 31rpx 22rpx 41rpx 21rpx;
+  background: white;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.haosong-poster-dialog__header {
+  width: 74rpx;
+  height: 74rpx;
+  background: #f2f2f2;
+  border-radius: 37rpx;
+  flex-shrink: 0;
+}
+
+.haosong-poster-dialog__nickname {
+  color: #00060F;
+  font-size: 25rpx;
+  margin: 0 17rpx;
+  flex: 1;
+}
+
+.haosong-poster-dialog__save-album {
+  height: 56rpx;
+  line-height: 56rpx;
+  padding: 0 27rpx;
+  background: #F8B551;
+  color: white;
+  font-size: 21rpx;
+  border-radius: 28rpx;
+}
+
+.haosong-poster-dialog__poster-image {
+  height: 678rpx;
+  background: #f2f2f2;
+}
+
+.close {
+  width: 39rpx;
+  height: 39rpx;
+  margin: 0 62rpx 44rpx 62rpx;
+}

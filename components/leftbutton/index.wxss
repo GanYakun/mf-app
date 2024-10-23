@@ -1,0 +1,104 @@
+@import "/utils/font.wxss";
+
+.topbox {
+  display: flex;
+  /* align-items: center; */
+  position: fixed;
+  top: 0;
+  width: 100%;
+  text-align: center;
+  background-color: #ffffff;
+  z-index: 9999;
+}
+
+.mecard {
+  position: absolute;
+  /*margin-left: 50%;
+    margin-right: 50%;
+    transform:translate(-50%,-50%); */
+  margin: 0 auto;
+  width: 100%;
+  font-size: 28rpx;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+
+}
+
+.returnButton {
+  display: flex;
+  /* align-items: center; */
+  z-index: 100;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-indent: 10rpx;
+
+  /* width: 28%; */
+}
+
+.returnButton>view:nth-child(1) {
+  display: flex;
+  border: 1rpx #dddddd solid;
+  align-items: center;
+}
+
+.icon-fanhui,
+.icon-yemian-copy-copy {
+  font-size: 30rpx;
+}
+
+.fenge {
+  background-color: #dddddd;
+  width: 3rpx;
+  height: 50%;
+}
+
+.seizeaseat {
+  position: relative;
+  top: 0;
+}
+
+.WchatQrc {
+  background-color: transparent !important;
+  color: #ffffff;
+}
+
+.goIndex {
+  font-size: 26rpx;
+  padding: 0 20rpx 0 10rpx;
+  color: #000000;
+}
+
+.goIndex1 {
+  font-size: 26rpx;
+  padding: 0 20rpx 0 10rpx;
+  color: #ffffff;
+}
+
+.TopTitle {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  text-indent: 10rpx;
+  font-size: 15px;
+  /* background: #333; */
+  margin: 0 auto;
+}
+
+.backpage {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.top-title-text {
+  /* height: 100%; */
+  /* display: flex; */
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 8rpx;
+}
+

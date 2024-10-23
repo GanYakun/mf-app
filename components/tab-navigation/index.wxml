@@ -1,0 +1,179 @@
+<!-- <view class="bodys">
+<view class="bootomtab">
+<view wx:for="{{list}}" wx:key="key" catchtap="setad" data-index="{{index}}">
+<image src="{{item.iconPath}}"></image>
+<text>{{item.text}}</text>
+</view>
+</view>
+</view> -->
+
+<view class="bodys" wx:if="{{isBuyShop==3}}" style="height:108rpx;">
+	<view class="bootomtab">
+		<view wx:for="{{tabArr3}}" wx:key="key" catchtap="setad" data-index="{{index}}" data-page-type="2">
+					<button wx:if="{{item.type == 'share'}}" open-type="share" class="share-btn">
+				<image class="tab-image" src="{{clicktabType==item.type || item.isCollect?item.selectImage:item.image}}">
+				</image>
+				<text>分享</text>
+			</button>
+					<block wx:else>
+				<view >
+					<view class="invite customer3" wx:if="{{showBubble&&item.type=='customer'}}">
+						<view catchtap="callPhne">拨打电话</view>
+						<view class="tab-line"></view>
+						<view catchtap="customer">在线咨询</view>
+					</view>
+					<image class="tab-image" src="{{clicktabType==item.type || item.isCollect?item.selectImage:item.image}}">
+					</image>
+				</view>
+				<text
+					class="{{item.type=='design'?'tab-special-text':''}} {{item.isCollect?'collect-text':''}}">{{item.name}}</text>
+			</block>
+				
+
+
+
+		</view>
+		<view style="flex:unset;width:70%">
+		<slot name="btn"></slot>
+			</view>
+	</view>
+</view>
+
+
+
+<view wx:else class="bodys" style="height:{{isBuyShop == 2 ?108:90}}rpx; --bottom-inset:">
+	<view class="bootomtab">
+		<view wx:for="{{tabArr2}}" wx:if="{{isBuyShop == 2}}" wx:key="key" catchtap="setad" data-index="{{index}}"
+			data-page-type="2">
+			<button wx:if="{{item.type == 'share'}}" open-type="share" class="share-btn">
+				<image class="tab-image" src="{{clicktabType==item.type || item.isCollect?item.selectImage:item.image}}">
+				</image>
+				<text>分享</text>
+			</button>
+
+			<view wx:elif="{{item.type=='design'}}" class="isBuyShop2">
+				<image class="tab-image" src="{{clicktabType==item.type?item.selectImage:item.image}}"></image>
+				<text style="margin-left:15rpx;">预约{{item.name}}</text>
+			</view>
+			<block wx:else>
+				<view class="{{item.type=='design'?'tab-box':''}}">
+					<view class="invite {{isBuyShop==2?'invite2':''}}" wx:if="{{showBubble&&item.type=='customer'}}">
+						<view catchtap="callPhne">拨打电话</view>
+						<view class="tab-line"></view>
+						<view catchtap="customer">在线咨询</view>
+					</view>
+					<image class="tab-image" src="{{clicktabType==item.type || item.isCollect?item.selectImage:item.image}}">
+					</image>
+				</view>
+				<text
+					class="{{item.type=='design'?'tab-special-text':''}} {{item.isCollect?'collect-text':''}}">{{item.name}}</text>
+			</block>
+		</view>
+
+		<view wx:if="{{isBuyShop!=2 && isBuyShop != 1  }}" wx:for="{{tabArr}}" wx:key="key" catchtap="setad"
+			data-index="{{index}}">
+			<view class='invite' wx:if="{{showBubble&&item.type=='customer'}}">
+				<view catchtap="callPhne">拨打电话</view>
+				<view class="tab-line"></view>
+				<view catchtap="customer">在线咨询</view>
+			</view>
+			<view wx:if="{{isBuyShop == 2 && item.type=='design'}}" class="isBuyShop2">
+				<image class="tab-image" src="{{clicktabType==item.type?item.selectImage:item.image}}"></image>
+				<text style="margin-left:15rpx;">预约{{item.name}}</text>
+			</view>
+			<block wx:elif="{{item.isBuyShop==2}}">
+				<view class="{{item.type=='design'?'tab-box':''}}">
+					<image class="tab-image" src="{{clicktabType==item.type || item.isCollect?item.selectImage:item.image}}">
+					</image>
+				</view>
+				<text
+					class="{{item.type=='design'?'tab-special-text':''}} {{item.isCollect?'collect-text':''}}">{{item.name}}</text>
+			</block>
+			<block wx:elif="{{isBuyShop!=2 && _isBuyShop!=1}}">
+				<view class="{{item.type=='design'?'tab-box':''}}">
+					<image class="tab-image" src="{{clicktabType==item.type?item.selectImage:item.image}}"></image>
+				</view>
+				<text class="{{item.type=='design'?'tab-special-text':''}}">{{item.name}}</text>
+			</block>
+		</view>
+	</view>
+
+
+	<view wx:if="{{false}}">
+
+		<!-- <view catchtap="setad"  data-phone="0871-68123333" data-index="0">
+			<image src="{{clicktab===1?'/images/tab-nav-image/phonepng.png':'/images/tab-nav-image/phonepng.png'}}"></image>
+			<text>电话</text>
+		</view> -->
+
+		<view catchtap="setad" data-index="0">
+			<image class="tab-image"
+				src="{{clicktab===0?'/images/tab_new_house_checked.png':'/images/tab_index_normal.png'}}"></image>
+			<text class="tabname">首页</text>
+		</view>
+		<view catchtap="setad" data-index="1">
+
+
+		</view>
+		<view catchtap="setad" data-index="2">
+			<view class="tab-box">
+				<image class="tab-image"
+					src="{{clicktab===2?'/images/tab-nav-image/select_kefu.png':'/images/tab-nav-image/ic_design.png'}}"></image>
+			</view>
+			<text style="margin-top: 10rpx;">设计</text>
+		</view>
+
+		<view catchtap="setad" data-index="3" wx:if="{{isBuyShop == 0}}">
+			<image class="tab-image" src="{{clicktab===3?'':''}}"></image>
+			<text>分类</text>
+		</view>
+
+		<!-- <view  catchtap="setad" data-index="2">
+			<image src="{{clicktab===3?'/images/tab_new_cart.png':'/images/tab_old_cart.png'}}"></image>
+			<text>购物车</text>
+		</view> -->
+
+		<view catchtap="setad" data-index="4" wx:if="{{isBuyShop == 0}}">
+			<image class="tab-image"
+				src="{{clicktab===4?'/images/tab_renting_house_checked.png':'/images/tab_renting_house.png'}}"></image>
+			<text>我的</text>
+		</view>
+
+		<!-- 定制家具的收藏 -->
+		<view catchtap="Collection" wx:if="{{(isBuyShop ==2 || _isBuyShop == 1 )&& caseMessage.customList.length>0 }}">
+			<image class="tab-image"
+				src="{{caseMessage.customList[caseMessage.caseIndex].isCollect?'/images/tab-nav-image/ic_collection.png':'/images/tab-nav-image/ic_nocollection.png'}}">
+			</image>
+			<text class="{{caseMessage.customList[caseMessage.caseIndex].isCollect?'yes-collect':''}}">收藏1</text>
+		</view>
+
+		<view catchtap="Collection" wx:else>
+			<image class="tab-image"
+				src="{{caseMessage.isCollect?'/images/tab-nav-image/ic_collection.png':'/images/tab-nav-image/ic_nocollection.png'}}">
+			</image>
+			<text class="{{caseMessage.isCollect?'yes-collect':''}}">收藏2{{caseMessage.customList.length>0}}</text>
+		</view>
+
+
+
+		<view data-index="6" wx:if="{{isBuyShop == 2 || _isBuyShop == 1}}">
+			<button open-type="share" class="share-btn">
+				<image class="tab-image"
+					src="{{clicktab===4?'/images/tab-nav-image/ic_no_share.png':'/images/tab-nav-image/ic_no_share.png'}}">
+				</image>
+				<text>分享</text>
+			</button>
+		</view>
+	</view>
+</view>
+
+
+
+<!-- <popup id='popup' iosDialog1="{{iosDialog1}}" bind:guanbi="close">
+</popup> -->
+
+<!-- <popup id='popup' iosDialog1="{{iosDialog1}}" bind:guanbi="close">
+</popup>
+
+<phonepopup id='phonepopup' iosDialog2="{{iosDialog2}}" bind:guanbi="close">
+</phonepopup> -->

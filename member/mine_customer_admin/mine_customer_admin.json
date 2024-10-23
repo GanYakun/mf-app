@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "select-depart":"/components/select-depart/select-depart",
+    "organization-view": "/components/organization-view/index"
+  }
+}

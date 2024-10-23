@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "organization-view": "/components/organization-view/index"
+  }
+}

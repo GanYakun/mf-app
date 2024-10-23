@@ -1,0 +1,31 @@
+@import "../../utils//weui.wxss";
+.sure {
+  text-align: center;
+  border-color: #4898d5;
+  background-color: #2e8ded;
+  color: #fff;
+  height: 54rpx;
+  line-height: 54rpx;
+  border-radius: 5rpx;
+  font-weight: bold;
+  width: 100rpx;
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+  margin-left: auto;
+  margin-right: 20rpx;  
+}
+
+.weui-dialog{
+  border-radius: 6rpx;
+}
+
+.weui-dialog__hd{
+
+  padding: 0 20rpx;
+  font-size: 28rpx;
+  background-color: #f7f7f7;
+height: 80rpx;
+line-height: 80rpx;
+display: flex;
+justify-content: space-between;
+}

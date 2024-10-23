@@ -1,0 +1,84 @@
+<wxs src="../../utils/filter.wxs" module="filter"></wxs>
+<scroll-view scroll-y="true" style="height:calc(100% - 130rpx)">
+	<leftbutton toptitle="核销列表"></leftbutton>
+	<view class="list">
+			<view class="title" style="padding:20rpx">{{orderMessage.period}}</view>
+			<block wx:for="{{orderMessage.orderDetailsList}}" wx:for-index="fatindex" wx:key="key">
+
+			<view class="ordertop {{fatindex==0?'':'ordertops'}}"  
+				bindtap="{{item.writeOff!=1?'Multiplechoice':''}}"  data-index="{{fatindex}}"
+				data-isclick="{{item.isclick}}">
+				<view class="left">
+					<view class="clickcircular {{item.isclick?'isclick':''}} {{item.writeOff!=1?'':'isclickno'}}"></view>
+					<image src="{{imgurl}}{{item.imagePath}}" mode="aspectFill"></image>
+					<view class="title-t">
+						<text>{{item.itemName}}</text>
+						<view class="tongj">
+							<view class="tatol"><text decode="true" class="tatolprice">￥{{item.unitPrice}}</text></view>
+							<view class="count">x{{item.productCounts}}</view>
+						</view>
+					</view>
+				</view>
+				<view class="right">
+					<view class="totalnum">总{{item.productCounts}} / 剩余{{item.writeOffQuantity?item.productCounts-item.writeOffQuantity:item.productCounts}}</view>
+					<view class="counter">
+						<view class="reduce" catchtap="reduce" data-index="{{fatindex}}" data-nums="{{item.nums}}" data-writequantity="{{item.writeOffQuantity}}" data-productcounts="{{item.productCounts}}">-</view>
+						<view class="num">{{item.nums?item.nums:item.productCounts-(item.writeOffQuantity?item.writeOffQuantity:0)}}</view>
+						<view class="add" catchtap="add" data-index="{{fatindex}}" data-nums="{{item.nums}}" data-writequantity="{{item.writeOffQuantity}}" data-productcounts="{{item.productCounts}}">+</view>
+					</view>
+				</view>
+				<!-- <view class="btnhexiao {{item.writeOff==1?'nobtnhexiao':''}}" data-id="{{item.id}}"
+					catchtap="{{item.writeOff==1?'':'btnhexiao'}}">{{item.writeOff==1?'已核销':'核销'}}</view> -->
+			</view>
+		
+		</block>
+		<view class="orderdetail">
+			<view class="item"><label for="">订单编号：</label>{{orderMessage.orderNum}}</view>
+			<view class="item"><label for="">订单时间：</label>{{orderMessage.createDate}}</view>
+		</view>
+	</view>
+<block wx:if="{{orderMessage.writeOffList.length>0}}" wx:for="{{orderMessage.writeOffList}}"  wx:key="key">
+	<view class="hexiaobox">
+<view class="heixaotopbox">
+<view class="hxborder"></view><text class="detailed">核销明细</text>
+</view>
+<view style="display:flex">
+<view class="hxpeople">管理员{{filter.encodeName(item.writeOffName)}}核销</view>
+<view class="hxpeopletime" style="margin-left:auto">{{filter.timetransformationTime(item.createDate)}}</view>
+</view>
+<view class="hxshop" wx:for="{{item.child}}" wx:for-item="items" wx:key="key">{{items.productName}} - {{items.writeOffNum}}</view>
+</view>
+</block>
+
+</scroll-view>
+<view class="bottomview">
+	<view style="display:flex;align-items: center;" wx:if="{{item.writeOff !=1}}">
+	 <view class="clickcircular {{isall?'isclick':''}}" bindtap="allclick"  data-isall="{{isall}}"></view>
+	 <view>全部核销</view>
+	</view>
+	<!-- <view>本次核销：<text style="color:#ff7630">3</text></view> -->
+	<view class="batch" bindtap="batch">确认核销</view>
+	<!-- <view class="batch" catchtap="batch">
+		批量核销<text wx:if="{{num > 0}}">({{num}})</text>
+	</view>
+	<view class="allclick" bindtap="allclick" data-isall="{{isall}}">{{isall?'取消全选':'全选'}}</view> -->
+</view>
+
+
+
+<!-- 确认核销的弹窗 -->
+<view class="fadeIn" wx:if="{{androidDialog1}}">
+        <view class="weui-mask"></view>
+        <view class="weui-dialog weui-skin_android">
+            <view class="weui-dialog__hd"><strong class="weui-dialog__title">是否确认核销以下内容</strong></view>
+            <view class="weui-dialog__bd">
+							<scroll-view scroll-y="true" style="height:200rpx">
+							<view style="font-size:26rpx;" wx:for="{{WriteoffMessage}}" wx:for-item="items" wx:key="key">{{items.name}} - {{items.nums}}</view>
+						</scroll-view>
+            </view>
+            <view class="weui-dialog__ft">
+                <a class="weui-dialog__btn weui-dialog__btn_default" bindtap="close">取消</a>
+                <a class="weui-dialog__btn weui-dialog__btn_primary" bindtap="confirm">确定</a>
+            </view>
+        </view>
+    </view>

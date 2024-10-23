@@ -1,0 +1,14 @@
+<!--pages/video-list/video-list.wxml-->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<view class="container">
+  <leftbutton toptitle="{{topTitle}}" wx:if="{{hideCustomBar!=1}}"></leftbutton>
+  <scroll-view scroll-x="true" class="tabs" wx:if="{{HeadScrr}}">
+    <view class="tab-item {{curTab == index ? 'tab-selected':''}}" wx:for="{{videoSearchItem}}" bindtap="onTabTap" data-id="{{item.id}}" data-index="{{index}}">{{item.searchName}}</view>
+  </scroll-view>
+  <scroll-view scroll-y="{{true}}" scroll-top="{{scrollTop}}" class="vertical-scroll" style="height: calc(100% - {{HeadScrr?88:0}}rpx - {{LeftButtonnavHeight}}rpx);" bindscroll="onScroll" bindscrolltolower="loadMoreVideo">
+    <view class="h10"></view>
+    <view class="tips" wx:if="{{noData}}">暂无数据</view>
+    <video-list video-list="{{videoList}}" bindoninit="onVideoListInit" current="{{playIndex}}" next-page="{{nextPage}}"></video-list>
+    <view class="h10"></view>
+  </scroll-view>
+</view>

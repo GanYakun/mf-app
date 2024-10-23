@@ -1,0 +1,8 @@
+<view wx:if="{{false}}">
+      <view class="iconfont icon-zanwushuju">\n</view>
+      <view class="nodata">暂无数据</view>
+    </view>
+
+    <view class="nodata2">
+      暂无数据
+    </view>

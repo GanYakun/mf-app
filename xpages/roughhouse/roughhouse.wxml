@@ -1,0 +1,95 @@
+<leftbutton toptitle="{{TopTitle}}" component-data="{{componentData}}">
+	<search id="search" slot="search" prent-class="prent-class" title="{{toptext}}搜索" pageWindowHeight="{{pageWindowHeight}}" saveoptions="{{saveoptions}}" chiocetext="{{chiocetext}}" startnewsClassId="{{newsClassId}}" oldnewclassid="{{newsClassId}}" bind:dianji="searchword"></search>
+</leftbutton>
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 楼盘向右滑动开始 -->
+<scroll-view wx:if="{{false}}" scroll-into-view="{{scrollViewId}}" scroll-with-animation="true" id="scroll-view" scroll-left="{{scrollLeft}}" class="propForSale" scroll-x="true">
+	<view class="propForSaleView {{selectedId[sublists[0].searchOptionRootCode] == item.id?'selpropForSale':''}}" bindtap="selected" id="item{{item.id}}"  data-index="{{index}}" data-too="1" data-id="{{item.id}}"  wx:for="{{proForSale}}">
+		{{item.searchName}}
+	</view>
+</scroll-view>
+<!-- 楼盘向右滑动结束 -->
+
+<view class="subFixedTop">
+	<view class="item flex" wx:if="{{index!=3}}"  wx:for="{{sublists}}" wx:key="key" bindtap="screenEd" data-tabname="{{item.searchOptionRootName}}"  data-searchOptionRootCode="{{item.searchOptionRootCode}}" data-mask="1" data-index="{{index}}" data-type="0">
+		<view>{{item.searchOptionRootName}}</view>
+		<view  class="iconfont icon-jiantou9" style="font-size:12px;margin-left:10rpx"></view>
+	</view>
+
+	<view class="item flex" wx:if="{{sublists.length>0}}" bindtap="screenEd" data-tabname="设计师" data-mask="1" data-index="99" data-type="1">
+		<view style="line-height:32rpx;">团队</view>
+		<view class="iconfont icon-jiantou9" style="font-size:12px;margin-left:10rpx"></view>
+	</view>
+	<view class="item flex" wx:if="{{index == 3}}"  wx:for="{{sublists}}" wx:key="key" bindtap="screenEd" data-tabname="{{item.searchOptionRootName}}"  data-searchOptionRootCode="{{item.searchOptionRootCode}}" data-mask="1" data-index="{{index}}" data-type="0">
+		<view>{{item.searchOptionRootName}}</view>
+		<view  class="iconfont icon-jiantou9" style="font-size:12px;margin-left:10rpx"></view>
+	</view>
+	<!-- <view class="item flex" bindtap="screenEd" data-tab-type="设计师" data-mask="1" data-index="100" data-type="1">
+		<view style="line-height:32rpx;">筛选</view>
+		<view class="iconfont icon-shaixuan" style="font-size:24rpx;margin-left:10rpx"></view>
+	</view> -->
+	
+
+	<!-- <view class="item flex" bindtap="screenEd" data-tabname="设计师" data-mask="1" data-index="99" data-type="1">
+		<view style="line-height:32rpx;">筛选</view>
+		<view class="iconfont icon-jiantou9" style="font-size:12px;margin-left:10rpx"></view>
+	</view> -->
+</view>
+<view class="mask" wx:if="{{maskindex != -1}}" bindtap="screenEdclose" data-mask="0"></view>
+<view class="{{maskindex != -1?'selected':'screenBox-show'}}" style="height:{{maskindex!=-1?(topheight>800?800:topheight):0}}rpx">
+	
+	<view class="neibu">
+<scroll-view scroll-y='true'  style="height:{{maskindex!=-1?(topheight>800?800:topheight):0}}rpx">
+	<view class="neibuhuadon" >
+		<view class="selectedval {{selectedId[filterStyles].id == item.id?'selectedvals':''}}"  wx:for="{{selectedval[filterStyles]}}" bindtap="selected" data-id="{{item.id}}" data-name="{{item.searchName}}" data-too="10"  wx:if="{{maskindex!=99}}" wx:key="key">
+			{{item.searchName}}
+		</view>
+		<!-- 设计师 -->
+		<view class="selectedval {{customization[3] == item.id?'selectedvals':''}}" wx:if="{{maskindex==99}}" wx:for="{{selectedval4}}" wx:key="key" data-index="{{index}}" bindtap="selected" data-too="4" data-id="{{item.id}}" data-name="{{item.name}}" data-mask="0">
+			{{item.name}}
+		</view>
+</view>
+<view class="neibuhuadon" wx:if="{{false}}">
+		<!-- 楼盘位置 -->
+		<view wx:for="{{selectedval1}}" wx:key="key"  class="selectedval {{customization[0] == item.id?'selectedvals':''}}" wx:if="{{maskindex==0}}"  data-index="{{index}}" bindtap="selected" data-too="1" data-id="{{item.id}}"  data-mask="0">{{item.searchName}}</view>
+		<!-- 风格 -->
+		<view class="selectedval {{customization[1] == item.id?'selectedvals':''}}" wx:for="{{selectedval2}}" wx:key="key" wx:if="{{maskindex==1}}"  data-index="{{index}}" bindtap="selected" data-too="2" data-id="{{item.id}}" data-mask="0">{{item.searchName}}</view>
+		<!-- 户型 -->
+		<view class="selectedval {{customization[2] == item.id?'selectedvals':''}}" wx:if="{{maskindex==2}}" wx:for="{{selectedval3}}" wx:key="key" data-index="{{index}}" bindtap="selected" data-too="3" data-id="{{item.id}}" data-mask="0">{{item.searchName}}</view>
+		<!-- 设计师 -->
+		<view class="selectedval {{customization[3] == item.id?'selectedvals':''}}" wx:if="{{maskindex==99}}" wx:for="{{selectedval4}}" wx:key="key" data-index="{{index}}" bindtap="selected" data-too="4" data-id="{{item.id}}" data-mask="0">{{item.name}}
+		</view>
+		</view>
+		</scroll-view>
+	</view>
+</view>
+
+<scroll-view scroll-x="{{true}}" class="selected-options-box" wx:if="{{selectedOptions.length>0||designerName}}">
+	<view class="selected-options-view" wx:for="{{selectedOptions}}" wx:if="{{item.name}}"  wx:key="key">
+		<view style="display:flex">
+		<view >
+			{{item.name}}
+		</view>
+		<view class="selected-close" catchtap="clearOpetions" data-index="{{index}}"><text class="iconfont icon-cha"></text></view>
+	</view>
+	</view>
+		<view class="selected-options-view"  wx:if="{{designerName}}">
+			<view  style="display:flex">
+			<view>{{designerName}}</view>
+			<view class="selected-close" catchtap="clearDesNmae"><text class="iconfont icon-cha"></text></view>
+		</view>
+		</view>
+</scroll-view>
+<!-- 调用模板 -->
+<scroll-view scroll-y="true" bindscrolltoupper="slidetop" class="jianrongphonex" style="height:calc(100% - 80rpx  - {{LeftButtonnavHeight}}rpx - {{(isFlter||designerName)?90:0}}rpx);" bindscrolltolower="slideusage" scroll-top="{{scrollTop}}">
+<view class="distributed" wx:if="{{exlist.list==''}}">暂无数据</view>
+	<import src="../../template/exhibition/exhibition.wxml" />
+	<block wx:for="{{exlist.list}}" wx:key="unique">
+		<template is="exhibition" data="{{item,imgur}}" />
+	</block>
+</scroll-view>
+
+<!-- 筛选组件 -->
+<!-- <view class="house-screen {{isHouseScreen?'house-screen-show':'house-screen-hide'}}" style="top:{{LeftButtonnavHeight}}rpx;height: calc(100% - {{LeftButtonnavHeight}}rpx)" >
+<house-screen></house-screen>
+</view> -->

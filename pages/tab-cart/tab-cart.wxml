@@ -1,0 +1,116 @@
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 老版本购物车 -->
+
+
+
+	<!-- 购物车列表 -->
+<wxs src="/utils/filter.wxs" module="filter">
+</wxs>
+<leftbutton toptitle="购物车"></leftbutton>
+ <!-- 全选开始 -->
+ <view class="type-box" bindtap="listScreen">
+ <view data-type="0" style="color:{{cartType==0?'#f08300':'#000000'}}">产品线上支付</view>
+  <label></label>
+ <view data-type="1" style="color:{{cartType==1?'#f08300':'#000000'}}">产品线下支付</view>
+ <label></label>
+ <view data-type="2" style="color:{{cartType==2?'#f08300':'#000000'}}">服务线上支付</view>
+
+ </view>
+ <!-- wx:if="{{gouwuchelist&&gouwuchelist.length>0}}" -->
+ <view class="select-all" bindtap="allchioce" >
+      <view class="{{isall?'allcirclebox':'circlebox'}}" >
+        <text hidden="{{isall?false:true}}" class="iconfont icon-gougou fonttext"></text>
+      </view>
+      <view class="selectall" >全选</view>
+    </view>
+    <!-- 全选结束 -->
+<scroll-view class="page-scroll" scroll-y="true" bindscroll="scroll" style="height:calc(100% - 289rpx - 77rpx - {{LeftButtonnavHeight}}rpx - 80rpx);">
+  
+  <view class="zanwushuju" wx:if="{{gouwuchelist==''}}">暂无数据</view>
+  <view class="cartlist" wx:if="{{gouwuchelist.length>0}}">
+   
+    <block wx:for='{{gouwuchelist}}' wx:key='key'>
+      <view class="cartlistone" bindtap="ProductDetails" data-id="{{item.productId}}">
+        <view  catchtap="chioceshop" data-index="{{index}}" data-quantity="{{item.quantity}}">
+        <view class="{{item.ischioce?'ischange':'cartcircle'}}">
+          <text class="iconfont icon-gougou"></text>
+        </view>
+      </view>
+        <view class="cartimage">
+          <image src="{{imgur}}{{item.picUrl}}"></image>
+          <view wx:if="{{item.onlineAndOffline==1}}" class="payment-method {{item.onlineAndOffline==1?'onlineAndOffline1':'onlineAndOffline'}}">{{item.onlineAndOffline == 1?'线下支付':'线上支付'}}</view>
+        </view>
+        <view class="shopname">
+          <view class="deleteshop">
+            <view>{{item.productName == null?item.itemName:item.productName}}</view>
+            <text class="iconfont icon-lajitong" data-id="{{item.id}}" data-index="{{index}}" catchtap="deleteshop" ></text>
+          </view>
+          <view class="guige">{{item.propertiesName}}</view>
+          <view class="explain" wx:if="{{item.subtitle}}">
+            <text class="explain-title">说明:</text>
+            {{item.subtitle}}</view>
+          <!-- <view style="display:flex;justify-content: space-between;align-items: center;"> -->
+          <view class="shopprice">
+            <view>
+              <view class="price-indication"  >￥</view>
+              <text >{{item.onePrice}}</text>
+            </view>
+          
+          <view style="display:flex;justify-content: space-between;align-items: center;">
+            <!-- wx:if="{{item.NumClick && !isOtherShopnumClose}}"  -->
+            <view class="shopnum"  data-index="{{index}}">
+              <view class="changenum" data-index="{{index}}" catchtap="jian" style="border-radius: 10rpx 0 0 10rpx;color:#d5d5d5">-
+              </view>
+              <view class="shopnumber">{{item.quantity}}</view>
+              <view class="changenum" data-index="{{index}}" catchtap="jia" style="border-radius: 0 10rpx 10rpx 0;">+
+              </view>
+            </view>
+              <!-- <view class="shopnumberNoClick" catchtap="NumClick" data-index="{{index}}" wx:else>x{{item.quantity}}</view> -->
+          </view>
+            <!-- 小计开始 -->
+            <view class="subtotal"><text style="font-size: 20rpx;" decode="true" >小计:&nbsp;</text>{{filter.toFixNoTwoZero(item.quantity*item.onePrice)}}</view>
+            <!-- 小计结束 -->
+          </view>
+        </view>
+      </view>
+      <view class="bootom-border"></view>
+    </block>
+  </view>
+</scroll-view>
+<!-- 交易说明开始 -->
+<view class="transaction-explain">
+<transaction-description style="height:100%"></transaction-description>
+</view>
+<!-- 交易说明结束 -->
+<!-- 底部去结算 -->
+<view class="button_bootm">
+  <view class="bootmbox">
+    
+      <view class="total">x{{alllistnumber}}</view>
+			<view style="font-size: 30rpx;margin-right:20rpx;">合计:<text style="color:#f97705">￥{{filter.toFixNoTwoZero(settlement)}}</text></view>
+			<view class="box-pay">
+      <view class="online-payment" catchtap="settlement" wx:if="{{cartType==0||cartType==2}}">线上支付</view>
+			<view wx:else class="offline-payment" catchtap="settlement" data-params="offlinePayment">线下支付</view>
+			</view>
+      <!-- <view class="settlement" catchtap="settlement">支付金额{{filter.toFix2(settlement)}}</view> -->
+      <!-- {{alllistnumber}} 选中的购物车产品数量-->
+  </view>
+</view>
+<!-- <popup id='popup' iosDialog1="{{iosDialog1}}" bind:guanbi="close" bind:goto="together">
+</popup>
+<phonepopup id='phonepopup' iosDialog2="{{iosDialog2}}" bind:guanbi="phoneclose">
+</phonepopup> -->
+<!-- <tabindex clicktab="3"></tabindex> -->
+<Allpagesneed isstyle="tabcart"></Allpagesneed>
+<view class="tips" wx:if="{{isReselectShow}}">
+	<view>
+该订单无法提交
+加入购物车的产品包含线下支付产品
+
+</view>
+<view></view>
+	<view bindtap="reselect">
+		重新选择
+	</view>
+</view>
+<view class="mark" wx:if="{{isReselectShow}}"></view>

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "leftbutton":"/components/leftbutton/index",
+    "nodata":"/components/nodata/nodata"
+  },
+  "navigationStyle":"custom"
+}

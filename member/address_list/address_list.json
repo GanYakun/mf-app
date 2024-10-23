@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "van-swipe-cell": "/miniprogram_npm/vant/swipe-cell/index",
+    "van-cell-group": "/miniprogram_npm/vant/cell-group/index",
+    "van-cell": "/miniprogram_npm/vant/cell/index"
+  },
+  "navigationBarBackgroundColor": "#EDEDED"
+} 

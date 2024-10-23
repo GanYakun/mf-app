@@ -1,0 +1,36 @@
+.swiperbox{
+  width: 710rpx;
+}
+.slideitem{
+  border-radius: 16rpx;
+}
+
+
+/*用来包裹所有的小圆点 */
+.dots {
+  width: 710rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: absolute;
+margin-top: -20rpx;
+ }
+ /*未选中时的小圆点样式 */
+ .dot {
+  width: 18rpx;
+  height: 12rpx;
+  border-radius: inherit;
+  border-radius: 12rpx;
+  margin-left: 10rpx;
+  background: #ff6c00;
+
+ }
+ /*选中以后的小圆点样式 */
+ .active {
+  width: 28rpx;
+  height: 10rpx;
+  background: #ffffff;
+
+  border-radius: 6rpx;
+  margin-left: 10rpx;
+ }

@@ -1,0 +1,48 @@
+<!--components/video-item/index.wxml-->
+<view class="video-item">
+  <view class="top-bar">
+    <image src="{{videoData.searchOptionPath}}" mode="aspectFit" binderror="onLogoLoadError" lazy-load="{{true}}"></image>
+    <view>{{videoData.searchOptionName ? videoData.searchOptionName:""}}</view>
+  </view>
+  <view class="video-wrapper" style="height: {{videoData.videoHeight ? (videoData.videoHeight + 'px'):'400rpx'}};">
+    <video id="player" class="player" src="{{videoData.vedioPathParse.path}}" object-fit="contain" wx:if="{{showPlayer}}" show-center-play-btn="{{false}}" custom-cache="{{true}}" show-fullscreen-btn="{{false}}"></video>
+    <image src="{{videoData.wapThumbnailPathParse.path}}" class="thumbnail" wx:if="{{!showPlayer}}" lazy-load="{{true}}"></image>
+    <view class="play-wrapper" wx:if="{{!showPlayer}}">
+      <image src="./images/play.png" class="play" catchtap="onPlayTap" lazy-load="{{true}}"></image>
+      <view>{{videoData.durationStr}}</view>
+    </view>
+  </view>
+  <view class="video-info">
+    <view class="video-name">{{videoData.title}}</view>
+    <view class="bottom-bar">
+      <view class="left">
+        <view class="collect" catchtap="toCollect">
+          <image src="{{videoData.isCollect ? './images/collect_hover.png':'./images/collect.png'}}" lazy-load="{{true}}"></image>
+          <view>{{videoData.isCollect ? '收藏':'收藏'}}</view>
+        </view>
+        <button class="btn-share" open-type="share" catchtap="share" data-share-type="video" data-video-data="{{videoData}}" data-index="{{position}}">
+          <view class="share">
+            <image src="./images/zhuanfa.png" lazy-load="{{true}}"></image>
+            <view>转发</view>
+          </view>
+        </button>
+      </view>
+      <view class="right">
+        <view class="like" catchtap="toLike">
+          <image src="{{videoData.hasPraise ? './images/like_hover.png':'./images/like.png'}}" lazy-load="{{true}}"></image>
+          <view>{{videoData.praise ? videoData.praise:'0'}}</view>
+        </view>
+
+        <view class="comment" catchtap="toCommentList">
+          <image src="./images/comment.png" lazy-load="{{true}}"></image>
+          <view>{{videoData.commentCount ? videoData.commentCount:'0'}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="collect-memheaders" wx:if="{{videoData.collectMemberLogList && videoData.collectMemberLogList.length > 0}}">
+      <image class="memheader" wx:for="{{videoData.collectMemberLogList}}" src="{{item && item.headPath ? item.headPath:'./images/default_header.png'}}" wx:if="{{index < 8}}" lazy-load="{{true}}"></image>
+      <view class="collect-count" style="font-size:28rpx;color:#333;margin-left:10rpx"> {{videoData.collectCount ? videoData.collectCount:'0'}}<text style="font-size:22rpx;color:#999;">个用户收藏</text></view>
+    </view>
+  </view>
+</view>

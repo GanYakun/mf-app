@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+  "leftbutton":"/components/leftbutton/index"
+  },
+  "navigationStyle":"custom"
+}

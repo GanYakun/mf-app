@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "leftbutton":"/components/leftbutton/index",
+    "wxml-to-canvas":"/components/wxml-to-canvas/index",
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed"
+  },
+  "navigationBarTitleText": "我的经纪人",
+  "navigationStyle":"custom"
+}

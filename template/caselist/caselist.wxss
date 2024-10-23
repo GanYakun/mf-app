@@ -1,0 +1,39 @@
+
+@import "/utils/font.wxss";
+
+.casebox{
+  width: 96%;
+  margin: 0 auto;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  border-radius: 10rpx;
+  /* padding: 20rpx; */
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  }
+  
+  .casenameandtime{
+    width: 85%;
+  }
+  .shenpi{
+    width: 15%;
+  }
+
+  .casename{
+    font-size: 28rpx;
+font-weight: bold;
+text-indent: 20rpx;
+
+  }
+  .casetime{
+font-size: 28rpx;
+color: #bbbaba;
+margin-top: 20rpx;
+text-indent: 20rpx;
+
+  }
+  .icon-daishenpi{
+
+font-size: 80rpx;
+  }

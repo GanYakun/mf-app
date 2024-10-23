@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "grid-image-view": "/components/grid-image-view/index",
+    "produck-sku-dialog": "/components/product-sku-dialog/index"
+  },
+  "navigationStyle": "default"
+}

@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "leftbutton":"/components/leftbutton/index",
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed"
+  },
+  "navigationStyle":"custom"
+}

@@ -1,0 +1,33 @@
+<wxs src="/utils/filter.wxs" module="filter"></wxs>
+<view class="form1">
+  <view class="tip">已为昆明 <e>89860</e>户业主提供服务，今日还剩<e>18</e>个名额</view>
+  <view wx:if="{{!isclicktab}}" class="main flex-r-s">
+    <view class="item flex">
+      <!-- <view class="iconfont my_light"></view> -->
+      <text class="iconfont icon-yonghu1" style="color:#666666;"></text><input placeholder="请输入您的称呼"
+        placeholder-class="nameandphonepla" bindinput="yuyuename" value="{{yuyuevrdata}}"></input>
+    </view>
+    <view class="item flex">
+      <!-- <view class="iconfont mobile"></view> -->
+      <text class="iconfont icon-shouji3" style="color:#666666;"></text><input placeholder="请输入手机号码" type="number"
+        placeholder-class="nameandphonepla" bindinput="yuyuephone" value="{{yuyuevrdata}}"></input>
+    </view>
+  </view>
+  <view class="btn" catchtap="tijioayuyue">0元抢预约设计</view>
+
+  <!-- 广告 -->
+  <view class="adv flex" style="background-color:transparent;" wx:if="{{msgList && msgList.length > 0}}">
+    <view class="advleft">
+      <view class="text1">昆明300+</view>
+      <view class="text2">设计师为您服务</view>
+    </view>
+    <swiper class="advright" vertical="true" autoplay="true" circular="true" interval="1000" display-multiple-items="2">
+      <block wx:for="{{_msgList}}" wx:key="key">
+        <swiper-item>
+          <view class="advmain"><text decode="true">{{filter.NameEncryption(item.name)}}&nbsp;&nbsp;&nbsp;已申请{{filter.MonthDay(item.createDate)}}上门量尺</text>
+          </view>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+</view>

@@ -1,0 +1,41 @@
+<!--order/evaluate/evaluate.wxml-->
+
+<!--xpages/server-shop/server-shop.wxml-->
+<!--businesscard/server-in-help-detail/server-in-help-detail.wxml-->
+<wxs module="filter" src="/utils/filter.wxs"></wxs>
+<Loding wx:if="{{isShowLoding}}"></Loding>
+
+<scroll-view scroll-y="{{true}}" style="height:100%;" >
+  <leftbutton toptitle="暖心服务"></leftbutton>
+  <view class="evaluate-box">
+    <text class="ask">您对师傅服务满意吗？</text>
+    <view class="border"></view>
+    <view class="satisfied-box">
+      <view wx:for="{{evaluateArr}}" wx:key="key" class="satisfied {{evaIndex!=index?'nosel':''}}"  data-type="{{index}}"  bindtap="isSatisfied">
+      <image wx:if="{{index==0}}" src="{{ftpUrl}}/{{evaIndex==0?'no-satisfied-yes.png':'no-satisfied-no.png'}}" mode="widthFix"></image>
+      <image wx:else  src="{{ftpUrl}}/{{evaIndex==1?'satisfied-yes.png':'satisfied-no.png'}}" mode="widthFix"></image>
+      <view>{{item.title}}</view>
+      </view>
+      <view class="satisfied" bindtap="isSatisfied" data-type="1" wx:if="{{false}}">
+      <image src="{{ftpUrl}}/satisfied-no.png" mode="widthFix"></image>
+      <view>满意</view>
+      </view>
+    </view>
+
+    <view class="call-me">{{evaluateArr[evaIndex].markedWords}}</view>
+    <view class="eva-lable">
+      <view bindtap="evaItem" style="background-color:{{filter.filterElement(indexArr[evaIndex],index)?'#ddddde':''}}" wx:key="key" data-index="{{index}}" wx:for="{{filter.ConvertToArray(evaluateArr[evaIndex].labelTags)}}">{{item}}</view>
+      <!-- {{filter.filterElement(indexArr[evaIndex].arr,index)?'selc-lable':''}} -->
+    </view>
+
+    <textarea placeholder="请输入您想说的话" placeholder-style="color: #9fa0a0;font-size:28rpx;" class="eva-input" bindinput="evaInput" maxlength="100">
+    
+    <view class="number-of-words">{{wordLength||0}}/100</view>
+    </textarea>
+
+    <view class="eva-sub" bindtap="evaSub">
+    评价
+    </view>
+  </view>
+</scroll-view>
+<Allpagesneed></Allpagesneed>

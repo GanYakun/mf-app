@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "leftbutton":"/components/leftbutton/index",
+    "Allpagesneed":"/components/Allpagesneed/Allpagesneed",
+    "video-list": "/components/video-list/index"
+  },
+  "navigationBarTitleText": "商品收藏"
+  
+}

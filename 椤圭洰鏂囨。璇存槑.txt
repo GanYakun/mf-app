@@ -1,0 +1,53 @@
+1.本月大促有四个样式。本月大促的组件为floor-item-gongge
+
+2.首页数据太多导致比较卡，可以到组件floor-list下搜索 ”控制首页显示的数据条数“ 来控制首页显示的数量
+
+3.引导用户登陆的代码
+  if (!app.globalData.token) {
+          app.UserLoginToClick()
+          return false
+    }
+
+4.首页楼层的广告图公告接受事件
+  floor-list 组件里的 onAction
+  "entryPagePath": "pages/test-page/test-page",
+
+5.判断是否输出日志
+  var isConsole = app.globalData.isConsole
+  if(isConsole){
+    console.log("输出日志")
+  }
+  第二种写法
+  isConsole?console.log("输出日志"):''
+
+  6.  页面引入加载弹窗
+  <!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 加载弹窗结束 -->
+
+7.onlineAndOffline  为判断线上支付和线下支付的商品
+0----线上
+1----线下
+线下的不可以线上支付
+线上的支持线下支付
+
+8.app.js 里的onUnhandledRejection函数
+
+9.qcappnoshare:true 页面设置这个表示不分享
+
+10.订单状态说明
+  orderStatus:{
+    待评价：2
+    待发货：0
+    待付款：1
+    待收货：8
+    买家取消：5
+    订单超时关闭：10
+  }
+
+  11.没有数据显示的组件
+  <nodata></nodata> 
+
+  12.分享时隐藏顶部tab栏目
+  wx:if="{{hideCustomBar!=1}}"
+  

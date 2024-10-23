@@ -1,0 +1,138 @@
+<!-- 效果图详情界面 -->
+
+<!-- 轮播图 -->
+<scroll-view scroll-y="true" style="height:calc(100% - {{tabIndexHeight}}rpx)">
+	<leftbutton toptitle="{{TopTitle}}" wx:if="{{hideCustomBar!=1}}"></leftbutton>
+	<view class="top-plate">
+	<swiper class="lunboswiper" wx:if="{{(modelList.imagePathImageVoList.length>0||modelList.topImageImageVo.imagePath)&&setType=='photo'}}" indicator-dots="{{true}}" indicator-color="#ffffff" indicator-active-color="#ff6c00" circular="true">
+		<swiper-item>
+			<image wx:if="{{modelList.topImageImageVo.imagePath!=''}}" style="height:100%;width:100%;" mode="aspectFill" src="{{imgur}}{{modelList.topImageImageVo.imagePath}}"></image>
+		</swiper-item>
+		<block wx:for="{{modelList.imagePathImageVoList}}" wx:key="key">
+			<swiper-item>
+				<image wx:if='{{item.imagePath}}' style="height:100%;width:100%;" mode="aspectFill" src="{{imgur}}{{item.imagePath}}"></image>
+			</swiper-item>
+		</block>
+	</swiper>
+	<view class="video-box" wx:if="{{modelList.videoVo.imagePath&&setType=='video'}}">
+						<video style="width:100%;height:100%;" show-center-play-btn='falsex'
+							src="{{imgur}}{{modelList.videoVo.imagePath}}"></video>
+					</view>
+					<!-- vr开始 -->
+					<view class="vr-box" style="background-image: url({{imgur}}{{modelList.topImageImageVo.imagePath}})"  wx:if="{{modelList.vrUrlMain&&setType=='VR'}}">
+						<view class="vr-icon" catchtap="vrPage" data-vrurl="{{modelList.vrUrlMain}}">
+							<text class="iconfont icon-VR1"></text>
+						</view>
+					</view>
+				<!-- vr结束 -->
+	<view class="switch-options" bindtap="switchTap">
+		<view class="{{setType=='photo'?'yes-options':''}}" data-type="photo" wx:if="{{(modelList.imagePathImageVoList.length>0||modelList.topImageImageVo.imagePath)}}">图片</view>
+		<view class="{{setType=='video'?'yes-options':''}}" data-type="video" data-type="video" wx:if="{{modelList.videoVo.imagePath}}">视频</view>
+		<view class="{{setType=='VR'?'yes-options':''}}" data-type="vr" data-type="VR" wx:if="{{modelList.vrUrlMain}}">VR</view>
+	</view>
+	<view class="notan-box">
+		<view class="notan">{{modelList.caseTitle}}</view>
+		<view class="caseIdea">{{modelList.caseIdea}}</view>
+	</view>
+	</view>
+	<!-- 内容部分 -->
+	<view class="transferContent">
+	
+		<!-- 复选框弹窗 -->
+		<!-- <view class="checkboxes">
+			<view class="hasboxedvalue" wx:for="{{hasboxedvalue}}" catchtap="hasboxedvalue" wx:key="key" catchtap="onPopupTap" data-remark="{{item.remark}}">
+				<text class="iconfont icon-xuanzhong"></text>{{item.name}}
+			</view>
+		</view> -->
+		<view class="content-grids" bindtap="DesignerDetails" data-id="{{modelList.designerId}}">
+				<view class="imagesControllertest">
+					<image style="width:100%;height:100%" src="{{imgur}}{{modelList.designerDecoratorEntity.imageVo.imagePath}}"
+						mode="widthFix"></image>
+				</view>
+				<!-- 右侧内容部分 -->
+				<view class="containsRights">
+					<view class="alignment">
+						<view style="font-size: 30rpx;color:#000" class="designerName">{{modelList.designerName}}</view>
+						<view style="font-size:23rpx;color:#666666;">{{modelList.designerDecoratorEntity.designerDepartmentName}}
+						</view>
+					</view>
+					<view class="TypeLevelPopularity">
+						<view>类型：{{modelList.designerDecoratorEntity.designerTypeName}}</view>
+						<view wx:if="{{modelList.designerDecoratorEntity.designerLevelName}}">
+							级别：{{modelList.designerDecoratorEntity.designerLevelName}}</view>
+						<view>人气：{{modelList.designerDecoratorEntity.popularity}}</view>
+					</view>
+				</view>
+
+			</view>
+		<!-- 广告图 -->
+		<view class="mapps">
+			<image style="width:100%" mode="widthFix" wx:if='{{adimage}}' src="{{imgur}}{{adimage}}"></image>
+		</view>
+
+		<!-- 设计师同组作品 -->
+		<view class="eclipsedesignerinstallation" wx:if="{{greenworkslists.length>0}}">同楼盘设计案例</view>
+		<view class="huadong" wx:if="{{greenworkslists.length>0}}">
+
+			<view>
+				<image src="{{imgur}}{{modelList.topImage}}" mode="aspectFill" style="width:100%;height:150rpx;border-radius:12rpx;"></image>
+				<view class="bootmtou">{{modelList.caseTitle}}</view>
+			</view>
+			<view class="jiaone">
+				+
+			</view>
+
+			<scroll-view class="scroll_header" scroll-x='true'>
+				<view wx:for="{{greenworkslists}}" class="scroll_item" catchtap="scrollitem" data-id="{{item.id}}">
+					<image src="{{imgur}}{{item.topImage}}" mode="aspectFill" style="border-radius:12rpx;width:100%;height:100%;"></image>
+					<view class="bootmtou">{{item.caseTitle}}</view>
+				</view>
+			</scroll-view>
+
+		</view>
+	</view>
+
+	<!-- 作品展示 -->
+	<view class="professional" hidden="{{isshowhtml}}">
+		<view class="eclipsedesignerinstallation">
+			<view class="pictures_dss">作品展示</view>
+		</view>
+		<view class="show_elided">
+			<import src="../../wxParse/wxParse.wxml" />
+			<view class="cont">
+				<template is='wxParse' data="{{wxParseData:article.nodes}}" />
+			</view>
+		</view>
+	</view>
+	<!-- 弹窗 -->
+
+	<messagepopup isshow="{{iosDialog22}}" remark="{{remark}}" />
+	<view class="wx-banner-List" wx:if="{{wxBannerList.length>0}}">
+        <block wx:for="{{wxBannerList}}" >
+        <image bindtap="wxBannerTap"  data-index="{{index}}" src="{{imgur}}{{item.imageVo.imagePath}}" mode="widthFix"></image>
+      </block>
+        </view>
+</scroll-view>
+
+
+<!-- <view class="bootmtwo">
+	<view class="{{modelList.isCollect?'collection':''}}" catchtap="getcollection" data-model-list="{{modelList}}">收藏</view>
+	<view>在线客服</view>
+</view> -->
+
+	<!-- 底部导航栏 -->
+<tabindex isBuyShop = '2' bindmyevent="Collection" case-message="{{caseMessage}}"></tabindex>
+	<!-- 底部导航栏 -->
+
+
+
+<!-- <popup id='popup' iosDialog1="{{iosDialog1}}" bind:guanbi="close">
+</popup>
+
+
+<phonepopup id='phonepopup' iosDialog2="{{iosDialog2}}" bind:guanbi="phoneclose">
+</phonepopup> -->
+
+
+
+

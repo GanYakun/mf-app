@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "drawer":"/components/drawer/drawer",
+    "search":"/components/search/search",
+    "leftbutton":"/components/leftbutton/index"
+  }
+}

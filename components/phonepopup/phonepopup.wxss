@@ -1,0 +1,10 @@
+@import "../../utils/weui.wxss";
+
+.btnss{
+  background-color: #ffffff;
+}
+.fadeIn{
+  position: absolute;
+  z-index: 100;
+}
+@import 'phonepopup-wxa-auto-dark.wxss'

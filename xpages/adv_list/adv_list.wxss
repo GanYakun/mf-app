@@ -1,0 +1,4 @@
+/* xpages/adv_list/adv_list.wxss */
+page{
+  background: #f2f2f2;
+}

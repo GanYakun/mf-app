@@ -1,0 +1,16 @@
+<!--components/floor-item-top-banner/index.wxml-->
+<view class="topswiper" wx:if="{{_topBanner.length>0}}">
+  <swiper class="swiper_image" indicator-dots="{{false}}" autoplay="{{true}}" circular="{{true}}" style="height: {{swheight ? 'calc(' + swheight + 'px' + ' + 15rpx)' : '330rpx' }};" bindchange="onBannerChange">
+    <block wx:for="{{_topBanner}}" wx:key="key">
+      <swiper-item catchtap="onAction" data-event-type="topBanner" data-position="{{index}}">
+        <view class="banner">
+          <image class="auto-img" src="{{imgur}}{{item.imageVo.imagePath}}" bindload="goheight" mode="scaleToFill">
+          </image>
+        </view>
+      </swiper-item>
+    </block>
+  </swiper>
+  <view class="swiper-dots">
+    <view class="swiper-dot {{index == current ? 'swiper-dot-active':''}}" wx:for="{{_topBanner}}"></view>
+  </view>
+</view>

@@ -1,0 +1,23 @@
+<!--pages/furniture_activity/furniture_activity.wxml-->
+<view class="container">
+	<scroll-view class="vertical-scroll" scroll-y="ture">
+    <view class="banner">
+      <image src="../../images/img/activity_banner.jpg" mode="heightFix"></image>
+    </view>
+    <view class="lists">
+      <view class="item flex-r-s" wx:for="{{lists}}">
+        <view class="img">
+          <image src="{{item.img}}"></image>
+        </view>
+        <view class="context">
+         <view class="title">{{item.title}}</view>
+        <view class="describe">{{item.describe}}</view>
+        <view class="btn1">免费预约设计</view>
+        </view>
+      </view>
+    </view>
+    <footer></footer>
+	</scroll-view>
+  <design_consulting></design_consulting>
+	<furniture_tabbar></furniture_tabbar>
+</view>

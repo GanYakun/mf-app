@@ -1,0 +1,15 @@
+<!--xpages/baomore/baomore.wxml-->
+<!-- 调用组件 -->
+<!-- 筛选 -->
+<scroll-view scroll-y="true" style="height:{{pageWindowHeight-110}}rpx">
+
+
+<view class="headebox">
+	<view class="heade">
+		<view class="headetitle" catchtap="powerDrawer" data-statu="open">筛选<text class="iconfont icon-shaixuan"></text></view>
+	</view>
+</view>
+<drawer id='drawer' choice="{{choice}}" bind:success="_success" ></drawer>
+<shoplist id='shoplist' shoplists="{{shoplist}}" bind:success="_success" ></shoplist>
+
+</scroll-view>

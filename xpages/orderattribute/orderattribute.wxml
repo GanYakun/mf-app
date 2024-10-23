@@ -1,0 +1,263 @@
+<!-- 收获地址 -->
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<wxs src="/utils/filter.wxs" module="filter"></wxs>
+<!-- 老版本的订单样式 -->
+
+
+<!-- 加载弹窗结束 -->
+<scroll-view scroll-y='true' style="height:calc(100% - 308rpx);;z-index:98;">
+	<leftbutton toptitle="确认订单"></leftbutton>
+	<view class="addressbox" catchtap="addressbox" wx:if="{{addresobject}}">
+
+		<view class="iconfont icon-dizhi2" style="color:#f97004;font-size:24px"></view>
+		<view style="width:80%;margin-left:20rpx">
+			<!-- 姓名和电话 -->
+			<view class="nameandphone">
+				<view class="name">{{addresobject.consignee}}</view>
+				<view class="phone">{{addresobject.consigneeTelephone}}</view>
+				<view class="dangqianaddress">当前收货地址</view>
+			</view>
+			<!-- 省市区域 -->
+			<view class="band">
+				<view>{{addresobject.provinceCityCounty}}{{addresobject.detailAddress?addresobject.detailAddress:''}}{{addresobject.addressAlias?addresobject.addressAlias:''}}</view>
+			</view>
+
+		</view>
+
+		<view class="rightdayu">
+			<text class="iconfont icon-youjiantou" style="color: #9d9d9d;"></text>
+		</view>
+
+	</view>
+  <view class="addressboxs" bindtap="new_address"  wx:else> 
+		<view class="iconfont icon-jiahaoyuanquan"></view>
+		 <text style="margin-left:20rpx">添加新地址</text>
+	</view>
+
+
+	<view style="margin:20rpx;background-color: #ffffff;border-radius: 20rpx;padding:20rpx;">
+		<!-- 购物清单 -->
+		<view class="carttitle">购物清单</view>
+		<view class="shoppinganniu">
+
+			<!-- 图片以及名字和数量价格 -->
+			<view class="conterimageandimage" wx:for="{{shopmessage.mallItemSkuList}}" wx:key="key">
+				<view class="item-message">
+				<view class="shopimage">
+					<view>
+					<image mode="aspectFit" src="{{imgur}}{{item.picUrl}}"></image>
+					</view>
+				
+				</view>
+				<view class="textinstructionsForm">
+					<view class="shopname" wx:if="{{item.productName!=null}}">{{item.productName}}</view>
+					<view class="shopname" wx:else>{{item.itemName}}</view>
+					<view class="propertiesName">{{item.propertiesName}}</view>
+					<view class="subtitle" wx:if="{{item.subtitle}}">
+						<text class="explain">说明:</text>{{item.subtitle}}</view>
+					<!-- <view class="shopname" style="color:#f3333">￥{{item.onePrice}}*{{item.quantity}}</view> -->
+					
+				</view>
+			</view>
+				<view class="item-more-message">
+					<view class="online-and-offline" wx:if="{{item.onlineAndOffline || item.onlineAndOffline == 0}}">{{item.onlineAndOffline==1?'线下支付':'线上支付'}}</view>
+						<view><text style="font-size:21rpx;">¥</text>{{item.onePrice}}</view>
+						<view>x{{item.quantity}}</view>
+						<view>小计:{{item.total}}</view>
+					</view>
+			</view>
+		</view>
+
+		<!-- 使用优惠券 -->
+		<!-- <view class="usecoupon" catchtap="usecoupon" wx:if="{{shopmessage.cuponConsumption.length>0}}">
+			<view>使用优惠券</view>
+			<view><text class="iconfont icon-youjiantou"></text></view>
+		</view> -->
+
+	</view>
+
+	<!-- 结算 -->
+	<!-- <view class="carttitle">结算</view> -->
+	<view class="settlements">
+		<view class="settlementsbox">
+			<view class="shopnumber"><text style="color:#f97004">x{{shopmessage.totalQuantity}}</text></view>
+			<view class="shopnumber" style="display: flex;justify-content: space-between;">小计：<view class="teshutext">￥{{shopmessage.totlePrice}}</view></view>
+
+			<!-- 抵用券开始 -->
+			<block wx:if="{{shopmessage.cuponConsumption&&shopmessage.cuponConsumption[0].id}}">
+			<view class="coup-box" >
+				<view>
+					<image src="{{ftpUrl}}/red-envelopes.png" mode="widthFix"></image>
+					<text style="font-size:28rpx;color:#000000;margin-left:15rpx;">抵用券</text>
+				</view>
+				<view>
+					-¥{{shopmessage.totlePrice-shopmessage.cuponConsumption[0].couponAmount>0?shopmessage.cuponConsumption[0].couponAmount:shopmessage.totlePrice}}
+				</view>
+			</view>
+			<view class="tips-jie">
+			<view><text class="iconfont icon-zhuyi"></text></view>己为您选择折扣优惠，节省￥{{shopmessage.totlePrice-shopmessage.cuponConsumption[0].couponAmount>0?shopmessage.cuponConsumption[0].couponAmount:shopmessage.totlePrice}}元</view>
+			<view class="discount-price">
+				<text>已优惠</text>
+				<text>{{shopmessage.totlePrice-shopmessage.cuponConsumption[0].couponAmount>0?shopmessage.cuponConsumption[0].couponAmount:shopmessage.totlePrice}}</text>
+				<text>小计</text>
+				<text>{{filter.toFix2(shopmessage.totlePrice-shopmessage.cuponConsumption[0].couponAmount>0?shopmessage.totlePrice-shopmessage.cuponConsumption[0].couponAmount:0)}}</text>
+				</view>
+			</block>
+			<!-- 抵用券结束 -->
+			
+			<view class="shopnumber" wx:if="{{fasle}}" style="display: flex;justify-content: space-between;">优惠总额：
+			<!-- <view class="youhui" wx:if="{{shopmessage.orderType == 1}}">-¥{{filter.toFix2(shopmessage.mallItemSkuList[0].skuPrice*shopmessage.mallItemSkuList[0].quantity-shopmessage.totlePrice)}}</view> -->
+			<!-- 当为样品特卖时的优惠开始 -->
+			<view class="youhui" wx:if="{{shopmessage.orderType == 3}}">-¥{{filter.toFix2(shopmessage.originalPrice*shopmessage.mallItemSkuList[0].quantity-shopmessage.totlePrice)}}</view>
+			<!-- 当为样品特卖时的优惠结束 -->
+			<view class="youhui" wx:elif="{{shopmessage.totalFree==0 ||shopmessage.totalFree}}">-¥{{filter.toFix2(shopmessage.totalFree+(youhuijiages?youhuijiages:0))}}</view>
+			<!-- <view class="youhui" wx:else>-￥{{youhuijiages}}</view> -->
+		</view>
+		</view>
+	</view>
+
+	<!-- 备注 -->
+	<view class="beizhu" hidden="{{isxshow?true:''||isxshows?true:''}}">
+		<textarea auto-height="true" style="width:100%;height:100%" cursor-spacing="50" bindinput='bindtextarea' catchtap="closetanchuang"
+			placeholder="备注：请输入你想说的话" placeholder-style="font-size:26rpx"></textarea>
+	</view>
+
+</scroll-view>
+<!-- 交易说明开始 -->
+<view class="transaction-explain">
+    <transaction-description style="height:100%;"></transaction-description>
+  </view>
+<!-- 交易说明结束 -->
+<!-- 底部提交订单 -->
+<view class="xbootom">
+	<view class="xbootombox">
+		<view>x{{shopmessage.totalQuantity}}</view>
+		<view style="font-size:23rpx">合计:<text style="color:#f9740b;font-size:28rpx;font-family: SourceHanSansCN-Bold;">￥{{filter.toFix2(shopmessage.cuponConsumption.length>0?(shopmessage.totlePrice-shopmessage.cuponConsumption[0].couponAmount>0?shopmessage.totlePrice-shopmessage.cuponConsumption[0].couponAmount:0):shopmessage.totlePrice)}}元</text></view>
+		<view class="tijiao" style="background-color:{{addorderType=='offlinePayment'?'':'#fe2311'}}" catchtap="tijiao">{{shopmessage.cuponConsumption.length>0?(shopmessage.totlePrice-shopmessage.cuponConsumption[0].couponAmount>0?(addorderType=='offlinePayment'?'线下支付':'线上支付'):'确认下单'):(addorderType=='offlinePayment'?'线下支付':'线上支付')}}</view>
+	</view>
+</view>
+<!-- 选择地址的下拉弹窗 -->
+<view class="{{isxshow?'xiashow':'xiahidden'}}">
+	<view class="close"><text wx:if="{{isxshow}}" class="iconfont icon-cha" catchtap="close"></text></view>
+	<view class="title">选择收货地址</view>
+	<view class="container">
+		<scroll-view scroll-y='true' style="height:100%">
+			<view class="main">
+				<view class="item-view" wx:for="{{addressList}}" wx:key="key" bindtap="onAddAddress" data-xpanduan="yes"
+					data-index="{{index}}" data-consignee="{{item.consignee}}"
+					data-consigneetelephone="{{item.consigneeTelephone}}" data-provincecitycounty="{{item.provinceCityCounty}}"
+					data-detailaddress="{{item.detailAddress}}" data-addressalias="{{item.addressAlias}}"
+					data-zipcode="{{item.zipCode}}" data-id="{{item.id}}" data-type="0" data-isdefault="{{item.isDefault}}">
+					<view class="mian-view">
+						<view class="phone-name">
+							<view>{{item.consignee}}</view>
+							<view>{{item.consigneeTelephone}}</view>
+						</view>
+						<view class="address">{{item.provinceCityCounty}} | {{item.detailAddress}}</view>
+						<view class="addressN">地址别名：{{item.addressAlias==null?'未设置该地址别名':item.addressAlias}}</view>
+					</view>
+					<view class="szeyFont bracket-right-o" style="font-size:28rpx;color:#333;"></view>
+				</view>
+			</view>
+		</scroll-view>
+	</view>
+	<view class="add_address" catchtap="addnewaddress" wx:if="{{isxshow}}">新增收货地址</view>
+</view>
+<view catchtap="close" class="{{isxshow?'mask':''}}"></view>
+<!-- 
+新增地址 
+-->
+<view class="{{isxshows?'xiashows':'xiahiddens'}}">
+	<view><text wx:if="{{isxshows}}" class="iconfont icon-fanhui" catchtap="closenew"></text></view>
+	<form bindsubmit="formSubmit">
+		<view class="container">
+			<view class="lins"></view>
+			<view class="main">
+				<view class="item2">
+					<input placeholder="收货人(必填)" name='getconsignee'
+						value="{{consignee == 'undefined'||consignee == 'null'?'':consignee}}" />
+				</view>
+				<view class="item2">
+					<picker mode="region" bindchange="bindRegionChange" name='bindregionchange' custom-item="{{customItem}}">
+						<view class="picker" wx:if="{{!ishuadon}}">
+							<input placeholder="收货地址(必填)" disabled="true" name='bindregionchange'
+								value="{{provinceCityCounty== 'undefined'||provinceCityCounty=='null'?'':provinceCityCounty}}" />
+						</view>
+
+						<view class="picker" wx:else>
+							{{provinceCityCounty[0]}}-{{provinceCityCounty[1]}}-{{provinceCityCounty[2]}}
+						</view>
+					</picker>
+				</view>
+				<view class="item2">
+					<input placeholder="详细地址(必填)" name="getaddress"
+						value="{{detailAddress=='undefined'||detailAddress=='null'?'':detailAddress}}" />
+				</view>
+				<view class="item2">
+					<input placeholder="手机电话(必填)" name="getphone"
+						value="{{consigneeTelephone=='undefined'||consigneeTelephone=='null'?'':consigneeTelephone}}" />
+				</view>
+				<view class="item2">
+					<input placeholder="邮政编码" name="getcode" value="{{zipCode=='undefined'||zipCode=='null'?'':zipCode}}" />
+				</view>
+				<view class="item2">
+					<input placeholder="地址别名" name="getaddressa"
+						value="{{addressAlias=='undefined'||addressAlias=='null'?'':addressAlias}}" />
+				</view>
+			</view>
+
+			<view class="formAsk flex">
+				<!-- <label class="formLabel">
+			<checkbox-group bindchange="checkedTap">
+				<checkbox checked="{{checked}}" value="1" />
+			</checkbox-group>
+		</label> -->
+				<view class="formAskTxt flexC">设为默认地址</view>
+				<switch checked="{{isdefault}}" name='switch' bindchange="switchChange" />
+			</view>
+
+			<view>
+			</view>
+			<button class="btnss" style="width:100%;" formType="submit">保存并返回</button>
+		</view>
+	</form>
+
+</view>
+
+<view class="fadeIn" wx:if="{{dialogcouplist}}">
+	<view class="weui-mask" bindtap="closetanchuang"></view>
+	<view class="weui-half-screen-dialog" style="border-radius: 1rpx;height: 700rpx;overflow:visible">
+		<view class="xxclose" bindtap="closetanchuang">
+			<view class="iconclose">
+				<text class="iconfont icon-guanbi"></text>
+			</view>
+		</view>
+		<view class="youhuititle">优惠券</view>
+		<scroll-view scroll-y='true' style="height:650rpx;">
+			<view class="couponone" wx:for="{{shopmessage.cuponConsumption}}" catchtap="chiocecoup" data-id="{{item.id}}"
+				data-ischiocecoup="{{item.ischiocecoup}}" data-couponamount="{{item.couponAmount}}" data-index="{{index}}"
+				wx:key='key'>
+				<view class="denomination">
+					￥<text>{{item.couponAmount}}</text>
+					<view style="font-size:24rpx">{{item.couponTitle}}</view>
+				</view>
+				<view class="denominationjieshao">{{item.couponTitle}}</view>
+				<view class="yuanquan {{item.ischiocecoup?'xuanzhongss':''}}"></view>
+			</view>
+		</scroll-view>
+	</view>
+</view>
+<Allpagesneed></Allpagesneed>
+<view class="tips" wx:if="{{isReselectShow}}">
+	<view>
+		请到“我的-我的订单-订单详情”
+		导出本次购物清单
+		
+</view>
+<view></view>
+	<view bindtap="reselect">
+		确定
+	</view>
+</view>
+<view class="mark" wx:if="{{isReselectShow}}"></view>

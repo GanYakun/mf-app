@@ -1,0 +1,86 @@
+<leftbutton toptitle="{{TopTitle}}" component-data="{{componentData}}">
+<search slot="search" prent-class="prent-class" id="search" title="{{toptext}}搜索" pageWindowHeight="{{pageWindowHeight}}" saveoptions="{{saveoptions}}" chiocetext="{{chiocetext}}" startnewsClassId="{{newsClassId}}" oldnewclassid="{{newsClassId}}" bind:dianji="searchword"></search>
+</leftbutton>
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 加载弹窗结束 -->
+
+<!-- <view class="headebox">
+	<view class="heade">
+		<view class="headetitle" wx:for="{{heade}}" wx:key='key' data-index="{{index}}" bindtap="powerDrawer" style="color:{{index==hidindex?'#F97704':'#888888'}}" data-statu="open">
+			{{item.name}}
+			<view class="judgesub">
+				<view hidden="{{index==4||index==0}}" class="upjudgesub"><text class="iconfont {{index==4?'icon-shaixuan':'icon-een'}}" style="color:{{judgesub?(index==hidindex?'#F97704':'#888888'):'#888888'}}"></text></view>
+				<view hidden="{{index==0}}" class="downjudgesub"><text class="iconfont {{index==4?'icon-shaixuan':'icon-een'}}" style="color:{{!judgesub?(index==hidindex?'#F97704':'#888888'):'#888888'}}"></text></view>
+			</view>
+		</view>
+	</view>
+</view> -->
+
+<view class="screen-box">
+<block wx:for="{{choice}}" wx:key="key">
+	<view class="screen-item " bindtap="screenItemTap" data-index="{{index}}">
+	{{item.searchOptionRootName}}<text class="iconfont icon-jiantou9"></text>
+	</view>
+
+</block>
+</view>
+
+
+
+
+<view wx:if="{{choice[currentIndex].type&&choice[currentIndex].type=='designTeam'}}" class="{{codeIsList?'code-list':'nocode-list'}} code-list-box" >
+		<view class="code-item {{designerId==item.id?'yes-item':''}}" catchtap="codeItemTap" data-index="{{index}}" wx:for="{{codeList}}" wx:key="key">{{item.name}}</view>
+		<view style="width:30%"></view>
+	</view>
+	<view wx:else class="{{codeIsList?'code-list':'nocode-list'}} code-list-box" >
+		<view class="code-item {{searchOption[currentIndex].id==item.id?'yes-item':''}}" catchtap="codeItemTap" data-index="{{index}}" wx:for="{{codeList}}" wx:key="key">{{item.searchName}}</view>
+		<view style="width:30%"></view>
+	</view>
+	<view class="code-mark" catchtap="codeMark" wx:if="{{codeIsList}}"></view>
+
+	<scroll-view scroll-x="{{true}}" class="selected-options-box" wx:if="{{searchOption.length>0||designerName}}">
+	<view class="selected-options-view" wx:for="{{searchOption}}" wx:if="{{item.id}}"  wx:key="key">
+		<view style="display:flex">
+		<view >
+			{{item.searchName}}
+		</view>
+		<view class="selected-close" catchtap="clearOpetions" data-index="{{index}}"><text class="iconfont icon-cha"></text></view>
+	</view>
+	</view>
+		<view class="selected-options-view"  wx:if="{{designerName}}">
+			<view  style="display:flex">
+			<view>{{designerName}}</view>
+			<view class="selected-close" catchtap="clearDesNmae"><text class="iconfont icon-cha"></text></view>
+		</view>
+		</view>
+</scroll-view>
+
+<!-- 内容部分 -->
+<scroll-view bindscrolltolower="slideusage" scroll-top="{{scrollTop}}" scroll-y="true" style="height:calc(100% - {{LeftButtonnavHeight+80+(isFlter||designerName?90:0)}}rpx)">
+<view class="distributed" wx:if="{{content==''}}">暂无数据</view>
+	<view>
+		<view class="content">
+			<block wx:for="{{content}}" wx:key='key' >
+				<view class="outer_class_index">
+					<view class="cintentimg" catchtap="cintentimg" data-id="{{item.id}}" data-casetitle="{{item.caseTitle}}">
+						<image src="{{imgur}}{{item.topImage}}" mode="aspectFill"></image>
+					</view>
+					<view class="introduce">{{item.caseTitle}}</view>
+					<!-- <view class="introducecontent">{{item.caseIdea}}</view> -->
+					<!-- <view class="inaddress">
+						<view>
+						 <text class="iconfont icon-lujing"></text>
+						<text class="textcolor" decode="true">{{item.designerName}}&nbsp;{{item.designerDecoratorEntity.designerDepartmentName}}</text>
+						</view>
+						<view class="frequency" style="color: #666666"><text class="iconfont icon-xingzhuang" style="color: #cccccc"></text>{{item.browseNum}}</view>
+					</view> -->
+				</view>
+
+			</block>
+		</view>
+	</view>
+</scroll-view>
+
+<!-- 调用抽屉组件 -->
+<drawer id='drawer' toptext="{{toptext}}" isshop="0" choice="{{choice}}" newsClassId="{{newsClassId}}" bind:success="_success"></drawer>

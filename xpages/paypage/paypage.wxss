@@ -1,0 +1,51 @@
+page{
+  background-color: #f6f6f6;
+}
+.fukuanjieguo{
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #aa0909;
+  width: 100%;
+  text-align: center;
+  margin-top: 50rpx;
+}
+
+.ordernum{
+
+  width: 460rpx;
+  margin: 0 auto;
+  background-color: #ffe99b;
+text-align: center;
+font-size: 28rpx;
+padding: 20rpx 0 20rpx 0;
+margin-top: 30rpx;
+}
+
+.prices{
+  font-weight: bold;
+}
+
+.numjishi{
+  font-size: 32rpx;
+  color: #aa0909;
+  font-weight: bold;
+}
+
+.daojishu{
+  margin-top: 50rpx;
+  text-align: center;
+  font-size: 26rpx;
+}
+
+.blacka{
+  width: 100%;
+  height: 100rpx;
+  font-size: 32rpx;
+  background-color: #f97704;
+  color: #ffffff;
+  position: absolute;
+  bottom: 0;
+  line-height: 100rpx;
+  text-align: center;
+  font-weight: bold;
+}

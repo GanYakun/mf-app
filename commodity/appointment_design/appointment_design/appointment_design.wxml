@@ -1,0 +1,64 @@
+<!--pages/appointment_design/appointment_design.wxml-->
+<scroll-view class="vertical-scroll" scroll-y="true">
+	<view class="container">
+		<view  class="top-banner">
+			<swiper class="swiper">
+				<block>
+					<swiper-item>
+						<image src="/images/img/topbanner.jpg" mode="widthFix"></image>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+		<!-- <view class="top-banner">
+			<image src="/images/img/topbanner.jpg" mode="widthFix"></image>
+		</view> -->
+
+		<scroll-view scroll-x="true" bindscroll="scroll" style="width: 100%;background-color: #fff;">
+			<view class="lists" style="width: 100%">
+				<view class="item" wx:for="{{lists}}">
+					<view class="icon">
+						<image src="{{item.imgurl}}"></image>
+					</view>
+					<view class="title">{{item.title}}</view>
+				</view>
+			</view>
+		</scroll-view>
+		<view class="form1">
+			<view class="title">预约免费量尺设计</view>
+			<view class="title1">已为昆明<span>1122</span>户业主提供服务</view>
+			<view class="input flex">
+				<view class="szeyFont my_light" style="color:#666666"></view>
+				<input placeholder="请输入您的称呼" placeholder-style="font-size:14px"></input>
+			</view>
+			<view class="input flex">
+				<view class="szeyFont mobile" style="color:#666666"></view>
+				<input placeholder="请输入您的手机号码" placeholder-style="font-size:14px"></input>
+			</view>
+			<view class="btn">免费预约设计</view>
+			<view class="tel flex">
+				<view class="szeyFont fa-tel1" style="color:#CB0D1C;"></view>
+				<view class="telphone flex">
+					<label>服务热线：</label>
+					<view>0871-68123333</view>
+				</view>
+			</view>
+		</view>
+		<!-- 广告 -->
+		<view class="adv flex">
+			<view class="advleft">
+				<view class="text1">昆明200+</view>
+				<view class="text2">设计师为您服务</view>
+			</view>
+			<swiper class="advright" vertical="true" autoplay="true" circular="true" interval="3000" display-multiple-items="3">
+				<block wx:for="{{msgList}}" wx:key="">
+					<swiper-item>
+						<view class="advmain">{{item.title}}</view>
+					</swiper-item>
+				</block>
+			</swiper>
+		</view>
+	</view>
+</scroll-view>
+<design_consulting></design_consulting>
+<furniture_tabbar></furniture_tabbar>

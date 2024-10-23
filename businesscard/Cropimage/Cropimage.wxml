@@ -1,0 +1,9 @@
+<!--businesscard/Cropimage/Cropimage.wxml-->
+<import src="../../utils/cropper/we-cropper.wxml"/>
+<template is="we-cropper" data="{{...cropperOpt}}"/>
+<view class="cropper-buttons">
+    <view bindtap="cancel">取消</view>
+        <view class="getCropperImage" bindtap="getCropperImage">
+            确定
+        </view>
+    </view>

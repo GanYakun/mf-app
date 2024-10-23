@@ -1,0 +1,32 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 加载弹窗结束 -->
+<leftbutton toptitle="{{content.newsClass.name}}"></leftbutton>
+
+<scroll-view scroll-x="{{true}}" scroll-with-animation="{{true}}" scroll-into-view="{{itemId}}" class="scroll-scrren" wx:if="{{titlelist.length>1}}">
+		<view id="itemId{{item.id}}" class="scroll-item {{newsClassId==item.id?'clickItem':''}}" wx:for="{{titlelist}}" wx:key="key" catchtap="clicklivingin" data-name="{{item.name}}"  data-id="{{item.id}}"  >{{item.name}}</view>
+
+	</scroll-view>
+<scroll-view style="height: calc(100% - {{LeftButtonnavHeight+(titlelist.length>1?60:0)}}rpx) !important;"  scroll-y="true" bindscrolltolower="slideusage" class="vertical-scroll">
+	<!-- <view class="topbox" wx:if="{{titlelist.length>0}}">
+	老版本样式
+		<view class="livinginbox">
+<view class="livingin" wx:for="{{titlelist}}" wx:key="key" catchtap="clicklivingin" data-name="{{item.name}}"  data-id="{{item.id}}"  >{{item.name}}</view>
+</view>
+	</view> -->
+	
+	<view class="content">
+		<view class="item flex-r-s" wx:for="{{content.list}}" wx:key="key" catchtap="testlife" data-id="{{item.id}}">
+			<view class="img">
+				<image src="{{imgur}}{{filters.jsonzhuanhuan(item.thumbnailPath)[0].path}}" mode="widthFix"></image>
+			</view>
+			<view class="itemright">
+				<view class="title">{{item.title}}</view>
+				<view class="context">{{item.introduce}}</view>
+			</view>
+		</view>
+	</view>
+</scroll-view>
+
+<Allpagesneed></Allpagesneed>

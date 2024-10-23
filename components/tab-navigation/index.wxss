@@ -1,0 +1,148 @@
+.bodys{
+  width: 100%;
+background-color: #ffffff;
+position: fixed;
+z-index: 100;
+bottom: 0;
+padding-bottom: constant(safe-area-inset-bottom);
+padding-bottom: env(safe-area-inset-bottom);
+}
+.bootomtab{
+bottom: 0;
+width: 100%;
+height: 100%;
+display: flex;
+box-sizing: border-box;
+align-content: center;
+}
+
+
+.bootomtab>view{
+  flex: 1;
+  text-align: center;
+  font-size: 22rpx;
+  flex-direction: column;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+.tab-image{
+  width: 37rpx;
+  height: 37rpx;
+  margin-bottom: 5rpx;
+}
+
+.tab-box .tab-image {
+  width: 100%;
+  height: 100%;
+}
+
+
+
+.tabname{
+  font-size: 24rpx;
+  color: #666666;
+}
+
+.share-btn{
+  width: 100% !important;
+  height: 100% !important;
+  line-height: unset !important;
+  padding: unset !important;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+  background: unset !important;
+  font-size: unset !important;
+  font-weight: unset !important;
+}
+
+.yes-collect{
+  color: #f97004 !important;
+}
+
+.invite {
+  /* display: none; */
+  width: 155rpx;
+  height: 170rpx;
+	background-color: #ffffff;
+  position: absolute;
+  border-radius: 12rpx;
+  bottom: calc(110rpx + constant(safe-area-inset-bottom));
+  bottom: calc(110rpx + env(safe-area-inset-bottom));
+  box-shadow: 0px 5px 10px 0px 
+    rgba(0, 0, 0, 0.1);
+    font-size: 22rpx;
+  color: #666666;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #f97004;
+}
+.invite:after {
+  content: '';
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  top: 160rpx;
+  left: 70rpx;
+  transform: rotate(225deg);
+  background-color: #ffffff;
+  /* border: 1px #FFB5C5; */
+  /* border-style: solid none none solid ; */
+}
+.tab-box{
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 60rpx;
+  /* position: relative; */
+  margin-top: -20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+ 
+}
+.tab-special-text{
+  padding-top: 14rpx;
+}
+
+.tab-line{
+  width: 110rpx;
+	height: 1rpx;
+	background-color: #e2e2e2;
+}
+
+.isBuyShop2{
+  width: 445rpx;
+	height: 80rpx;
+  background: linear-gradient(to right, #ff984c, #ed752e);
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32rpx;
+  color: #ffffff;
+  margin: 0 20rpx;
+}
+.collect-text{
+  color: #f97004;
+}
+
+.invite2{
+  left: 0;
+}
+.invite2:after{
+  left: 30rpx;
+}
+
+.customer3{
+  left: 20rpx;
+}
+.customer3::after{
+  left: 20rpx;
+}

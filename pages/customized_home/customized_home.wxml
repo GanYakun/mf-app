@@ -1,0 +1,113 @@
+<view wx:if="{{hideCustomBar!=1}}">
+  <leftbutton toptitle="{{TopTitle}}"></leftbutton>
+</view>
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+<!-- 加载弹窗结束 -->
+<import src="../../wxParse/wxParse.wxml" />
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<!-- 顶部筛选项开始 -->
+<view class="screen-box">
+
+  <!-- 品牌开始 -->
+  <view class="bard-box" wx:if="{{brandArr.length>0}}">
+    <view style="white-space: nowrap;width:80rpx;font-size:26rpx;">品牌</view>
+    <scroll-view class="scroll-view-box" scroll-x="{{true}}">
+      <view wx:for="{{brandArr}}" wx:key="key" bindtap="brandItemTap" data-index="{{index}}"
+        class="scroll-view-item {{brandId==item.id?'select-space':''}}">{{item.searchName}}</view>
+    </scroll-view>
+  </view>
+  <!-- 品牌结束 -->
+
+  <!-- 空间开始 -->
+  <view class="space-box" wx:if="{{tabList.length>0}}">
+    <view style="white-space: nowrap;width:80rpx;font-size:26rpx;">空间</view>
+    <scroll-view id="scroll-view" scroll-with-animation="{{true}}" scroll-x="true" class="scroll-view-box"
+      scroll-into-view="{{scrollToId}}">
+      <view id="item{{index}}" class="scroll-view-item {{indexs == index?'select-space':''}}" wx:for="{{tabList}}"
+        wx:key='key' bindtap="OnTabTap" data-index="{{index}}">
+        {{item.searchName}}
+      </view>
+    </scroll-view>
+  </view>
+  <!-- 空间结束 -->
+
+  <!-- 系列开始 -->
+  <view class="series-box" wx:if="{{swiper.list.length>0}}">
+    <view style="white-space: nowrap;width:80rpx;font-size:26rpx;">系列</view>
+    <scroll-view class="scroll-view-box" scroll-x="{{true}}" bindscrolltolower="secondAnimationFinish"
+      scroll-with-animation="{{true}}" scroll-into-view="{{seriesId}}" scroll-top="{{scroll_top}}">
+      <view wx:for="{{swiper.list}}" id="series{{index}}" bindtap="onSelectTap" data-index="{{index}}" wx:key="key"
+        class="scroll-view-item {{currentIndex==index?'select-space':''}}">{{item.title}}</view>
+    </scroll-view>
+  </view>
+  <!-- 系列结束 -->
+
+</view>
+<!-- 顶部筛选项结束 -->
+
+
+
+
+<!-- 详情页面 -->
+<view class="detail" wx:if="{{swiper.list.length>0}}"
+  style="height:calc(100% - 248rpx - {{LeftButtonnavHeight+tabIndexHeight}}rpx)">
+  <!-- bindtransition="tabChangeSiton" -->
+  <swiper style="height:100%;margin-bottom:120rpx;" bindchange="tabChange" bindtransition="tabChangeSiton"
+    current="{{currentIndex}}" bindtouchstart="{{swiper.list.length == 1 ? 'touchStart':''}}"
+    bindtouchend="{{swiper.list.length == 1 ? 'touchEnd':''}}">
+    <block wx:for="{{swiper.list}}">
+      <swiper-item style="height:100%;width:100%" skip-hidden-item-layout="{{true}}">
+        <scroll-view wx:if="{{index == current}}" scroll-top="{{scroll_top}}" scroll-y="true" style="height:100%;">
+          <view class='art-item' wx:if="{{(index == current) || (index == (current - 1)) || (index == (current + 1))}}">
+            <view class="custom_price" wx:if="{{item.depositPrice}}">
+              <view>
+                <view style="font-size:26rpx;font-weight:400;" wx:if="{{item.packagePrice}}">定制组合价：<text
+                    style="color:#ff6c00">￥<text
+                      style="font-size:36rpx;font-weight: bold;">{{filter.substringExceptLast(item.packagePrice).num}}</text>{{filter.substringExceptLast(item.packagePrice).unit}}</text>
+                </view>
+                <view class="custom_btn" catchtap="custom_btn" data-index="{{index}}"><text
+                    style="font-size:32rpx; margin-right: 10rpx;">{{item.depositPrice}}</text>元抢名额</view>
+              </view>
+              <view>
+                <view style="display:flex;align-items: center;color:#000;">
+                  <block wx:if="{{item.endTime}}">
+                    <view class="allMuch">限时：</view>
+                    <count-down time="{{time}}" isShowSecond="{{true}}" ischecklist="true"> </count-down>
+                  </block>
+                  <view style="margin-left: 20rpx; " wx:if="{{item.limitedNumber}}">
+                    <text style="font-size:26rpx;font-weight:400;">限量：</text>
+                    <text style="color:#ff6c00;font-size:32rpx;">{{item.limitedNumber?item.limitedNumber:0}}</text>
+                    <text style="font-size:20rpx; font-weight:400;">套</text>
+                  </view>
+                </view>
+              </view>
+
+            </view>
+            <!-- hidden="{{!item.videoPath}}" -->
+            <video src="{{imgur}}{{item.videoPath}}" wx:if="{{item.videoPath}}"></video>
+            <view class="moreImage" wx:if="{{item.imagePaths}}" wx:for="{{filter.ConvertToArray(item.imagePaths)}}"
+              wx:for-item="imageItem" wx:for-index="imgindex" data-index="{{index}}" bindtap="previewImage">
+              <image data-index="{{imgindex}}" data-imgarr="{{filter.ConvertToArray(item.imagePaths)}}"
+                data-imgurl="{{imageItem}}" catchtap="topic_preview" lazy-load="{{true}}" class="PageImage"
+                src="{{imgur}}{{imageItem}}" mode="widthFix"></image>
+            </view>
+            <view wx:if="{{article }}">
+              <template is="wxParse" data="{{wxParseData:article.nodes}}" />
+            </view>
+          </view>
+          <view class="wx-banner-List" wx:if="{{item.wxBannerList.length>0}}">
+            <block wx:for="{{item.wxBannerList}}" wx:for-item="banerItem" wx:for-index="{{bannerIndex}}">
+              <image bindtap="wxBannerTap" data-list="{{item.wxBannerList}}" data-index="{{bannerIndex}}"
+                mode="widthFix" src="{{imgur}}{{banerItem.imageVo.imagePath}}"></image>
+            </block>
+          </view>
+        </scroll-view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+
+<Allpagesneed />
+<tabindex isBuyShop="2" case-message="{{caseMessage}}" bindmyevent="collection"></tabindex>

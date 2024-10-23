@@ -1,0 +1,447 @@
+/* pages/shangpin_home/shangpin_home.wxss */
+page{
+  background-color:#e6e6e6;
+}
+.swiperfunctions{
+  background-color: #fff;
+}
+.menu {
+  width: 100%;
+  padding: 0 15px;
+  box-sizing: border-box;
+  background-color: #fff;
+  flex-wrap: wrap;
+}
+
+.menu .item {
+  width: 25%;
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.menu .item .img {
+  width: 56px;
+  height: 56px;
+}
+
+.menu .item .img image {
+  width: 100%;
+  height: 100%;
+}
+
+.menu text {
+  font-size: 12px;
+  margin-top: 10px;
+}
+.design_form{
+  margin-top: 20rpx;
+  background-color: #fff;
+  padding: 20rpx;
+  margin: 20rpx;
+}
+.design_form .title{
+  text-align: center;
+  color: #333;
+}
+.design_form .input .item {
+  border: 1px solid #e5e5e5;
+  height: 35px;
+  background-color: #fff;
+  align-items: center;
+  padding-left: 10px;
+  margin-top: 10px;
+}
+.design_btn{
+  background: #cb0d1c;
+    color: #FFF;
+    font-size: 14px;
+    justify-content: center;
+    height: 72rpx;
+    line-height: 72rpx;
+    margin-top: 20rpx;
+    border-radius: 6rpx;
+}
+.design_form .tips{
+  font-size: 12px;
+  color: #666666;
+  margin-top: 20rpx;
+}
+.box1{
+  background-color: #fff;
+  padding: 20rpx;
+}
+.box1 .item{
+  width: 33.33%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.box1 .item .img{ 
+  width: 54rpx;
+  height: 54rpx;
+}
+.box1 .item .img image{
+  width: 100%;
+  height: 100%;
+}
+.box1 .item .name{
+  font-size: 12px;
+  color: #333;
+  margin-top: 20rpx;
+}
+.white_bg{
+  background-color: #fff;
+  margin-top: 20rpx;
+  padding: 20rpx;
+}
+.white_bg .name{
+  font-size: 16px;
+  color: #333333;
+}
+.white_bg .more{
+  font-size: 12px;
+  color: #666666;
+}
+.banner-swiper {
+  position: relative;
+  margin-top: 40rpx;
+  width: 100%;
+  height: 500rpx;
+  overflow: hidden;
+}
+
+.banner-swiper .img {
+  position: relative;
+}
+
+swiper {
+  display: block;
+  height: 500rpx;
+  position: relative;
+}
+
+.slide-image {
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  height: 450rpx;
+  margin-top: 25rpx;
+}
+
+.banner-swiper .title {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  height: 62rpx;
+  line-height: 62rpx;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  color: #FFF;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0px;
+  font-size: 14px;
+}
+
+.active {
+  margin-top: 0rpx;
+  height: 500rpx;
+}
+.hot_property .lists{
+  flex-wrap: wrap;
+  margin-top: 20rpx;
+}
+.hot_property .lists .item{
+  width: 344rpx;
+  margin-bottom: 20rpx;
+}
+.hot_property .lists .img{
+  width: 344rpx;
+  height: 258rpx;
+}
+.hot_property .lists .img image{
+  width: 100%;
+  height: 100%;
+}
+.hot_property .lists .title{
+  margin-top: 20rpx;
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.function{
+  padding:20rpx;
+}
+.tabbar{
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  padding:10rpx 0;
+  box-sizing: border-box;
+  border-bottom: 1px solid #f1f1f1 ;
+}
+.tabbar .item{
+  font-size: 13px;
+  color: #666;
+  justify-content: center;
+  text-align: center;
+  width: 25%;
+  display: inline-flex;
+}
+.tabbar .selected{
+  color: #cc3333;
+  border-bottom: 1px solid #cc3333;
+  padding-bottom: 10rpx;
+}
+.customized .slide-content{
+  white-space: nowrap;
+}
+.customized .content{
+  display: inline-block;
+  margin-top: 10rpx;
+}
+.customized .content .topimg{
+  width: 100%;
+  height: 532rpx;
+}
+.customized .content .topimg image{
+  width: 100%;
+  height:100%;
+}
+.customized .content .top .title{
+  margin-top: 20rpx;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+.customized .content .lists{
+  margin-top: 20rpx;
+  flex-wrap: wrap;
+}
+.customized .content .lists .item{
+  margin-bottom: 20rpx;
+  width: 344rpx;
+}
+.customized .content .lists .img{
+  width: 344rpx;
+  height: 258rpx;
+}
+.customized .content .lists .img image{
+  width: 100%;
+  height: 100%;
+}
+.customized .content .lists .title{
+  text-align: center;
+  font-size: 14px;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.design_author .more_right{
+  font-size: 12px;
+  color: #666666;
+}
+.design_author .more_right .more{
+  margin-left:10rpx ;
+}
+.design_author .lists{
+ margin-top: 20rpx;
+}
+.design_author .lists .item{
+  padding: 50rpx 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 99%;
+  background-color: #f4f4f4;
+}
+.design_author .lists .userimg{
+  width: 168rpx;
+  height: 168rpx;
+}
+.design_author .lists .userimg image{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.design_author .lists .name{
+  font-size: 14px;
+  color: #333;
+  margin-top: 20rpx;
+
+}
+.design_author .lists .store{
+  font-size: 12px;
+  margin-top: 20rpx;
+  color: #d8212f;
+}
+.design_author .lists .popularity{
+  font-size: 10px;
+  color: #666;
+  margin-top: 20rpx;
+}
+.headlines .lists{
+  margin-top: 20rpx;
+}
+.headlines .lists .htitle,.title{
+  font-size: 14px;
+  color: #333;
+}
+.headlines .lists .img{
+  padding: 20rpx 0;
+  border-bottom: 1px solid #e6e6e6;
+height: 338rpx;
+width: 100%;
+}
+.headlines .lists .img image{
+  height: 100%;
+  width: 100%;
+  }
+  .headlines .lists .item{
+    padding:30rpx 0 ;
+  border-bottom: 1px solid #e6e6e6;
+
+  }
+  .headlines .lists .date{
+    margin-top: 30rpx;
+    font-size: 12px;
+    color: #999;
+  }
+  .comment .lists{
+    margin-top: 20rpx;
+  }
+  .comment .lists .item .userimg{
+    width: 124rpx;
+    height: 124rpx;
+  }
+  .comment .lists .item .userimg image{
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+  }
+  .comment .lists .item_left{
+    margin-left: 20rpx;
+  }
+  .comment .lists .title{
+    overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+    font-size: 15px;
+    color: #333;
+  }
+  .comment .lists .decr{
+    overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+    font-size: 12px;
+    color: #545454;
+    margin-top: 20rpx;
+  }
+  .comment .lists .item  .img{
+    margin-top: 20rpx;
+    margin-right:10rpx ;
+    width: 174rpx;
+    height:130rpx ;
+  }
+  .comment .lists .item  .img image{
+    width:100%;
+    height:100%;
+  }
+  .comment .lists .item .tips{
+    margin-top: 20rpx;
+    font-size: 14px;
+    color: #999;
+  }
+  /* 家居百科 */
+.encyclopedia .encyclopedia-select {
+  display: inline-block;
+  font-size: 14px;
+  color: #666666;
+  margin-right: 40rpx;
+}
+
+.encyclopedia .encyclopedia-selected {
+  font-size: 14px;
+  color: #ff6c00;
+}
+.encyclopedia .type{
+  white-space: nowrap;
+}
+
+.encyclopedia .content {
+  margin-top: 20rpx;
+}
+
+.encyclopedia .content .item {
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.encyclopedia .content .img {
+  width: 300rpx;
+  height: 200rpx;
+}
+
+.encyclopedia .content .img image {
+  width: 100%;
+  height: 100%;
+}
+
+.encyclopedia .content .context {
+  font-size: 12px;
+  color: #919191;
+  width: calc(100% - 310rpx);
+}
+.encyclopedia .content .context .title{
+  font-size: 14px;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.encyclopedia .content .context .decr{
+  margin-top: 20rpx;
+  font-size: 12px;
+  color: #666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+.encyclopedia .content .context .datetime {
+  margin: 10rpx 0;
+}
+.encyclopedia .title{
+  align-items: center;
+}
+.tabbar1{
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+.tabbar1 .item{
+  font-size: 13px;
+  color: #666;
+  justify-content: center;
+  text-align: center;
+  width: 33.33%;
+  display: inline-flex;
+}
+.tabbar1 .selected1{
+  color: #cc3333;
+}

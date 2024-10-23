@@ -1,0 +1,107 @@
+<!--pages/login/login.wxml-->
+<view class="container">
+	<view class="swiper-tab">
+		<view class="swiper-tab-item {{currentTab==0?'active':''}}" data-current="0" bindtap="clickTab">手机登录<view class="yuan {{currentTab==0?'hover':''}}"></view>
+		</view>
+		<view class="swiper-tab-item {{currentTab==1?'active':''}}" data-current="1" bindtap="clickTab">账号登录<view class="yuan {{currentTab==1?'hover':''}}"></view>
+		</view>
+	</view>
+
+	<!-- 手机号登录 -->
+	<view hidden="{{currentTab!=0}}">
+		<view class="h20"></view>
+		<view class="formWrap">
+			<view class="item-view">
+				<view class="szeyFont my_light icon-color"></view>
+				<input placeholder="请输入手机号" maxlength="11" type="number"></input>
+			</view>
+
+
+			<view class="item-view">
+				<view class="szeyFont safe icon-color"></view>
+				<input placeholder="请输入图文验证码" maxlength="4"></input>
+
+				<view class="rowR" bindtap="onImgCodeTap">
+					<view class="imgCode">{{imgCode}}</view>
+				</view>
+			</view>
+
+			<view class="item-view">
+				<view class="szeyFont lock icon-color"></view>
+				<input placeholder="请输入短信验证码" type="number"></input>
+				<view class="rowR" bindtap='bindCodeTap'>
+					<view class="txtCode">获取短信验证码</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="h20"></view>
+		<view class="btnBox flex-r">
+			<view class="btn flex-1 enable">立即登录</view>
+		</view>
+
+		<view class="h20"></view>
+		<view class="item-2">
+			<view class="item-wet">
+				<button class='img' open-type='getUserInfo' lang='zh_CN' bindgetuserinfo="getUserInfo">
+					<image src="../../images/weixin.png" style="width:50rpx;height:40rpx;"></image>
+					<view class="text-view">微信</view>
+				</button>
+			</view>
+		</view>
+		<view class="h20"></view>
+
+		<view class="item-2">
+			<view class="text-view1" bindtap="onRegisterTap">注册账号</view>
+			<view class="lins"></view>
+			<view class="text-view1" catchtap="onForgetPwdTap">忘记密码</view>
+		</view>
+
+	</view>
+	<!-- 账号登录 -->
+	<view hidden="{{currentTab!=1}}">
+		<view class="h20"></view>
+		<view class="formWrap">
+
+			<view class="item-view">
+				<view class="szeyFont my_light icon-color"></view>
+				<input placeholder="请输入手机号" maxlength="11" type="number"></input>
+			</view>
+
+			<view class="item-view">
+				<view class="szeyFont lock icon-color"></view>
+				<input placeholder="请输入密码" maxlength="20" password="{{true}}"></input>
+			</view>
+
+			<view class="item-view">
+				<view class="szeyFont safe icon-color"></view>
+				<input placeholder="请输入图文验证码" maxlength="4"></input>
+
+				<view class="rowR" bindtap="onImgCodeTap">
+					<view class="imgCode">{{imgCode}}</view>
+				</view>
+			</view>
+		</view>
+		<view class="h20"></view>
+		<view class="btnBox flex-r">
+			<view class="btn flex-1 enable">立即登录</view>
+		</view>
+
+		<view class="h20"></view>
+		<view class="item-2">
+			<view class="item-wet">
+				<button class='img' open-type='getUserInfo' lang='zh_CN' bindgetuserinfo="getUserInfo">
+					<image src="../../images/weixin.png" style="width:50rpx;height:40rpx;"></image>
+					<view class="text-view">微信</view>
+				</button>
+			</view>
+		</view>
+		<view class="h20"></view>
+
+		<view class="item-2">
+			<view class="text-view1" catchtap="onRegisterTap">注册账号</view>
+			<view class="lins"></view>
+			<view class="text-view1" catchtap="onForgetPwdTap">忘记密码</view>
+		</view>
+	</view>
+</view>

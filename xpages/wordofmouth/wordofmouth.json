@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "popup": "/components/popup/popup",
+    "phonepopup":"/components/phonepopup/phonepopup",
+    "leftbutton":"/components/leftbutton/index"
+  },
+  "navigationBarTitleText": "发布话题"
+}

@@ -1,0 +1,75 @@
+/* member/public praise/public praise.wxss */
+.content{
+  padding: 20rpx;
+}
+.content .item{
+  margin-bottom: 20rpx;
+}
+.content label{
+  font-size: 12px;
+  width: 20%;
+}
+.content input,textarea{
+  width: 80%;
+   box-sizing: border-box;
+    padding: 0 10px;
+    display: block;
+    border: 1px solid #ccc;
+    line-height: 30px;
+}
+.content .item .add{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  width: 100rpx;
+  height: 100rpx;
+  background: #2d809a;
+    color: #fff;
+    text-align: center;
+    border-radius: 8rpx;
+}
+.btn1{
+  height: 70rpx;
+    width: 160rpx;
+    color: #fff;
+    background: #f97704;
+    text-align: center;
+    line-height: 70rpx;
+    font-size: 14px;
+    border-radius: 4rpx;
+
+}
+.content .selectimg {
+  margin-left: 20%;
+  margin-top: 20rpx;
+}
+
+.content .selectimg .img {
+  position: relative;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+  width: 166rpx;
+  height: 166rpx;
+}
+
+.content .selectimg .img image {
+  width: 100%;
+  height: 100%;
+}
+
+.content .selectimg .img .delete {
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  background: rgb(80, 78, 78);
+  color: #FFF;
+  right: -10rpx;
+  top: -10rpx;
+  text-align: center;
+  border-radius: 50%;
+font-size: 12px;
+}
+input,textarea{
+border-radius: 6rpx;
+}

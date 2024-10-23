@@ -1,0 +1,84 @@
+<!-- 加载弹窗开始 -->
+<Loding wx:if="{{isShowLoding}}"></Loding>
+
+<!-- 加载弹窗结束 -->
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
+<!--  -->
+<leftbutton wx:if="{{!isPageShow}}" toptitle="{{shareTitle}}" component-data="{{componentData}}">
+  <search slot="search" prent-class="prent-class" id="search" title="{{toptext}}搜索" pageWindowHeight="{{pageWindowHeight}}" saveoptions="{{saveoptions}}" chiocetext="{{chiocetext}}" startnewsClassId="{{newsClassId}}" product-name="{{productName}}" bind:dianji="searchword"></search>
+</leftbutton>
+<block wx:if="{{type!='lbal'}}">
+  <!-- 滑动的分类数据开始 -->
+  <scroll-view wx:if="{{typeId != 0 &&getChildList&&getChildList.length>1}}" id="scroll-view" class="child-list-scroll" scroll-x="{{true}}" scroll-into-view="item{{scrollChildIndex - 2}}" scroll-with-animation="{{true}}">
+    <view class="scroll-child {{isShop ? (topid==item.id?'selectchild':'') : (shopids==item.id?'selectchild':'')}}" id="item{{index}}" bindtap="shutDown" wx:for="{{getChildList}}" wx:key="key" data-index="{{index}}">
+      <view>
+        <image src="{{imgurl}}{{item.imagePath}}" wx:if="{{item.imagePath}}" mode="heightFix"></image>
+        <image wx:else src="/images/icon/all.png" mode="heightFix"></image>
+        <text class="cname">{{item.name?item.name:item.cname}}</text>
+      </view>
+    </view>
+  </scroll-view>
+  <!-- 滑动的分类数据结束 -->
+
+
+  <view class="headebox">
+    <view class="heade">
+      <view class="headetitle" wx:for="{{heade}}" wx:key='key' data-index="{{index}}" bindtap="powerDrawer" style="color:{{index==hidindex?'#F97704':'#888888'}}" data-statu="open">
+        {{item.name}}
+        <view class="judgesub">
+          <view hidden="{{index==4||index==0}}" class="upjudgesub"><text class="iconfont {{index==4?'icon-shaixuan':'icon-een'}}" style="color:{{judgesub?(index==hidindex?'#F97704':'#888888'):'#888888'}}"></text></view>
+          <view hidden="{{index==0}}" class="downjudgesub"><text class="iconfont {{index==4?'icon-shaixuan':'icon-een'}}" style="color:{{!judgesub?(index==hidindex?'#F97704':'#888888'):'#888888'}}"></text></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 调用内容组件 -->
+  <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:calc(100% - {{LeftButtonnavHeight+80+((typeId==0 || getChildList.length<1||getChildList.length==1||!getChildList)?0:146)}}rpx)" bindscrolltolower="slideusage" class="vertical-scroll">
+    <shoplist id="shoplist" shoplists="{{lists}}" imgurl="{{imgurl}}" typeId="{{typeId}}" catchtap="details"></shoplist>
+    <nodata wx:if="{{lists.length==0}}"></nodata>
+  </scroll-view>
+
+
+
+
+  <!-- 新版筛选 -->
+  <OrdinaryScreen id="newscrren" is-right-click="{{isRightClick}}" newsClassId="155" bind:success="_success" _initialParentId="{{searchid}}" Pagetext="{{toptext}}" theNumber="{{ScreeningFloors}}" advObjectId="{{advObjectId}}"></OrdinaryScreen>
+</block>
+<block wx:else>
+  <!-- 滑动的分类数据开始 -->
+  <scroll-view wx:if="{{typeId != 0 &&getChildList&&getChildList.length>1}}" id="scroll-view" class="child-list-scroll" style="border-bottom: unset;background:unset;padding:10rpx 0;" scroll-x="{{true}}" scroll-into-view="item{{scrollChildIndex - 2}}" scroll-with-animation="{{true}}">
+    <view class="scroll-child {{isShop ? (topid==item.id?'selectchild':'') : (shopids==item.id?'selectchild':'')}}" id="item{{index}}" bindtap="shutDown" wx:for="{{getChildList}}" wx:key="key" data-index="{{index}}">
+      <text class="cname" decode="true">{{item.name?item.name:item.cname}}&nbsp;&nbsp;&nbsp;|</text>
+    </view>
+  </scroll-view>
+  <!-- 滑动的分类数据结束 -->
+
+
+  <view class="headebox">
+    <view class="heade">
+      <view class="headetitle" wx:for="{{heade}}" wx:key='key' data-index="{{index}}" bindtap="powerDrawer" style="color:{{index==hidindex?'#F97704':'#888888'}}" data-statu="open">
+        {{item.name}}
+        <view class="judgesub">
+          <view hidden="{{index==4||index==0}}" class="upjudgesub"><text class="iconfont {{index==4?'icon-shaixuan':'icon-een'}}" style="color:{{judgesub?(index==hidindex?'#F97704':'#888888'):'#888888'}}"></text></view>
+          <view hidden="{{index==0}}" class="downjudgesub"><text class="iconfont {{index==4?'icon-shaixuan':'icon-een'}}" style="color:{{!judgesub?(index==hidindex?'#F97704':'#888888'):'#888888'}}"></text></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 调用内容组件 -->
+  <scroll-view scroll-y="true" scroll-top="{{scrollTop}}" style="height:calc(100% - {{LeftButtonnavHeight+80+((typeId==0 || getChildList.length<1||getChildList.length==1||!getChildList)?0:66)}}rpx)" bindscrolltolower="slideusage" class="vertical-scroll">
+    <shoplist-lbal id="shoplist" shoplists="{{lists}}" imgurl="{{imgurl}}" typeId="{{typeId}}" catchtap="details"></shoplist-lbal>
+    <nodata wx:if="{{lists.length==0}}"></nodata>
+  </scroll-view>
+
+
+
+
+  <!-- 新版筛选 -->
+  <OrdinaryScreen id="newscrren" is-right-click="{{isRightClick}}" newsClassId="155" bind:success="_success" _initialParentId="{{searchid}}" Pagetext="{{toptext}}" theNumber="{{ScreeningFloors}}" advObjectId="{{advObjectId}}"></OrdinaryScreen>
+</block>
+<Allpagesneed></Allpagesneed>

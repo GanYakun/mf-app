@@ -1,0 +1,59 @@
+/* xpages/sign-in/sign-in.wxss */
+.sign-in-click{
+  display: block;
+  width: 100%;
+}
+.text-title{
+  margin-top: 50rpx;
+  font-size: 42rpx;
+  font-family: PingFang;
+  font-weight: bold;
+  color: #333333;
+}
+.text-content{
+  margin-left: 63rpx;
+  margin-right: 63rpx;
+  font-size: 26rpx;
+font-family: PingFang;
+font-weight: 500;
+color: #555555
+}
+.sign-in-group{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.show-img{
+  display: block;
+  width: 100%;
+  background: #f2f2f2;
+}
+.sign-in-seccess-img{
+ margin-top: 50rpx;
+  width: calc(100% - 256rpx);
+  height: 443rpx;
+}
+.close{
+  width: 60rpx;
+  height: 60rpx;
+}
+.dialogRootPortal{
+  padding-top: 300rpx;
+  z-index: 10;
+  position: absolute;
+  background-color: #0000007f;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.group-view{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+}

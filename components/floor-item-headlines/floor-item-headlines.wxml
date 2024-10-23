@@ -1,0 +1,29 @@
+
+<!-- 今日头条的组件 -->
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view class="headlines-floor-item" wx:if="{{_item.adImageList.list.length>0}}">
+  <view class="title-wrapper">
+    <text class="title-left" style="line-height: 38rpx;">{{_item.name}}</text>
+   <view class="more" catchtap="onAction" data-event-type="moreRight">更多+</view>
+  </view>
+
+  <scroll-view class="filter-list" scroll-x="true" wx:if="{{_item.filterList && _item.filterList.length > 0}}">
+    <view class="filter-item" wx:for="{{_item.filterList}}" catchtap="onAction" data-event-type="filter" data-position="{{index}}">
+    <view>
+      <image src="{{imgur}}{{item.iconVo && item.iconVo.imagePath ? item.iconVo.imagePath:(item.xcxIconPath ? item.xcxIconPath:'')}}" style="width:74rpx;height: 74rpx;margin-bottom:10rpx;" mode="widthFix" lazy-load="{{true}}"></image>
+      <view>{{item.searchName ? item.searchName:(item.cname ? item.cname:(item.name ? item.name:''))}}</view>
+    </view>
+    </view>
+  </scroll-view>
+
+  <view class="ad-image-list" wx:if="{{_item.adImageList.list.length>0}}">
+        <view class="headlines-list-item" wx:for="{{_item.adImageList.list}}" catchtap="onAction"
+          data-event-type="headlines" data-position="{{index}}">
+          <image class="list-item-image" mode="aspectFill" src="{{imgur}}{{filter.jsonzhuanhuan(item.thumbnailPath)[0].path}}" lazy-load="{{true}}"></image>
+          <view class="item-content">
+          <view class="item-title">{{item.title}}</view>
+          <view class="item-introduce">{{item.introduce}}</view>
+        </view>
+        </view>
+  </view>
+</view>
