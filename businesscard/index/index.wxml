@@ -67,6 +67,13 @@
       <text style="margin-top:0rpx">拎包收藏</text>
     </view>
 
+    <!-- <view class="division"></view> -->
+    <view  bindtap="{{isLogin ? 'checkPersonalAccountDetail':'toAuthor'}}" wx:if="{{isemployee==1}}"  data-collectiontype="successfulCase" data-id="137">
+      <image class="topiconImage" src="../image/personal_account.png"></image>
+      <!-- <text class="iconfont icon-zhuangxiusheji" style="font-size:60rpx;margn-top:-10rpx;margin-right:0"></text> -->
+      <text style="margin-top:0rpx">个人账户</text>
+    </view>
+
   </view>
   <view class="myorder" wx:if="{{false}}">
     <view class="myorder-top">

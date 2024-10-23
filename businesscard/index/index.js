@@ -5,7 +5,7 @@ import config from "../../http/config"
 Page({
 
   /**
-   * 页面的初始数据
+   * 页面的初始数据 
    */
   data: {
     page: 1,
@@ -108,6 +108,12 @@ Page({
       code: 407,
       message: "未注册",
       curPage: curPage
+    })
+  },
+  checkPersonalAccountDetail: function() {
+    console.log("<<<<<<页面跳转")
+    wx.navigateTo({
+      url: '/businesscard/personal_account/personal_account',
     })
   },
   //

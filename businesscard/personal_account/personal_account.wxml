@@ -1,0 +1,43 @@
+<wxs module="filter" src="../../utils/filter.wxs"></wxs>
+<view>
+  <leftbutton toptitle="我的账户"></leftbutton>
+
+
+  <view class="topview">
+    <view class="section">
+      <view class="sectioninput">
+        <view class="iconview">
+          <image src="../../images/personal_account/money.png" class="inputicon" mode="widthFix"></image>
+          <text>零钱</text>
+        </view>
+        <view class="money-right"><text class="money-content">{{money}}</text> <text class="iconfont icon-youjiantou"></text></view>
+      </view>
+      <!-- 你的手机号 -->
+      <view class="sectioninput">
+        <view class="iconview">
+          <image src="../../images/personal_account/certification.png" class="inputicon" mode="widthFix"></image>
+          <text>实名认证</text>
+        </view>
+        <view> <text class="iconfont icon-youjiantou"></text></view>
+      </view>
+
+      <view class="sectioninput">
+        <view class="iconview">
+          <image src="../../images/personal_account/credit_card.png" class="inputicon" mode="widthFix"></image>
+          <text>我的银行卡</text>
+        </view>
+        <view> <text class="iconfont icon-youjiantou"></text></view>
+      </view>
+      
+        <view class="sectioninput" catchtap="">
+          <view class="iconview">
+            <image src="../../images/personal_account/agency.png" class="inputicon" mode="widthFix"></image>
+            <text>签约</text>
+          </view>
+          <view> <text class="iconfont icon-youjiantou"></text></view>
+        </view>
+    </view>
+  </view>
+</view>
+<!-- <Allpagesneed isone="2"></Allpagesneed> -->
+<Allpagesneed />

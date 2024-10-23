@@ -163,7 +163,8 @@
         "internal-member-bro-list/internal-member-bro-list",
         "server-in-help/server-in-help",
         "server-in-help-detail/server-in-help-detail",
-        "current-period/current-period"
+        "current-period/current-period",
+        "personal_account/personal_account"
       ]
     }
   ],
