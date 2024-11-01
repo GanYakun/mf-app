@@ -20,7 +20,7 @@ Promise && Promise.trackRejection({
     let app = getApp()
     if(app) {
       app.onUnhandledRejection(event)
-    }
+    } 
   }
 })
 

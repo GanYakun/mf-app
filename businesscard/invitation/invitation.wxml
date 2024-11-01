@@ -25,9 +25,6 @@
             <view class="wechat"><text>*</text>微信:<view> <input name="vechat" /> </view>
             </view>
           </view>
-
-
-
         </view>
         <view class="basic-information" style="margin-top:50rpx">
           <view>佣金结算账户</view>
@@ -59,8 +56,6 @@
             class="mesname">{{name}}</text>申请成为经纪人
             </view>
       </view>
-     
-
     </view>
   </view>
 </view>

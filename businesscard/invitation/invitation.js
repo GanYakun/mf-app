@@ -1,6 +1,7 @@
 let utils = require("../../utils/utils.js")
 let {GetPeriod} = require("../../utils/getTime.js")
 var api = require("../../utils/api.js")
+var mfApi = require("../../utils/mfApi.js")
 const { getDataDictionary } = require("../../http/config.js")
 var app = getApp()
 Page({
@@ -22,6 +23,7 @@ Page({
     let myyear = myDate.getFullYear() + 1;
     let mymonth = myDate.getMonth() + 1;
     let myweekday = myDate.getDate();
+    let type = "";
     myDate =  [myyear, mymonth, myweekday].map(this.formatNumber).join('-');
     console.log(myDate)
     var that = this
@@ -33,8 +35,10 @@ Page({
       let q = decodeURIComponent(options.q);
       let memberId = utils.getQueryString(q, 'memberId');
       let name = utils.getQueryString(q, 'name')
+      type = utils.getQueryString(q, 'type')
       console.log("成为经纪人id", memberId)
       console.log("推荐人的名字", name)
+      console.log("推荐人的类型", type)
       this.setData({
         memberId: memberId,
         name: name,
@@ -56,11 +60,26 @@ Page({
       newsClassId: 230,
       objectId: 193
     }
-    api.request('/rest/newsClass/getModel', dataziding, 'GET', function (e) {
-      that.setData({
-        introduce: e.data.contentWap
+    // api.request('/rest/newsClass/getModel', dataziding, 'GET', function (e) {
+    //   that.setData({
+    //     introduce: e.data.contentWap
+    //   })
+    // })
+    
+    if (type === "0") {
+      mfApi.request('/program/agent/protocol/getPersonal', null, 'GET', function(e){
+        that.setData({
+          introduce: e.data.content  
+        })
       })
-    })
+    } else {
+      mfApi.request('/program/agent/protocol/getOrg', null, 'GET', function(e){
+        that.setData({
+          introduce: e.data.content  
+        })
+      })
+    }
+    
 
 
     //查询是否已经是经纪人

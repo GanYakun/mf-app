@@ -1,7 +1,8 @@
 <leftbutton toptitle="我的经纪人"/>
 <view class="topbox"></view>
-<button class="right" bindgetuserinfo="getUserInfo" class="gou" wx:if="{{isGetUserinfo}}"  open-type="getUserInfo" >去邀请</button>
-        <button class="right" bindtap="NogetUserinfo" class="gou" wx:else>去邀请</button>
+<button class="right" bindgetuserinfo="getUserInfo" class="gou" wx:if="{{isGetUserinfo}}"  open-type="getUserInfo" >邀请个人</button>
+        <button class="right" bindtap="NogetUserinfo" class="gou" wx:else>邀请个人</button>
+        <button class="right" bindgetuserinfo="getUserInfo" class="gou" open-type="getUserInfo" >邀请企业</button>
         <!-- 加载弹窗 -->
 <view class="showTips" wx:if="{{showTips}}">加载中...</view>
 <view class="dwg">

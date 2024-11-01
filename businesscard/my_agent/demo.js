@@ -4,9 +4,6 @@ import deviceUtil from '../../utils/device-utils'
 const wxml = (srcdata) =>
   `
 <view class="container">
-<view class="topview">
-<image class="brandLogPath" mode="aspectFit" src="${srcdata.brandLogPath}"></image>
-</view>
 <view class="middle">
 <image class="middle" mode="aspectFit" src="${srcdata.brokerBackgroundImagePath}"></image>
 </view>
@@ -39,10 +36,6 @@ const wxml = (srcdata) =>
     <view class="qrcview">
         <image class="qrcode" src="${srcdata.qrcode}"></image>
         <text class="tips">长按识别二维码成为木菲美家专属经纪人</text>
-    </view>
-    <view class="qrcview">
-        <image class="qrcode" src="${srcdata.officialAccountImgCodePath}"></image>
-        <text class="tips">识别二维码关注公众号动态获取收益进度</text>
     </view>
 </view>
 
@@ -118,17 +111,13 @@ const style = (pagesize) => {
     },
     qrcview:{
       width:deviceUtil.rpx2px(280),
-      height: deviceUtil.rpx2px(360),
+      height: deviceUtil.rpx2px(365),
       justifyContent:'center',
       alignItems:'alignItems',
-      marginLeft: deviceUtil.rpx2px(38),
-      // backgroundColor:'pink',
-      marginTop:deviceUtil.rpx2px(0),
     },
     qrcode:{
-      width:deviceUtil.rpx2px(203),
-      height: deviceUtil.rpx2px(180),
-      // marginTop:deviceUtil.rpx2px(-30),
+      width:deviceUtil.rpx2px(200),
+      height: deviceUtil.rpx2px(200),
     },
     tips:{
       width:deviceUtil.rpx2px(203),
@@ -178,13 +167,14 @@ const style = (pagesize) => {
         top:deviceUtil.rpx2px(10),
     },
     weixinImageview:{
-        width: pagewidth,
-        height: deviceUtil.rpx2px(390),
-        backgroundColor:'#f8f8f8',
-        flexDirection: 'row',
-        alignItems:'alignItems',
-        zIndex:'9999',
-        paddingBottom:deviceUtil.rpx2px(65)
+      width: pagewidth,
+      height: deviceUtil.rpx2px(360),
+      backgroundColor:'#f8f8f8',
+      display: 'flex',
+      justifyContent: 'center',
+      flexDirection: 'row',
+      alignItems:'alignItems',
+      zIndex:'9999'
 
     }
   }

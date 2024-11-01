@@ -1,8 +1,8 @@
 <!--businesscard/my_agent/my_agent.wxml-->
 <!-- 左上角返回按钮和返回首页的按钮 -->
-<leftbutton toptitle="我的经纪人"/>
-  <scroll-view scroll-y="true" style="height:calc(100% - {{navHeight}}rpx)" bindscrolltolower='lower'>
-    
+<leftbutton toptitle="我的经纪人" />
+<scroll-view scroll-y="true" style="height:calc(100% - {{navHeight}}rpx)" bindscrolltolower='lower'>
+
 
   <view class="head_box">
     <view class="home_top">
@@ -17,10 +17,24 @@
           <view class="num"> <text>{{listData.length}}</text>人</view>
           <view class="title">经纪人数</view>
         </view>
+        <view class="selection-container">
+          <view class="selection-label">邀请类型(必选)：</view>
+          <view class="page-section">
+            <radio class="radio-content" checked="{{firstRadioCheck}}" color="orange" bind:tap="handlerFirstRadioChoose" />个人  
+            <radio class="radio-content" checked="{{secondRadioCheck}}" color="orange" bind:tap="handlerSecondRadioChoose" />企业
+          </view>
+        </view>
         <view class="goyao">
-        <button class="right" bindgetuserinfo="getUserInfo" wx:if="{{isGetUserinfo}}"  open-type="getUserInfo" >去邀请</button>
-        <button class="right" bindtap="NogetUserinfo" wx:else>去邀请</button>
+          <button class="right" bindgetuserinfo="getUserinfo" wx:if="{{isGetUserinfo}}" open-type="getUserInfo">去邀请</button>
+          <button class="right" bindtap="NogetUserinfo" wx:else>去邀请</button>
+        </view>
+
       </view>
+      <view class="swich-section">
+        <view class="switch-content-left-choose" bind:tap="handlerFirstTabClick" wx:if="{{chooseFirstTab}}">企业/店长经纪人</view>
+        <view class="switch-content-left" bind:tap="handlerFirstTabClick" wx:else="{{chooseFirstTab === false}}">企业/店长经纪人</view>
+        <view class="switch-content-right-choose" bind:tap="handlerSecondTabClick" wx:if="{{chooseSecondTab}}">个人经纪人</view>
+        <view class="switch-content-right" bind:tap="handlerSecondTabClick" wx:else="{{chooseSecondTab === false}}">个人经纪人</view>
       </view>
       <view class="lists">
         <view class="item" wx:for="{{listData}}" data-id="{{item.id}}" wx:key="key" bindtap="agent_detail" data-nick="{{item.decodeNick}}" data-phone="{{item.phone}}" data-applyBrokerDate="{{item.applyBrokerDate}}" data-cjCount="{{item.cjCount}}" data-id="{{item.id}}">
@@ -35,8 +49,11 @@
           </view>
         </view>
       </view>
+
     </view>
   </view>
+
+
   <view class="list" hidden="{{!list}}">
     <view class="image">
       <image></image>
@@ -51,7 +68,7 @@
 
 <view class="dwg">
   <!-- <wxml-to-canvas  class="widget" width="{{pageWidth}}" height="{{pageHeight}}"></wxml-to-canvas> -->
-  <wxml-to-canvas  class="widget" width="{{750}}" height="{{1340}}"></wxml-to-canvas>
+  <wxml-to-canvas class="widget" width="{{750}}" height="{{1340}}"></wxml-to-canvas>
 </view>
 
 <!-- <canvas style="width: 100%; height: 100%; position:fixed; top:-10000px;" type="2d" id="convertor" canvas-id="convertor1"></canvas> -->

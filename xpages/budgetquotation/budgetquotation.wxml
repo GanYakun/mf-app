@@ -26,7 +26,7 @@
 				<view class="sectioninput">
 					<view class="iconview">
 						<image src="../../images/yusuan/4.png" class="inputicon" mode="widthFix"></image>
-						<text>姓名</text>
+						<text>客户姓名</text>
 						<input name="callofduty" value='{{inputValue}}' placeholder="请输入称呼"
 							placeholder-style='font-size:28rpx;color:#c2c2c2' />
 					</view>
@@ -35,7 +35,7 @@
 				<view class="sectioninput">
 					<view class="iconview">
 						<image src="../../images/yusuan/2.png" class="inputicon" mode="widthFix"></image>
-						<text>电话</text>
+						<text>客户电话</text>
 						<input type="number" value='{{inputValue}}' name="phone" placeholder="请输入电话号码"
 							placeholder-style='font-size:28rpx;color:#c2c2c2' />
 					</view>
@@ -44,7 +44,7 @@
 				<view class="sectioninput">
 					<view class="iconview">
 						<image src="../../images/yusuan/1.png" class="inputicon" mode="widthFix"></image>
-						<text>面积</text>
+						<text>房屋面积</text>
 						<input name="areacodes" type="number" value='{{inputValue}}' placeholder="请输入房屋面积"
 							placeholder-style='font-size:28rpx;color:#c2c2c2' />
 					</view>
@@ -54,7 +54,7 @@
 				<view class="sectioninput" catchtap="">
 					<view class="iconview">
 						<image src="../../images/yusuan/3.png"  class="inputicon" mode="widthFix"></image>
-						<text>户型</text>
+						<text>户型</text>11
 
 						<input name="models" disabled="true" value='{{inputValues}}' placeholder="请选择房屋户型"
 							placeholder-style='font-size:28rpx;color:#c2c2c2' />

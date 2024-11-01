@@ -17,8 +17,12 @@ Page({
     page: 1,
     rows: '',
     isGetUserinfo: false,
-    qcappnoshare: true
-
+    qcappnoshare: true,
+    chooseFirstTab: true,
+    chooseSecondTab: false,
+    firstRadioCheck: false,
+    secondRadioCheck: false,
+    inviteType: '',
   },
 
   /**
@@ -96,9 +100,7 @@ Page({
    * 
    */
   getUserInfo: async function (e) {
-
     var that = this
-
     console.log(e)
     var cardMessage = await that.getCard()
     if (cardMessage != '') {
@@ -145,7 +147,6 @@ Page({
         url: '../posterimage/posterimage?transformation=' + transformation,
       })
     } else {
-
     }
     // wx.navigateTo({
     //   url: '../poster/poster',
@@ -229,6 +230,12 @@ Page({
       } else {
         shareaddress = address
       }
+      let backGroudImgUrl = ''
+      if (that.data.inviteType === "0") {
+       backGroudImgUrl = "https://www.mufei100.com/file/group1/M00/4A/79/dDf7E2cjOzqAFKQsACsQu0KkFhE791.jpg"
+      } else {
+        backGroudImgUrl = "https://www.mufei100.com/file/group1/M00/4A/79/dDf7E2cjPGyAG5HrAAT-FliBC6Y917.jpg"
+      }
       console.log(brokerBackgroundImagePath)
       if (!brokerBackgroundImagePath || !brandLogPath) {
         wx.showToast({
@@ -247,7 +254,7 @@ Page({
         remask: that.data.position,
         phone: that.data.cardPhone || app.globalData.phone,
         address: shareaddress,
-        brokerBackgroundImagePath: app.globalData.imgur + brokerBackgroundImagePath,
+        brokerBackgroundImagePath: backGroudImgUrl,
         brandLogPath: app.globalData.imgur + brandLogPath,
         officialAccountImgCodePath:that.data.officialAccountImgCodePath
         
@@ -358,8 +365,8 @@ Page({
     return new Promise((resove, reject) => {
       let qrcdatas = {
         // url:"http://mf.100good.cn/mlsmall/card_share?memberId=464&name=改天是那天"
-        url: encodeURIComponent("https://www.100good.cn/card_share?memberId=" + app.globalData.memberid + "&name=" + that.data.usernick)
-      }
+        url: encodeURIComponent("https://www.100good.cn/card_share?memberId=" + app.globalData.memberid + "&name=" + that.data.usernick + "&type=" + that.data.inviteType)
+      } 
       api.newget('/rest/shareApi/getQrCode', qrcdatas, 'GET', function (e) {
         resove(e.data.path)
       })
@@ -367,10 +374,16 @@ Page({
 
   },
 
-
   NogetUserinfo: async function () {
     try {
       var that = this
+      if (that.data.inviteType === '') {
+        wx.showToast({
+          title: '请选择要邀请的经纪人类型',
+          icon: 'none'
+        })
+        return
+      }
       var cardMessage = await that.getCard()
       console.log(cardMessage)
       if (cardMessage) {
@@ -403,12 +416,13 @@ Page({
         wx.navigateTo({
           url: '../posterimage/posterimage?transformation=' + transformation,
         })
+        
       } else {
 
       }
-      // wx.navigateTo({
-      //   url: '../poster/poster',
-      // })
+      wx.navigateTo({
+        url: '../poster/poster',
+      })
     } catch {
       let that = this
       that.setData({
@@ -428,6 +442,7 @@ Page({
       that.setData({
         showTips: true
       })
+      
     } else {
       that.setData({
         showTips: false
@@ -461,6 +476,42 @@ Page({
       })
     })
 
+  },
+
+  handlerFirstTabClick: function() {
+    this.setData({
+      chooseFirstTab: true,
+      chooseSecondTab: false
+    })
+  },
+
+  handlerSecondTabClick: function() {
+    this.setData({
+      chooseFirstTab: false,
+      chooseSecondTab: true,
+    })
+  },
+
+  handlerFirstRadioChoose: function() {
+    this.setData({
+      firstRadioCheck: true,
+      secondRadioCheck: false,
+    })
+    //传递经纪人类型参数
+    this.setData({
+      inviteType: "0",
+    })
+  },
+
+  handlerSecondRadioChoose: function() {
+    this.setData({
+      firstRadioCheck: false,
+      secondRadioCheck: true,
+    })
+    //传递经纪人类型参数
+    this.setData({
+      inviteType: "1",
+    })
   },
 
   //输入事件
