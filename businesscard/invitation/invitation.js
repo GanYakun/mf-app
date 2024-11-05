@@ -1,5 +1,5 @@
 let utils = require("../../utils/utils.js")
-let {GetPeriod} = require("../../utils/getTime.js")
+let { GetPeriod } = require("../../utils/getTime.js")
 var api = require("../../utils/api.js")
 var mfApi = require("../../utils/mfApi.js")
 const { getDataDictionary } = require("../../http/config.js")
@@ -24,7 +24,7 @@ Page({
     let mymonth = myDate.getMonth() + 1;
     let myweekday = myDate.getDate();
     let type = "";
-    myDate =  [myyear, mymonth, myweekday].map(this.formatNumber).join('-');
+    myDate = [myyear, mymonth, myweekday].map(this.formatNumber).join('-');
     console.log(myDate)
     var that = this
     console.log("页面加载", options)
@@ -42,7 +42,7 @@ Page({
       this.setData({
         memberId: memberId,
         name: name,
-        myDate:myDate
+        myDate: myDate
       })
     } else if (options.PageType == 'poster') {
       this.setData({
@@ -65,21 +65,21 @@ Page({
     //     introduce: e.data.contentWap
     //   })
     // })
-    
+
     if (type === "0") {
-      mfApi.request('/program/agent/protocol/getPersonal', null, 'GET', function(e){
+      mfApi.request('/program/agent/protocol/getPersonal', null, 'GET', function (e) {
         that.setData({
-          introduce: e.data.content  
+          introduce: e.data.content
         })
       })
     } else {
-      mfApi.request('/program/agent/protocol/getOrg', null, 'GET', function(e){
+      mfApi.request('/program/agent/protocol/getOrg', null, 'GET', function (e) {
         that.setData({
-          introduce: e.data.content  
+          introduce: e.data.content
         })
       })
     }
-    
+
 
 
     //查询是否已经是经纪人
@@ -133,7 +133,7 @@ Page({
   },
   //下一步
   nextStep() {
-    if(app.globalData.isBroker==1){
+    if (app.globalData.isBroker == 1) {
       app.showToastMessage('您已是经纪人')
       return
     }
@@ -174,7 +174,41 @@ Page({
   //   app.showToastMessage('请输入银行账号')
   //   return
   // }
+  uploadBuisenessLiceense: function () {
+    wx.chooseImage({
+      success(res) {
+        const tempFilePaths = res.tempFilePaths
+        let data = {
+          
+        }
+        api.xput('/rest/memberCenter/saveBusinessCard', data, 'PUT', header, function (e) {
+          console.log(e, 'eeeee')
+          if (e.code == 200) {
+            wx.showToast({
+              title: e.message,
+            })
+            wx.navigateBack({
+              delta: 1,
+            })
+          }
   
+        })
+        // wx.uploadFile({
+        //   url: app.globalData.upurl + '/rest/memberCenter/imageUpload', //仅为示例，非真实的接口地址
+        //   filePath: tempFilePaths[0],
+        //   name: 'file',
+        //   formData: {
+        //     'user': 'test'
+        //   },
+        //   success(res) {
+        //     const data = res.data
+        //     //do something
+        //   }
+        // })
+      }
+    })
+  },
+
   //成为经纪人
   become_agent: async function (e) {
     await app.obtaintoken()
@@ -186,20 +220,20 @@ Page({
     var that = this
     let fromValue = e.detail.value
     let data = fromValue
-    if(!fromValue.name){
+    if (!fromValue.name) {
       app.showToastMessage('请输入姓名')
       return
-    }else if(!fromValue.telephone){
+    } else if (!fromValue.telephone) {
       app.showToastMessage('请输入电话')
       return
-    }else if(fromValue.telephone){
+    } else if (fromValue.telephone) {
       let myreg = /^((1[3-9]{1}[0-9]{1})+\d{8})$/
       if (!myreg.test(fromValue.telephone)) {
         app.showToastMessage('电话号码格式不对')
         return
       }
     }
-    let memberIds = that.data.memberId||''
+    let memberIds = that.data.memberId || ''
     // let memberIds = 186
     api.newget('/rest/memberCenter/applyBroker?memberId=' + memberIds, data, 'POST', function (e) {
       console.log('成为经济人接口返回的数据', e)
@@ -216,8 +250,8 @@ Page({
           duration: 1000
         })
         this.setData({
-          isshow:false,
-          isSuccess:true
+          isshow: false,
+          isSuccess: true
         })
       } else if (e.code == 201) {
         console.log("进入code==201的方法")

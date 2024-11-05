@@ -257,7 +257,7 @@ Page({
         brokerBackgroundImagePath: backGroudImgUrl,
         brandLogPath: app.globalData.imgur + brandLogPath,
         officialAccountImgCodePath:that.data.officialAccountImgCodePath
-        
+
       }
       console.log(Parameterspassed)
       let wxmlStr = wxml(Parameterspassed);

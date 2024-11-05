@@ -37,7 +37,6 @@ Page({
       api.request('/rest/shareApi/getBusinessCard', data, 'GET', function (e) {
         var data1 = e.data.businessCard
         that.storeQuery(data1.belongStore) //查询门店信息
-        
         if (e.code == 200) {
           that.setData({
             phone: data1.phone,
@@ -241,7 +240,7 @@ Page({
   onTap: async function () {
     let isUpload = await this.isUpload()
     let that = this;
-    var type = that.data.type
+    var type = 1
     let token = app.globalData.token
     var id = that.data.id
     var personalIntroduction = that.data.personalIntroduction
@@ -317,7 +316,6 @@ Page({
             delta: 1,
           })
         }
-
       })
     }
   },
